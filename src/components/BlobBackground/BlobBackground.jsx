@@ -2,7 +2,7 @@ import './BlobBackground.css';
 
 /**
  * Decorative background blobs that give the site a soft, welcoming feel.
- * Fixed position so they stay behind all content.
+ * Fixed position so they stay behind all content. Gently animated.
  */
 export default function BlobBackground() {
   return (
@@ -10,6 +10,8 @@ export default function BlobBackground() {
       <div className="blob blob1" />
       <div className="blob blob2" />
       <div className="blob blob3" />
+      <div className="blob blob4" />
+      <div className="blob blob5" />
     </div>
   );
 }

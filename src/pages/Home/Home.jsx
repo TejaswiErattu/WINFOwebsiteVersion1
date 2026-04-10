@@ -57,7 +57,7 @@ export default function Home() {
               <EventCard key={event.id} event={event} />
             ))}
           </div>
-          <div style={{ textAlign: 'center', marginTop: 'var(--space-8)' }}>
+          <div className="featuredEventsMore">
             <Button to="/events" variant="secondary">
               View All Events →
             </Button>

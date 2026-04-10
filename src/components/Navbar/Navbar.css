@@ -3,10 +3,10 @@
   top: 0;
   z-index: 100;
   height: var(--nav-height);
-  background: rgba(255, 255, 255, 0.85);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  border-bottom: 1px solid var(--color-border);
+  background: rgba(255, 251, 252, 0.80);
+  backdrop-filter: blur(16px) saturate(1.4);
+  -webkit-backdrop-filter: blur(16px) saturate(1.4);
+  border-bottom: 1px solid var(--color-border-pink);
 }
 
 .navContainer {
@@ -23,12 +23,13 @@
 .navLogo {
   display: flex;
   align-items: center;
-  gap: var(--space-2);
+  gap: var(--space-3);
   text-decoration: none;
   font-family: var(--font-display);
-  font-size: var(--text-xl);
-  font-weight: 700;
+  font-size: var(--text-2xl);
+  font-weight: 400;
   color: var(--color-heading);
+  letter-spacing: 0.02em;
 }
 
 .navLogo:hover {
@@ -36,15 +37,17 @@
 }
 
 .navLogoIcon {
-  width: 36px;
-  height: 36px;
+  width: 40px;
+  height: 40px;
   background: linear-gradient(135deg, var(--pink-300), var(--lavender-300));
   border-radius: var(--radius-md);
   display: flex;
   align-items: center;
   justify-content: center;
   font-size: var(--text-lg);
+  font-family: var(--font-display);
   color: var(--white);
+  box-shadow: var(--shadow-pink);
 }
 
 /* Desktop Nav Links */
@@ -56,18 +59,23 @@
 
 .navLink {
   font-size: var(--text-sm);
-  font-weight: 500;
+  font-weight: 600;
   color: var(--color-text);
   text-decoration: none;
   padding: var(--space-2) var(--space-4);
   border-radius: var(--radius-full);
-  transition: all var(--transition-fast);
+  transition: all var(--transition-base);
+  letter-spacing: 0.01em;
 }
 
-.navLink:hover,
-.navLink.active {
+.navLink:hover {
   color: var(--color-primary);
   background: var(--pink-50);
+}
+
+.navLink.active {
+  color: var(--pink-500);
+  background: var(--pink-100);
 }
 
 /* Hamburger Button */
@@ -111,13 +119,13 @@
   left: 0;
   width: 100%;
   height: 100vh;
-  background: rgba(255, 255, 255, 0.97);
-  backdrop-filter: blur(12px);
+  background: rgba(255, 251, 252, 0.96);
+  backdrop-filter: blur(20px);
   z-index: 105;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: var(--space-6);
+  gap: var(--space-8);
 }
 
 .mobileMenu.open {
@@ -125,7 +133,9 @@
 }
 
 .mobileMenu .navLink {
-  font-size: var(--text-xl);
+  font-size: var(--text-2xl);
+  font-family: var(--font-display);
+  font-weight: 400;
   padding: var(--space-3) var(--space-6);
 }
 

@@ -47,8 +47,7 @@ export default function About() {
 
       {/* Values */}
       <section
-        className="section"
-        style={{ background: 'linear-gradient(180deg, var(--white), var(--lavender-50))' }}
+        className="section valuesSection"
         aria-labelledby="values-heading"
       >
         <div className="container">

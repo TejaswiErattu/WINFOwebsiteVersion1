@@ -1,101 +1,118 @@
 /* ========================================
    WINFO Global Design System
+   Airy · Feminine · Polished · Modern
    ======================================== */
 
 /* --- Google Fonts Import --- */
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;500;600;700;800&family=DM+Serif+Display&display=swap');
 
 /* --- Design Tokens --- */
 :root {
-  /* Primary palette – soft pinks & blush */
-  --pink-50:  #fef5f7;
-  --pink-100: #fde8ed;
-  --pink-200: #fbd0db;
-  --pink-300: #f8a4ba;
-  --pink-400: #f27a9b;
-  --pink-500: #e8507e;
+  /* Primary palette – warm blush & soft pinks */
+  --pink-50:  #fff5f7;
+  --pink-100: #ffe4ec;
+  --pink-200: #fcc5d4;
+  --pink-300: #f4a0b7;
+  --pink-400: #e87fa0;
+  --pink-500: #d4567e;
 
   /* Lavender accents */
-  --lavender-50:  #f5f3ff;
-  --lavender-100: #ede9fe;
-  --lavender-200: #ddd6fe;
-  --lavender-300: #c4b5fd;
-  --lavender-400: #a78bfa;
+  --lavender-50:  #f8f5ff;
+  --lavender-100: #eeebff;
+  --lavender-200: #ddd5fe;
+  --lavender-300: #c0b0f0;
+  --lavender-400: #9b84db;
+  --lavender-500: #7c5fc4;
 
-  /* Neutrals */
+  /* Mauve (bridge between pink & lavender) */
+  --mauve-50:  #faf5f9;
+  --mauve-100: #f0e4ef;
+  --mauve-200: #e2c9e0;
+  --mauve-300: #c9a3c6;
+
+  /* Neutrals – warm-shifted */
   --white:     #ffffff;
-  --off-white: #fefcfd;
-  --gray-50:   #fafafa;
-  --gray-100:  #f5f5f5;
-  --gray-200:  #e8e8e8;
-  --gray-300:  #d4d4d4;
-  --gray-400:  #a3a3a3;
-  --gray-500:  #737373;
-  --gray-600:  #525252;
-  --gray-700:  #404040;
-  --gray-800:  #262626;
-  --gray-900:  #1a1a1a;
+  --off-white: #fffbfc;
+  --gray-50:   #fdfafb;
+  --gray-100:  #f7f3f5;
+  --gray-200:  #ece5e9;
+  --gray-300:  #d6cdd2;
+  --gray-400:  #a89ba2;
+  --gray-500:  #7d7180;
+  --gray-600:  #5c5261;
+  --gray-700:  #453d48;
+  --gray-800:  #332d36;
+  --gray-900:  #231e26;
 
   /* Semantic colors */
-  --color-primary:    var(--pink-400);
+  --color-primary:       var(--pink-400);
   --color-primary-hover: var(--pink-500);
-  --color-accent:     var(--lavender-300);
-  --color-bg:         var(--off-white);
-  --color-surface:    var(--white);
-  --color-text:       var(--gray-800);
-  --color-text-light: var(--gray-500);
-  --color-heading:    var(--gray-900);
-  --color-border:     var(--gray-200);
+  --color-accent:        var(--lavender-400);
+  --color-bg:            var(--off-white);
+  --color-surface:       var(--white);
+  --color-text:          var(--gray-700);
+  --color-text-light:    var(--gray-500);
+  --color-text-muted:    var(--gray-400);
+  --color-heading:       var(--gray-900);
+  --color-border:        var(--gray-200);
+  --color-border-pink:   rgba(244, 160, 183, 0.25);
+  --color-link:          var(--lavender-500);
 
   /* Typography */
-  --font-sans:    'Inter', system-ui, -apple-system, sans-serif;
-  --font-display: 'Playfair Display', Georgia, serif;
+  --font-sans:    'Nunito', system-ui, -apple-system, sans-serif;
+  --font-display: 'DM Serif Display', Georgia, serif;
 
-  --text-xs:   0.75rem;   /* 12px */
-  --text-sm:   0.875rem;  /* 14px */
-  --text-base: 1rem;      /* 16px */
-  --text-lg:   1.125rem;  /* 18px */
-  --text-xl:   1.25rem;   /* 20px */
-  --text-2xl:  1.5rem;    /* 24px */
-  --text-3xl:  1.875rem;  /* 30px */
-  --text-4xl:  2.25rem;   /* 36px */
-  --text-5xl:  3rem;      /* 48px */
+  --text-xs:   0.75rem;    /* 12px */
+  --text-sm:   0.875rem;   /* 14px */
+  --text-base: 1rem;       /* 16px */
+  --text-lg:   1.125rem;   /* 18px */
+  --text-xl:   1.25rem;    /* 20px */
+  --text-2xl:  1.5rem;     /* 24px */
+  --text-3xl:  1.875rem;   /* 30px */
+  --text-4xl:  2.25rem;    /* 36px */
+  --text-5xl:  3rem;       /* 48px */
+  --text-6xl:  3.75rem;    /* 60px */
 
   /* Spacing (8px grid) */
-  --space-1:  0.25rem;  /* 4px */
-  --space-2:  0.5rem;   /* 8px */
-  --space-3:  0.75rem;  /* 12px */
-  --space-4:  1rem;     /* 16px */
-  --space-5:  1.25rem;  /* 20px */
-  --space-6:  1.5rem;   /* 24px */
-  --space-8:  2rem;     /* 32px */
-  --space-10: 2.5rem;   /* 40px */
-  --space-12: 3rem;     /* 48px */
-  --space-16: 4rem;     /* 64px */
-  --space-20: 5rem;     /* 80px */
-  --space-24: 6rem;     /* 96px */
+  --space-1:  0.25rem;   /* 4px */
+  --space-2:  0.5rem;    /* 8px */
+  --space-3:  0.75rem;   /* 12px */
+  --space-4:  1rem;      /* 16px */
+  --space-5:  1.25rem;   /* 20px */
+  --space-6:  1.5rem;    /* 24px */
+  --space-8:  2rem;      /* 32px */
+  --space-10: 2.5rem;    /* 40px */
+  --space-12: 3rem;      /* 48px */
+  --space-16: 4rem;      /* 64px */
+  --space-20: 5rem;      /* 80px */
+  --space-24: 6rem;      /* 96px */
+  --space-32: 8rem;      /* 128px */
 
   /* Borders & Radii */
   --radius-sm:   8px;
-  --radius-md:   12px;
-  --radius-lg:   16px;
-  --radius-xl:   24px;
+  --radius-md:   14px;
+  --radius-lg:   20px;
+  --radius-xl:   28px;
+  --radius-2xl:  36px;
   --radius-full: 9999px;
 
-  /* Shadows */
-  --shadow-sm:  0 1px 3px rgba(0, 0, 0, 0.04), 0 1px 2px rgba(0, 0, 0, 0.03);
-  --shadow-md:  0 4px 12px rgba(0, 0, 0, 0.06), 0 2px 4px rgba(0, 0, 0, 0.03);
-  --shadow-lg:  0 10px 30px rgba(0, 0, 0, 0.08), 0 4px 8px rgba(0, 0, 0, 0.03);
-  --shadow-pink: 0 4px 20px rgba(242, 122, 155, 0.15);
+  /* Shadows – pink-tinted, pastel */
+  --shadow-xs:   0 1px 2px rgba(195, 160, 175, 0.06);
+  --shadow-sm:   0 2px 8px rgba(195, 160, 175, 0.08), 0 1px 2px rgba(195, 160, 175, 0.04);
+  --shadow-md:   0 4px 16px rgba(195, 160, 175, 0.10), 0 2px 4px rgba(195, 160, 175, 0.05);
+  --shadow-lg:   0 12px 36px rgba(195, 160, 175, 0.12), 0 4px 8px rgba(195, 160, 175, 0.05);
+  --shadow-xl:   0 20px 50px rgba(195, 160, 175, 0.14), 0 6px 12px rgba(195, 160, 175, 0.06);
+  --shadow-pink: 0 6px 24px rgba(232, 127, 160, 0.18);
+  --shadow-glow: 0 0 40px rgba(232, 127, 160, 0.10);
 
   /* Transitions */
   --transition-fast: 150ms ease;
-  --transition-base: 250ms ease;
-  --transition-slow: 400ms ease;
+  --transition-base: 250ms cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-slow: 400ms cubic-bezier(0.4, 0, 0.2, 1);
 
   /* Layout */
-  --max-width: 1200px;
-  --nav-height: 72px;
+  --max-width: 1180px;
+  --nav-height: 76px;
 }
 
 /* --- CSS Reset & Base --- */
@@ -116,9 +133,13 @@ html {
 body {
   font-family: var(--font-sans);
   font-size: var(--text-base);
-  line-height: 1.6;
+  line-height: 1.65;
   color: var(--color-text);
-  background-color: var(--color-bg);
+  background: var(--color-bg);
+  background-image:
+    radial-gradient(ellipse 80% 60% at 50% 0%, rgba(255, 228, 236, 0.35) 0%, transparent 60%),
+    radial-gradient(ellipse 60% 50% at 80% 100%, rgba(238, 235, 255, 0.25) 0%, transparent 50%);
+  background-attachment: fixed;
   min-height: 100vh;
 }
 
@@ -132,8 +153,9 @@ body {
 h1, h2, h3, h4, h5, h6 {
   font-family: var(--font-display);
   color: var(--color-heading);
-  line-height: 1.2;
-  font-weight: 600;
+  line-height: 1.15;
+  font-weight: 400;   /* DM Serif Display is naturally bold-looking */
+  letter-spacing: -0.01em;
 }
 
 h1 { font-size: var(--text-5xl); }
@@ -142,12 +164,12 @@ h3 { font-size: var(--text-2xl); }
 h4 { font-size: var(--text-xl);  }
 
 p {
-  line-height: 1.7;
+  line-height: 1.75;
   color: var(--color-text);
 }
 
 a {
-  color: var(--color-primary);
+  color: var(--color-link);
   text-decoration: none;
   transition: color var(--transition-fast);
 }
@@ -160,6 +182,7 @@ img {
   max-width: 100%;
   height: auto;
   display: block;
+  border-radius: var(--radius-md);
 }
 
 ul {
@@ -183,7 +206,7 @@ button {
 
 /* --- Utility: Section Spacing --- */
 .section {
-  padding: var(--space-20) 0;
+  padding: var(--space-24) 0;
 }
 
 /* --- Utility: Screen Reader Only --- */
@@ -201,8 +224,8 @@ button {
 
 /* --- Focus Styles (Accessibility) --- */
 :focus-visible {
-  outline: 2px solid var(--color-primary);
-  outline-offset: 2px;
+  outline: 2px solid var(--lavender-400);
+  outline-offset: 3px;
   border-radius: var(--radius-sm);
 }
 
@@ -213,7 +236,7 @@ button {
   h3 { font-size: var(--text-xl);  }
 
   .section {
-    padding: var(--space-12) 0;
+    padding: var(--space-16) 0;
   }
 }
 

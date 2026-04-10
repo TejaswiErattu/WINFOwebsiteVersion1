@@ -4,47 +4,59 @@
   justify-content: center;
   gap: var(--space-2);
   font-family: var(--font-sans);
-  font-weight: 600;
+  font-weight: 700;
   font-size: var(--text-sm);
   border-radius: var(--radius-full);
-  padding: var(--space-3) var(--space-6);
+  padding: var(--space-3) var(--space-8);
   transition: all var(--transition-base);
   text-decoration: none;
   cursor: pointer;
   border: 2px solid transparent;
   line-height: 1.4;
+  letter-spacing: 0.02em;
 }
 
 .btn:focus-visible {
-  outline: 2px solid var(--color-primary);
-  outline-offset: 2px;
+  outline: 2px solid var(--lavender-400);
+  outline-offset: 3px;
 }
 
-/* Primary – solid pink */
+/* Primary – soft pastel pink fill, dark text */
 .btnPrimary {
-  background: linear-gradient(135deg, var(--pink-400), var(--pink-500));
-  color: var(--white);
+  background: linear-gradient(135deg, var(--pink-200), var(--pink-300));
+  color: var(--gray-800);
   box-shadow: var(--shadow-pink);
 }
 
 .btnPrimary:hover {
-  background: linear-gradient(135deg, var(--pink-500), var(--pink-400));
-  transform: translateY(-1px);
-  box-shadow: 0 6px 24px rgba(242, 122, 155, 0.25);
+  background: linear-gradient(135deg, var(--pink-300), var(--pink-400));
   color: var(--white);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 28px rgba(232, 127, 160, 0.22);
 }
 
-/* Secondary – outlined */
+.btnPrimary:active {
+  transform: translateY(0);
+}
+
+/* Secondary – white with pastel border */
 .btnSecondary {
-  background: transparent;
-  color: var(--color-primary);
-  border-color: var(--pink-300);
+  background: var(--white);
+  color: var(--color-text);
+  border-color: var(--pink-200);
+  box-shadow: var(--shadow-sm);
 }
 
 .btnSecondary:hover {
   background: var(--pink-50);
-  border-color: var(--color-primary);
-  transform: translateY(-1px);
+  border-color: var(--pink-300);
+  color: var(--pink-500);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
+}
+
+.btnSecondary:active {
+  transform: translateY(0);
 }
 
 /* Ghost – subtle */
@@ -54,16 +66,17 @@
 }
 
 .btnGhost:hover {
-  background: var(--gray-100);
+  background: var(--pink-50);
+  color: var(--color-primary);
 }
 
 /* Sizes */
 .btnLg {
   font-size: var(--text-base);
-  padding: var(--space-4) var(--space-8);
+  padding: var(--space-4) var(--space-10);
 }
 
 .btnSm {
   font-size: var(--text-xs);
-  padding: var(--space-2) var(--space-4);
+  padding: var(--space-2) var(--space-5);
 }
