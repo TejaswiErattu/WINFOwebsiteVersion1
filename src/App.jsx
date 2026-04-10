@@ -1,36 +1,37 @@
 import { Routes, Route } from 'react-router-dom';
+import ScrollToTop from './components/ScrollToTop';
+import BlobBackground from './components/BlobBackground/BlobBackground';
 import Navbar from './components/Navbar/Navbar';
 import Footer from './components/Footer/Footer';
-import BlobBackground from './components/BlobBackground/BlobBackground';
-import ScrollToTop from './components/ScrollToTop';
+
 import Home from './pages/Home/Home';
-import About from './pages/About/About';
 import Events from './pages/Events/Events';
-import Board from './pages/Board/Board';
-import Contact from './pages/Contact/Contact';
+import Hackathon from './pages/Hackathon/Hackathon';
+import Podcast from './pages/Podcast/Podcast';
+import Officers from './pages/Officers/Officers';
+import Membership from './pages/Membership/Membership';
+import Support from './pages/Support/Support';
 
-/**
- * Root application component with routing, shared layout (Navbar + Footer),
- * and decorative blob background.
- */
-function App() {
+import './styles/global.css';
+
+export default function App() {
   return (
-    <>
-      <BlobBackground />
+    <div className="page-wrapper">
       <ScrollToTop />
+      <BlobBackground />
       <Navbar />
-
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/about" element={<About />} />
-        <Route path="/events" element={<Events />} />
-        <Route path="/board" element={<Board />} />
-        <Route path="/contact" element={<Contact />} />
-      </Routes>
-
+      <main>
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/events" element={<Events />} />
+          <Route path="/hackathon" element={<Hackathon />} />
+          <Route path="/podcast" element={<Podcast />} />
+          <Route path="/officers" element={<Officers />} />
+          <Route path="/membership" element={<Membership />} />
+          <Route path="/support" element={<Support />} />
+        </Routes>
+      </main>
       <Footer />
-    </>
+    </div>
   );
 }
-
-export default App;

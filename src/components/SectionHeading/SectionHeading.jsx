@@ -1,13 +1,13 @@
 import './SectionHeading.css';
 
-/**
- * Consistent section heading with title, optional subtitle, and decorative underline.
- */
-export default function SectionHeading({ title, subtitle }) {
+export default function SectionHeading({ label, title, description }) {
   return (
-    <header className="sectionHeading">
-      <h2>{title}</h2>
-      {subtitle && <p>{subtitle}</p>}
-    </header>
+    <div className="section-heading">
+      {label && <span className="section-heading__label">{label}</span>}
+      <h2 className="section-heading__title">{title}</h2>
+      {description && (
+        <p className="section-heading__description">{description}</p>
+      )}
+    </div>
   );
 }

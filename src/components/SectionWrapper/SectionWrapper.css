@@ -1,0 +1,14 @@
+.section-wrapper {
+  padding: var(--section-padding);
+}
+
+.section-wrapper--alt {
+  background: var(--color-bg-alt);
+}
+
+.section-wrapper > .container {
+  width: 100%;
+  max-width: var(--container-max);
+  margin: 0 auto;
+  padding: var(--container-padding);
+}

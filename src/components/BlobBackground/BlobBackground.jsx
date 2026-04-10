@@ -1,17 +1,11 @@
 import './BlobBackground.css';
 
-/**
- * Decorative background blobs that give the site a soft, welcoming feel.
- * Fixed position so they stay behind all content. Gently animated.
- */
 export default function BlobBackground() {
   return (
-    <div className="blobBackground" aria-hidden="true">
-      <div className="blob blob1" />
-      <div className="blob blob2" />
-      <div className="blob blob3" />
-      <div className="blob blob4" />
-      <div className="blob blob5" />
+    <div className="blob-bg" aria-hidden="true">
+      <div className="blob-bg__blob blob-bg__blob--1" />
+      <div className="blob-bg__blob blob-bg__blob--2" />
+      <div className="blob-bg__blob blob-bg__blob--3" />
     </div>
   );
 }

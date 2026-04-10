@@ -1,80 +1,75 @@
-import { useState, useEffect } from 'react';
-import { Link, useLocation } from 'react-router-dom';
+import { useState } from 'react';
+import { Link, NavLink } from 'react-router-dom';
 import { navLinks } from '../../data/siteData';
+import Button from '../Button/Button';
 import './Navbar.css';
 
-/**
- * Sticky navigation bar with responsive hamburger menu.
- */
 export default function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false);
-  const location = useLocation();
 
-  // Close mobile menu on route change
-  useEffect(() => {
-    setMenuOpen(false);
-  }, [location.pathname]);
-
-  // Prevent body scroll when menu is open
-  useEffect(() => {
-    document.body.style.overflow = menuOpen ? 'hidden' : '';
-    return () => { document.body.style.overflow = ''; };
-  }, [menuOpen]);
+  const toggle = () => setMenuOpen((prev) => !prev);
+  const close = () => setMenuOpen(false);
 
   return (
-    <nav className="navbar" role="navigation" aria-label="Main navigation">
-      <div className="navContainer">
+    <nav className="navbar">
+      <div className="navbar__inner">
         {/* Logo */}
-        <Link to="/" className="navLogo" aria-label="WINFO Home">
-          <span className="navLogoIcon" aria-hidden="true">W</span>
-          WINFO
+        <Link to="/" className="navbar__logo" onClick={close}>
+          winfo
         </Link>
 
-        {/* Desktop Links */}
-        <div className="navLinks">
+        {/* Desktop links */}
+        <div className="navbar__links">
           {navLinks.map((link) => (
-            <Link
+            <NavLink
               key={link.path}
               to={link.path}
-              className={`navLink ${location.pathname === link.path ? 'active' : ''}`}
+              end={link.path === '/'}
+              className={({ isActive }) =>
+                `navbar__link ${isActive ? 'navbar__link--active' : ''}`
+              }
             >
               {link.label}
-            </Link>
+            </NavLink>
           ))}
+          <Button to="/membership" size="sm" className="navbar__cta">
+            Become a Member
+          </Button>
         </div>
 
         {/* Hamburger */}
         <button
-          className={`hamburger ${menuOpen ? 'open' : ''}`}
-          onClick={() => setMenuOpen(!menuOpen)}
-          aria-expanded={menuOpen}
-          aria-controls="mobile-menu"
-          aria-label={menuOpen ? 'Close menu' : 'Open menu'}
+          className={`navbar__hamburger ${menuOpen ? 'navbar__hamburger--open' : ''}`}
+          onClick={toggle}
+          aria-label="Toggle navigation menu"
         >
           <span />
           <span />
           <span />
         </button>
+      </div>
 
-        {/* Mobile Menu */}
-        <div
-          id="mobile-menu"
-          className={`mobileMenu ${menuOpen ? 'open' : ''}`}
-          role="dialog"
-          aria-label="Mobile navigation"
-        >
+      {/* Mobile dropdown */}
+      {menuOpen && (
+        <div className="navbar__mobile">
           {navLinks.map((link) => (
-            <Link
+            <NavLink
               key={link.path}
               to={link.path}
-              className={`navLink ${location.pathname === link.path ? 'active' : ''}`}
-              onClick={() => setMenuOpen(false)}
+              end={link.path === '/'}
+              className={({ isActive }) =>
+                `navbar__link ${isActive ? 'navbar__link--active' : ''}`
+              }
+              onClick={close}
             >
               {link.label}
-            </Link>
+            </NavLink>
           ))}
+          <Button to="/membership" size="sm" onClick={close}>
+            Become a Member
+          </Button>
         </div>
-      </div>
+      )}
     </nav>
   );
 }

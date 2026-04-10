@@ -1,0 +1,29 @@
+.cta-banner {
+  background: var(--gradient-primary);
+  border-radius: var(--radius-lg);
+  padding: 3.5rem 2rem;
+  text-align: center;
+  color: #fff;
+}
+
+.cta-banner__title {
+  color: #fff;
+  margin-bottom: 0.75rem;
+}
+
+.cta-banner__text {
+  color: rgba(255, 255, 255, 0.85);
+  max-width: 540px;
+  margin: 0 auto 1.75rem;
+  font-size: 1.05rem;
+}
+
+.cta-banner .btn {
+  background: #fff;
+  color: var(--color-primary);
+  font-weight: 700;
+}
+
+.cta-banner .btn:hover {
+  background: var(--color-bg);
+}

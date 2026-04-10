@@ -1,0 +1,60 @@
+.hackathon-hero {
+  background: var(--gradient-hero);
+  padding: 5rem 1.5rem 4rem;
+  text-align: center;
+}
+
+.hackathon-hero__content {
+  max-width: 660px;
+  margin: 0 auto;
+}
+
+.hackathon-hero__date {
+  display: inline-block;
+  padding: 0.35rem 1rem;
+  background: rgba(124, 58, 237, 0.1);
+  color: var(--color-primary);
+  font-size: 0.85rem;
+  font-weight: 600;
+  border-radius: var(--radius-full);
+  margin-bottom: 1rem;
+}
+
+.hackathon-hero h1 {
+  margin-bottom: 0.5rem;
+}
+
+.hackathon-hero__tagline {
+  font-size: 1.15rem;
+  color: var(--color-primary-light);
+  font-weight: 500;
+  margin-bottom: 1rem;
+}
+
+.hackathon-hero p {
+  margin-bottom: 2rem;
+}
+
+/* Highlights */
+.hackathon-highlights {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1.5rem;
+  text-align: center;
+}
+
+.hackathon-highlight {
+  padding: 2rem 1.5rem;
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  font-size: 1.05rem;
+  font-weight: 600;
+  color: var(--color-text);
+}
+
+.hackathon-highlight span {
+  display: block;
+  font-size: 2rem;
+  margin-bottom: 0.5rem;
+}

@@ -1,0 +1,121 @@
+.episode-card {
+  display: grid;
+  grid-template-columns: 1fr 1.1fr;
+  gap: 2.5rem;
+  align-items: center;
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  padding: 2rem;
+  transition: box-shadow var(--transition-base);
+}
+
+.episode-card:hover {
+  box-shadow: var(--shadow-lg);
+}
+
+/* Thumbnail / video preview */
+.episode-card__thumbnail {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  background: linear-gradient(145deg, #ede9fe 0%, #fce7f3 50%, #dbeafe 100%);
+}
+
+.episode-card__thumbnail img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.episode-card__play-btn {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(30, 27, 75, 0.15);
+  transition: background var(--transition-fast);
+  cursor: pointer;
+  border: none;
+}
+
+.episode-card__play-btn:hover {
+  background: rgba(30, 27, 75, 0.25);
+}
+
+.episode-card__play-icon {
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.92);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 20px rgba(124, 58, 237, 0.2);
+  transition: transform var(--transition-base), box-shadow var(--transition-base);
+}
+
+.episode-card__play-btn:hover .episode-card__play-icon {
+  transform: scale(1.08);
+  box-shadow: 0 6px 24px rgba(124, 58, 237, 0.3);
+}
+
+.episode-card__play-icon svg {
+  width: 22px;
+  height: 22px;
+  fill: var(--color-primary);
+  margin-left: 3px; /* optical centering for play triangle */
+}
+
+/* Content side */
+.episode-card__content {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.episode-card__tag {
+  display: inline-flex;
+  align-self: flex-start;
+  padding: 0.28rem 0.8rem;
+  background: var(--color-bg-alt);
+  color: var(--color-primary);
+  font-size: 0.75rem;
+  font-weight: 600;
+  border-radius: var(--radius-full);
+  letter-spacing: 0.02em;
+}
+
+.episode-card__title {
+  font-size: 1.25rem;
+  font-weight: 700;
+  line-height: 1.3;
+}
+
+.episode-card__guest {
+  font-size: 0.88rem;
+  font-weight: 600;
+  color: var(--color-primary-light);
+}
+
+.episode-card__desc {
+  font-size: 0.92rem;
+  line-height: 1.65;
+  color: var(--color-text-secondary);
+}
+
+.episode-card__btn {
+  align-self: flex-start;
+  margin-top: 0.25rem;
+}
+
+/* ===== Responsive ===== */
+@media (max-width: 768px) {
+  .episode-card {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+}

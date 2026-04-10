@@ -1,127 +1,58 @@
-/* ========================================
-   WINFO Global Design System
-   Airy · Feminine · Polished · Modern
-   ======================================== */
-
-/* --- Google Fonts Import --- */
-@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;500;600;700;800&family=DM+Serif+Display&display=swap');
-
-/* --- Design Tokens --- */
+/* ===== CSS Custom Properties ===== */
 :root {
-  /* Primary palette – warm blush & soft pinks */
-  --pink-50:  #fff5f7;
-  --pink-100: #ffe4ec;
-  --pink-200: #fcc5d4;
-  --pink-300: #f4a0b7;
-  --pink-400: #e87fa0;
-  --pink-500: #d4567e;
+  /* Primary palette – soft pastels */
+  --color-primary: #7c3aed;
+  --color-primary-light: #a78bfa;
+  --color-primary-dark: #5b21b6;
+  --color-accent: #f472b6;
+  --color-accent-light: #fbcfe8;
 
-  /* Lavender accents */
-  --lavender-50:  #f8f5ff;
-  --lavender-100: #eeebff;
-  --lavender-200: #ddd5fe;
-  --lavender-300: #c0b0f0;
-  --lavender-400: #9b84db;
-  --lavender-500: #7c5fc4;
+  /* Neutrals */
+  --color-bg: #faf5ff;
+  --color-bg-alt: #f3e8ff;
+  --color-surface: #ffffff;
+  --color-text: #1e1b4b;
+  --color-text-secondary: #6b7280;
+  --color-border: #e9d5ff;
 
-  /* Mauve (bridge between pink & lavender) */
-  --mauve-50:  #faf5f9;
-  --mauve-100: #f0e4ef;
-  --mauve-200: #e2c9e0;
-  --mauve-300: #c9a3c6;
-
-  /* Neutrals – warm-shifted */
-  --white:     #ffffff;
-  --off-white: #fffbfc;
-  --gray-50:   #fdfafb;
-  --gray-100:  #f7f3f5;
-  --gray-200:  #ece5e9;
-  --gray-300:  #d6cdd2;
-  --gray-400:  #a89ba2;
-  --gray-500:  #7d7180;
-  --gray-600:  #5c5261;
-  --gray-700:  #453d48;
-  --gray-800:  #332d36;
-  --gray-900:  #231e26;
-
-  /* Semantic colors */
-  --color-primary:       var(--pink-400);
-  --color-primary-hover: var(--pink-500);
-  --color-accent:        var(--lavender-400);
-  --color-bg:            var(--off-white);
-  --color-surface:       var(--white);
-  --color-text:          var(--gray-700);
-  --color-text-light:    var(--gray-500);
-  --color-text-muted:    var(--gray-400);
-  --color-heading:       var(--gray-900);
-  --color-border:        var(--gray-200);
-  --color-border-pink:   rgba(244, 160, 183, 0.25);
-  --color-link:          var(--lavender-500);
+  /* Gradients */
+  --gradient-hero: linear-gradient(135deg, #ede9fe 0%, #fce7f3 50%, #e0e7ff 100%);
+  --gradient-primary: linear-gradient(135deg, #7c3aed, #a78bfa);
+  --gradient-accent: linear-gradient(135deg, #f472b6, #a78bfa);
+  --gradient-card: linear-gradient(145deg, #ffffff 0%, #faf5ff 100%);
 
   /* Typography */
-  --font-sans:    'Nunito', system-ui, -apple-system, sans-serif;
-  --font-display: 'DM Serif Display', Georgia, serif;
+  --font-heading: 'Poppins', sans-serif;
+  --font-body: 'Inter', sans-serif;
 
-  --text-xs:   0.75rem;    /* 12px */
-  --text-sm:   0.875rem;   /* 14px */
-  --text-base: 1rem;       /* 16px */
-  --text-lg:   1.125rem;   /* 18px */
-  --text-xl:   1.25rem;    /* 20px */
-  --text-2xl:  1.5rem;     /* 24px */
-  --text-3xl:  1.875rem;   /* 30px */
-  --text-4xl:  2.25rem;    /* 36px */
-  --text-5xl:  3rem;       /* 48px */
-  --text-6xl:  3.75rem;    /* 60px */
+  /* Spacing */
+  --section-padding: 5rem 0;
+  --container-max: 1200px;
+  --container-padding: 0 1.5rem;
 
-  /* Spacing (8px grid) */
-  --space-1:  0.25rem;   /* 4px */
-  --space-2:  0.5rem;    /* 8px */
-  --space-3:  0.75rem;   /* 12px */
-  --space-4:  1rem;      /* 16px */
-  --space-5:  1.25rem;   /* 20px */
-  --space-6:  1.5rem;    /* 24px */
-  --space-8:  2rem;      /* 32px */
-  --space-10: 2.5rem;    /* 40px */
-  --space-12: 3rem;      /* 48px */
-  --space-16: 4rem;      /* 64px */
-  --space-20: 5rem;      /* 80px */
-  --space-24: 6rem;      /* 96px */
-  --space-32: 8rem;      /* 128px */
-
-  /* Borders & Radii */
-  --radius-sm:   8px;
-  --radius-md:   14px;
-  --radius-lg:   20px;
-  --radius-xl:   28px;
-  --radius-2xl:  36px;
+  /* Borders */
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 20px;
   --radius-full: 9999px;
 
-  /* Shadows – pink-tinted, pastel */
-  --shadow-xs:   0 1px 2px rgba(195, 160, 175, 0.06);
-  --shadow-sm:   0 2px 8px rgba(195, 160, 175, 0.08), 0 1px 2px rgba(195, 160, 175, 0.04);
-  --shadow-md:   0 4px 16px rgba(195, 160, 175, 0.10), 0 2px 4px rgba(195, 160, 175, 0.05);
-  --shadow-lg:   0 12px 36px rgba(195, 160, 175, 0.12), 0 4px 8px rgba(195, 160, 175, 0.05);
-  --shadow-xl:   0 20px 50px rgba(195, 160, 175, 0.14), 0 6px 12px rgba(195, 160, 175, 0.06);
-  --shadow-pink: 0 6px 24px rgba(232, 127, 160, 0.18);
-  --shadow-glow: 0 0 40px rgba(232, 127, 160, 0.10);
+  /* Shadows */
+  --shadow-sm: 0 1px 3px rgba(124, 58, 237, 0.08);
+  --shadow-md: 0 4px 14px rgba(124, 58, 237, 0.1);
+  --shadow-lg: 0 10px 30px rgba(124, 58, 237, 0.12);
 
   /* Transitions */
-  --transition-fast: 150ms ease;
-  --transition-base: 250ms cubic-bezier(0.4, 0, 0.2, 1);
-  --transition-slow: 400ms cubic-bezier(0.4, 0, 0.2, 1);
-
-  /* Layout */
-  --max-width: 1180px;
-  --nav-height: 76px;
+  --transition-fast: 0.2s ease;
+  --transition-base: 0.3s ease;
 }
 
-/* --- CSS Reset & Base --- */
+/* ===== Reset & Base ===== */
 *,
 *::before,
 *::after {
-  box-sizing: border-box;
   margin: 0;
   padding: 0;
+  box-sizing: border-box;
 }
 
 html {
@@ -131,116 +62,75 @@ html {
 }
 
 body {
-  font-family: var(--font-sans);
-  font-size: var(--text-base);
-  line-height: 1.65;
+  font-family: var(--font-body);
   color: var(--color-text);
   background: var(--color-bg);
-  background-image:
-    radial-gradient(ellipse 80% 60% at 50% 0%, rgba(255, 228, 236, 0.35) 0%, transparent 60%),
-    radial-gradient(ellipse 60% 50% at 80% 100%, rgba(238, 235, 255, 0.25) 0%, transparent 50%);
-  background-attachment: fixed;
+  line-height: 1.6;
   min-height: 100vh;
 }
 
-#root {
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-}
-
-/* --- Typography --- */
 h1, h2, h3, h4, h5, h6 {
-  font-family: var(--font-display);
-  color: var(--color-heading);
-  line-height: 1.15;
-  font-weight: 400;   /* DM Serif Display is naturally bold-looking */
-  letter-spacing: -0.01em;
+  font-family: var(--font-heading);
+  font-weight: 700;
+  line-height: 1.2;
+  color: var(--color-text);
 }
 
-h1 { font-size: var(--text-5xl); }
-h2 { font-size: var(--text-4xl); }
-h3 { font-size: var(--text-2xl); }
-h4 { font-size: var(--text-xl);  }
+h1 { font-size: clamp(2rem, 5vw, 3.25rem); }
+h2 { font-size: clamp(1.5rem, 4vw, 2.25rem); }
+h3 { font-size: clamp(1.15rem, 2.5vw, 1.5rem); }
 
 p {
-  line-height: 1.75;
-  color: var(--color-text);
+  color: var(--color-text-secondary);
+  line-height: 1.7;
 }
 
 a {
-  color: var(--color-link);
   text-decoration: none;
+  color: inherit;
   transition: color var(--transition-fast);
 }
 
-a:hover {
-  color: var(--color-primary-hover);
-}
+ul { list-style: none; }
 
 img {
   max-width: 100%;
   height: auto;
   display: block;
-  border-radius: var(--radius-md);
 }
 
-ul {
-  list-style: none;
-}
-
-button {
-  cursor: pointer;
-  border: none;
-  background: none;
-  font-family: inherit;
-}
-
-/* --- Utility: Container --- */
+/* ===== Utility classes ===== */
 .container {
   width: 100%;
-  max-width: var(--max-width);
+  max-width: var(--container-max);
   margin: 0 auto;
-  padding: 0 var(--space-6);
+  padding: var(--container-padding);
 }
 
-/* --- Utility: Section Spacing --- */
-.section {
-  padding: var(--space-24) 0;
+.page-wrapper {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
 }
 
-/* --- Utility: Screen Reader Only --- */
-.sr-only {
-  position: absolute;
-  width: 1px;
-  height: 1px;
-  padding: 0;
-  margin: -1px;
-  overflow: hidden;
-  clip: rect(0, 0, 0, 0);
-  white-space: nowrap;
-  border-width: 0;
+.page-wrapper > main {
+  flex: 1;
 }
 
-/* --- Focus Styles (Accessibility) --- */
-:focus-visible {
-  outline: 2px solid var(--lavender-400);
-  outline-offset: 3px;
-  border-radius: var(--radius-sm);
+/* ===== Selection ===== */
+::selection {
+  background: var(--color-accent-light);
+  color: var(--color-primary-dark);
 }
 
-/* --- Responsive Typography --- */
-@media (max-width: 768px) {
-  h1 { font-size: var(--text-4xl); }
-  h2 { font-size: var(--text-3xl); }
-  h3 { font-size: var(--text-xl);  }
-
-  .section {
-    padding: var(--space-16) 0;
-  }
+/* ===== Scrollbar (Webkit) ===== */
+::-webkit-scrollbar {
+  width: 8px;
 }
-
-@media (max-width: 480px) {
-  h1 { font-size: var(--text-3xl); }
-  h2 { font-size: var(--text-2xl); }
+::-webkit-scrollbar-track {
+  background: var(--color-bg);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--color-primary-light);
+  border-radius: var(--radius-full);
 }
