@@ -1,0 +1,27 @@
+.sectionHeading {
+  text-align: center;
+  margin-bottom: var(--space-12);
+}
+
+.sectionHeading h2 {
+  margin-bottom: var(--space-3);
+  position: relative;
+  display: inline-block;
+}
+
+.sectionHeading h2::after {
+  content: '';
+  display: block;
+  width: 60px;
+  height: 3px;
+  background: linear-gradient(90deg, var(--pink-300), var(--lavender-300));
+  border-radius: var(--radius-full);
+  margin: var(--space-3) auto 0;
+}
+
+.sectionHeading p {
+  color: var(--color-text-light);
+  font-size: var(--text-lg);
+  max-width: 600px;
+  margin: 0 auto;
+}

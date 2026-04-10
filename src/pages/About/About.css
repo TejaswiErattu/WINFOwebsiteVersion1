@@ -1,0 +1,83 @@
+.aboutPage {
+  overflow: hidden;
+}
+
+/* Page Header */
+.aboutHero {
+  text-align: center;
+  padding: var(--space-16) var(--space-6) var(--space-12);
+  background: linear-gradient(180deg, var(--pink-50) 0%, var(--white) 100%);
+}
+
+.aboutHero h1 {
+  margin-bottom: var(--space-4);
+}
+
+.aboutHero p {
+  font-size: var(--text-lg);
+  color: var(--color-text-light);
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+/* Extended Mission */
+.aboutMission {
+  max-width: 750px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.aboutMission p {
+  font-size: var(--text-lg);
+  line-height: 1.8;
+  color: var(--color-text);
+}
+
+.aboutMission p + p {
+  margin-top: var(--space-4);
+}
+
+/* Values Grid */
+.valuesGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-6);
+}
+
+/* What We Do */
+.whatWeDoGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: var(--space-6);
+}
+
+.whatWeDoItem {
+  text-align: center;
+  padding: var(--space-6);
+}
+
+.whatWeDoItem .itemIcon {
+  font-size: var(--text-4xl);
+  margin-bottom: var(--space-3);
+}
+
+.whatWeDoItem h3 {
+  font-family: var(--font-display);
+  margin-bottom: var(--space-2);
+}
+
+.whatWeDoItem p {
+  font-size: var(--text-sm);
+  color: var(--color-text-light);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .valuesGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .aboutHero {
+    padding: var(--space-12) var(--space-6) var(--space-8);
+  }
+}
