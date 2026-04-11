@@ -70,7 +70,7 @@
   --font-heading: 'Poppins', system-ui, -apple-system, sans-serif;
   --font-body:    'Inter', system-ui, -apple-system, sans-serif;
   --font-cursive: 'Caveat', cursive;
-  --font-mono:    'Fira Code', 'Cascadia Code', ui-monospace, monospace;
+  --font-mono:    'Space Mono', 'Fira Code', ui-monospace, monospace;
 
   /* Modular type scale — fluid with clamp() */
   --text-xs:   0.75rem;                            /* 12 px */

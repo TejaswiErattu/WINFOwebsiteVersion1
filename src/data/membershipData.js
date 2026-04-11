@@ -1,93 +1,51 @@
 /* ===================================================================
-   Membership page data
-   ===================================================================
-   HOW TO UPDATE
-   • Change `ctaLink` to your actual sign-up form URL
-   • Edit benefits, add more, or change accent colours
-   • Update `lowerInfo.paragraphs` with real copy about membership
+   Membership page data — matches Figma HiFi screenshots
    =================================================================== */
 
 export const membershipData = {
   /* ---------- Hero ---------- */
-  title: 'Membership',
-  tagline: 'Join Our Community',
-  heroDescription:
-    'W;NFO is a welcoming space for students passionate about technology, informatics, and making an impact. Become a member to unlock exclusive events, mentorship, and a supportive network of peers who share your goals.',
-  ctaLabel: 'Become a Member',
-  ctaLink: '#',                    // TODO: replace with real sign-up link
-  secondaryCtaLabel: 'See Events',
-  secondaryCtaLink: '/events',
-  heroImage: '',                   // TODO: '/images/membership/hero.jpg'
-  heroImageAlt: 'WINFO members at a community event',
+  title: 'membership',
+  heroBody:
+    'Interested in joining our beautiful community of powerful individuals? Become an official member of WINFO!',
+  heroBodySecondary:
+    'At WINFO, we believe that every student deserves a space where they feel seen and supported. Becoming a member means more than joining an RSO\u2014it means joining a community that empowers you to thrive in tech and beyond. With innovative opportunities to grow your skills, connect with peers, and build your confidence, WINFO is your home.',
+  heroBodyTertiary:
+    'Whether you\u2019re exploring tech for the first time or already on your journey, WINFO always welcomes all majors, genders, and identities.',
+  ctaLabel: 'sign up!',
+  ctaLink: '#',
+  heroImage: '/images/hero-photo-3.png',
+  heroImageAlt: 'WINFO members smiling together',
 
-  /* ---------- Section headings ---------- */
-  benefitsHeading: {
-    label: 'Why Join?',
-    title: 'Member Benefits',
-    description: 'Everything you need to grow, connect, and thrive in the tech community.',
-  },
+  /* ---------- Perks ---------- */
+  perksHeading: 'membership perks',
+  perksSubtitle:
+    'Although membership is not required, official members enjoy these extra benefits:',
 
-  /* ---------- Mid-CTA band ---------- */
-  midCta: {
-    line1: 'Whether you\'re',
-    highlight: 'becoming a member',
-    line2: 'or',
-    highlight2: 'searching for your people',
-    line3: '— W;NFO is here for you.',
-  },
-
-  /* ---------- Benefits cards ---------- */
-  benefits: [
+  perks: [
     {
-      icon: '🤝',
-      title: 'Community & Connection',
-      description:
-        'Join a vibrant network of students, alumni, and industry professionals who champion diversity in tech.',
+      icon: 'mail',
+      title: 'newsletter',
+      text: 'Stay in the loop with the **WINFO Weekly**\u2014our signature newsletter which delivers events and opportunities to your inbox.',
       accent: 'purple',
     },
     {
-      icon: '🚀',
-      title: 'Career Growth',
-      description:
-        'Get access to exclusive workshops, resume reviews, mock interviews, and direct connections with top tech companies.',
+      icon: 'check',
+      title: 'early registration',
+      text: 'Enjoy **exclusive** early registration to company tours at major tech companies to discover industry insights!',
       accent: 'pink',
     },
     {
-      icon: '💡',
-      title: 'Learning & Mentorship',
-      description:
-        'Participate in our mentorship program, hands-on projects, and speaker events that broaden your skills and perspective.',
+      icon: 'people',
+      title: 'opportunities',
+      text: 'Be the first to know about exciting **internship, career, and community involvement** opportunities!',
       accent: 'blue',
     },
   ],
 
-  /* ---------- Ready to join CTA ---------- */
-  joinCta: {
-    emoji: '🎉',
-    title: 'Ready to Join?',
-    description:
-      'Membership is free and open to all students. Sign up in seconds and start exploring everything W;NFO has to offer.',
-  },
-
-  /* ---------- Lower info section ---------- */
-  lowerInfo: {
-    heading: 'What it means to be a W;NFO member',
-    paragraphs: [
-      'As a W;NFO member you become part of a tight-knit community that celebrates curiosity and collaboration. From study sessions to industry mixers, every event is designed to help you thrive.',
-      'Membership is free and open to all students regardless of major, year, or background. All you need is an interest in technology and a willingness to learn alongside others.',
-    ],
-    links: [
-      { label: 'Our Events', to: '/events' },
-      { label: 'Meet the Officers', to: '/officers' },
-      { label: 'Support W;NFO', to: '/support' },
-    ],
-  },
-
-  /* ---------- Bottom CTA banner ---------- */
+  /* ---------- Bottom CTA ---------- */
   bottomCta: {
-    title: 'Questions about membership?',
-    text: 'We\'d love to hear from you — reach out anytime.',
-    btnLabel: 'Contact Us',
-    btnTo: '/support',
+    text: 'ready to take the leap?',
+    btnLabel: 'sign up!',
+    btnLink: '#',
   },
 };

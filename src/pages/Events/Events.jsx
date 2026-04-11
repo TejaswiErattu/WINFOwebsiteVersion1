@@ -1,139 +1,75 @@
-import { useState } from 'react';
 import SectionWrapper from '../../components/SectionWrapper/SectionWrapper';
-import SectionHeading from '../../components/SectionHeading/SectionHeading';
-import PageHero from '../../components/PageHero/PageHero';
-import { JoinCTACard } from '../../components/Cards';
+import Button from '../../components/Buttons/Buttons';
 import { eventsData } from '../../data/eventsData';
 import './Events.css';
 
-/* Emoji map for placeholder thumbnails */
-const categoryEmoji = {
-  workshop: '🛠️',
-  social: '🎉',
-  panel: '💬',
-  hackathon: '🏆',
-};
-
-/* Helper: parse "April 20, 2026" → { month: 'Apr', day: '20' } */
-function parseDate(str) {
-  const parts = str.split(' ');
-  return { month: parts[0]?.slice(0, 3), day: parts[1]?.replace(',', '') };
-}
-
 export default function Events() {
-  const {
-    title,
-    tagline,
-    heroDescription,
-    pastEvents,
-    categories,
-    upcoming,
-    galleryHeading,
-    upcomingHeading,
-    joinCta,
-  } = eventsData;
-
-  const [activeFilter, setActiveFilter] = useState('all');
-
-  const filteredEvents =
-    activeFilter === 'all'
-      ? pastEvents
-      : pastEvents.filter((e) => e.category === activeFilter);
+  const { title, categories, bottomCta } = eventsData;
 
   return (
     <>
       {/* ===== 1 · HERO ===== */}
-      <PageHero
-        layout="center"
-        badge={`📅 ${tagline}`}
-        title={<span>{title}</span>}
-        description={heroDescription}
-        className="events-hero"
-      />
-
-      {/* ===== 2 · PAST EVENTS GALLERY ===== */}
-      <SectionWrapper>
-        <SectionHeading
-          label={galleryHeading.label}
-          title={galleryHeading.title}
-          description={galleryHeading.description}
-        />
-
-        {/* Filter pills */}
-        <div className="events-filters">
-          {categories.map((cat) => (
-            <button
-              key={cat.key}
-              className={`events-filter-pill${activeFilter === cat.key ? ' events-filter-pill--active' : ''}`}
-              onClick={() => setActiveFilter(cat.key)}
-            >
-              {cat.label}
-            </button>
-          ))}
+      <section className="events-hero">
+        {/* Circuit decoration */}
+        <div className="events-hero__circuit" aria-hidden="true">
+          <svg viewBox="0 0 200 400" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <line x1="100" y1="0" x2="100" y2="120" stroke="currentColor" strokeWidth="1.5" />
+            <line x1="100" y1="120" x2="180" y2="120" stroke="currentColor" strokeWidth="1.5" />
+            <line x1="100" y1="120" x2="100" y2="260" stroke="currentColor" strokeWidth="1.5" />
+            <line x1="100" y1="260" x2="160" y2="260" stroke="currentColor" strokeWidth="1.5" />
+            <line x1="100" y1="260" x2="100" y2="400" stroke="currentColor" strokeWidth="1.5" />
+            <circle cx="100" cy="120" r="5" fill="currentColor" />
+            <circle cx="100" cy="260" r="5" fill="currentColor" />
+            <circle cx="180" cy="120" r="4" fill="currentColor" />
+            <circle cx="160" cy="260" r="4" fill="currentColor" />
+            <circle cx="100" cy="190" r="3" stroke="currentColor" strokeWidth="1.5" fill="none" />
+          </svg>
         </div>
 
-        {/* Gallery grid */}
-        <div className="events-gallery">
-          {filteredEvents.map((evt) => (
-            <div key={evt.id} className="events-gallery-card">
-              <div className="events-gallery-card__image">
-                {evt.image ? (
-                  <img src={evt.image} alt={evt.title} />
-                ) : (
-                  <div className="events-gallery-card__placeholder">
-                    <span className="events-gallery-card__placeholder-emoji">
-                      {categoryEmoji[evt.category] || '📸'}
-                    </span>
+        <h1 className="events-hero__title cursive-title">{title}</h1>
+      </section>
+
+      {/* ===== 2 · EVENT CATEGORY ROWS ===== */}
+      <SectionWrapper>
+        <div className="events-rows">
+          {categories.map((cat, idx) => (
+            <div className="events-row" key={idx}>
+              <p className="events-row__label">{cat.label}</p>
+
+              <div className="events-row__cards">
+                {cat.events.map((evt, i) => (
+                  <div className="events-card" key={i}>
+                    <div className="events-card__image">
+                      {evt.image ? (
+                        <img src={evt.image} alt={evt.name} />
+                      ) : (
+                        <div className="events-card__placeholder" />
+                      )}
+                    </div>
+                    <p className="events-card__name">{evt.name}</p>
                   </div>
-                )}
-              </div>
-              <div className="events-gallery-card__body">
-                <p className="events-gallery-card__label">{evt.label}</p>
-                <h3 className="events-gallery-card__title">{evt.title}</h3>
+                ))}
               </div>
             </div>
           ))}
         </div>
       </SectionWrapper>
 
-      {/* ===== 3 · UPCOMING EVENTS ===== */}
-      <SectionWrapper alt>
-        <SectionHeading
-          label={upcomingHeading.label}
-          title={upcomingHeading.title}
-          description={upcomingHeading.description}
-        />
-
-        <div className="events-upcoming-list">
-          {upcoming.map((evt) => {
-            const { month, day } = parseDate(evt.date);
-            return (
-              <div key={evt.id} className="events-upcoming-item">
-                <div className="events-upcoming-item__date">
-                  <span className="events-upcoming-item__date-month">{month}</span>
-                  <span className="events-upcoming-item__date-day">{day}</span>
-                </div>
-                <div className="events-upcoming-item__content">
-                  <span className="events-upcoming-item__tag">{evt.tag}</span>
-                  <h3 className="events-upcoming-item__title">{evt.title}</h3>
-                </div>
-                <span className="events-upcoming-item__arrow">→</span>
-              </div>
-            );
-          })}
-        </div>
-      </SectionWrapper>
-
-      {/* ===== 4 · JOIN CTA ===== */}
-      <SectionWrapper>
-        <JoinCTACard
-          emoji={joinCta.emoji}
-          title={joinCta.title}
-          description={joinCta.description}
-          btnLabel={joinCta.btnLabel}
-          btnTo={joinCta.btnTo}
-        />
-      </SectionWrapper>
+      {/* ===== 3 · BOTTOM CTA ===== */}
+      <section className="events-cta">
+        <h2 className="events-cta__heading cursive-title">{bottomCta.heading}</h2>
+        <p className="events-cta__body">
+          {bottomCta.body.split('\n').map((line, i) => (
+            <span key={i}>
+              {line}
+              {i === 0 && <br />}
+            </span>
+          ))}
+        </p>
+        <Button to={bottomCta.btnTo} variant="accent" size="lg" className="events-cta__btn">
+          {bottomCta.btnLabel}
+        </Button>
+      </section>
     </>
   );
 }
