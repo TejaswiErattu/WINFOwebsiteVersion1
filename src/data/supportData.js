@@ -1,117 +1,46 @@
 /* ===================================================================
    Support Us page data
-   ===================================================================
-   HOW TO UPDATE
-   • Change `ctaLink` to your real sponsorship contact email or form
-   • Add/remove items in `whySupport`, `otherWays` as needed
-   • Update `hackathon.highlights` with current year stats
    =================================================================== */
 
 export const supportData = {
   /* ---------- Hero ---------- */
-  title: 'Support Us',
-  tagline: 'Partner With W;NFO',
-  heroDescription:
-    'Your support fuels workshops, mentorship programs, and events that empower the next generation of women in tech. Whether you\'re a company, alumnus, or community member — there\'s a place for you.',
-  ctaLabel: 'Sponsor Us',
-  ctaLink: 'mailto:winfo@uw.edu', // TODO: replace with form link if applicable
-  secondaryCtaLabel: 'Become a Member',
-  secondaryCtaLink: '/membership',
-  heroImage: '',                   // TODO: '/images/support/hero.jpg'
-  heroImageAlt: 'WINFO community supported by sponsors',
+  title: 'support us',
+  heroText: [
+    'Whether you\'re a student, sponsor, or mentor, we welcome you to join WINFO in building a more diverse and equitable future in tech.',
+    'Support comes in many forms, and each one makes a meaningful difference; every action helps us create a more inclusive and empowering community.',
+    'Scroll down to learn how you can support our blossoming community here at WINFO—we are thrilled to have you join us!',
+  ],
+  heroImage: '', // TODO: group photo
 
-  /* ---------- Section headings ---------- */
-  whySupportHeading: {
-    label: 'Why Support Us?',
-    title: 'Your Impact Matters',
-    description: 'Every contribution helps us build a stronger, more inclusive tech community at UW.',
-  },
-  otherWaysHeading: {
-    label: 'More Ways to Help',
-    title: 'Support us in other ways',
-    description: 'Not every contribution is monetary — here are more ways to make a difference.',
-  },
-  bottomCta: {
-    emoji: '💌',
-    title: 'Ready to Partner?',
-    description:
-      'We\'d love to discuss how we can work together. Reach out and our sponsorship team will get back to you within 48 hours.',
-    btnLabel: 'Get in Touch',
-  },
+  /* ---------- Why Support Us ---------- */
+  whyTitle: 'why support us?',
+  whyImage: '', // TODO: group photo with robot mascot
+  whyText: [
+    'By supporting WINFO, you help build a world where technology education is <u>inclusive</u> and <u>empowering</u> for all. Your involvement empowers underrepresented students to thrive as innovators and leaders, sparking meaningful connections across our community.',
+    'Together, we can <u>break down barriers</u> in tech, ensuring all students have the tools, confidence, and support to lead and blossom in an inclusive and collaborative community.',
+  ],
 
-  /* ---------- Why support cards ---------- */
-  whySupport: [
+  /* ---------- Get Involved ---------- */
+  involvedHeading: 'get involved with winfo!',
+  involvedCards: [
     {
-      icon: '🌱',
-      title: 'Grow the Community',
-      description:
-        'Your investment directly funds scholarships, resources, and programming that make W;NFO accessible to every student.',
+      title: 'newsletter\nspotlights',
+      body: 'Have a local event, achievement, or opportunity to share? Submit a quick form to spotlight it in our signature newsletter!',
       accent: 'purple',
     },
     {
-      icon: '🎯',
-      title: 'Reach Top Talent',
-      description:
-        'Connect your brand with hundreds of driven informatics and tech students actively seeking internships and careers.',
+      title: 'star as a\npodcast guest',
+      body: 'From student stories to industry insights, we want to hear from you—sign up to be a guest on our podcast, Decoding With WINFO!',
       accent: 'pink',
     },
     {
-      icon: '💛',
-      title: 'Make a Lasting Impact',
-      description:
-        'Sponsors have helped us host 10+ events per year and launch mentorship programs that change career trajectories.',
-      accent: 'blue',
+      title: 'collaborate\nwith us',
+      body: 'Whether you\'re a brand ambassador or an RSO, we always love to collaborate here at WINFO! Reach out to plan our next collaboration.',
+      accent: 'lavender',
     },
   ],
 
-  /* ---------- Hackathon sponsorship ---------- */
-  hackathon: {
-    label: '🎪 Hackathon Sponsorship',
-    title: 'Support Our Hackathon',
-    description:
-      'Our annual hackathon brings together 200+ participants for a weekend of innovation, learning, and community building. Sponsors get premium visibility and direct access to talented students.',
-    image: '',               // TODO: '/images/support/hackathon-sponsor.jpg'
-    imageAlt: 'WINFO Hackathon in action',
-    btnLabel: 'Sponsor the Hackathon',
-    highlights: [
-      { icon: '👩‍💻', text: '200+ participants' },
-      { icon: '🏆', text: 'Branded prize tracks' },
-      { icon: '📣', text: 'Logo on all materials' },
-      { icon: '🤝', text: 'Mentorship & judging roles' },
-    ],
-  },
-
-  /* ---------- Other ways to support ---------- */
-  otherWays: [
-    {
-      icon: '📰',
-      title: 'Newsletter Spotlight',
-      description: 'Feature your company or opportunity in our monthly newsletter reaching 500+ subscribers.',
-    },
-    {
-      icon: '🧑‍🏫',
-      title: 'Become a Mentor',
-      description: 'Share your industry experience by mentoring students one-on-one through our mentorship program.',
-    },
-    {
-      icon: '🛠️',
-      title: 'Workshop Collaboration',
-      description: 'Partner with us to host a branded technical workshop, info session, or panel discussion.',
-    },
-    {
-      icon: '🎪',
-      title: 'Event Sponsorship',
-      description: 'Sponsor individual events like networking nights, career panels, or study sessions.',
-    },
-    {
-      icon: '🎁',
-      title: 'In-Kind Donations',
-      description: 'Contribute swag, software licenses, cloud credits, or other resources our members can use.',
-    },
-    {
-      icon: '📢',
-      title: 'Social Media Partner',
-      description: 'Cross-promote with W;NFO on social media to amplify your reach within the student community.',
-    },
-  ],
+  /* ---------- Bottom CTA ---------- */
+  ctaLabel: 'connect with us!',
+  ctaLink: 'mailto:winfo@uw.edu',
 };
