@@ -18,12 +18,13 @@ export const navLinks = [
 
 /* ---------- Footer quick-links ---------- */
 export const footerLinks = [
-  { label: 'Home', path: '/' },
-  { label: 'Events', path: '/events' },
-  { label: 'Hackathon', path: '/hackathon' },
-  { label: 'Podcast', path: '/podcast' },
-  { label: 'Membership', path: '/membership' },
-  { label: 'Support Us', path: '/support' },
+  { label: 'home', path: '/' },
+  { label: 'hackathon', path: '/hackathon' },
+  { label: 'events', path: '/events' },
+  { label: 'podcast', path: '/podcast' },
+  { label: 'team', path: '/officers' },
+  { label: 'support us', path: '/support' },
+  { label: 'membership', path: '/membership' },
 ];
 
 /* ---------- Social links ---------- */
@@ -39,9 +40,9 @@ export const socialLinks = [
     icon: 'linkedin',
   },
   {
-    label: 'Facebook',
-    url: 'https://facebook.com/uwwinfo',
-    icon: 'facebook',
+    label: 'YouTube',
+    url: 'https://youtube.com/@uwwinfo',
+    icon: 'youtube',
   },
   {
     label: 'Email',

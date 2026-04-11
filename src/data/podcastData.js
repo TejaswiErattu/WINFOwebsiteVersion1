@@ -1,127 +1,126 @@
 /* ===================================================================
-   Podcast page data
-   ===================================================================
-   HOW TO UPDATE
-   • Add new episodes to the `episodes` array (newest first)
-   • Move the latest episode into `featured`
-   • Replace `image: ''` with actual thumbnails
-   • Update `ctaLink` with your real Spotify / Apple Podcasts URL
+   Podcast page data — matches Figma screenshots
    =================================================================== */
 
 export const podcastData = {
   /* ---------- Hero ---------- */
-  title: 'Decoding with W;NFO',
-  tagline: 'Our Podcast',
-  heroDescription:
-    'Real conversations with women in tech — from first internships to founding startups. Hear the stories behind the careers and the lessons they learned along the way.',
-  ctaLabel: 'Listen on Spotify',
-  ctaLink: '#',                    // TODO: replace with Spotify link
-  secondaryCtaLabel: 'Be a Guest',
-  secondaryCtaLink: '/support',
-  coverImage: '',                  // TODO: '/images/podcast/cover-art.jpg'
-  coverImageAlt: 'Decoding with WINFO podcast cover art',
+  title: 'our podcast',
+  heroBody:
+    'Decoding With WINFO is our signature podcast series, where we dive into the stories of diverse and innovative leaders making waves in the world of information, technology, and innovation.',
+  heroBodySecondary:
+    'From filming to final cut, each episode is thoughtfully crafted by our content committee to share authentic experiences for our community to connect with and enjoy.',
+  ctaLabel: '▶ watch here!',
+  ctaLink: '#',
+  heroImage: '/images/hero-photo-1.png',
+  heroImageAlt: 'Decoding with WINFO podcast hosts',
 
-  /* ---------- Section headings ---------- */
-  featuredHeading: {
-    label: 'Latest Episode',
-    title: 'Watch our past episodes',
-    description: 'Tune in to hear powerful conversations with women in tech, informatics, and beyond.',
-  },
-  archiveHeading: {
-    label: 'Episode Archive',
-    title: 'More episodes to explore',
-    description: 'Catch up on previous conversations and discover new perspectives.',
-  },
-  ctaBanner: {
-    title: 'Have a story to share?',
-    text: 'We\'re always looking for inspiring guests. Reach out if you\'d like to be featured on the W;NFO Podcast.',
-    btnLabel: 'Contact Us',
-    btnTo: '/support',
-  },
-
-  /* ---------- Highlight stat cards ---------- */
-  highlights: [
+  /* ---------- Who / What / Why cards ---------- */
+  infoCards: [
     {
-      icon: '🎧',
-      number: '25+',
-      label: 'Episodes',
-      description: 'Candid conversations covering career growth, technical deep-dives, and everything in between.',
+      title: 'who',
+      text: 'Each episode features a new guest with a fresh story to share, from iSchool professors to local business owners and industry professionals.',
       accent: 'purple',
     },
     {
-      icon: '🌟',
-      number: '30+',
-      label: 'Featured Guests',
-      description: 'Industry leaders from companies like Google, Microsoft, Amazon, and exciting startups.',
+      title: 'what',
+      text: 'From inspiring career journeys to cutting-edge technology trends, we decode the powerful stories that matter most to our community.',
       accent: 'pink',
     },
     {
-      icon: '💬',
-      number: '10+',
-      label: 'Topics Covered',
-      description: 'UX, data science, product management, software engineering, career pivots, and more.',
+      title: 'why',
+      text: 'Our goal is to uplift diverse voices in our community while uncovering valuable insights and inspiring our fellow students, members, and beyond.',
       accent: 'blue',
     },
   ],
 
-  /* ---------- Featured / latest episode ---------- */
-  featured: {
-    id: 1,
-    tag: 'Latest Episode',
-    title: 'Breaking into UX Research',
-    guest: 'Sarah Kim',
-    description:
-      'Sarah shares her path from informatics to leading UX research at a major tech company. Learn how she navigated ambiguity, built her portfolio, and landed her dream role — plus her top advice for students.',
-    image: '',       // TODO: '/images/podcast/ep-25.jpg'
-    imageAlt: 'Sarah Kim headshot',
-    listenUrl: '#',  // TODO: direct episode link
+  /* ---------- Guest CTA ---------- */
+  guestCta: {
+    text: 'interested in sharing your story?',
+    btnLabel: 'become a podcast guest!',
+    btnTo: '/contact',
   },
 
-  /* ---------- Past episode gallery ---------- */
+  /* ---------- Episodes heading ---------- */
+  episodesHeading: 'watch our past episodes:',
+
+  /* ---------- Episodes ---------- */
   episodes: [
     {
-      id: 2,
-      tag: 'Episode 24',
-      title: 'From Intern to PM',
-      guest: 'Priya Patel',
+      id: 1,
+      tag: 'season 3, episode 2:',
+      title: 'decoding design & HCI',
       description:
-        'Priya talks about navigating product management, finding your voice in meetings, and the power of asking "why?"',
+        'In our exclusive LIVE podcast session, we sit down with iSchool professors Jason Yip and Spencer Williams alongside Oracle UX Designer Peter Corroon Jr. to discuss their unique experiences with design and human-computer interaction.',
+      image: '/images/hero-photo-2.png',
+      imageAlt: 'Decoding Design & HCI episode thumbnail',
+      guests: ['Mihika Jain', 'Jason Yip', 'Spencer Williams', 'Peter Corroon'],
+      watchUrl: '#',
+    },
+    {
+      id: 2,
+      tag: 'season 3, episode 1:',
+      title: 'decoding data science',
+      description:
+        'We explore the world of data science with industry professionals who share their journeys, insights, and advice for aspiring data scientists.',
       image: '',
-      imageAlt: 'Priya Patel headshot',
-      listenUrl: '#',
+      imageAlt: 'Decoding Data Science episode thumbnail',
+      guests: [],
+      watchUrl: '#',
     },
     {
       id: 3,
-      tag: 'Episode 23',
-      title: 'Data Science & Social Impact',
-      guest: 'Maria Gonzalez',
+      tag: 'season 2, episode 8:',
+      title: 'decoding product management',
       description:
-        'How Maria uses data science to tackle public-health challenges and why informatics is uniquely suited for social good.',
+        'Our guests dive into the ever-evolving field of product management, sharing their unique paths and what it takes to succeed.',
       image: '',
-      imageAlt: 'Maria Gonzalez headshot',
-      listenUrl: '#',
+      imageAlt: 'Decoding Product Management episode thumbnail',
+      guests: [],
+      watchUrl: '#',
     },
     {
       id: 4,
-      tag: 'Episode 22',
-      title: 'Designing Accessible Experiences',
-      guest: 'Taylor Chen',
+      tag: 'season 2, episode 7:',
+      title: 'decoding UX research',
       description:
-        'Taylor discusses building inclusive products, accessibility best practices, and why empathy is a designer\'s superpower.',
+        'An intimate conversation about UX research methodologies, career paths, and the impact of user-centered design.',
       image: '',
-      imageAlt: 'Taylor Chen headshot',
-      listenUrl: '#',
+      imageAlt: 'Decoding UX Research episode thumbnail',
+      guests: [],
+      watchUrl: '#',
     },
     {
       id: 5,
-      tag: 'Episode 21',
-      title: 'Startup Life After Graduation',
-      guest: 'Jasmine Okafor',
+      tag: 'season 2, episode 6:',
+      title: 'decoding cybersecurity',
       description:
-        'Jasmine shares the highs and lows of co-founding a startup right out of college, fundraising tips, and staying resilient.',
+        'We tackle the pressing world of cybersecurity with experts who share how they protect digital infrastructure.',
       image: '',
-      imageAlt: 'Jasmine Okafor headshot',
-      listenUrl: '#',
+      imageAlt: 'Decoding Cybersecurity episode thumbnail',
+      guests: [],
+      watchUrl: '#',
+    },
+    {
+      id: 6,
+      tag: 'season 2, episode 5:',
+      title: 'decoding software engineering',
+      description:
+        'Our guests share their experiences in software engineering, from coding bootcamps to leading engineering teams.',
+      image: '',
+      imageAlt: 'Decoding Software Engineering episode thumbnail',
+      guests: [],
+      watchUrl: '#',
+    },
+    {
+      id: 7,
+      tag: 'season 2, episode 4:',
+      title: 'decoding consulting',
+      description:
+        'An inside look at the consulting industry with professionals who have navigated the transition from tech to consulting and back.',
+      image: '',
+      imageAlt: 'Decoding Consulting episode thumbnail',
+      guests: [],
+      watchUrl: '#',
     },
   ],
 };

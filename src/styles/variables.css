@@ -69,6 +69,7 @@
   /* ── 3. TYPOGRAPHY ─────────────────────────────────────────────────────── */
   --font-heading: 'Poppins', system-ui, -apple-system, sans-serif;
   --font-body:    'Inter', system-ui, -apple-system, sans-serif;
+  --font-cursive: 'Caveat', cursive;
   --font-mono:    'Fira Code', 'Cascadia Code', ui-monospace, monospace;
 
   /* Modular type scale — fluid with clamp() */

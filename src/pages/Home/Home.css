@@ -1,5 +1,5 @@
 /* ==========================================================================
-   HOME PAGE
+   HOME PAGE — matches Figma screenshots
    ========================================================================== */
 
 /* ===== 1. HERO — full-width gradient with circuit pattern & centred logo ===== */
@@ -10,7 +10,6 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  /* Figma hero gradient: lavender top-left → pink bottom-left → near-white right */
   background:
     radial-gradient(ellipse 60% 80% at 0% 100%, #FEE6EA 0%, transparent 70%),
     radial-gradient(ellipse 50% 60% at 0% 0%, #EEE8F8 0%, transparent 60%),
@@ -58,26 +57,6 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 2rem;
-}
-
-/* ── Floating circular photos ── */
-.home-hero__photo {
-  width: clamp(100px, 14vw, 180px);
-  height: clamp(100px, 14vw, 180px);
-  border-radius: 50%;
-  object-fit: cover;
-  border: 4px solid rgba(255, 255, 255, 0.5);
-  box-shadow: 0 8px 32px rgba(158, 128, 189, 0.18);
-  flex-shrink: 0;
-}
-
-.home-hero__photo--left {
-  transform: translateY(20px);
-}
-
-.home-hero__photo--right {
-  transform: translateY(-20px);
 }
 
 .home-hero__logo {
@@ -97,10 +76,10 @@
   color: #fff;
 }
 
-/* ===== WHO WE ARE / MISSION ===== */
+/* ===== 2. WHO WE ARE — text LEFT, image RIGHT ===== */
 .home-who {
   display: grid;
-  grid-template-columns: 1fr 1.1fr;
+  grid-template-columns: 1.1fr 1fr;
   gap: 3rem;
   align-items: center;
 }
@@ -133,36 +112,21 @@
 .home-who__content {
   display: flex;
   flex-direction: column;
-  gap: 1rem;
-}
-
-.home-who__label {
-  display: inline-flex;
-  align-self: flex-start;
-  padding: 0.28rem 0.85rem;
-  background: rgba(158, 128, 189, 0.08);
-  color: var(--color-primary);
-  font-size: 0.72rem;
-  font-weight: 600;
-  text-transform: uppercase;
-  letter-spacing: 0.08em;
-  border-radius: var(--radius-full);
-  border: 1px solid rgba(158, 128, 189, 0.1);
+  gap: 0.85rem;
 }
 
 .home-who__title {
-  font-size: clamp(1.5rem, 3.5vw, 2.15rem);
-  font-weight: 700;
+  margin-bottom: 0.25rem;
 }
 
 .home-who__text {
-  font-size: 0.98rem;
+  font-size: 0.95rem;
   line-height: 1.75;
   color: var(--color-text-secondary);
 }
 
 .home-who__text + .home-who__text {
-  margin-top: 0.15rem;
+  margin-top: 0.1rem;
 }
 
 .home-who__btn {
@@ -170,14 +134,83 @@
   align-self: flex-start;
 }
 
-/* ===== 3. WHAT WE DO ===== */
+/* ===== 3. OUR STORY — image LEFT (tilted), text RIGHT ===== */
+.home-story {
+  display: grid;
+  grid-template-columns: 1fr 1.1fr;
+  gap: 3rem;
+  align-items: center;
+}
+
+.home-story__image-frame {
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: var(--shadow-lg);
+  border: 2px solid rgba(255, 255, 255, 0.65);
+  transform: rotate(-2deg);
+  transition: transform var(--transition-base);
+}
+
+.home-story__image-frame:hover {
+  transform: rotate(0deg);
+}
+
+.home-story__image-frame img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.home-story__image-placeholder {
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(145deg, #FEE6EA 0%, #EEE8F8 60%, #DABAF0 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 3.5rem;
+}
+
+.home-story__content {
+  display: flex;
+  flex-direction: column;
+  gap: 0.85rem;
+}
+
+.home-story__title {
+  margin-bottom: 0.25rem;
+}
+
+.home-story__text {
+  font-size: 0.95rem;
+  line-height: 1.75;
+  color: var(--color-text-secondary);
+}
+
+.home-story__text + .home-story__text {
+  margin-top: 0.1rem;
+}
+
+.home-story__btn {
+  margin-top: 0.5rem;
+  align-self: flex-start;
+}
+
+/* ===== 4. WHAT WE DO ===== */
 .home-features__grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 1.75rem;
 }
 
-/* ===== 4. WHAT IS INFORMATICS ===== */
+.home-features__cta {
+  text-align: center;
+  margin-top: 2.5rem;
+}
+
+/* ===== 5. WHAT IS INFORMATICS — quotes layout ===== */
 .home-informatics {
   position: relative;
   overflow: hidden;
@@ -218,164 +251,61 @@
   z-index: 1;
 }
 
-.home-informatics__heading {
-  text-align: center;
-  margin-bottom: 2.75rem;
+/* Circuit decoration on right */
+.home-informatics__circuit {
+  position: absolute;
+  right: 0;
+  top: 10%;
+  bottom: 10%;
+  width: 200px;
+  color: rgba(158, 128, 189, 0.12);
+  pointer-events: none;
+  z-index: 0;
 }
 
-.home-informatics__heading h2 {
-  font-size: clamp(1.5rem, 3.5vw, 2.15rem);
+.home-informatics__circuit svg {
+  width: 100%;
+  height: 100%;
 }
 
-.home-informatics__heading p {
-  max-width: 520px;
-  margin: 0.6rem auto 0;
-  font-size: 1rem;
-  color: var(--color-text-secondary);
-}
-
-.home-informatics__bubbles {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 1.15rem;
+/* ── Officer quotes ── */
+.home-informatics__quotes {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
   max-width: 900px;
   margin: 0 auto;
 }
 
-.info-bubble {
-  display: inline-flex;
-  align-items: flex-start;
-  gap: 0.65rem;
-  padding: 0.9rem 1.25rem;
-  background: var(--color-surface);
-  border: 1px solid rgba(237, 228, 245, 0.45);
-  border-radius: var(--radius-full);
-  max-width: 420px;
-  box-shadow: var(--shadow-card-rest);
-  transition: transform var(--transition-base), box-shadow var(--transition-base),
-              border-color var(--transition-base);
+.home-quote {
+  padding: 1.5rem;
+  background: transparent;
+  border: none;
 }
 
-.info-bubble:hover {
-  transform: translateY(-3px);
-  box-shadow: var(--shadow-md);
-  border-color: rgba(183, 163, 223, 0.3);
-}
-
-/* Alternate subtle background tints */
-.info-bubble:nth-child(odd) {
-  background: linear-gradient(135deg, #fff 60%, #F9EEFA 100%);
-}
-.info-bubble:nth-child(even) {
-  background: linear-gradient(135deg, #fff 60%, #FEE6EA 100%);
-}
-
-/* Make a couple wider so they wrap naturally and look organic */
-.info-bubble:nth-child(1),
-.info-bubble:nth-child(4) {
-  max-width: 460px;
-}
-
-.info-bubble__emoji {
-  font-size: 1.35rem;
-  flex-shrink: 0;
-  line-height: 1.4;
-}
-
-.info-bubble__text {
-  font-size: 0.88rem;
-  line-height: 1.55;
-  color: var(--color-text);
-  font-weight: 500;
-}
-
-/* ===== 5. BOTTOM ABOUT / ORG INFO ===== */
-.home-bottom-info {
-  display: grid;
-  grid-template-columns: 1.2fr 1fr;
-  gap: 3rem;
-  align-items: start;
-}
-
-.home-bottom-info__content {
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
-}
-
-.home-bottom-info__title {
-  font-size: clamp(1.4rem, 3vw, 1.9rem);
-  font-weight: 700;
-}
-
-.home-bottom-info__text {
+.home-quote__text {
+  font-style: italic;
   font-size: 0.95rem;
-  line-height: 1.75;
-  color: var(--color-text-secondary);
+  line-height: 1.7;
+  color: var(--color-text);
+  margin-bottom: 0.75rem;
 }
 
-.home-bottom-info__links {
-  display: flex;
-  flex-direction: column;
-  gap: 0.5rem;
-  margin-top: 0.25rem;
-}
-
-.home-bottom-info__link {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.5rem;
-  font-size: 0.9rem;
+.home-quote__cite {
+  font-style: normal;
+  font-size: 0.82rem;
   font-weight: 600;
   color: var(--color-primary);
-  transition: gap var(--transition-fast);
+  display: block;
 }
 
-.home-bottom-info__link:hover {
-  gap: 0.75rem;
+/* Stagger quotes slightly for organic feel */
+.home-quote:nth-child(2) {
+  transform: translateY(1rem);
 }
 
-/* Quick-links sidebar */
-.home-bottom-info__sidebar {
-  background: var(--color-surface);
-  border: 1px solid rgba(237, 228, 245, 0.45);
-  border-radius: var(--radius-lg);
-  padding: 1.75rem;
-  box-shadow: var(--shadow-card-rest);
-}
-
-.home-bottom-info__sidebar h4 {
-  font-size: 1rem;
-  font-weight: 700;
-  margin-bottom: 1rem;
-}
-
-.home-bottom-info__sidebar-links {
-  display: flex;
-  flex-direction: column;
-  gap: 0.65rem;
-}
-
-.home-bottom-info__sidebar-link {
-  display: flex;
-  align-items: center;
-  gap: 0.6rem;
-  font-size: 0.9rem;
-  color: var(--color-text-secondary);
-  font-weight: 500;
-  padding: 0.55rem 0.8rem;
-  border-radius: var(--radius-md);
-  transition: all var(--transition-fast);
-}
-
-.home-bottom-info__sidebar-link:hover {
-  background: var(--color-bg-alt);
-  color: var(--color-primary);
-}
-
-.home-bottom-info__sidebar-link span {
-  font-size: 1rem;
+.home-quote:nth-child(3) {
+  transform: translateY(-0.5rem);
 }
 
 /* ===== RESPONSIVE ===== */
@@ -389,22 +319,12 @@
     width: 200px;
   }
 
-  .home-hero__photo {
-    width: 90px;
-    height: 90px;
-  }
-
-  .home-hero__center {
-    gap: 1rem;
-  }
-
   .home-who {
     grid-template-columns: 1fr;
     gap: 2rem;
     text-align: center;
   }
 
-  .home-who__label,
   .home-who__btn {
     align-self: center;
   }
@@ -412,6 +332,23 @@
   .home-who__image-frame {
     max-width: 400px;
     margin: 0 auto;
+    order: -1; /* image on top on mobile */
+  }
+
+  .home-story {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+    text-align: center;
+  }
+
+  .home-story__btn {
+    align-self: center;
+  }
+
+  .home-story__image-frame {
+    max-width: 400px;
+    margin: 0 auto;
+    transform: rotate(0deg);
   }
 
   .home-features__grid {
@@ -420,18 +357,17 @@
     margin: 0 auto;
   }
 
-  .home-informatics__bubbles {
-    flex-direction: column;
-    align-items: center;
-  }
-
-  .info-bubble {
-    max-width: 100% !important;
-  }
-
-  .home-bottom-info {
+  .home-informatics__quotes {
     grid-template-columns: 1fr;
-    gap: 2rem;
+  }
+
+  .home-quote:nth-child(2),
+  .home-quote:nth-child(3) {
+    transform: none;
+  }
+
+  .home-informatics__circuit {
+    display: none;
   }
 }
 
@@ -444,16 +380,5 @@
   .home-hero__circuits {
     width: 120px;
     opacity: 0.6;
-  }
-
-  .home-hero__photo {
-    width: 70px;
-    height: 70px;
-    border-width: 3px;
-  }
-
-  .home-hero__photo--left,
-  .home-hero__photo--right {
-    transform: translateY(10px);
   }
 }

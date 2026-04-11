@@ -25,7 +25,7 @@
 @import './variables.css';
 
 /* Google Fonts fallback (loaded via <link> in index.html; this is a safety net) */
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@600;700;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Caveat:wght@400;500;600;700&family=Inter:wght@400;500;600;700&family=Poppins:wght@600;700;800&display=swap');
 
 /* ===== 1. CSS RESET / NORMALISATION ======================================= */
 /*
@@ -148,6 +148,16 @@ h2 { font-size: var(--text-3xl); font-weight: var(--weight-black); }
 h3 { font-size: var(--text-xl);  }
 h4 { font-size: var(--text-lg);  }
 h5 { font-size: var(--text-md);  }
+
+/* Cursive section titles — used across pages (e.g. Home, Footer) */
+.cursive-title {
+  font-family: var(--font-cursive);
+  font-weight: 700;
+  font-size: clamp(2rem, 5vw, 3rem);
+  color: var(--color-primary);
+  letter-spacing: 0;
+  line-height: 1.2;
+}
 h6 { font-size: var(--text-base); }
 
 p {

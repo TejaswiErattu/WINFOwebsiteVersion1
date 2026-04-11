@@ -4,46 +4,56 @@ import WinfoLogo from '../WinfoLogo/WinfoLogo';
 import '../WinfoLogo/WinfoLogo.css';
 import './Footer.css';
 
-/* ── Tiny inline SVG icons (avoids an external icon library) ── */
+/* ── Tiny inline SVG icons (outlined style to match screenshot) ── */
 const icons = {
   instagram: (
-    <svg width="16" height="16" fill="currentColor" viewBox="0 0 24 24">
-      <path d="M7.75 2h8.5A5.75 5.75 0 0 1 22 7.75v8.5A5.75 5.75 0 0 1 16.25 22h-8.5A5.75 5.75 0 0 1 2 16.25v-8.5A5.75 5.75 0 0 1 7.75 2Zm0 1.5A4.25 4.25 0 0 0 3.5 7.75v8.5A4.25 4.25 0 0 0 7.75 20.5h8.5A4.25 4.25 0 0 0 20.5 16.25v-8.5A4.25 4.25 0 0 0 16.25 3.5h-8.5ZM12 7a5 5 0 1 1 0 10 5 5 0 0 1 0-10Zm0 1.5a3.5 3.5 0 1 0 0 7 3.5 3.5 0 0 0 0-7Zm5.25-2.5a1 1 0 1 1 0 2 1 1 0 0 1 0-2Z" />
+    <svg width="18" height="18" fill="none" stroke="currentColor" strokeWidth="1.5" viewBox="0 0 24 24">
+      <rect x="2" y="2" width="20" height="20" rx="5" />
+      <circle cx="12" cy="12" r="5" />
+      <circle cx="17.5" cy="6.5" r="1.5" fill="currentColor" stroke="none" />
     </svg>
   ),
   linkedin: (
-    <svg width="16" height="16" fill="currentColor" viewBox="0 0 24 24">
-      <path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14Zm-1 2H6a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V6a1 1 0 0 0-1-1ZM8.5 10a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.5-.5v-6a.5.5 0 0 1 .5-.5h1ZM8 7a1 1 0 1 1 0 2 1 1 0 0 1 0-2Zm4.5 3a2.5 2.5 0 0 1 2.45 2H15v4.5a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.5-.5V13a1 1 0 0 0-2 0v3.5a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.5-.5v-6a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5v.22A2.49 2.49 0 0 1 12.5 10Z" />
+    <svg width="18" height="18" fill="none" stroke="currentColor" strokeWidth="1.5" viewBox="0 0 24 24">
+      <rect x="2" y="2" width="20" height="20" rx="3" />
+      <line x1="8" y1="11" x2="8" y2="17" />
+      <line x1="8" y1="7" x2="8" y2="7.01" strokeWidth="2" strokeLinecap="round" />
+      <path d="M12 17v-4a2 2 0 0 1 4 0v4" />
+      <line x1="16" y1="13" x2="16" y2="17" />
     </svg>
   ),
-  facebook: (
-    <svg width="16" height="16" fill="currentColor" viewBox="0 0 24 24">
-      <path d="M22 12a10 10 0 1 0-11.56 9.88v-6.99H7.9V12h2.54V9.8c0-2.5 1.49-3.89 3.78-3.89 1.09 0 2.24.2 2.24.2v2.46h-1.26c-1.24 0-1.63.77-1.63 1.56V12h2.78l-.44 2.89h-2.34v6.99A10 10 0 0 0 22 12Z" />
+  youtube: (
+    <svg width="18" height="18" fill="none" stroke="currentColor" strokeWidth="1.5" viewBox="0 0 24 24">
+      <path d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.42a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 12a29 29 0 0 0 .46 5.58 2.78 2.78 0 0 0 1.94 2C5.12 20 12 20 12 20s6.88 0 8.6-.42a2.78 2.78 0 0 0 1.94-2A29 29 0 0 0 23 12a29 29 0 0 0-.46-5.58Z" />
+      <polygon points="9.75 15.02 15.5 12 9.75 8.98" fill="currentColor" stroke="none" />
     </svg>
   ),
   email: (
-    <svg width="16" height="16" fill="currentColor" viewBox="0 0 24 24">
-      <path d="M20 4H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2Zm0 2-8 5-8-5h16Zm0 12H4V8l8 5 8-5v10Z" />
+    <svg width="18" height="18" fill="none" stroke="currentColor" strokeWidth="1.5" viewBox="0 0 24 24">
+      <rect x="2" y="4" width="20" height="16" rx="2" />
+      <path d="M22 7l-10 6L2 7" />
     </svg>
   ),
 };
 
 /**
- * Footer — site-wide footer with brand info, quick links, and contact.
- *
- * All data comes from `siteData.js` (footerLinks, socialLinks).
- * No props needed — the footer is self-contained.
+ * Footer — light lavender-pink gradient footer matching Figma screenshot.
+ * Features: gradient winfo logo, land acknowledgment, social icons, quick links.
  */
 export default function Footer() {
   return (
     <footer className="footer">
       <div className="footer__inner">
-        {/* ── Brand column ── */}
-        <div className="footer__col">
+        {/* ── Left column: brand + land acknowledgment + socials ── */}
+        <div className="footer__col footer__col--brand">
           <div className="footer__brand-logo">
-            <WinfoLogo color="white" />
+            <WinfoLogo color="gradient" />
           </div>
-          <p className="footer__brand-text">{siteInfo.brandTagline}</p>
+
+          <p className="footer__land-ack">
+            The University of Washington acknowledges the Coast Salish peoples of this land, the land which touches the shared waters of all tribes and bands within the Duwamish, Puyallup, Suquamish, Tulalip, and Muckleshoot nations.
+          </p>
+
           <div className="footer__socials">
             {socialLinks.map((s) => (
               <a
@@ -60,32 +70,22 @@ export default function Footer() {
           </div>
         </div>
 
-        {/* ── Quick links column ── */}
-        <div className="footer__col">
-          <h4 className="footer__col-title">Quick Links</h4>
-          {footerLinks.map((l) => (
-            <Link key={l.path} to={l.path} className="footer__link">
-              {l.label}
-            </Link>
-          ))}
-        </div>
-
-        {/* ── Contact column ── */}
-        <div className="footer__col">
-          <h4 className="footer__col-title">Contact</h4>
-          <a href={`mailto:${siteInfo.email}`} className="footer__link">
-            {siteInfo.email}
-          </a>
-          {siteInfo.address.map((line) => (
-            <span key={line} className="footer__link">{line}</span>
-          ))}
+        {/* ── Right column: quick links ── */}
+        <div className="footer__col footer__col--links">
+          <h4 className="footer__col-title">quick links</h4>
+          <nav className="footer__links-list">
+            {footerLinks.map((l) => (
+              <Link key={l.path} to={l.path} className="footer__link">
+                {l.label}
+              </Link>
+            ))}
+          </nav>
         </div>
       </div>
 
       {/* ── Bottom copyright bar ── */}
       <div className="footer__bottom">
-        © {new Date().getFullYear()} {siteInfo.copyright}. All rights
-        reserved.
+        © {new Date().getFullYear()} {siteInfo.copyright}. All rights reserved.
       </div>
     </footer>
   );
