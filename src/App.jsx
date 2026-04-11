@@ -10,7 +10,7 @@ import Hackathon from './pages/Hackathon/Hackathon';
 import Podcast from './pages/Podcast/Podcast';
 import Officers from './pages/Officers/Officers';
 import Membership from './pages/Membership/Membership';
-import Support from './pages/Support/Support';
+import SupportUs from './pages/SupportUs/SupportUs';
 
 import './styles/global.css';
 
@@ -28,7 +28,7 @@ export default function App() {
           <Route path="/podcast" element={<Podcast />} />
           <Route path="/officers" element={<Officers />} />
           <Route path="/membership" element={<Membership />} />
-          <Route path="/support" element={<Support />} />
+          <Route path="/support" element={<SupportUs />} />
         </Routes>
       </main>
       <Footer />

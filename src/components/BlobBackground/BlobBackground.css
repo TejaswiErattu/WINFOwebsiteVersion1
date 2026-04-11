@@ -20,7 +20,7 @@
 .blob-bg__blob--1 {
   width: 500px;
   height: 500px;
-  background: #c4b5fd;
+  background: #B7A3DF;
   top: -10%;
   left: -5%;
 }
@@ -28,7 +28,7 @@
 .blob-bg__blob--2 {
   width: 400px;
   height: 400px;
-  background: #fbcfe8;
+  background: #FCC1C3;
   top: 30%;
   right: -8%;
   animation-delay: -5s;
@@ -37,7 +37,7 @@
 .blob-bg__blob--3 {
   width: 350px;
   height: 350px;
-  background: #bfdbfe;
+  background: #DABAF0;
   bottom: -5%;
   left: 20%;
   animation-delay: -10s;

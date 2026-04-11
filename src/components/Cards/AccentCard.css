@@ -1,0 +1,81 @@
+/* ==========================================================================
+   AccentCard — shared icon + title + text card with accent colour
+   ==========================================================================
+   Consolidates: podcast-highlight-card, officers-role-card,
+                 membership-benefit-card, support-why-card
+   ========================================================================== */
+
+.accent-card {
+  background: var(--color-surface);
+  border: 1px solid rgba(237, 228, 245, 0.45);
+  border-radius: var(--radius-lg);
+  padding: 2rem 1.65rem;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+  transition: transform var(--transition-base), box-shadow var(--transition-base),
+              border-color var(--transition-base);
+  box-shadow: var(--shadow-card-rest);
+}
+
+.accent-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-card-hover);
+  border-color: rgba(183, 163, 223, 0.3);
+}
+
+/* ── Top accent bar on hover ── */
+.accent-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  opacity: 0;
+  transition: opacity var(--transition-base);
+}
+
+.accent-card:hover::before {
+  opacity: 1;
+}
+
+.accent-card--purple::before { background: var(--gradient-primary); }
+.accent-card--pink::before   { background: var(--gradient-accent); }
+.accent-card--blue::before   { background: linear-gradient(135deg, #B7A3DF, #948DD1); }
+
+/* ── Accent tinted backgrounds ── */
+.accent-card--purple { background: linear-gradient(160deg, #fff 0%, #F9EEFA 100%); }
+.accent-card--pink   { background: linear-gradient(160deg, #fff 0%, #FEE6EA 100%); }
+.accent-card--blue   { background: linear-gradient(160deg, #fff 0%, #EEE8F8 100%); }
+
+/* ── Icon bubble ── */
+.accent-card__icon {
+  width: 60px;
+  height: 60px;
+  border-radius: 18px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.6rem;
+  margin: 0 auto 1.15rem;
+}
+
+.accent-card--purple .accent-card__icon { background: linear-gradient(135deg, #EEE8F8, #DABAF0); }
+.accent-card--pink   .accent-card__icon { background: linear-gradient(135deg, #FEE6EA, #FCC1C3); }
+.accent-card--blue   .accent-card__icon { background: linear-gradient(135deg, #EEE8F8, #B7A3DF); }
+
+/* ── Title & text ── */
+.accent-card__title {
+  font-family: var(--font-heading);
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--color-text);
+  margin-bottom: 0.55rem;
+}
+
+.accent-card__text {
+  font-size: 0.88rem;
+  line-height: 1.65;
+  color: var(--color-text-secondary);
+}

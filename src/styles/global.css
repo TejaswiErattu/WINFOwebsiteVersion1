@@ -1,52 +1,39 @@
-/* ===== CSS Custom Properties ===== */
-:root {
-  /* Primary palette – soft pastels */
-  --color-primary: #7c3aed;
-  --color-primary-light: #a78bfa;
-  --color-primary-dark: #5b21b6;
-  --color-accent: #f472b6;
-  --color-accent-light: #fbcfe8;
+/* ==========================================================================
+   GLOBAL CSS SYSTEM  —  WINFO Website
+   ==========================================================================
+   Table of Contents
+   ──────────────────
+   0. Imports
+   1. CSS Reset / Normalisation
+   2. Base & Body
+   3. Typography
+   4. Links & Buttons (base)
+   5. Images & Media
+   6. Layout Utilities
+   7. Section & Content Utilities
+   8. Text Utilities
+   9. Spacing Helpers
+  10. Visual Utilities (shadows, borders, etc.)
+  11. Shared Hero-Section Pattern
+  12. Shared Decorative Blob Keyframes
+  13. Accessibility & Focus
+  14. Selection & Scrollbar
+  15. Responsive Breakpoints
+   ========================================================================== */
 
-  /* Neutrals */
-  --color-bg: #faf5ff;
-  --color-bg-alt: #f3e8ff;
-  --color-surface: #ffffff;
-  --color-text: #1e1b4b;
-  --color-text-secondary: #6b7280;
-  --color-border: #e9d5ff;
+/* ===== 0. IMPORTS ========================================================= */
+@import './variables.css';
 
-  /* Gradients */
-  --gradient-hero: linear-gradient(135deg, #ede9fe 0%, #fce7f3 50%, #e0e7ff 100%);
-  --gradient-primary: linear-gradient(135deg, #7c3aed, #a78bfa);
-  --gradient-accent: linear-gradient(135deg, #f472b6, #a78bfa);
-  --gradient-card: linear-gradient(145deg, #ffffff 0%, #faf5ff 100%);
+/* Google Fonts fallback (loaded via <link> in index.html; this is a safety net) */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@600;700;800&display=swap');
 
-  /* Typography */
-  --font-heading: 'Poppins', sans-serif;
-  --font-body: 'Inter', sans-serif;
+/* ===== 1. CSS RESET / NORMALISATION ======================================= */
+/*
+ * Modern reset based on Josh Comeau's custom reset + Andy Bell's "A Modern
+ * CSS Reset".  Removes default margins, applies border-box everywhere, and
+ * normalises form elements.
+ */
 
-  /* Spacing */
-  --section-padding: 5rem 0;
-  --container-max: 1200px;
-  --container-padding: 0 1.5rem;
-
-  /* Borders */
-  --radius-sm: 8px;
-  --radius-md: 12px;
-  --radius-lg: 20px;
-  --radius-full: 9999px;
-
-  /* Shadows */
-  --shadow-sm: 0 1px 3px rgba(124, 58, 237, 0.08);
-  --shadow-md: 0 4px 14px rgba(124, 58, 237, 0.1);
-  --shadow-lg: 0 10px 30px rgba(124, 58, 237, 0.12);
-
-  /* Transitions */
-  --transition-fast: 0.2s ease;
-  --transition-base: 0.3s ease;
-}
-
-/* ===== Reset & Base ===== */
 *,
 *::before,
 *::after {
@@ -55,56 +42,85 @@
   box-sizing: border-box;
 }
 
+/* Prevent font-size inflation */
 html {
+  -moz-text-size-adjust: none;
+  -webkit-text-size-adjust: none;
+  text-size-adjust: none;
   scroll-behavior: smooth;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
+/* Set core body defaults */
 body {
-  font-family: var(--font-body);
-  color: var(--color-text);
-  background: var(--color-bg);
-  line-height: 1.6;
   min-height: 100vh;
-}
-
-h1, h2, h3, h4, h5, h6 {
-  font-family: var(--font-heading);
-  font-weight: 700;
-  line-height: 1.2;
+  line-height: var(--leading-normal);
+  font-family: var(--font-body);
+  font-size: var(--text-base);
+  font-weight: var(--weight-normal);
   color: var(--color-text);
+  background-color: var(--color-bg);
+  /* Soft pastel background feel — layered radials for depth */
+  background-image:
+    radial-gradient(ellipse 80% 50% at 5% 0%, rgba(158, 128, 189, 0.05) 0%, transparent 55%),
+    radial-gradient(ellipse 60% 40% at 95% 100%, rgba(254, 176, 186, 0.04) 0%, transparent 50%),
+    radial-gradient(ellipse 50% 50% at 50% 50%, rgba(148, 141, 209, 0.02) 0%, transparent 70%);
+  background-attachment: fixed;
 }
 
-h1 { font-size: clamp(2rem, 5vw, 3.25rem); }
-h2 { font-size: clamp(1.5rem, 4vw, 2.25rem); }
-h3 { font-size: clamp(1.15rem, 2.5vw, 1.5rem); }
+/* Remove default margins from typographic elements */
+body, h1, h2, h3, h4, h5, h6,
+p, figure, blockquote, dl, dd {
+  margin-block-end: 0;
+}
 
+/* Remove list styles on ul, ol elements with a list role (default behaviour) */
+ul[role='list'],
+ol[role='list'] {
+  list-style: none;
+}
+
+ul, ol {
+  list-style: none;
+}
+
+/* Balance text wrapping on headings (progressive enhancement) */
+h1, h2, h3, h4 {
+  text-wrap: balance;
+}
+
+/* Avoid orphaned words on paragraphs (progressive enhancement) */
 p {
-  color: var(--color-text-secondary);
-  line-height: 1.7;
+  text-wrap: pretty;
 }
 
-a {
-  text-decoration: none;
-  color: inherit;
-  transition: color var(--transition-fast);
-}
-
-ul { list-style: none; }
-
-img {
-  max-width: 100%;
-  height: auto;
+/* Improve media defaults */
+img, picture, video, canvas, svg {
   display: block;
+  max-width: 100%;
 }
 
-/* ===== Utility classes ===== */
-.container {
-  width: 100%;
-  max-width: var(--container-max);
-  margin: 0 auto;
-  padding: var(--container-padding);
+/* Remove built-in form typography styles */
+input, button, textarea, select {
+  font: inherit;
+  color: inherit;
+}
+
+/* Remove textarea resize default, allow vertical only */
+textarea {
+  resize: vertical;
+}
+
+/* Anything that has been anchored to should have extra scroll margin */
+:target {
+  scroll-margin-block: 5ex;
+}
+
+/* ===== 2. BASE & BODY ===================================================== */
+
+#root {
+  isolation: isolate; /* new stacking context for the whole app */
 }
 
 .page-wrapper {
@@ -117,20 +133,525 @@ img {
   flex: 1;
 }
 
-/* ===== Selection ===== */
+/* ===== 3. TYPOGRAPHY ====================================================== */
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-heading);
+  font-weight: var(--weight-bold);
+  line-height: var(--leading-tight);
+  color: var(--color-text);
+  letter-spacing: var(--tracking-tight);
+}
+
+h1 { font-size: var(--text-4xl); font-weight: var(--weight-black); }
+h2 { font-size: var(--text-3xl); font-weight: var(--weight-black); }
+h3 { font-size: var(--text-xl);  }
+h4 { font-size: var(--text-lg);  }
+h5 { font-size: var(--text-md);  }
+h6 { font-size: var(--text-base); }
+
+p {
+  color: var(--color-text-secondary);
+  line-height: var(--leading-relaxed);
+  font-size: var(--text-base);
+}
+
+small {
+  font-size: var(--text-sm);
+  color: var(--color-text-muted);
+}
+
+strong, b {
+  font-weight: var(--weight-semibold);
+}
+
+/* ===== 4. LINKS & BUTTONS (base) ========================================== */
+
+a {
+  text-decoration: none;
+  color: inherit;
+  transition: color var(--transition-fast);
+}
+
+a:hover {
+  color: var(--color-primary);
+}
+
+button {
+  cursor: pointer;
+  border: none;
+  background: none;
+  font: inherit;
+}
+
+/* ===== 5. IMAGES & MEDIA ================================================== */
+
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* ===== 6. LAYOUT UTILITIES ================================================ */
+
+/* Container — max-width centred wrapper */
+.container {
+  width: 100%;
+  max-width: var(--container-max);
+  margin-inline: auto;
+  padding-inline: var(--space-6);
+}
+
+.container--narrow {
+  max-width: var(--container-narrow);
+}
+
+.container--wide {
+  max-width: var(--container-wide);
+}
+
+/* Flex helpers */
+.flex          { display: flex; }
+.flex-col      { display: flex; flex-direction: column; }
+.flex-center   { display: flex; align-items: center; justify-content: center; }
+.flex-between  { display: flex; align-items: center; justify-content: space-between; }
+.flex-wrap     { flex-wrap: wrap; }
+.items-center  { align-items: center; }
+.items-start   { align-items: flex-start; }
+.justify-center { justify-content: center; }
+
+/* Grid helpers */
+.grid          { display: grid; }
+.grid-2        { display: grid; grid-template-columns: repeat(2, 1fr); gap: var(--space-8); }
+.grid-3        { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--space-8); }
+.grid-4        { display: grid; grid-template-columns: repeat(4, 1fr); gap: var(--space-8); }
+.grid-auto-fill { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: var(--space-8); }
+.grid-auto-fit  { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: var(--space-8); }
+
+/* Responsive grid collapse */
+@media (max-width: 1024px) {
+  .grid-4 { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 768px) {
+  .grid-2,
+  .grid-3 { grid-template-columns: 1fr; }
+}
+@media (max-width: 480px) {
+  .grid-4 { grid-template-columns: 1fr; }
+}
+
+/* Gap utilities */
+.gap-2  { gap: var(--space-2); }
+.gap-3  { gap: var(--space-3); }
+.gap-4  { gap: var(--space-4); }
+.gap-6  { gap: var(--space-6); }
+.gap-8  { gap: var(--space-8); }
+.gap-10 { gap: var(--space-10); }
+.gap-12 { gap: var(--space-12); }
+
+/* ===== 7. SECTION & CONTENT UTILITIES ===================================== */
+
+/* Section — vertical padding wrapper (used by SectionWrapper component too) */
+.section {
+  padding: var(--section-padding);
+}
+
+.section--alt {
+  background: var(--color-bg-alt);
+}
+
+.section--no-pad {
+  padding: 0;
+}
+
+/* Centered content block */
+.content-centered {
+  text-align: center;
+  max-width: var(--container-narrow);
+  margin-inline: auto;
+}
+
+/* Pill badge (re-usable label) */
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.3rem 1rem;
+  background: rgba(158, 128, 189, 0.08);
+  color: var(--color-primary);
+  font-size: var(--text-xs);
+  font-weight: var(--weight-semibold);
+  text-transform: uppercase;
+  letter-spacing: var(--tracking-widest);
+  border-radius: var(--radius-full);
+}
+
+.badge--accent {
+  background: rgba(254, 176, 186, 0.10);
+  color: var(--color-accent-dark);
+}
+
+.badge--info {
+  background: rgba(96, 165, 250, 0.10);
+  color: #2563eb;
+}
+
+/* ===== 8. TEXT UTILITIES =================================================== */
+.text-center  { text-align: center; }
+.text-left    { text-align: left; }
+.text-right   { text-align: right; }
+.text-primary { color: var(--color-primary); }
+.text-accent  { color: var(--color-accent); }
+.text-muted   { color: var(--color-text-muted); }
+.text-sm      { font-size: var(--text-sm); }
+.text-lg      { font-size: var(--text-lg); }
+.text-xl      { font-size: var(--text-xl); }
+
+/* Gradient text */
+.text-gradient-primary {
+  background: var(--gradient-primary);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.text-gradient-accent {
+  background: var(--gradient-accent);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* ===== 9. SPACING HELPERS ================================================= */
+/* Margin top */
+.mt-0  { margin-top: 0; }
+.mt-2  { margin-top: var(--space-2); }
+.mt-4  { margin-top: var(--space-4); }
+.mt-6  { margin-top: var(--space-6); }
+.mt-8  { margin-top: var(--space-8); }
+.mt-12 { margin-top: var(--space-12); }
+
+/* Margin bottom */
+.mb-0  { margin-bottom: 0; }
+.mb-2  { margin-bottom: var(--space-2); }
+.mb-4  { margin-bottom: var(--space-4); }
+.mb-6  { margin-bottom: var(--space-6); }
+.mb-8  { margin-bottom: var(--space-8); }
+.mb-12 { margin-bottom: var(--space-12); }
+
+/* Padding */
+.p-4  { padding: var(--space-4); }
+.p-6  { padding: var(--space-6); }
+.p-8  { padding: var(--space-8); }
+.px-4 { padding-inline: var(--space-4); }
+.px-6 { padding-inline: var(--space-6); }
+.py-8 { padding-block: var(--space-8); }
+.py-12 { padding-block: var(--space-12); }
+.py-20 { padding-block: var(--space-20); }
+
+/* ===== 10. VISUAL UTILITIES =============================================== */
+
+/* Rounded presets */
+.rounded-sm   { border-radius: var(--radius-sm); }
+.rounded-md   { border-radius: var(--radius-md); }
+.rounded-lg   { border-radius: var(--radius-lg); }
+.rounded-xl   { border-radius: var(--radius-xl); }
+.rounded-full { border-radius: var(--radius-full); }
+
+/* Shadows */
+.shadow-sm { box-shadow: var(--shadow-sm); }
+.shadow-md { box-shadow: var(--shadow-md); }
+.shadow-lg { box-shadow: var(--shadow-lg); }
+
+/* Surface card base — white card with border & subtle shadow */
+.surface {
+  background: var(--color-surface);
+  border: var(--border-width) solid rgba(237, 228, 245, 0.45);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-card-rest);
+}
+
+/* Glass / frosted surface */
+.glass {
+  background: rgba(255, 255, 255, 0.6);
+  backdrop-filter: blur(16px) saturate(1.4);
+  -webkit-backdrop-filter: blur(16px) saturate(1.4);
+  border: var(--border-width) solid rgba(237, 228, 245, 0.35);
+}
+
+/* Hover lift — add to any element for interactive feel */
+.hover-lift {
+  transition: transform var(--transition-base), box-shadow var(--transition-base);
+}
+.hover-lift:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-lg);
+}
+
+/* Hover glow — subtle primary glow on hover */
+.hover-glow {
+  transition: box-shadow var(--transition-base);
+}
+.hover-glow:hover {
+  box-shadow: var(--shadow-glow-primary);
+}
+
+/* Divider — subtle horizontal rule */
+.divider {
+  border: none;
+  height: 1px;
+  background: var(--color-border);
+  margin-block: var(--space-8);
+}
+
+/* Visually hidden (accessible screen-reader only) */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}
+
+/* ===== 11. SHARED HERO-SECTION PATTERN ===================================
+ *
+ *  Every page hero re-uses the same structural pattern:
+ *    .hero          — outer wrapper (position: relative, overflow: hidden)
+ *    .hero__bg      — absolutely-positioned blob container
+ *    .hero__blob    — individual gradient blobs
+ *    .hero__inner   — z-1 content area, container-max, grid or centered
+ *    .hero__badge   — pill label
+ *    .hero__title   — gradient title
+ *    .hero__desc    — description paragraph
+ *    .hero__actions — button row
+ *
+ *  Page-specific heroes can extend or override with e.g. .home-hero { ... }
+ * ========================================================================= */
+
+[class*='-hero'] {
+  position: relative;
+  overflow: hidden;
+  padding: var(--space-20) var(--space-6) var(--space-16);
+}
+
+[class*='-hero__bg'] {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+[class*='-hero__blob'] {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(80px);
+  opacity: 0.42;
+}
+
+[class*='-hero__inner'] {
+  position: relative;
+  z-index: 1;
+  max-width: var(--container-max);
+  margin-inline: auto;
+}
+
+[class*='-hero__badge'] {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  align-self: flex-start;
+  padding: 0.32rem 0.9rem;
+  background: rgba(158, 128, 189, 0.06);
+  color: var(--color-primary);
+  font-size: 0.72rem;
+  font-weight: var(--weight-semibold);
+  border-radius: var(--radius-full);
+  letter-spacing: var(--tracking-wider);
+  text-transform: uppercase;
+  border: 1px solid rgba(158, 128, 189, 0.08);
+}
+
+[class*='-hero__title'] {
+  font-size: var(--text-4xl);
+  font-weight: var(--weight-black);
+  line-height: var(--leading-tight);
+  letter-spacing: var(--tracking-tight);
+}
+
+[class*='-hero__title'] span {
+  background: var(--gradient-accent);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+[class*='-hero__desc'] {
+  font-size: var(--text-md);
+  line-height: var(--leading-relaxed);
+  color: var(--color-text-secondary);
+  max-width: 520px;
+}
+
+[class*='-hero__actions'] {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-4);
+}
+
+/* ===== 12. SHARED DECORATIVE BLOB KEYFRAMES =============================== */
+
+/* Single shared float animation — every page blob can use this */
+@keyframes blobFloat {
+  0%   { transform: translate(0, 0) scale(1); }
+  100% { transform: translate(30px, -22px) scale(1.06); }
+}
+
+/* Alternate (reverse direction) */
+@keyframes blobFloatAlt {
+  0%   { transform: translate(0, 0) scale(1); }
+  100% { transform: translate(-20px, 15px) scale(1.04); }
+}
+
+/* Gentle pulse for smaller decorative elements */
+@keyframes pulse {
+  0%, 100% { opacity: 0.6; transform: scale(1); }
+  50%      { opacity: 1;   transform: scale(1.08); }
+}
+
+/* Subtle entrance fade-up (for staggered card reveals) */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* ===== 13. ACCESSIBILITY & FOCUS ========================================== */
+
+/* Focus-visible ring — consistent across all interactive elements */
+:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 2px;
+  border-radius: var(--radius-sm);
+}
+
+/* Remove outline for mouse users */
+:focus:not(:focus-visible) {
+  outline: none;
+}
+
+/* Reduced motion — respect user preference */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* ===== 14. SELECTION & SCROLLBAR ========================================== */
+
 ::selection {
   background: var(--color-accent-light);
   color: var(--color-primary-dark);
 }
 
-/* ===== Scrollbar (Webkit) ===== */
+/* Webkit scrollbar */
 ::-webkit-scrollbar {
   width: 8px;
 }
+
 ::-webkit-scrollbar-track {
   background: var(--color-bg);
 }
+
 ::-webkit-scrollbar-thumb {
   background: var(--color-primary-light);
   border-radius: var(--radius-full);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-primary);
+}
+
+/* Firefox scrollbar */
+html {
+  scrollbar-width: thin;
+  scrollbar-color: var(--color-primary-light) var(--color-bg);
+}
+
+/* ===== 15. RESPONSIVE BREAKPOINTS ========================================= */
+/*
+ *  Breakpoint reference:
+ *    sm   ≤  480 px  — small phone
+ *    md   ≤  768 px  — tablet portrait
+ *    lg   ≤ 1024 px  — tablet landscape / small laptop
+ *    xl   ≤ 1280 px  — desktop
+ *
+ *  Mobile-first overrides for global elements live here.
+ *  Component-specific breakpoints stay in their own CSS files.
+ */
+
+/* ── Tablet (≤ 768 px) ── */
+@media (max-width: 768px) {
+  :root {
+    --section-padding: var(--space-12) 0;
+  }
+
+  [class*='-hero'] {
+    padding: var(--space-16) var(--space-6) var(--space-12);
+  }
+
+  [class*='-hero__inner'] {
+    grid-template-columns: 1fr !important;
+    text-align: center;
+  }
+
+  [class*='-hero__desc'] {
+    max-width: 100%;
+    margin-inline: auto;
+  }
+
+  [class*='-hero__badge'] {
+    align-self: center;
+  }
+
+  [class*='-hero__actions'] {
+    justify-content: center;
+  }
+
+  [class*='-hero__text'] {
+    align-items: center;
+  }
+}
+
+/* ── Small phone (≤ 480 px) ── */
+@media (max-width: 480px) {
+  :root {
+    --section-padding: var(--space-10) 0;
+    --container-padding: 0 var(--space-4);
+  }
+
+  [class*='-hero'] {
+    padding: var(--space-12) var(--space-4) var(--space-10);
+  }
+
+  [class*='-hero__title'] {
+    font-size: var(--text-3xl);
+  }
+
+  [class*='-hero__actions'] {
+    flex-direction: column;
+    width: 100%;
+  }
+
+  [class*='-hero__actions'] .btn {
+    width: 100%;
+  }
 }

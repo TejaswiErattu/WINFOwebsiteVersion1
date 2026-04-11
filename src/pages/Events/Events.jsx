@@ -1,8 +1,9 @@
 import { useState } from 'react';
 import SectionWrapper from '../../components/SectionWrapper/SectionWrapper';
 import SectionHeading from '../../components/SectionHeading/SectionHeading';
-import Button from '../../components/Button/Button';
-import { eventsData } from '../../data/siteData';
+import PageHero from '../../components/PageHero/PageHero';
+import { JoinCTACard } from '../../components/Cards';
+import { eventsData } from '../../data/eventsData';
 import './Events.css';
 
 /* Emoji map for placeholder thumbnails */
@@ -27,6 +28,9 @@ export default function Events() {
     pastEvents,
     categories,
     upcoming,
+    galleryHeading,
+    upcomingHeading,
+    joinCta,
   } = eventsData;
 
   const [activeFilter, setActiveFilter] = useState('all');
@@ -39,27 +43,20 @@ export default function Events() {
   return (
     <>
       {/* ===== 1 · HERO ===== */}
-      <section className="events-hero">
-        <div className="events-hero__bg" aria-hidden="true">
-          <span className="events-hero__blob events-hero__blob--1" />
-          <span className="events-hero__blob events-hero__blob--2" />
-        </div>
-
-        <div className="events-hero__inner">
-          <span className="events-hero__badge">📅 {tagline}</span>
-          <h1 className="events-hero__title">
-            <span>{title}</span>
-          </h1>
-          <p className="events-hero__desc">{heroDescription}</p>
-        </div>
-      </section>
+      <PageHero
+        layout="center"
+        badge={`📅 ${tagline}`}
+        title={<span>{title}</span>}
+        description={heroDescription}
+        className="events-hero"
+      />
 
       {/* ===== 2 · PAST EVENTS GALLERY ===== */}
       <SectionWrapper>
         <SectionHeading
-          label="Gallery"
-          title="Past Events"
-          description="A look back at workshops, socials, panels, and more."
+          label={galleryHeading.label}
+          title={galleryHeading.title}
+          description={galleryHeading.description}
         />
 
         {/* Filter pills */}
@@ -102,9 +99,9 @@ export default function Events() {
       {/* ===== 3 · UPCOMING EVENTS ===== */}
       <SectionWrapper alt>
         <SectionHeading
-          label="Coming Soon"
-          title="Upcoming Events"
-          description="Mark your calendar — these are just around the corner."
+          label={upcomingHeading.label}
+          title={upcomingHeading.title}
+          description={upcomingHeading.description}
         />
 
         <div className="events-upcoming-list">
@@ -129,19 +126,13 @@ export default function Events() {
 
       {/* ===== 4 · JOIN CTA ===== */}
       <SectionWrapper>
-        <div className="events-join-cta">
-          <div className="events-join-cta__card">
-            <div className="events-join-cta__emoji">✨</div>
-            <h2 className="events-join-cta__title">Interested?</h2>
-            <p className="events-join-cta__desc">
-              Become a WINFO member to get early access to event registration,
-              exclusive workshops, and a welcoming community.
-            </p>
-            <Button to="/membership" size="lg">
-              Become a Member
-            </Button>
-          </div>
-        </div>
+        <JoinCTACard
+          emoji={joinCta.emoji}
+          title={joinCta.title}
+          description={joinCta.description}
+          btnLabel={joinCta.btnLabel}
+          btnTo={joinCta.btnTo}
+        />
       </SectionWrapper>
     </>
   );

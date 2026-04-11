@@ -1,8 +1,10 @@
 import { Link } from 'react-router-dom';
-import { footerLinks, socialLinks } from '../../data/siteData';
+import { footerLinks, socialLinks, siteInfo } from '../../data/navLinks';
+import WinfoLogo from '../WinfoLogo/WinfoLogo';
+import '../WinfoLogo/WinfoLogo.css';
 import './Footer.css';
 
-/* Tiny inline SVG icons to avoid an external icon library */
+/* ── Tiny inline SVG icons (avoids an external icon library) ── */
 const icons = {
   instagram: (
     <svg width="16" height="16" fill="currentColor" viewBox="0 0 24 24">
@@ -26,17 +28,22 @@ const icons = {
   ),
 };
 
+/**
+ * Footer — site-wide footer with brand info, quick links, and contact.
+ *
+ * All data comes from `siteData.js` (footerLinks, socialLinks).
+ * No props needed — the footer is self-contained.
+ */
 export default function Footer() {
   return (
     <footer className="footer">
       <div className="footer__inner">
-        {/* Brand */}
-        <div>
-          <div className="footer__brand-logo">winfo</div>
-          <p className="footer__brand-text">
-            Women in Informatics at the University of Washington. Empowering
-            students through community, mentorship, and opportunity.
-          </p>
+        {/* ── Brand column ── */}
+        <div className="footer__col">
+          <div className="footer__brand-logo">
+            <WinfoLogo color="white" />
+          </div>
+          <p className="footer__brand-text">{siteInfo.brandTagline}</p>
           <div className="footer__socials">
             {socialLinks.map((s) => (
               <a
@@ -53,8 +60,8 @@ export default function Footer() {
           </div>
         </div>
 
-        {/* Quick links */}
-        <div>
+        {/* ── Quick links column ── */}
+        <div className="footer__col">
           <h4 className="footer__col-title">Quick Links</h4>
           {footerLinks.map((l) => (
             <Link key={l.path} to={l.path} className="footer__link">
@@ -63,18 +70,21 @@ export default function Footer() {
           ))}
         </div>
 
-        {/* Contact */}
-        <div>
+        {/* ── Contact column ── */}
+        <div className="footer__col">
           <h4 className="footer__col-title">Contact</h4>
-          <span className="footer__link">winfo@uw.edu</span>
-          <span className="footer__link">University of Washington</span>
-          <span className="footer__link">Mary Gates Hall</span>
-          <span className="footer__link">Seattle, WA 98195</span>
+          <a href={`mailto:${siteInfo.email}`} className="footer__link">
+            {siteInfo.email}
+          </a>
+          {siteInfo.address.map((line) => (
+            <span key={line} className="footer__link">{line}</span>
+          ))}
         </div>
       </div>
 
+      {/* ── Bottom copyright bar ── */}
       <div className="footer__bottom">
-        © {new Date().getFullYear()} WINFO — Women in Informatics. All rights
+        © {new Date().getFullYear()} {siteInfo.copyright}. All rights
         reserved.
       </div>
     </footer>

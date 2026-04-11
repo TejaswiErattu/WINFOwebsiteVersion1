@@ -1,60 +1,177 @@
-.hackathon-hero {
-  background: var(--gradient-hero);
-  padding: 5rem 1.5rem 4rem;
+/* ==========================================================================
+   HACKATHON PAGE
+   ========================================================================== */
+
+/* Hero handled by PageHero shared component */
+
+/* ===== MISSION / ABOUT ===== */
+.hack-mission {
+  max-width: 760px;
+  margin: 0 auto;
   text-align: center;
 }
 
-.hackathon-hero__content {
-  max-width: 660px;
+.hack-mission__text {
+  font-size: 1.08rem;
+  line-height: 1.85;
+  color: var(--color-text-secondary);
+}
+
+/* ===== 3. WINNERS ===== */
+.hack-winners-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1.5rem;
+}
+
+/* ===== 4. REGISTER CTA ===== */
+.hack-register-cta {
+  position: relative;
+  padding: 4rem 1.5rem;
+  text-align: center;
+  overflow: hidden;
+}
+
+.hack-register-cta__bg {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  background: linear-gradient(135deg, rgba(251,207,232,0.25) 0%, rgba(221,214,254,0.3) 50%, rgba(219,234,254,0.2) 100%);
+}
+
+.hack-register-cta__blob {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(70px);
+  opacity: 0.35;
+}
+
+.hack-register-cta__blob--1 {
+  width: 280px;
+  height: 280px;
+  background: #FCC1C3;
+  top: -20%;
+  left: 10%;
+}
+
+.hack-register-cta__blob--2 {
+  width: 240px;
+  height: 240px;
+  background: #DABAF0;
+  bottom: -20%;
+  right: 15%;
+}
+
+.hack-register-cta__inner {
+  position: relative;
+  z-index: 1;
+  max-width: 520px;
   margin: 0 auto;
 }
 
-.hackathon-hero__date {
-  display: inline-block;
-  padding: 0.35rem 1rem;
-  background: rgba(124, 58, 237, 0.1);
-  color: var(--color-primary);
-  font-size: 0.85rem;
-  font-weight: 600;
-  border-radius: var(--radius-full);
-  margin-bottom: 1rem;
+.hack-register-cta__title {
+  font-family: var(--font-heading);
+  font-size: 1.6rem;
+  font-weight: 800;
+  margin-bottom: 0.65rem;
+  background: var(--gradient-primary);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
 }
 
-.hackathon-hero h1 {
-  margin-bottom: 0.5rem;
+.hack-register-cta__desc {
+  font-size: 0.95rem;
+  color: var(--color-text-secondary);
+  line-height: 1.65;
+  margin-bottom: 1.5rem;
 }
 
-.hackathon-hero__tagline {
-  font-size: 1.15rem;
-  color: var(--color-primary-light);
-  font-weight: 500;
-  margin-bottom: 1rem;
+/* ===== 5. SPONSOR STRIP ===== */
+/* Uses SponsorLogoGrid component — no extra styles needed */
+
+/* ===== 6. PAST HACKATHONS ===== */
+.hack-past-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  max-width: 680px;
+  margin: 0 auto;
 }
 
-.hackathon-hero p {
-  margin-bottom: 2rem;
-}
-
-/* Highlights */
-.hackathon-highlights {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-  gap: 1.5rem;
-  text-align: center;
-}
-
-.hackathon-highlight {
-  padding: 2rem 1.5rem;
+.hack-past-item {
+  display: flex;
+  align-items: center;
+  gap: 1.15rem;
+  padding: 1.1rem 1.4rem;
   background: var(--color-surface);
-  border: 1px solid var(--color-border);
+  border: 1px solid rgba(237, 228, 245, 0.4);
   border-radius: var(--radius-lg);
-  font-size: 1.05rem;
-  font-weight: 600;
+  transition: transform var(--transition-fast), box-shadow var(--transition-fast),
+              border-color var(--transition-fast);
+  box-shadow: var(--shadow-xs);
+}
+
+.hack-past-item:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
+  border-color: rgba(183, 163, 223, 0.3);
+}
+
+.hack-past-item__emoji {
+  font-size: 1.8rem;
+  flex-shrink: 0;
+  width: 52px;
+  height: 52px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, #EEE8F8, #FEE6EA);
+  border-radius: var(--radius-md);
+}
+
+.hack-past-item__content {
+  flex: 1;
+  min-width: 0;
+}
+
+.hack-past-item__title {
+  font-family: var(--font-heading);
+  font-size: 1rem;
+  font-weight: 700;
   color: var(--color-text);
 }
 
-.hackathon-highlight span {
-  display: block;
-  font-size: 2rem;
-  margin-bottom: 0.5rem;
+.hack-past-item__excerpt {
+  font-size: 0.84rem;
+  color: var(--color-text-secondary);
+  line-height: 1.5;
+}
+
+.hack-past-item__arrow {
+  font-size: 1.15rem;
+  color: var(--color-primary-light);
+  transition: transform var(--transition-fast);
+  flex-shrink: 0;
+}
+
+.hack-past-item:hover .hack-past-item__arrow {
+  transform: translateX(3px);
+  color: var(--color-primary);
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 1024px) {
+  .hack-winners-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 600px) {
+  .hack-winners-grid {
+    grid-template-columns: 1fr;
+    max-width: 360px;
+    margin: 0 auto;
+  }
 }

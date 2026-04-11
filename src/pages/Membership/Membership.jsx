@@ -1,9 +1,10 @@
 import { Link } from 'react-router-dom';
 import SectionWrapper from '../../components/SectionWrapper/SectionWrapper';
 import SectionHeading from '../../components/SectionHeading/SectionHeading';
-import CTABanner from '../../components/CTABanner/CTABanner';
-import Button from '../../components/Button/Button';
-import { membershipData } from '../../data/siteData';
+import PageHero from '../../components/PageHero/PageHero';
+import { CTABanner, AccentCard, JoinCTACard } from '../../components/Cards';
+import Button from '../../components/Buttons/Buttons';
+import { membershipData } from '../../data/membershipData';
 import './Membership.css';
 
 export default function Membership() {
@@ -13,51 +14,40 @@ export default function Membership() {
     heroDescription,
     ctaLabel,
     ctaLink,
+    secondaryCtaLabel,
+    secondaryCtaLink,
     midCta,
     benefits,
+    benefitsHeading,
+    joinCta,
     lowerInfo,
+    bottomCta,
   } = membershipData;
 
   return (
     <>
       {/* ===== 1 · HERO ===== */}
-      <section className="membership-hero">
-        <div className="membership-hero__bg" aria-hidden="true">
-          <span className="membership-hero__blob membership-hero__blob--1" />
-          <span className="membership-hero__blob membership-hero__blob--2" />
-        </div>
-
-        <div className="membership-hero__inner">
-          {/* text */}
-          <div className="membership-hero__text">
-            <span className="membership-hero__badge">💜 {tagline}</span>
-            <h1 className="membership-hero__title">
-              <span>{title}</span>
-            </h1>
-            <p className="membership-hero__desc">{heroDescription}</p>
-            <div className="membership-hero__actions">
-              <Button href={ctaLink} size="lg">
-                {ctaLabel}
-              </Button>
-              <Button variant="secondary" to="/events" size="lg">
-                See Events
-              </Button>
-            </div>
+      <PageHero
+        layout="split"
+        badge={`💜 ${tagline}`}
+        title={<span>{title}</span>}
+        description={heroDescription}
+        actions={[
+          { label: ctaLabel, href: ctaLink },
+          { label: secondaryCtaLabel, to: secondaryCtaLink, variant: 'secondary' },
+        ]}
+        className="membership-hero"
+      >
+        {/* Hero image placeholder */}
+        <div className="membership-hero__image">
+          <div className="membership-hero__image-placeholder">
+            <span className="membership-hero__image-emoji">👩‍💻</span>
+            <span className="membership-hero__image-label">WINFO Community</span>
           </div>
-
-          {/* image */}
-          <div className="membership-hero__image-wrapper">
-            <div className="membership-hero__image">
-              <div className="membership-hero__image-placeholder">
-                <span className="membership-hero__image-emoji">👩‍💻</span>
-                <span className="membership-hero__image-label">WINFO Community</span>
-              </div>
-              <span className="membership-hero__float membership-hero__float--1" aria-hidden="true" />
-              <span className="membership-hero__float membership-hero__float--2" aria-hidden="true" />
-            </div>
-          </div>
+          <span className="membership-hero__float membership-hero__float--1" aria-hidden="true" />
+          <span className="membership-hero__float membership-hero__float--2" aria-hidden="true" />
         </div>
-      </section>
+      </PageHero>
 
       {/* ===== 2 · MID-CTA BAND ===== */}
       <section className="membership-mid-cta">
@@ -77,40 +67,33 @@ export default function Membership() {
       {/* ===== 3 · BENEFITS ===== */}
       <SectionWrapper>
         <SectionHeading
-          label="Why Join?"
-          title="Member Benefits"
-          description="Everything you need to grow, connect, and thrive in the tech community."
+          label={benefitsHeading.label}
+          title={benefitsHeading.title}
+          description={benefitsHeading.description}
         />
 
         <div className="membership-benefits">
           {benefits.map((b) => (
-            <div
+            <AccentCard
               key={b.title}
-              className={`membership-benefit-card membership-benefit-card--${b.accent}`}
-            >
-              <div className="membership-benefit-card__icon">{b.icon}</div>
-              <h3 className="membership-benefit-card__title">{b.title}</h3>
-              <p className="membership-benefit-card__desc">{b.description}</p>
-            </div>
+              icon={b.icon}
+              title={b.title}
+              text={b.description}
+              accent={b.accent}
+            />
           ))}
         </div>
       </SectionWrapper>
 
       {/* ===== 4 · READY TO JOIN CTA ===== */}
       <SectionWrapper alt>
-        <div className="membership-join-cta">
-          <div className="membership-join-cta__card">
-            <div className="membership-join-cta__emoji">🎉</div>
-            <h2 className="membership-join-cta__title">Ready to Join?</h2>
-            <p className="membership-join-cta__desc">
-              Membership is free and open to all students. Sign up in seconds and
-              start exploring everything WINFO has to offer.
-            </p>
-            <Button href={ctaLink} size="lg">
-              {ctaLabel}
-            </Button>
-          </div>
-        </div>
+        <JoinCTACard
+          emoji={joinCta.emoji}
+          title={joinCta.title}
+          description={joinCta.description}
+          btnLabel={ctaLabel}
+          btnHref={ctaLink}
+        />
       </SectionWrapper>
 
       {/* ===== 5 · LOWER INFO ===== */}
@@ -142,10 +125,10 @@ export default function Membership() {
       {/* ===== 6 · BOTTOM CTA ===== */}
       <SectionWrapper>
         <CTABanner
-          title="Questions about membership?"
-          text="We'd love to hear from you — reach out anytime."
-          btnLabel="Contact Us"
-          btnTo="/support"
+          title={bottomCta.title}
+          text={bottomCta.text}
+          btnLabel={bottomCta.btnLabel}
+          btnTo={bottomCta.btnTo}
         />
       </SectionWrapper>
     </>

@@ -1,0 +1,122 @@
+/* ==========================================================================
+   OFFICER CARD
+   ========================================================================== */
+.officer-card {
+  background: var(--color-surface);
+  border: 1px solid rgba(237, 228, 245, 0.45);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  text-align: center;
+  transition: transform var(--transition-base), box-shadow var(--transition-base);
+  position: relative;
+  box-shadow: var(--shadow-card-rest);
+}
+
+.officer-card:hover {
+  transform: translateY(-5px);
+  box-shadow: var(--shadow-card-hover);
+}
+
+/* Portrait area */
+.officer-card__portrait {
+  width: 100%;
+  aspect-ratio: 1;
+  overflow: hidden;
+  position: relative;
+}
+
+.officer-card__portrait img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform var(--transition-base);
+}
+
+.officer-card:hover .officer-card__portrait img {
+  transform: scale(1.04);
+}
+
+/* Placeholder gradient — alternating via nth-child on the grid parent */
+.officer-card__placeholder {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.35rem;
+  transition: transform var(--transition-base);
+}
+
+.officer-card:hover .officer-card__placeholder {
+  transform: scale(1.04);
+}
+
+/* Colour rotation */
+.officer-card:nth-child(6n+1) .officer-card__placeholder { background: linear-gradient(145deg, #EEE8F8, #DABAF0); }
+.officer-card:nth-child(6n+2) .officer-card__placeholder { background: linear-gradient(145deg, #FEE6EA, #FCC1C3); }
+.officer-card:nth-child(6n+3) .officer-card__placeholder { background: linear-gradient(145deg, #EEE8F8, #B7A3DF); }
+.officer-card:nth-child(6n+4) .officer-card__placeholder { background: linear-gradient(145deg, #F9EEFA, #DABAF0); }
+.officer-card:nth-child(6n+5) .officer-card__placeholder { background: linear-gradient(145deg, #FEE6EA, #FEB0BA); }
+.officer-card:nth-child(6n+6) .officer-card__placeholder { background: linear-gradient(145deg, #EEE8F8, #FEE6EA); }
+
+.officer-card__placeholder-emoji {
+  font-size: 3rem;
+}
+
+/* Bio overlay on hover */
+.officer-card__overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(30, 27, 75, 0.82) 0%, transparent 60%);
+  display: flex;
+  align-items: flex-end;
+  padding: 1rem;
+  opacity: 0;
+  transition: opacity var(--transition-base);
+}
+
+.officer-card:hover .officer-card__overlay {
+  opacity: 1;
+}
+
+.officer-card__bio {
+  font-size: 0.78rem;
+  line-height: 1.55;
+  color: #fff;
+  text-align: left;
+}
+
+/* Info body */
+.officer-card__body {
+  padding: 1rem 1rem 1.25rem;
+}
+
+.officer-card__name {
+  font-family: var(--font-heading);
+  font-size: 0.98rem;
+  font-weight: 700;
+  color: var(--color-text);
+  margin-bottom: 0.15rem;
+}
+
+.officer-card__role {
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--color-primary);
+}
+
+/* ===== Responsive ===== */
+@media (max-width: 480px) {
+  .officer-card__body {
+    padding: 0.85rem 0.85rem 1rem;
+  }
+
+  .officer-card__name {
+    font-size: 0.9rem;
+  }
+
+  .officer-card__role {
+    font-size: 0.75rem;
+  }
+}

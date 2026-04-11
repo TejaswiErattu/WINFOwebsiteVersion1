@@ -1,0 +1,62 @@
+/* ==========================================================================
+   SPONSOR LOGO GRID — flex-wrap grid of sponsor logos
+   ========================================================================== */
+.sponsor-grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 2rem 3rem;
+  padding: 1rem 0;
+}
+
+.sponsor-grid__item {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 48px;
+  opacity: 0.55;
+  filter: grayscale(0.3);
+  transition: opacity var(--transition-base), filter var(--transition-base), transform var(--transition-fast);
+}
+
+.sponsor-grid__item:hover {
+  opacity: 1;
+  filter: grayscale(0);
+  transform: scale(1.08);
+}
+
+.sponsor-grid__item img {
+  max-height: 100%;
+  max-width: 130px;
+  object-fit: contain;
+}
+
+/* Text-based placeholder logos */
+.sponsor-grid__placeholder {
+  height: 48px;
+  padding: 0 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, #EEE8F8, #FEE6EA);
+  border-radius: var(--radius-md);
+  font-family: var(--font-heading);
+  font-size: 0.82rem;
+  font-weight: 700;
+  color: var(--color-primary);
+  opacity: 0.65;
+  white-space: nowrap;
+}
+
+/* ===== Responsive ===== */
+@media (max-width: 480px) {
+  .sponsor-grid {
+    gap: 1.25rem 1.5rem;
+  }
+
+  .sponsor-grid__placeholder {
+    height: 40px;
+    padding: 0 1rem;
+    font-size: 0.75rem;
+  }
+}

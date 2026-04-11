@@ -1,27 +1,52 @@
+/* ==========================================================================
+   SECTION HEADING — centred (or left-aligned) heading block
+   ========================================================================== */
 .section-heading {
   text-align: center;
-  margin-bottom: 3rem;
+  margin-bottom: 2.75rem;
+}
+
+.section-heading--left {
+  text-align: left;
 }
 
 .section-heading__label {
   display: inline-block;
-  padding: 0.3rem 1rem;
-  background: var(--color-bg-alt);
+  padding: 0.3rem 0.9rem;
+  background: rgba(158, 128, 189, 0.06);
   color: var(--color-primary);
-  font-size: 0.8rem;
+  font-size: 0.72rem;
   font-weight: 600;
   text-transform: uppercase;
-  letter-spacing: 0.08em;
+  letter-spacing: 0.1em;
   border-radius: var(--radius-full);
-  margin-bottom: 0.75rem;
+  margin-bottom: 0.85rem;
+  border: 1px solid rgba(158, 128, 189, 0.08);
 }
 
 .section-heading__title {
-  margin-bottom: 0.75rem;
+  margin-bottom: 0.65rem;
+  letter-spacing: -0.02em;
 }
 
 .section-heading__description {
-  max-width: 640px;
+  max-width: 580px;
   margin: 0 auto;
-  font-size: 1.05rem;
+  font-size: 0.98rem;
+  line-height: 1.7;
+  color: var(--color-text-secondary);
+}
+
+.section-heading--left .section-heading__description {
+  margin: 0;
+}
+
+@media (max-width: 480px) {
+  .section-heading {
+    margin-bottom: 2rem;
+  }
+
+  .section-heading__description {
+    font-size: 0.92rem;
+  }
 }

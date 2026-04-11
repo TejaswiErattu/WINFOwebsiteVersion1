@@ -1,15 +1,19 @@
 import { Link } from 'react-router-dom';
 import SectionWrapper from '../../components/SectionWrapper/SectionWrapper';
 import SectionHeading from '../../components/SectionHeading/SectionHeading';
-import FeatureCard from '../../components/FeatureCard/FeatureCard';
-import CTABanner from '../../components/CTABanner/CTABanner';
-import Button from '../../components/Button/Button';
+import { FeatureCard, CTABanner } from '../../components/Cards';
+import Button from '../../components/Buttons/Buttons';
+import WinfoLogo from '../../components/WinfoLogo/WinfoLogo';
+import '../../components/WinfoLogo/WinfoLogo.css';
 import {
-  heroData,
   missionData,
+  whatWeDoHeading,
   whatWeDoData,
+  informaticsHeading,
   informaticsBubbles,
-} from '../../data/siteData';
+  bottomInfoData,
+  homeCta,
+} from '../../data/homeData';
 import './Home.css';
 
 export default function Home() {
@@ -17,43 +21,97 @@ export default function Home() {
     <>
       {/* ============ 1. HERO ============ */}
       <section className="home-hero">
-        {/* Soft gradient blobs */}
-        <div className="home-hero__bg" aria-hidden="true">
-          <div className="home-hero__blob home-hero__blob--1" />
-          <div className="home-hero__blob home-hero__blob--2" />
-          <div className="home-hero__blob home-hero__blob--3" />
+        {/* Circuit board decorations */}
+        <div className="home-hero__circuits home-hero__circuits--left" aria-hidden="true">
+          <svg viewBox="0 0 320 480" fill="none" xmlns="http://www.w3.org/2000/svg">
+            {/* Horizontal lines */}
+            <line x1="0" y1="80" x2="260" y2="80" stroke="currentColor" strokeWidth="1.5" />
+            <line x1="0" y1="160" x2="200" y2="160" stroke="currentColor" strokeWidth="1.5" />
+            <line x1="0" y1="240" x2="280" y2="240" stroke="currentColor" strokeWidth="1.5" />
+            <line x1="0" y1="320" x2="180" y2="320" stroke="currentColor" strokeWidth="1.5" />
+            <line x1="0" y1="400" x2="240" y2="400" stroke="currentColor" strokeWidth="1.5" />
+            {/* Vertical connectors */}
+            <line x1="120" y1="80" x2="120" y2="160" stroke="currentColor" strokeWidth="1.5" />
+            <line x1="180" y1="160" x2="180" y2="240" stroke="currentColor" strokeWidth="1.5" />
+            <line x1="100" y1="240" x2="100" y2="320" stroke="currentColor" strokeWidth="1.5" />
+            <line x1="160" y1="320" x2="160" y2="400" stroke="currentColor" strokeWidth="1.5" />
+            {/* Diagonal branches */}
+            <line x1="200" y1="80" x2="240" y2="40" stroke="currentColor" strokeWidth="1.5" />
+            <line x1="150" y1="160" x2="190" y2="120" stroke="currentColor" strokeWidth="1.5" />
+            <line x1="220" y1="240" x2="260" y2="200" stroke="currentColor" strokeWidth="1.5" />
+            <line x1="140" y1="320" x2="180" y2="280" stroke="currentColor" strokeWidth="1.5" />
+            <line x1="200" y1="400" x2="240" y2="360" stroke="currentColor" strokeWidth="1.5" />
+            {/* Nodes (circles at intersections) */}
+            <circle cx="120" cy="80" r="4" fill="currentColor" />
+            <circle cx="260" cy="80" r="5" fill="currentColor" />
+            <circle cx="200" cy="160" r="4" fill="currentColor" />
+            <circle cx="180" cy="240" r="5" fill="currentColor" />
+            <circle cx="100" cy="240" r="4" fill="currentColor" />
+            <circle cx="280" cy="240" r="4" fill="currentColor" />
+            <circle cx="160" cy="320" r="5" fill="currentColor" />
+            <circle cx="180" cy="320" r="4" fill="currentColor" />
+            <circle cx="240" cy="400" r="5" fill="currentColor" />
+            <circle cx="240" cy="40" r="3.5" fill="currentColor" />
+            <circle cx="190" cy="120" r="3.5" fill="currentColor" />
+            <circle cx="260" cy="200" r="3.5" fill="currentColor" />
+            <circle cx="180" cy="280" r="3.5" fill="currentColor" />
+            <circle cx="240" cy="360" r="3.5" fill="currentColor" />
+            {/* Extra small dots */}
+            <circle cx="60" cy="80" r="3" fill="currentColor" />
+            <circle cx="80" cy="160" r="3" fill="currentColor" />
+            <circle cx="50" cy="240" r="3" fill="currentColor" />
+            <circle cx="60" cy="400" r="3" fill="currentColor" />
+          </svg>
+        </div>
+        <div className="home-hero__circuits home-hero__circuits--right" aria-hidden="true">
+          <svg viewBox="0 0 320 480" fill="none" xmlns="http://www.w3.org/2000/svg">
+            {/* Horizontal lines (mirrored) */}
+            <line x1="320" y1="100" x2="60" y2="100" stroke="currentColor" strokeWidth="1.5" />
+            <line x1="320" y1="200" x2="120" y2="200" stroke="currentColor" strokeWidth="1.5" />
+            <line x1="320" y1="300" x2="40" y2="300" stroke="currentColor" strokeWidth="1.5" />
+            <line x1="320" y1="380" x2="100" y2="380" stroke="currentColor" strokeWidth="1.5" />
+            {/* Vertical connectors */}
+            <line x1="200" y1="100" x2="200" y2="200" stroke="currentColor" strokeWidth="1.5" />
+            <line x1="140" y1="200" x2="140" y2="300" stroke="currentColor" strokeWidth="1.5" />
+            <line x1="220" y1="300" x2="220" y2="380" stroke="currentColor" strokeWidth="1.5" />
+            {/* Diagonal branches */}
+            <line x1="100" y1="100" x2="60" y2="60" stroke="currentColor" strokeWidth="1.5" />
+            <line x1="160" y1="200" x2="120" y2="160" stroke="currentColor" strokeWidth="1.5" />
+            <line x1="80" y1="300" x2="40" y2="260" stroke="currentColor" strokeWidth="1.5" />
+            <line x1="140" y1="380" x2="100" y2="340" stroke="currentColor" strokeWidth="1.5" />
+            {/* Nodes */}
+            <circle cx="200" cy="100" r="4" fill="currentColor" />
+            <circle cx="60" cy="100" r="5" fill="currentColor" />
+            <circle cx="140" cy="200" r="5" fill="currentColor" />
+            <circle cx="120" cy="200" r="4" fill="currentColor" />
+            <circle cx="220" cy="300" r="4" fill="currentColor" />
+            <circle cx="40" cy="300" r="5" fill="currentColor" />
+            <circle cx="100" cy="380" r="4" fill="currentColor" />
+            <circle cx="60" cy="60" r="3.5" fill="currentColor" />
+            <circle cx="120" cy="160" r="3.5" fill="currentColor" />
+            <circle cx="40" cy="260" r="3.5" fill="currentColor" />
+            <circle cx="100" cy="340" r="3.5" fill="currentColor" />
+            {/* Extra small dots */}
+            <circle cx="260" cy="100" r="3" fill="currentColor" />
+            <circle cx="240" cy="200" r="3" fill="currentColor" />
+            <circle cx="280" cy="300" r="3" fill="currentColor" />
+            <circle cx="260" cy="380" r="3" fill="currentColor" />
+          </svg>
         </div>
 
-        <div className="home-hero__inner">
-          {/* Left – text */}
-          <div className="home-hero__text">
-            <span className="home-hero__badge">✨ University of Washington</span>
-            <h1 className="home-hero__title">
-              <span>Women in</span>
-              <br />
-              Informatics
-            </h1>
-            <p className="home-hero__subtitle">{heroData.subheadline}</p>
-            <div className="home-hero__actions">
-              <Button to={heroData.ctaLink} size="lg">
-                {heroData.ctaLabel}
-              </Button>
-              <Button to="/events" variant="secondary" size="lg">
-                Upcoming Events
-              </Button>
-            </div>
-          </div>
-
-          {/* Right – featured image */}
-          <div className="home-hero__image-wrapper">
-            <div className="home-hero__float home-hero__float--1" aria-hidden="true" />
-            <div className="home-hero__float home-hero__float--2" aria-hidden="true" />
-            <div className="home-hero__image-frame">
-              {/* Replace the placeholder with a real group photo:
-                  <img src="/images/hero-group.jpg" alt="WINFO members" /> */}
-              <div className="home-hero__image-placeholder">👩‍💻</div>
-            </div>
-          </div>
+        {/* Centered logo with floating photos */}
+        <div className="home-hero__center">
+          <img
+            src="/images/hero-photo-1.png"
+            alt="WINFO members collaborating"
+            className="home-hero__photo home-hero__photo--left"
+          />
+          <WinfoLogo color="white" className="home-hero__logo" />
+          <img
+            src="/images/hero-photo-2.png"
+            alt="WINFO community event"
+            className="home-hero__photo home-hero__photo--right"
+          />
         </div>
       </section>
 
@@ -62,19 +120,21 @@ export default function Home() {
         <div className="home-who">
           {/* Image side */}
           <div className="home-who__image-frame">
-            {/* Replace with a real photo:
-                <img src="/images/who-we-are.jpg" alt="WINFO community" /> */}
-            <div className="home-who__image-placeholder">🤝</div>
+            {missionData.image ? (
+              <img src={missionData.image} alt={missionData.imageAlt} />
+            ) : (
+              <div className="home-who__image-placeholder">🤝</div>
+            )}
           </div>
 
           {/* Text side */}
           <div className="home-who__content">
-            <span className="home-who__label">Who We Are</span>
+            <span className="home-who__label">{missionData.label}</span>
             <h2 className="home-who__title">{missionData.title}</h2>
             <p className="home-who__text">{missionData.body}</p>
             <p className="home-who__text">{missionData.bodySecondary}</p>
-            <Button to="/about" variant="secondary" className="home-who__btn">
-              Our Story →
+            <Button to={missionData.ctaLink} variant="secondary" className="home-who__btn">
+              {missionData.ctaLabel}
             </Button>
           </div>
         </div>
@@ -83,9 +143,9 @@ export default function Home() {
       {/* ============ 3. WHAT WE DO ============ */}
       <SectionWrapper alt>
         <SectionHeading
-          label="What We Do"
-          title="Building Skills, Community & Opportunity"
-          description="Everything we do is designed to empower our members and create lasting impact."
+          label={whatWeDoHeading.label}
+          title={whatWeDoHeading.title}
+          description={whatWeDoHeading.description}
         />
         <div className="home-features__grid">
           {whatWeDoData.map((item) => (
@@ -113,9 +173,9 @@ export default function Home() {
         <div className="home-informatics__inner">
           <div className="home-informatics__heading">
             <SectionHeading
-              label="Learn"
-              title="What is Informatics?"
-              description="A modern discipline at the intersection of people, data, and technology."
+              label={informaticsHeading.label}
+              title={informaticsHeading.title}
+              description={informaticsHeading.description}
             />
           </div>
 
@@ -135,51 +195,29 @@ export default function Home() {
         <div className="home-bottom-info">
           <div className="home-bottom-info__content">
             <h2 className="home-bottom-info__title">
-              More Than a Club — A Community
+              {bottomInfoData.title}
             </h2>
-            <p className="home-bottom-info__text">
-              WINFO is dedicated to creating space where students can explore their
-              interests, develop professional skills, and find their people. Whether
-              you're a freshman exploring informatics or a senior heading into
-              industry, there's a place for you here.
-            </p>
-            <p className="home-bottom-info__text">
-              We partner with leading tech companies, host career-focused workshops,
-              and maintain an active mentorship program that pairs students with
-              industry professionals and upperclassmen.
-            </p>
+            {bottomInfoData.paragraphs.map((p, i) => (
+              <p key={i} className="home-bottom-info__text">{p}</p>
+            ))}
             <div className="home-bottom-info__links">
-              <Link to="/membership" className="home-bottom-info__link">
-                Become a Member →
-              </Link>
-              <Link to="/support" className="home-bottom-info__link">
-                Support Our Mission →
-              </Link>
+              {bottomInfoData.links.map((link) => (
+                <Link key={link.to} to={link.to} className="home-bottom-info__link">
+                  {link.label}
+                </Link>
+              ))}
             </div>
           </div>
 
           {/* Sidebar quick-links */}
           <div className="home-bottom-info__sidebar">
-            <h4>Explore WINFO</h4>
+            <h4>{bottomInfoData.sidebarTitle}</h4>
             <div className="home-bottom-info__sidebar-links">
-              <Link to="/events" className="home-bottom-info__sidebar-link">
-                <span>📅</span> Upcoming Events
-              </Link>
-              <Link to="/hackathon" className="home-bottom-info__sidebar-link">
-                <span>💻</span> Annual Hackathon
-              </Link>
-              <Link to="/podcast" className="home-bottom-info__sidebar-link">
-                <span>🎙️</span> WINFO Podcast
-              </Link>
-              <Link to="/officers" className="home-bottom-info__sidebar-link">
-                <span>👥</span> Meet the Team
-              </Link>
-              <Link to="/membership" className="home-bottom-info__sidebar-link">
-                <span>💜</span> Join WINFO
-              </Link>
-              <Link to="/support" className="home-bottom-info__sidebar-link">
-                <span>🤝</span> Sponsor Us
-              </Link>
+              {bottomInfoData.sidebarLinks.map((link) => (
+                <Link key={link.to} to={link.to} className="home-bottom-info__sidebar-link">
+                  <span>{link.emoji}</span> {link.label}
+                </Link>
+              ))}
             </div>
           </div>
         </div>
@@ -188,10 +226,10 @@ export default function Home() {
       {/* ============ 6. CTA ============ */}
       <SectionWrapper>
         <CTABanner
-          title="Ready to join our community?"
-          text="Become a WINFO member and unlock access to mentorship, events, and a supportive network of peers."
-          btnLabel="Become a Member"
-          btnTo="/membership"
+          title={homeCta.title}
+          text={homeCta.text}
+          btnLabel={homeCta.btnLabel}
+          btnTo={homeCta.btnTo}
         />
       </SectionWrapper>
     </>

@@ -1,3 +1,6 @@
+/* ==========================================================================
+   CARD (InfoCard) — versatile content card
+   ========================================================================== */
 .card {
   background: var(--gradient-card);
   border: 1px solid var(--color-border);
@@ -11,6 +14,12 @@
   box-shadow: var(--shadow-lg);
 }
 
+/* ── Accent tint variants ── */
+.card--purple { background: linear-gradient(160deg, #ffffff 0%, #F9EEFA 100%); }
+.card--pink   { background: linear-gradient(160deg, #ffffff 0%, #FEE6EA 100%); }
+.card--blue   { background: linear-gradient(160deg, #ffffff 0%, #EEE8F8 100%); }
+
+/* ── Tag badge ── */
 .card__tag {
   display: inline-block;
   padding: 0.25rem 0.75rem;
@@ -22,11 +31,19 @@
   margin-bottom: 0.75rem;
 }
 
+/* ── Icon ── */
+.card__icon {
+  font-size: 1.75rem;
+  margin-bottom: 0.75rem;
+}
+
+/* ── Title ── */
 .card__title {
   font-size: 1.15rem;
   margin-bottom: 0.5rem;
 }
 
+/* ── Meta (subtitle / date) ── */
 .card__meta {
   font-size: 0.85rem;
   color: var(--color-primary-light);
@@ -34,7 +51,16 @@
   margin-bottom: 0.5rem;
 }
 
+/* ── Body ── */
 .card__body {
   font-size: 0.95rem;
   color: var(--color-text-secondary);
+  line-height: 1.65;
+}
+
+/* ===== Responsive ===== */
+@media (max-width: 480px) {
+  .card {
+    padding: 1.5rem;
+  }
 }

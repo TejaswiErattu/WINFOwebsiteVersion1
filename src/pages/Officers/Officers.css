@@ -1,5 +1,59 @@
-.officers-grid {
+/* ==========================================================================
+   OFFICERS PAGE
+   ========================================================================== */
+
+/* ===== 1. OFFICER GROUP ===== */
+.officers-group__label {
+  font-family: var(--font-heading);
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: var(--color-text);
+  margin-bottom: 1.5rem;
+  padding-bottom: 0.6rem;
+  border-bottom: 2px solid var(--color-border);
+  display: inline-block;
+}
+
+.officers-group__grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  grid-template-columns: repeat(4, 1fr);
   gap: 1.5rem;
+}
+
+/* Exec board: 3 cards, centered */
+.officers-group__grid--exec {
+  grid-template-columns: repeat(3, 1fr);
+  max-width: 780px;
+  margin: 0 auto;
+}
+
+/* ===== 2. ROLE HIGHLIGHTS ===== */
+.officers-roles {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.75rem;
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 900px) {
+  .officers-group__grid,
+  .officers-group__grid--exec {
+    grid-template-columns: repeat(2, 1fr);
+    max-width: 100%;
+  }
+
+  .officers-roles {
+    grid-template-columns: 1fr;
+    max-width: 420px;
+    margin: 0 auto;
+  }
+}
+
+@media (max-width: 600px) {
+  .officers-group__grid,
+  .officers-group__grid--exec {
+    grid-template-columns: 1fr;
+    max-width: 300px;
+    margin: 0 auto;
+  }
 }

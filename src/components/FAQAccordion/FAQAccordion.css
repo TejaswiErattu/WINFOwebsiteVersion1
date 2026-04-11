@@ -1,0 +1,100 @@
+/* ==========================================================================
+   FAQ ACCORDION — expandable Q&A list
+   ========================================================================== */
+.faq-accordion {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  max-width: 760px;
+  margin: 0 auto;
+}
+
+.faq-accordion__item {
+  background: var(--color-surface);
+  border: 1px solid rgba(237, 228, 245, 0.4);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  transition: box-shadow var(--transition-base), border-color var(--transition-base);
+}
+
+.faq-accordion__item:hover {
+  box-shadow: var(--shadow-sm);
+  border-color: rgba(183, 163, 223, 0.3);
+}
+
+.faq-accordion__item--open {
+  border-color: rgba(183, 163, 223, 0.35);
+  box-shadow: var(--shadow-md);
+}
+
+/* ── Trigger button ── */
+.faq-accordion__trigger {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 1.15rem 1.5rem;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  text-align: left;
+  font-family: var(--font-heading);
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--color-text);
+  transition: color var(--transition-fast);
+}
+
+.faq-accordion__trigger:hover {
+  color: var(--color-primary);
+}
+
+.faq-accordion__trigger:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: -2px;
+  border-radius: var(--radius-lg);
+}
+
+/* ── Plus / × icon ── */
+.faq-accordion__icon {
+  font-size: 1.15rem;
+  flex-shrink: 0;
+  transition: transform var(--transition-base);
+  color: var(--color-primary-light);
+}
+
+.faq-accordion__item--open .faq-accordion__icon {
+  transform: rotate(45deg);
+}
+
+/* ── Collapsible body ── */
+.faq-accordion__body {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.35s ease, padding 0.35s ease;
+}
+
+.faq-accordion__item--open .faq-accordion__body {
+  max-height: 300px;
+}
+
+.faq-accordion__answer {
+  padding: 0 1.5rem 1.25rem;
+  font-size: 0.88rem;
+  line-height: 1.7;
+  color: var(--color-text-secondary);
+}
+
+/* ===== Responsive ===== */
+@media (max-width: 480px) {
+  .faq-accordion__trigger {
+    padding: 1rem 1.15rem;
+    font-size: 0.9rem;
+  }
+
+  .faq-accordion__answer {
+    padding: 0 1.15rem 1rem;
+    font-size: 0.85rem;
+  }
+}
