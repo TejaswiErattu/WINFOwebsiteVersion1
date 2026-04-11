@@ -122,27 +122,42 @@ export default function Hackathon() {
       </SectionWrapper>
 
       {/* ===== 4 · REGISTER CTA ===== */}
-      <SectionWrapper alt className="hack-register-section">
+      <section className="hack-register">
         {/* Circuit decoration */}
         <div className="hack-register__circuit" aria-hidden="true">
-          <svg viewBox="0 0 200 300" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <line x1="100" y1="0" x2="100" y2="80" stroke="currentColor" strokeWidth="1.5" />
-            <line x1="100" y1="80" x2="160" y2="140" stroke="currentColor" strokeWidth="1.5" />
-            <line x1="160" y1="140" x2="160" y2="220" stroke="currentColor" strokeWidth="1.5" />
-            <line x1="160" y1="220" x2="100" y2="280" stroke="currentColor" strokeWidth="1.5" />
-            <circle cx="100" cy="80" r="4" fill="currentColor" />
-            <circle cx="160" cy="140" r="5" fill="currentColor" />
-            <circle cx="160" cy="220" r="4" fill="currentColor" />
-            <circle cx="100" cy="280" r="5" fill="currentColor" />
+          <svg viewBox="0 0 260 400" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <line x1="40" y1="200" x2="40" y2="320" stroke="currentColor" strokeWidth="1.5" />
+            <line x1="40" y1="320" x2="140" y2="320" stroke="currentColor" strokeWidth="1.5" />
+            <line x1="140" y1="320" x2="140" y2="400" stroke="currentColor" strokeWidth="1.5" />
+            <line x1="140" y1="200" x2="200" y2="200" stroke="currentColor" strokeWidth="1.5" />
+            <line x1="200" y1="200" x2="200" y2="280" stroke="currentColor" strokeWidth="1.5" />
+            <line x1="200" y1="280" x2="260" y2="280" stroke="currentColor" strokeWidth="1.5" />
+            <circle cx="40" cy="320" r="5" fill="currentColor" />
+            <circle cx="140" cy="320" r="4" fill="currentColor" />
+            <circle cx="200" cy="200" r="5" fill="currentColor" />
+            <circle cx="200" cy="280" r="4" fill="currentColor" />
+            <circle cx="40" cy="260" r="3" stroke="currentColor" strokeWidth="1.5" fill="none" />
+            <circle cx="140" cy="360" r="3" stroke="currentColor" strokeWidth="1.5" fill="none" />
           </svg>
         </div>
-        <div className="hack-register-cta">
-          <p className="hack-register-cta__text cursive-title">{registerCta.text}</p>
-          <Button href={registerCta.btnLink} variant="accent" size="lg" className="hack-register-cta__btn">
-            {registerCta.btnLabel}
-          </Button>
+
+        {/* Pink glow */}
+        <div className="hack-register__glow" aria-hidden="true" />
+
+        <h2 className="hack-register__heading cursive-title">{registerCta.heading}</h2>
+
+        <div className="hack-register__card">
+          <p className="hack-register__card-text">{registerCta.cardText}</p>
+          <form className="hack-register__form" onSubmit={(e) => e.preventDefault()}>
+            <input
+              type="email"
+              className="hack-register__input"
+              placeholder={registerCta.inputPlaceholder}
+              aria-label="Email address"
+            />
+          </form>
         </div>
-      </SectionWrapper>
+      </section>
 
       {/* ===== 5 · FAQ ===== */}
       <SectionWrapper className="hack-faq-section">

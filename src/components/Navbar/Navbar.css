@@ -37,7 +37,6 @@
 .navbar__logo {
   display: inline-flex;
   align-items: center;
-  font-size: 1.55rem;
   transition: opacity var(--transition-fast);
 }
 
@@ -45,9 +44,9 @@
   opacity: 0.85;
 }
 
-/* Let the WinfoLogo handle gradient colouring */
+/* Logo image sizing */
 .navbar__logo .winfo-logo {
-  font-size: inherit;
+  height: 1.55rem;
 }
 
 /* ── Desktop links ── */

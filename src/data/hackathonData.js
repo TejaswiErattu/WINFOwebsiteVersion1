@@ -43,9 +43,9 @@ export const hackathonData = {
 
   /* ---------- Register CTA ---------- */
   registerCta: {
-    text: 'want to learn more or register?',
-    btnLabel: 'click here!',
-    btnLink: '#',
+    heading: 'Registration opens late fall!',
+    cardText: 'sign up for early priority notifications!',
+    inputPlaceholder: 'email',
   },
 
   /* ---------- FAQ ---------- */

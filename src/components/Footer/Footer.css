@@ -29,11 +29,11 @@
 
 /* ── Brand column ── */
 .footer__brand-logo {
-  font-family: var(--font-heading);
-  font-size: 1.6rem;
-  font-weight: 800;
   margin-bottom: 1.25rem;
-  letter-spacing: -0.02em;
+}
+
+.footer__brand-logo .winfo-logo {
+  height: 2.4rem;
 }
 
 .footer__land-ack {

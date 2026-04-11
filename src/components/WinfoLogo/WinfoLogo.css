@@ -1,56 +1,11 @@
 /* ==========================================================================
-   WinfoLogo — branded "w;nfo" mark
+   WinfoLogo — branded image logo
    ========================================================================== */
 .winfo-logo {
-  font-family: var(--font-heading);
-  font-weight: 800;
-  letter-spacing: -0.025em;
-  display: inline-flex;
-  align-items: baseline;
+  height: 2rem;
+  width: auto;
+  display: inline-block;
+  vertical-align: middle;
   user-select: none;
-}
-
-/* The semicolon replaces "i" — flows naturally inline */
-.winfo-logo__semi {
-  display: inline;
-}
-
-/* ── Colour variants ── */
-.winfo-logo--gradient {
-  background: linear-gradient(90deg, #FD9193, #EC8FA0, #D58DB2, #C28CC0, #AA8BCF, #948DD1);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-}
-
-.winfo-logo--white {
-  color: #fff;
-  -webkit-text-fill-color: #fff;
-}
-
-.winfo-logo--inherit {
-  color: inherit;
-  -webkit-text-fill-color: inherit;
-}
-
-/* ── Multi-colour (navbar logo — Figma gradient: coral → pink → rose → purple → violet → blue) ── */
-.winfo-logo--multi .winfo-logo__w {
-  background: linear-gradient(90deg, #FD9193, #EC8FA0);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-}
-
-.winfo-logo--multi .winfo-logo__semi {
-  background: linear-gradient(90deg, #D58DB2, #C28CC0);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-}
-
-.winfo-logo--multi .winfo-logo__nfo {
-  background: linear-gradient(90deg, #AA8BCF, #948DD1);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
+  object-fit: contain;
 }

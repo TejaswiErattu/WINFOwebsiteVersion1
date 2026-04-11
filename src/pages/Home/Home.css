@@ -60,21 +60,13 @@
 }
 
 .home-hero__logo {
-  font-size: clamp(5rem, 14vw, 12rem);
-  color: #fff;
-  -webkit-text-fill-color: #fff;
-  letter-spacing: -0.03em;
-  text-shadow: 0 4px 40px rgba(255, 255, 255, 0.15);
+  height: clamp(5rem, 14vw, 12rem);
+  width: auto;
+  filter: brightness(0) invert(1);
+  opacity: 0.95;
 }
 
-/* Override the gradient variant so it stays white */
-.home-hero__logo.winfo-logo--white {
-  background: none;
-  -webkit-background-clip: unset;
-  background-clip: unset;
-  -webkit-text-fill-color: #fff;
-  color: #fff;
-}
+/* No longer needed — image handles everything */
 
 /* ===== 2. WHO WE ARE — text LEFT, image RIGHT ===== */
 .home-who {

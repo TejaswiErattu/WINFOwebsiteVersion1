@@ -1,45 +1,25 @@
 /**
- * WinfoLogo — renders "w;nfo" with a semicolon as the "i".
+ * WinfoLogo — renders the WINFO logo as an image.
  *
  * Props:
  *   className  – extra CSS class for styling
- *   size       – optional inline fontSize override
- *   color      – 'gradient' (default), 'white', 'inherit', or 'multi'
+ *   size       – optional height override (e.g. '2rem', '48px')
+ *   color      – 'gradient' | 'multi' (default) → color logo
+ *                'white' → white logo
  */
 export default function WinfoLogo({ className = '', size, color = 'gradient' }) {
-  const style = size ? { fontSize: size } : undefined;
+  const isWhite = color === 'white';
+  const src = isWhite ? '/images/winfo-logo-white.png' : '/images/winfo-logo-color.png';
 
-  const colorClass =
-    color === 'white'
-      ? 'winfo-logo--white'
-      : color === 'inherit'
-        ? 'winfo-logo--inherit'
-        : color === 'multi'
-          ? 'winfo-logo--multi'
-          : 'winfo-logo--gradient';
-
-  /* Multi-colour variant wraps each segment */
-  if (color === 'multi') {
-    return (
-      <span
-        className={`winfo-logo ${colorClass} ${className}`.trim()}
-        style={style}
-        aria-label="WINFO"
-      >
-        <span className="winfo-logo__w">w</span>
-        <span className="winfo-logo__semi">;</span>
-        <span className="winfo-logo__nfo">nfo</span>
-      </span>
-    );
-  }
+  const style = size ? { height: size } : undefined;
 
   return (
-    <span
-      className={`winfo-logo ${colorClass} ${className}`.trim()}
+    <img
+      src={src}
+      alt="WINFO"
+      className={`winfo-logo ${className}`.trim()}
       style={style}
-      aria-label="WINFO"
-    >
-      w<span className="winfo-logo__semi">;</span>nfo
-    </span>
+      draggable={false}
+    />
   );
 }
