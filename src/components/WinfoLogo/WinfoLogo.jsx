@@ -1,3 +1,5 @@
+import './WinfoLogo.css';
+
 /**
  * WinfoLogo — renders the WINFO logo as an image.
  *

@@ -1,7 +1,6 @@
 import { Link } from 'react-router-dom';
 import { footerLinks, socialLinks, siteInfo } from '../../data/navLinks';
 import WinfoLogo from '../WinfoLogo/WinfoLogo';
-import '../WinfoLogo/WinfoLogo.css';
 import './Footer.css';
 
 /* ── Tiny inline SVG icons (outlined style to match screenshot) ── */

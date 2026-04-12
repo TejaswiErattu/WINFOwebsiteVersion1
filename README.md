@@ -1,16 +1,64 @@
-# React + Vite
+# WINFO Website
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+The official website for **WINFO (Women in Informatics)** at the University of Washington — a student organization dedicated to building a more diverse and equitable future in tech.
 
-Currently, two official plugins are available:
+## Tech Stack
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+- **React 19** + **Vite** — fast dev server & optimised builds
+- **React Router DOM** — client-side routing
+- **CSS Custom Properties** — design tokens in `src/styles/variables.css`
+- **Google Fonts** — Poppins, Inter, Caveat, Space Mono
 
-## React Compiler
+## Pages
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+| Route | Page |
+|---|---|
+| `/` | Home |
+| `/hackathon` | Hackathon |
+| `/events` | Events |
+| `/podcast` | Podcast |
+| `/officers` | Team / Officers |
+| `/membership` | Membership (Join Us) |
+| `/support` | Support Us |
 
-## Expanding the ESLint configuration
+## Project Structure
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+```
+public/
+  images/             # Logo files & event photos
+src/
+  components/         # Reusable UI components (Navbar, Footer, WinfoLogo, Button, Cards, etc.)
+  data/               # Page-specific data files (homeData.js, hackathonData.js, etc.)
+  pages/              # Route-level page components
+  styles/             # Global CSS & design tokens
+  App.jsx             # Router & layout
+  main.jsx            # Entry point
+```
+
+## Getting Started
+
+```bash
+# Install dependencies
+npm install
+
+# Start dev server
+npm run dev
+
+# Build for production
+npm run build
+
+# Preview production build
+npm run preview
+```
+
+## Updating Content
+
+All page content lives in `src/data/` — edit the data files to update text, events, officers, FAQs, etc. without touching JSX.
+
+Replace placeholder images by adding files to `public/images/` and updating the corresponding `image: ''` fields in the data files.
+
+## Design
+
+- Figma HiFi designs in `public/figma-ref/`
+- Colour palette: soft violet (`#9E80BD`), blush pink (`#FEB0BA`), lavender (`#B7A3DF`)
+- Fonts: Poppins (headings), Inter (body), Caveat (cursive titles), Space Mono (monospace labels)

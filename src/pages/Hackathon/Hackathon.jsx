@@ -1,18 +1,10 @@
 import { useState } from 'react';
 import SectionWrapper from '../../components/SectionWrapper/SectionWrapper';
 import Button from '../../components/Buttons/Buttons';
+import CircuitSVG from '../../components/CircuitSVG/CircuitSVG';
+import { renderBold } from '../../utils/renderBold';
 import { hackathonData } from '../../data/hackathonData';
 import './Hackathon.css';
-
-/**
- * Render text with **bold** markdown-style markers.
- */
-function renderBold(text) {
-  const parts = text.split(/\*\*(.*?)\*\*/g);
-  return parts.map((part, i) =>
-    i % 2 === 1 ? <strong key={i}>{part}</strong> : part,
-  );
-}
 
 export default function Hackathon() {
   const {
@@ -125,20 +117,7 @@ export default function Hackathon() {
       <section className="hack-register">
         {/* Circuit decoration */}
         <div className="hack-register__circuit" aria-hidden="true">
-          <svg viewBox="0 0 260 400" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <line x1="40" y1="200" x2="40" y2="320" stroke="currentColor" strokeWidth="1.5" />
-            <line x1="40" y1="320" x2="140" y2="320" stroke="currentColor" strokeWidth="1.5" />
-            <line x1="140" y1="320" x2="140" y2="400" stroke="currentColor" strokeWidth="1.5" />
-            <line x1="140" y1="200" x2="200" y2="200" stroke="currentColor" strokeWidth="1.5" />
-            <line x1="200" y1="200" x2="200" y2="280" stroke="currentColor" strokeWidth="1.5" />
-            <line x1="200" y1="280" x2="260" y2="280" stroke="currentColor" strokeWidth="1.5" />
-            <circle cx="40" cy="320" r="5" fill="currentColor" />
-            <circle cx="140" cy="320" r="4" fill="currentColor" />
-            <circle cx="200" cy="200" r="5" fill="currentColor" />
-            <circle cx="200" cy="280" r="4" fill="currentColor" />
-            <circle cx="40" cy="260" r="3" stroke="currentColor" strokeWidth="1.5" fill="none" />
-            <circle cx="140" cy="360" r="3" stroke="currentColor" strokeWidth="1.5" fill="none" />
-          </svg>
+          <CircuitSVG variant="register" />
         </div>
 
         {/* Pink glow */}
@@ -163,25 +142,7 @@ export default function Hackathon() {
       <SectionWrapper className="hack-faq-section">
         {/* Circuit decoration on right */}
         <div className="hack-faq__circuit" aria-hidden="true">
-          <svg viewBox="0 0 260 500" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <line x1="40" y1="0" x2="40" y2="100" stroke="currentColor" strokeWidth="1" />
-            <line x1="40" y1="100" x2="140" y2="100" stroke="currentColor" strokeWidth="1" />
-            <line x1="140" y1="100" x2="140" y2="200" stroke="currentColor" strokeWidth="1" />
-            <line x1="140" y1="200" x2="60" y2="200" stroke="currentColor" strokeWidth="1" />
-            <line x1="60" y1="200" x2="60" y2="300" stroke="currentColor" strokeWidth="1" />
-            <line x1="60" y1="300" x2="180" y2="300" stroke="currentColor" strokeWidth="1" />
-            <line x1="180" y1="300" x2="180" y2="400" stroke="currentColor" strokeWidth="1" />
-            <line x1="180" y1="400" x2="100" y2="400" stroke="currentColor" strokeWidth="1" />
-            <line x1="100" y1="400" x2="100" y2="500" stroke="currentColor" strokeWidth="1" />
-            <circle cx="40" cy="100" r="4" fill="currentColor" />
-            <circle cx="140" cy="100" r="3" fill="currentColor" />
-            <circle cx="140" cy="200" r="4" fill="currentColor" />
-            <circle cx="60" cy="200" r="3" fill="currentColor" />
-            <circle cx="60" cy="300" r="4" fill="currentColor" />
-            <circle cx="180" cy="300" r="3" fill="currentColor" />
-            <circle cx="180" cy="400" r="4" fill="currentColor" />
-            <circle cx="100" cy="400" r="3" fill="currentColor" />
-          </svg>
+          <CircuitSVG variant="faq" />
         </div>
 
         <h2 className="cursive-title hack-faq__heading">{faqHeading}</h2>

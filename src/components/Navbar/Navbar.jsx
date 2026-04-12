@@ -1,9 +1,8 @@
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { Link, NavLink, useLocation } from 'react-router-dom';
 import { navLinks, siteInfo } from '../../data/navLinks';
 import Button from '../Buttons/Buttons';
 import WinfoLogo from '../WinfoLogo/WinfoLogo';
-import '../WinfoLogo/WinfoLogo.css';
 import './Navbar.css';
 
 /**
@@ -19,12 +18,14 @@ import './Navbar.css';
  */
 export default function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false);
+  const [prevPathname, setPrevPathname] = useState(null);
   const { pathname } = useLocation();
 
-  /* Close the mobile menu whenever the route changes */
-  useEffect(() => {
-    setMenuOpen(false);
-  }, [pathname]);
+  /* Close the mobile menu whenever the route changes (state-driven, no effect) */
+  if (prevPathname !== pathname) {
+    setPrevPathname(pathname);
+    if (menuOpen) setMenuOpen(false);
+  }
 
   const toggle = () => setMenuOpen((prev) => !prev);
   const close  = () => setMenuOpen(false);
@@ -52,7 +53,7 @@ export default function Navbar() {
             </NavLink>
           ))}
 
-          <Button to={siteInfo.navCtaTo} size="sm" className="navbar__cta">
+          <Button href={siteInfo.navCtaHref} size="sm" className="navbar__cta">
             {siteInfo.navCtaLabel}
           </Button>
         </div>
@@ -89,7 +90,7 @@ export default function Navbar() {
           </NavLink>
         ))}
 
-        <Button to={siteInfo.navCtaTo} size="sm" onClick={close}>
+        <Button href={siteInfo.navCtaHref} size="sm" onClick={close}>
           {siteInfo.navCtaLabel}
         </Button>
       </div>

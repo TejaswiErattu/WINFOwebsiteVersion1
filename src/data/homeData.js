@@ -2,6 +2,8 @@
    Home page data — matches Figma screenshots
    =================================================================== */
 
+import { MEMBERSHIP_SIGNUP_URL } from './externalLinks';
+
 /* ---------- Who We Are ---------- */
 export const missionData = {
   title: 'who we are',
@@ -11,7 +13,7 @@ export const missionData = {
   bodyTertiary:
     'We welcome all majors, genders, and identities united by a shared passion for creating a more equitable tech industry.',
   ctaLabel: 'join us!',
-  ctaLink: '/membership',
+  ctaLink: MEMBERSHIP_SIGNUP_URL,
   image: '/images/hero-photo-1.png',
   imageAlt: 'WINFO members at a community event',
 };
@@ -93,5 +95,5 @@ export const informaticsQuotes = [
 /* ---------- CTA ---------- */
 export const homeCta = {
   btnLabel: 'join us!',
-  btnTo: '/membership',
+  btnTo: MEMBERSHIP_SIGNUP_URL,
 };

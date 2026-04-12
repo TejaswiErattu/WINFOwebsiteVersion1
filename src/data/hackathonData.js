@@ -2,6 +2,8 @@
    Hackathon page data — matches Figma HiFi screenshots
    =================================================================== */
 
+import { MEMBERSHIP_SIGNUP_URL } from './externalLinks';
+
 export const hackathonData = {
   /* ---------- Hero ---------- */
   title: 'hackathon',
@@ -22,7 +24,7 @@ export const hackathonData = {
   beginnerBody:
     "This is a great experience for college students to network, get hands-on experience coding or designing, and work in teams to problem solve. Whether you\u2019re new to tech, a seasoned hacker, or looking for more experience, WINFO\u2019s hackathon is for you!",
   ctaLabel: 'register now!',
-  ctaLink: '#',
+  ctaLink: MEMBERSHIP_SIGNUP_URL,
 
   /* ---------- Stats ---------- */
   statsHeading: 'at our latest hackathon\u2026',

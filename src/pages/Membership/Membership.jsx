@@ -1,5 +1,7 @@
 import SectionWrapper from '../../components/SectionWrapper/SectionWrapper';
 import Button from '../../components/Buttons/Buttons';
+import CircuitSVG from '../../components/CircuitSVG/CircuitSVG';
+import { renderBold } from '../../utils/renderBold';
 import { membershipData } from '../../data/membershipData';
 import './Membership.css';
 
@@ -29,16 +31,6 @@ const perkIcons = {
   ),
 };
 
-/**
- * Render text with **bold** markdown-style markers.
- */
-function renderBold(text) {
-  const parts = text.split(/\*\*(.*?)\*\*/g);
-  return parts.map((part, i) =>
-    i % 2 === 1 ? <strong key={i}>{part}</strong> : part,
-  );
-}
-
 export default function Membership() {
   const {
     title,
@@ -61,21 +53,7 @@ export default function Membership() {
       <section className="membership-hero">
         {/* Circuit decoration */}
         <div className="membership-hero__circuit" aria-hidden="true">
-          <svg viewBox="0 0 200 400" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <line x1="200" y1="60" x2="40" y2="60" stroke="currentColor" strokeWidth="1" />
-            <line x1="200" y1="140" x2="80" y2="140" stroke="currentColor" strokeWidth="1" />
-            <line x1="200" y1="220" x2="20" y2="220" stroke="currentColor" strokeWidth="1" />
-            <line x1="200" y1="300" x2="60" y2="300" stroke="currentColor" strokeWidth="1" />
-            <line x1="120" y1="60" x2="120" y2="140" stroke="currentColor" strokeWidth="1" />
-            <line x1="80" y1="140" x2="80" y2="220" stroke="currentColor" strokeWidth="1" />
-            <line x1="140" y1="220" x2="140" y2="300" stroke="currentColor" strokeWidth="1" />
-            <circle cx="120" cy="60" r="3" fill="currentColor" />
-            <circle cx="40" cy="60" r="4" fill="currentColor" />
-            <circle cx="80" cy="140" r="4" fill="currentColor" />
-            <circle cx="20" cy="220" r="3" fill="currentColor" />
-            <circle cx="140" cy="300" r="4" fill="currentColor" />
-            <circle cx="60" cy="300" r="3" fill="currentColor" />
-          </svg>
+          <CircuitSVG variant="small" />
         </div>
 
         <div className="membership-hero__inner">

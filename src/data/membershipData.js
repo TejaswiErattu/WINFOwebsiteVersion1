@@ -2,6 +2,8 @@
    Membership page data — matches Figma HiFi screenshots
    =================================================================== */
 
+import { MEMBERSHIP_SIGNUP_URL } from './externalLinks';
+
 export const membershipData = {
   /* ---------- Hero ---------- */
   title: 'membership',
@@ -12,7 +14,7 @@ export const membershipData = {
   heroBodyTertiary:
     'Whether you\u2019re exploring tech for the first time or already on your journey, WINFO always welcomes all majors, genders, and identities.',
   ctaLabel: 'sign up!',
-  ctaLink: '#',
+  ctaLink: MEMBERSHIP_SIGNUP_URL,
   heroImage: '/images/hero-photo-3.png',
   heroImageAlt: 'WINFO members smiling together',
 
@@ -46,6 +48,6 @@ export const membershipData = {
   bottomCta: {
     text: 'ready to take the leap?',
     btnLabel: 'sign up!',
-    btnLink: '#',
+    btnLink: MEMBERSHIP_SIGNUP_URL,
   },
 };

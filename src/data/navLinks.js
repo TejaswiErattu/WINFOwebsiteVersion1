@@ -7,6 +7,8 @@
    • Change brand text, contact info, and the navbar CTA in `siteInfo`
    =================================================================== */
 
+import { MEMBERSHIP_SIGNUP_URL } from './externalLinks';
+
 /* ---------- Navbar links ---------- */
 export const navLinks = [
   { label: 'hackathon', path: '/hackathon' },
@@ -64,5 +66,5 @@ export const siteInfo = {
   ],
   copyright: 'W;NFO — Women in Informatics',
   navCtaLabel: 'join us!',
-  navCtaTo: '/membership',
+  navCtaHref: MEMBERSHIP_SIGNUP_URL,
 };

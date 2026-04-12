@@ -2,6 +2,8 @@
    Events page data
    =================================================================== */
 
+import { MEMBERSHIP_SIGNUP_URL } from './externalLinks';
+
 export const eventsData = {
   /* ---------- Hero ---------- */
   title: 'events',
@@ -41,6 +43,6 @@ export const eventsData = {
     heading: 'We\'ve got you covered!',
     body: 'want to stay in the loop?\nfollow @uwwinfo or register below:',
     btnLabel: 'become a member!',
-    btnTo: '/membership',
+    btnTo: MEMBERSHIP_SIGNUP_URL,
   },
 };
