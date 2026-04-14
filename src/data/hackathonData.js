@@ -37,8 +37,8 @@ export const hackathonData = {
   /* ---------- Hero ---------- */
   title: 'hackathon',
   heroPhotos: [
-    { src: '/images/hackathon-2.jpg', alt: 'Hackathon audience' },
-    { src: '/images/hackathon-3.jpg', alt: 'Sponsor booth at hackathon' },
+    { src: '/images/hackathon-participants.jpg', alt: 'Hackathon participants working together' },
+    { src: '/images/hackathon-food.jpg', alt: 'Food being served at hackathon' },
     { src: '/images/hackathon-4.jpg', alt: 'WINFO hackathon group photo' },
   ],
 
@@ -66,10 +66,10 @@ export const hackathonData = {
   /* ---------- Previous Winners ---------- */
   winnersHeading: 'previous winners',
   winners: [
-    { category: 'Best Overall', image: '/images/hackathon-5.jpg', link: '#' },
-    { category: 'Best Design', image: '/images/hackathon-1.jpg', link: '#' },
-    { category: 'Best Impact', image: '/images/hackathon-2.jpg', link: '#' },
-    { category: 'Best Coding', image: '/images/hackathon-3.jpg', link: '#' },
+    { category: 'Best Overall', image: '/images/best-impact-winner.jpg', link: '#' },
+    { category: 'Best Design', image: '/images/best-overall-winner.jpg', link: '#' },
+    { category: 'Best Impact', image: '/images/best-design-winner.jpg', link: '#' },
+    { category: 'Best Coding', image: '/images/best-coding-winner.jpg', link: '#' },
   ],
 
   /* ---------- Register CTA ---------- */
