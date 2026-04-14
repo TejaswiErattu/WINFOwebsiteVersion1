@@ -4,6 +4,35 @@
 
 import { MEMBERSHIP_SIGNUP_URL } from './externalLinks';
 
+/* —— Local sponsor logos (from src/assets/sponsors) —— */
+import logoAccenture     from '../assets/sponsors/accenture.svg';
+import logoAdobe         from '../assets/sponsors/adobe.svg';
+import logoAlaska        from '../assets/sponsors/alaska-airlines.svg';
+import logoAmazon        from '../assets/sponsors/amazon.svg';
+import logoAvanade       from '../assets/sponsors/avanade.svg';
+import logoBestBuy       from '../assets/sponsors/best-buy.svg';
+import logoDeloitte      from '../assets/sponsors/deloitte.svg';
+import logoDisney        from '../assets/sponsors/disney.svg';
+import logoExtrahop      from '../assets/sponsors/extrahop.svg';
+import logoGE            from '../assets/sponsors/ge.svg';
+import logoGoogle        from '../assets/sponsors/google.svg';
+import logoHBO           from '../assets/sponsors/hbo.svg';
+import logoHulu          from '../assets/sponsors/hulu.svg';
+import logoKPMG          from '../assets/sponsors/kpmg.svg';
+import logoLibertyMutual from '../assets/sponsors/liberty-mutual.svg';
+import logoMicrosoft     from '../assets/sponsors/microsoft.svg';
+import logoNordstrom     from '../assets/sponsors/nordstrom.svg';
+import logoOkta          from '../assets/sponsors/okta.svg';
+import logoOracle        from '../assets/sponsors/oracle.svg';
+import logoSageBio       from '../assets/sponsors/sage-bionetworks.svg';
+import logoSmartsheet    from '../assets/sponsors/smartsheet.svg';
+import logoTicketmaster  from '../assets/sponsors/ticketmaster.svg';
+import logoTUNE          from '../assets/sponsors/tune.svg';
+import logoUW            from '../assets/sponsors/university-of-washington.jpeg';
+import logoVisa          from '../assets/sponsors/visa-inc.svg';
+import logoWellsFargo    from '../assets/sponsors/wells-fargo.svg';
+import logoWestMonroe    from '../assets/sponsors/west-monroe.png';
+
 export const hackathonData = {
   /* ---------- Hero ---------- */
   title: 'hackathon',
@@ -107,40 +136,40 @@ export const hackathonData = {
   /* ---------- Past Sponsors ---------- */
   pastSponsorsHeading: 'past sponsors',
   pastSponsors: [
-    { name: 'Accenture',              logo: 'https://logo.clearbit.com/accenture.com' },
-    { name: 'Adobe',                  logo: 'https://logo.clearbit.com/adobe.com' },
-    { name: 'Alaska Airlines',        logo: 'https://logo.clearbit.com/alaskaair.com' },
-    { name: 'Amazon Catalyst',        logo: 'https://logo.clearbit.com/amazon.com' },
-    { name: 'ASUW',                   logo: 'https://logo.clearbit.com/asuw.org' },
-    { name: 'AT&T',                   logo: 'https://logo.clearbit.com/att.com' },
-    { name: 'Avanade',                logo: 'https://logo.clearbit.com/avanade.com' },
-    { name: 'Best Buy',               logo: 'https://logo.clearbit.com/bestbuy.com' },
-    { name: 'Deloitte',               logo: 'https://logo.clearbit.com/deloitte.com' },
-    { name: 'The Walt Disney Company', logo: 'https://logo.clearbit.com/disney.com' },
-    { name: 'ExtraHop',               logo: 'https://logo.clearbit.com/extrahop.com' },
-    { name: 'GE Digital',             logo: 'https://logo.clearbit.com/ge.com' },
-    { name: 'Google',                 logo: 'https://logo.clearbit.com/google.com' },
+    { name: 'Accenture',              logo: logoAccenture },
+    { name: 'Adobe',                  logo: logoAdobe },
+    { name: 'Alaska Airlines',        logo: logoAlaska },
+    { name: 'Amazon Catalyst',        logo: logoAmazon },
+    { name: 'ASUW',                   logo: '' },
+    { name: 'AT&T',                   logo: '' },
+    { name: 'Avanade',                logo: logoAvanade },
+    { name: 'Best Buy',               logo: logoBestBuy },
+    { name: 'Deloitte',               logo: logoDeloitte },
+    { name: 'The Walt Disney Company', logo: logoDisney },
+    { name: 'ExtraHop',               logo: logoExtrahop },
+    { name: 'GE Digital',             logo: logoGE },
+    { name: 'Google',                 logo: logoGoogle },
     { name: 'GPSS',                   logo: '' },
-    { name: 'HBO',                    logo: 'https://logo.clearbit.com/hbo.com' },
+    { name: 'HBO',                    logo: logoHBO },
     { name: 'The HUB',                logo: '' },
-    { name: 'Hulu',                   logo: 'https://logo.clearbit.com/hulu.com' },
-    { name: 'Information School',     logo: 'https://logo.clearbit.com/ischool.uw.edu' },
-    { name: 'KPMG',                   logo: 'https://logo.clearbit.com/kpmg.com' },
-    { name: 'Liberty Mutual',         logo: 'https://logo.clearbit.com/libertymutual.com' },
-    { name: 'Microsoft',              logo: 'https://logo.clearbit.com/microsoft.com' },
-    { name: 'Nordstrom',              logo: 'https://logo.clearbit.com/nordstrom.com' },
-    { name: 'Okta',                   logo: 'https://logo.clearbit.com/okta.com' },
-    { name: 'Oracle',                 logo: 'https://logo.clearbit.com/oracle.com' },
-    { name: 'PwC',                    logo: 'https://logo.clearbit.com/pwc.com' },
-    { name: 'Sage Bionetworks',       logo: 'https://logo.clearbit.com/sagebionetworks.org' },
+    { name: 'Hulu',                   logo: logoHulu },
+    { name: 'Information School',     logo: logoUW },
+    { name: 'KPMG',                   logo: logoKPMG },
+    { name: 'Liberty Mutual',         logo: logoLibertyMutual },
+    { name: 'Microsoft',              logo: logoMicrosoft },
+    { name: 'Nordstrom',              logo: logoNordstrom },
+    { name: 'Okta',                   logo: logoOkta },
+    { name: 'Oracle',                 logo: logoOracle },
+    { name: 'PwC',                    logo: '' },
+    { name: 'Sage Bionetworks',       logo: logoSageBio },
     { name: 'Student Activities Office', logo: '' },
-    { name: 'Smartsheet',             logo: 'https://logo.clearbit.com/smartsheet.com' },
-    { name: 'Ticketmaster',           logo: 'https://logo.clearbit.com/ticketmaster.com' },
-    { name: 'TUNE',                   logo: 'https://logo.clearbit.com/tune.com' },
-    { name: 'UW Alumni Association',  logo: 'https://logo.clearbit.com/uw.edu' },
-    { name: 'Visa',                   logo: 'https://logo.clearbit.com/visa.com' },
-    { name: 'Wells Fargo',            logo: 'https://logo.clearbit.com/wellsfargo.com' },
-    { name: 'West Monroe',            logo: 'https://logo.clearbit.com/westmonroe.com' },
+    { name: 'Smartsheet',             logo: logoSmartsheet },
+    { name: 'Ticketmaster',           logo: logoTicketmaster },
+    { name: 'TUNE',                   logo: logoTUNE },
+    { name: 'UW Alumni Association',  logo: logoUW },
+    { name: 'Visa',                   logo: logoVisa },
+    { name: 'Wells Fargo',            logo: logoWellsFargo },
+    { name: 'West Monroe',            logo: logoWestMonroe },
   ],
 
   /* ---------- Past Hackathons ---------- */
