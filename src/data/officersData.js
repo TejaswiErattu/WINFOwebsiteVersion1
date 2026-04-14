@@ -19,7 +19,7 @@ export const officersData = {
     {
       name: 'chloe mau',
       role: 'external co-president',
-      image: '',
+      image: '/images/team/chloe_headshot.jpg',
       linkedin: 'https://www.linkedin.com/in/chloe-mau/',
       year: 'junior (class of 2027)',
       hometown: '',
@@ -29,7 +29,7 @@ export const officersData = {
     {
       name: 'stephanie lee',
       role: 'internal co-president',
-      image: '',
+      image: '/images/team/stephanie_headshot.JPG',
       linkedin: 'https://www.linkedin.com/in/stephanielee11/',
       year: 'sophomore (class of 2028)',
       hometown: '',
@@ -43,7 +43,7 @@ export const officersData = {
     {
       name: 'maryory ajpop',
       role: 'hackathon director',
-      image: '',
+      image: '/images/team/maryory_headshot.jpeg',
       linkedin: 'https://www.linkedin.com/in/maryoryajpop/',
       year: 'junior (class of 2027)',
       hometown: '',
@@ -53,7 +53,7 @@ export const officersData = {
     {
       name: 'tanya manchanda',
       role: 'outreach director',
-      image: '',
+      image: '/images/team/tanya_headshot.PNG',
       linkedin: 'https://www.linkedin.com/in/tanya-manchanda-605155268/',
       year: 'junior (class of 2027)',
       hometown: '',
@@ -63,7 +63,7 @@ export const officersData = {
     {
       name: 'tiffany guan',
       role: 'public relations director',
-      image: '',
+      image: '/images/team/tiffany_headshot.JPG',
       linkedin: 'https://www.linkedin.com/in/tiffany-guan-240697213/',
       year: '',
       hometown: '',
@@ -73,7 +73,7 @@ export const officersData = {
     {
       name: 'fay tong',
       role: 'creative director',
-      image: '',
+      image: '/images/team/fay_headshot.PNG',
       linkedin: '',
       year: '',
       hometown: '',
@@ -83,7 +83,7 @@ export const officersData = {
     {
       name: 'tejaswi erattu taj',
       role: 'finance executive',
-      image: '',
+      image: '/images/team/tejaswi_headshot.JPG',
       linkedin: 'https://www.linkedin.com/in/tejaswi-erattu-2007-uw/',
       year: 'first-year (class of 2029)',
       hometown: 'sammamish, washington',
@@ -93,7 +93,7 @@ export const officersData = {
     {
       name: 'hana kang',
       role: 'student engagement officer',
-      image: '',
+      image: '/images/team/hana_headshot.JPG',
       linkedin: 'https://www.linkedin.com/in/hana-kang-614358339/',
       year: '',
       hometown: '',
@@ -103,7 +103,7 @@ export const officersData = {
     {
       name: 'jasnoor kaur chimni',
       role: 'officer',
-      image: '',
+      image: '/images/team/jasnoor_headshot.JPG',
       linkedin: 'https://www.linkedin.com/in/jasnoor-chimni/',
       year: '',
       hometown: '',
@@ -113,7 +113,7 @@ export const officersData = {
     {
       name: 'sophia tounalom',
       role: 'officer',
-      image: '',
+      image: '/images/team/sophia_headshot.JPG',
       linkedin: 'https://www.linkedin.com/in/sophia-tounalom-221939282/',
       year: 'freshman (class of 2029)',
       hometown: '',
