@@ -15,7 +15,7 @@ export const membershipData = {
     'Whether you\u2019re exploring tech for the first time or already on your journey, WINFO always welcomes all majors, genders, and identities.',
   ctaLabel: 'sign up!',
   ctaLink: MEMBERSHIP_SIGNUP_URL,
-  heroImage: '/images/hero-photo-3.png',
+  heroImage: '/images/hackathon-1.jpg',
   heroImageAlt: 'WINFO members smiling together',
 
   /* ---------- Perks ---------- */

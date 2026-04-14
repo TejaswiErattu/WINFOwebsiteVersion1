@@ -22,7 +22,7 @@
       #FEE6EA 65%,
       #FFF9FB 100%
     );
-  padding: 5rem 1.5rem;
+  padding: 10px 1.5rem;
 }
 
 /* ── Circuit board decorations ── */
@@ -62,7 +62,6 @@
 .home-hero__logo {
   height: clamp(5rem, 14vw, 12rem);
   width: auto;
-  filter: brightness(0) invert(1);
   opacity: 0.95;
 }
 
@@ -304,7 +303,7 @@
 @media (max-width: 900px) {
   .home-hero {
     min-height: 360px;
-    padding: 4rem 1rem;
+    padding: 10px 1rem;
   }
 
   .home-hero__circuits {
@@ -366,7 +365,7 @@
 @media (max-width: 600px) {
   .home-hero {
     min-height: 280px;
-    padding: 3rem 0.75rem;
+    padding: 10px 0.75rem;
   }
 
   .home-hero__circuits {

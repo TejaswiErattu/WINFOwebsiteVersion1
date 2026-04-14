@@ -8,9 +8,9 @@ export const hackathonData = {
   /* ---------- Hero ---------- */
   title: 'hackathon',
   heroPhotos: [
-    { src: '/images/hack-photo-1.png', alt: 'Hackathon audience' },
-    { src: '/images/hack-photo-2.png', alt: 'Sponsor booth at hackathon' },
-    { src: '/images/hack-photo-3.png', alt: 'WINFO hackathon group photo' },
+    { src: '/images/hackathon-2.jpg', alt: 'Hackathon audience' },
+    { src: '/images/hackathon-3.jpg', alt: 'Sponsor booth at hackathon' },
+    { src: '/images/hackathon-4.jpg', alt: 'WINFO hackathon group photo' },
   ],
 
   /* ---------- About blurbs ---------- */
@@ -37,10 +37,10 @@ export const hackathonData = {
   /* ---------- Previous Winners ---------- */
   winnersHeading: 'previous winners',
   winners: [
-    { category: 'Best Overall', image: '', link: '#' },
-    { category: 'Best Design', image: '', link: '#' },
-    { category: 'Best Impact', image: '', link: '#' },
-    { category: 'Best Coding', image: '', link: '#' },
+    { category: 'Best Overall', image: '/images/hackathon-5.jpg', link: '#' },
+    { category: 'Best Design', image: '/images/hackathon-1.jpg', link: '#' },
+    { category: 'Best Impact', image: '/images/hackathon-2.jpg', link: '#' },
+    { category: 'Best Coding', image: '/images/hackathon-3.jpg', link: '#' },
   ],
 
   /* ---------- Register CTA ---------- */
@@ -107,14 +107,40 @@ export const hackathonData = {
   /* ---------- Past Sponsors ---------- */
   pastSponsorsHeading: 'past sponsors',
   pastSponsors: [
-    'Accenture', 'Adobe', 'Alaska Airlines', 'Amazon Catalyst', 'ASUW',
-    'AT&T', 'Avanade', 'Best Buy', 'Deloitte',
-    'The Walt Disney Company', 'ExtraHop', 'GE Digital', 'Google', 'GPSS',
-    'HBO', 'The HUB', 'Hulu', 'Information School',
-    'KPMG', 'Liberty Mutual', 'Microsoft', 'Nordstrom', 'Okta', 'Oracle',
-    'PwC', 'Sage Bionetworks', 'Student Activities Office',
-    'Smartsheet', 'Ticketmaster', 'TUNE', 'UW Alumni Association', 'Visa',
-    'Wells Fargo', 'West Monroe',
+    { name: 'Accenture',              logo: 'https://logo.clearbit.com/accenture.com' },
+    { name: 'Adobe',                  logo: 'https://logo.clearbit.com/adobe.com' },
+    { name: 'Alaska Airlines',        logo: 'https://logo.clearbit.com/alaskaair.com' },
+    { name: 'Amazon Catalyst',        logo: 'https://logo.clearbit.com/amazon.com' },
+    { name: 'ASUW',                   logo: 'https://logo.clearbit.com/asuw.org' },
+    { name: 'AT&T',                   logo: 'https://logo.clearbit.com/att.com' },
+    { name: 'Avanade',                logo: 'https://logo.clearbit.com/avanade.com' },
+    { name: 'Best Buy',               logo: 'https://logo.clearbit.com/bestbuy.com' },
+    { name: 'Deloitte',               logo: 'https://logo.clearbit.com/deloitte.com' },
+    { name: 'The Walt Disney Company', logo: 'https://logo.clearbit.com/disney.com' },
+    { name: 'ExtraHop',               logo: 'https://logo.clearbit.com/extrahop.com' },
+    { name: 'GE Digital',             logo: 'https://logo.clearbit.com/ge.com' },
+    { name: 'Google',                 logo: 'https://logo.clearbit.com/google.com' },
+    { name: 'GPSS',                   logo: '' },
+    { name: 'HBO',                    logo: 'https://logo.clearbit.com/hbo.com' },
+    { name: 'The HUB',                logo: '' },
+    { name: 'Hulu',                   logo: 'https://logo.clearbit.com/hulu.com' },
+    { name: 'Information School',     logo: 'https://logo.clearbit.com/ischool.uw.edu' },
+    { name: 'KPMG',                   logo: 'https://logo.clearbit.com/kpmg.com' },
+    { name: 'Liberty Mutual',         logo: 'https://logo.clearbit.com/libertymutual.com' },
+    { name: 'Microsoft',              logo: 'https://logo.clearbit.com/microsoft.com' },
+    { name: 'Nordstrom',              logo: 'https://logo.clearbit.com/nordstrom.com' },
+    { name: 'Okta',                   logo: 'https://logo.clearbit.com/okta.com' },
+    { name: 'Oracle',                 logo: 'https://logo.clearbit.com/oracle.com' },
+    { name: 'PwC',                    logo: 'https://logo.clearbit.com/pwc.com' },
+    { name: 'Sage Bionetworks',       logo: 'https://logo.clearbit.com/sagebionetworks.org' },
+    { name: 'Student Activities Office', logo: '' },
+    { name: 'Smartsheet',             logo: 'https://logo.clearbit.com/smartsheet.com' },
+    { name: 'Ticketmaster',           logo: 'https://logo.clearbit.com/ticketmaster.com' },
+    { name: 'TUNE',                   logo: 'https://logo.clearbit.com/tune.com' },
+    { name: 'UW Alumni Association',  logo: 'https://logo.clearbit.com/uw.edu' },
+    { name: 'Visa',                   logo: 'https://logo.clearbit.com/visa.com' },
+    { name: 'Wells Fargo',            logo: 'https://logo.clearbit.com/wellsfargo.com' },
+    { name: 'West Monroe',            logo: 'https://logo.clearbit.com/westmonroe.com' },
   ],
 
   /* ---------- Past Hackathons ---------- */

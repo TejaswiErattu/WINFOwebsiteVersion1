@@ -11,7 +11,7 @@ export const podcastData = {
     'From filming to final cut, each episode is thoughtfully crafted by our content committee to share authentic experiences for our community to connect with and enjoy.',
   ctaLabel: '▶ watch here!',
   ctaLink: '#',
-  heroImage: '/images/hero-photo-1.png',
+  heroImage: '/images/hackathon-5.jpg',
   heroImageAlt: 'Decoding with WINFO podcast hosts',
 
   /* ---------- Who / What / Why cards ---------- */
@@ -51,7 +51,7 @@ export const podcastData = {
       title: 'decoding design & HCI',
       description:
         'In our exclusive LIVE podcast session, we sit down with iSchool professors Jason Yip and Spencer Williams alongside Oracle UX Designer Peter Corroon Jr. to discuss their unique experiences with design and human-computer interaction.',
-      image: '/images/hero-photo-2.png',
+      image: '/images/hackathon-2.jpg',
       imageAlt: 'Decoding Design & HCI episode thumbnail',
       guests: ['Mihika Jain', 'Jason Yip', 'Spencer Williams', 'Peter Corroon'],
       watchUrl: '#',

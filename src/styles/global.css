@@ -445,7 +445,7 @@ img {
 [class*='-hero'] {
   position: relative;
   overflow: hidden;
-  padding: var(--space-20) var(--space-6) var(--space-16);
+  padding: 10px var(--space-6) var(--space-16);
 }
 
 [class*='-hero__bg'] {
@@ -615,7 +615,7 @@ html {
   }
 
   [class*='-hero'] {
-    padding: var(--space-16) var(--space-6) var(--space-12);
+    padding: 10px var(--space-6) var(--space-12);
   }
 
   [class*='-hero__inner'] {
@@ -649,7 +649,7 @@ html {
   }
 
   [class*='-hero'] {
-    padding: var(--space-12) var(--space-4) var(--space-10);
+    padding: 10px var(--space-4) var(--space-10);
   }
 
   [class*='-hero__title'] {

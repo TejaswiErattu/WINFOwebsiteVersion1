@@ -16,7 +16,12 @@ export default function Events() {
           <CircuitSVG variant="vertical" />
         </div>
 
-        <h1 className="events-hero__title cursive-title">{title}</h1>
+        <div className="events-hero__inner">
+          <h1 className="events-hero__title cursive-title">{title}</h1>
+          <div className="events-hero__image-frame">
+            <img src="/images/winfo-community-2.jpg" alt="WINFO community event" />
+          </div>
+        </div>
       </section>
 
       {/* ===== 2 · EVENT CATEGORY ROWS ===== */}

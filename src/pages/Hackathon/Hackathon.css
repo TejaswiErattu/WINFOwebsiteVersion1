@@ -10,7 +10,7 @@
     radial-gradient(ellipse 60% 80% at 0% 100%, #FEE6EA 0%, transparent 70%),
     radial-gradient(ellipse 50% 60% at 0% 0%, #EEE8F8 0%, transparent 60%),
     linear-gradient(160deg, #EEE8F8 0%, #F9EEFA 30%, #FEE6EA 60%, #FFF9FB 100%);
-  padding: 4rem 1.5rem 3.5rem;
+  padding: 10px 1.5rem 3.5rem;
 }
 
 .hack-hero__inner {
@@ -440,8 +440,9 @@
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  gap: 1.25rem 2rem;
-  max-width: 860px;
+  align-items: center;
+  gap: 1.5rem 2.5rem;
+  max-width: 920px;
   margin: 0 auto;
 }
 
@@ -449,6 +450,22 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  height: 40px;
+}
+
+.hack-past-sponsor__logo {
+  height: 32px;
+  width: auto;
+  max-width: 120px;
+  object-fit: contain;
+  filter: grayscale(100%);
+  opacity: 0.7;
+  transition: filter 0.3s ease, opacity 0.3s ease;
+}
+
+.hack-past-sponsor__logo:hover {
+  filter: grayscale(0%);
+  opacity: 1;
 }
 
 .hack-past-sponsor__name {
@@ -479,15 +496,15 @@
 }
 
 .hack-past-item__theme {
-  font-family: var(--font-heading);
+  font-family: var(--font-body);
   font-size: 1.05rem;
-  font-weight: 700;
+  font-weight: 600;
   color: var(--color-text);
 }
 
 .hack-past-item__year {
   font-family: var(--font-cursive);
-  font-size: 1.15rem;
+  font-size: 1.25rem;
   font-weight: 600;
   color: var(--color-accent);
 }
@@ -528,7 +545,7 @@
 
 @media (max-width: 600px) {
   .hack-hero {
-    padding: 3rem 1rem 2.5rem;
+    padding: 10px 1rem 2.5rem;
   }
 
   .hack-hero__photos {

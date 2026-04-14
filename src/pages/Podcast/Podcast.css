@@ -10,7 +10,7 @@
     radial-gradient(ellipse 60% 80% at 0% 100%, #FEE6EA 0%, transparent 70%),
     radial-gradient(ellipse 50% 60% at 0% 0%, #EEE8F8 0%, transparent 60%),
     linear-gradient(160deg, #EEE8F8 0%, #F9EEFA 30%, #FEE6EA 60%, #FFF9FB 100%);
-  padding: 5rem 1.5rem 4rem;
+  padding: 10px 1.5rem 4rem;
 }
 
 .podcast-hero__circuit {
@@ -373,6 +373,6 @@
 
 @media (max-width: 600px) {
   .podcast-hero {
-    padding: 3.5rem 1rem 3rem;
+    padding: 10px 1rem 3rem;
   }
 }

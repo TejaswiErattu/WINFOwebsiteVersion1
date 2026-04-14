@@ -26,7 +26,7 @@ export default function Home() {
           <CircuitSVG variant="right" />
         </div>
         <div className="home-hero__center">
-          <WinfoLogo color="white" className="home-hero__logo" />
+          <WinfoLogo color="multi" className="home-hero__logo" />
         </div>
       </section>
 

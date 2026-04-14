@@ -8,7 +8,7 @@
   display: flex;
   align-items: flex-start;
   justify-content: flex-start;
-  padding: 6rem 5vw 3rem;
+  padding: 10px 5vw 3rem;
   background: linear-gradient(
     160deg,
     #EEE8F8 0%,
@@ -20,9 +20,36 @@
   overflow: hidden;
 }
 
+.events-hero__inner {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2.5rem;
+  align-items: center;
+  width: 100%;
+  max-width: var(--container-max, 1140px);
+  margin: 0 auto;
+}
+
 .events-hero__title {
   font-size: clamp(2.4rem, 5vw, 3.6rem);
   margin: 0;
+}
+
+.events-hero__image-frame {
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: var(--shadow-lg);
+  border: 2px solid rgba(255, 255, 255, 0.65);
+}
+
+.events-hero__image-frame img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 
 /* Circuit decoration — top-right */
@@ -158,7 +185,18 @@
 /* ===== RESPONSIVE ===== */
 @media (max-width: 768px) {
   .events-hero {
-    padding: 5rem 5vw 2.5rem;
+    padding: 10px 5vw 2.5rem;
+  }
+
+  .events-hero__inner {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+    text-align: center;
+  }
+
+  .events-hero__image-frame {
+    max-width: 400px;
+    margin: 0 auto;
   }
 
   .events-row__cards {
@@ -177,7 +215,7 @@
 
 @media (max-width: 500px) {
   .events-hero {
-    padding: 4.5rem 5vw 2rem;
+    padding: 10px 5vw 2rem;
   }
 
   .events-card {

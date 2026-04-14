@@ -10,11 +10,11 @@ export const supportData = {
     'Support comes in many forms, and each one makes a meaningful difference; every action helps us create a more inclusive and empowering community.',
     'Scroll down to learn how you can support our blossoming community here at WINFO—we are thrilled to have you join us!',
   ],
-  heroImage: '', // TODO: group photo
+  heroImage: '/images/support-group.jpg',
 
   /* ---------- Why Support Us ---------- */
   whyTitle: 'why support us?',
-  whyImage: '', // TODO: group photo with robot mascot
+  whyImage: '/images/hackathon-4.jpg',
   whyText: [
     'By supporting WINFO, you help build a world where technology education is <u>inclusive</u> and <u>empowering</u> for all. Your involvement empowers underrepresented students to thrive as innovators and leaders, sparking meaningful connections across our community.',
     'Together, we can <u>break down barriers</u> in tech, ensuring all students have the tools, confidence, and support to lead and blossom in an inclusive and collaborative community.',

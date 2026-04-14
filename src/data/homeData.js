@@ -14,7 +14,7 @@ export const missionData = {
     'We welcome all majors, genders, and identities united by a shared passion for creating a more equitable tech industry.',
   ctaLabel: 'join us!',
   ctaLink: MEMBERSHIP_SIGNUP_URL,
-  image: '/images/hero-photo-1.png',
+  image: '/images/hackathon-1.jpg',
   imageAlt: 'WINFO members at a community event',
 };
 
@@ -28,7 +28,7 @@ export const storyData = {
     'Through everything we do, we stay rooted in the same values: connection, courage, and care.',
   ctaLabel: 'meet our team',
   ctaLink: '/officers',
-  image: '/images/hero-photo-2.png',
+  image: '/images/support-group.jpg',
   imageAlt: 'WINFO community gathering',
 };
 

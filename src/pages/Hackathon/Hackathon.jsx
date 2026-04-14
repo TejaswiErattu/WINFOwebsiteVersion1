@@ -196,9 +196,18 @@ export default function Hackathon() {
           {pastSponsorsHeading}
         </h2>
         <div className="hack-past-sponsors">
-          {pastSponsors.map((name) => (
-            <div key={name} className="hack-past-sponsor">
-              <span className="hack-past-sponsor__name">{name}</span>
+          {pastSponsors.map((sponsor) => (
+            <div key={sponsor.name} className="hack-past-sponsor">
+              {sponsor.logo ? (
+                <img
+                  src={sponsor.logo}
+                  alt={sponsor.name}
+                  className="hack-past-sponsor__logo"
+                  loading="lazy"
+                />
+              ) : (
+                <span className="hack-past-sponsor__name">{sponsor.name}</span>
+              )}
             </div>
           ))}
         </div>
