@@ -10,7 +10,7 @@ export const podcastData = {
   heroBodySecondary:
     'From filming to final cut, each episode is thoughtfully crafted by our content committee to share authentic experiences for our community to connect with and enjoy.',
   ctaLabel: '▶ watch here!',
-  ctaLink: '#',
+  ctaLink: 'https://www.youtube.com/@uw_winfo',
   heroImage: '/images/podcast-hero.jpg',
   heroImageAlt: 'Decoding with WINFO podcast hosts',
 
@@ -53,8 +53,8 @@ export const podcastData = {
         'In our exclusive LIVE podcast session, we sit down with iSchool professors Jason Yip and Spencer Williams alongside Oracle UX Designer Peter Corroon Jr. to discuss their unique experiences with design and human-computer interaction.',
       image: '/images/podcast-s3e2.png',
       imageAlt: 'Decoding Design & HCI episode thumbnail',
-      guests: ['Mihika Jain', 'Jason Yip', 'Spencer Williams', 'Peter Corroon'],
-      watchUrl: '#',
+  guests: ['Mihika Jain', 'Jason Yip', 'Spencer Williams', 'Peter Corroon'],
+  watchUrl: 'https://www.youtube.com/@uw_winfo',
     },
     {
       id: 2,
@@ -64,8 +64,8 @@ export const podcastData = {
         'We explore the world of data science with industry professionals who share their journeys, insights, and advice for aspiring data scientists.',
       image: '',
       imageAlt: 'Decoding Data Science episode thumbnail',
-      guests: [],
-      watchUrl: '#',
+  guests: [],
+  watchUrl: 'https://www.youtube.com/@uw_winfo',
     },
     {
       id: 3,
@@ -75,8 +75,8 @@ export const podcastData = {
         'Our guests dive into the ever-evolving field of product management, sharing their unique paths and what it takes to succeed.',
       image: '',
       imageAlt: 'Decoding Product Management episode thumbnail',
-      guests: [],
-      watchUrl: '#',
+  guests: [],
+  watchUrl: 'https://www.youtube.com/@uw_winfo',
     },
     {
       id: 4,
@@ -86,8 +86,8 @@ export const podcastData = {
         'An intimate conversation about UX research methodologies, career paths, and the impact of user-centered design.',
       image: '',
       imageAlt: 'Decoding UX Research episode thumbnail',
-      guests: [],
-      watchUrl: '#',
+  guests: [],
+  watchUrl: 'https://www.youtube.com/@uw_winfo',
     },
     {
       id: 5,
@@ -97,8 +97,8 @@ export const podcastData = {
         'We tackle the pressing world of cybersecurity with experts who share how they protect digital infrastructure.',
       image: '',
       imageAlt: 'Decoding Cybersecurity episode thumbnail',
-      guests: [],
-      watchUrl: '#',
+  guests: [],
+  watchUrl: 'https://www.youtube.com/@uw_winfo',
     },
     {
       id: 6,
@@ -108,8 +108,8 @@ export const podcastData = {
         'Our guests share their experiences in software engineering, from coding bootcamps to leading engineering teams.',
       image: '',
       imageAlt: 'Decoding Software Engineering episode thumbnail',
-      guests: [],
-      watchUrl: '#',
+  guests: [],
+  watchUrl: 'https://www.youtube.com/@uw_winfo',
     },
     {
       id: 7,
@@ -119,8 +119,8 @@ export const podcastData = {
         'An inside look at the consulting industry with professionals who have navigated the transition from tech to consulting and back.',
       image: '',
       imageAlt: 'Decoding Consulting episode thumbnail',
-      guests: [],
-      watchUrl: '#',
+  guests: [],
+  watchUrl: 'https://www.youtube.com/@uw_winfo',
     },
   ],
 };
