@@ -14,6 +14,7 @@ export const navLinks = [
   { label: 'hackathon', path: '/hackathon' },
   { label: 'events', path: '/events' },
   { label: 'podcast', path: '/podcast' },
+  { label: 'membership', path: '/membership' },
   { label: 'team', path: '/officers' },
   { label: 'support us', path: '/support' },
 ];
@@ -43,7 +44,7 @@ export const socialLinks = [
   },
   {
     label: 'YouTube',
-    url: 'https://youtube.com/@uwwinfo',
+    url: 'https://www.youtube.com/@uw_winfo',
     icon: 'youtube',
   },
   {
