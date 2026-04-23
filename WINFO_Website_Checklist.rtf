@@ -1,0 +1,39 @@
+{\rtf1\ansi\ansicpg1252\deff0
+{\fonttbl{\f0\fswiss\fcharset0 Arial;}{\f1\fswiss\fcharset0 Arial;}}
+{\colortbl ;\red192\green0\blue0;\red204\green102\blue0;\red0\green102\blue204;\red0\green153\blue0;\red80\green80\blue80;}
+\f0\fs24
+\fs36\b WINFO Website Pre-Publish Checklist\b0\fs24\par
+\cf5\fs20 Generated: April 22, 2026\cf0\fs24\par\par
+\fs28\b\cf1 CRITICAL — Must Fix Before Launch\cf0\b0\fs22\par\par
+\b 1. Officers Page\b0  — hero-photo-4.png is referenced in officersData.js but does not exist in /images/ — will show a broken image.\par
+\b 2. Officers Page\b0  — Jasnoor Chimni and Sophia Tounalom have role: "officer" — needs a real title.\par
+\b 3. Officers Page\b0  — Fay Tong is missing LinkedIn URL, year, and focus area.\par
+\b 4. Officers Page\b0  — All 4 committee cards have no images (blank).\par
+\b 5. Events Page\b0  — All 10 event cards have no photos.\par
+\b 6. Podcast Page\b0  — "Become a podcast guest" button links to /contact which does not exist as a page.\par\par
+\fs28\b\cf2 PLACEHOLDER CONTENT — Needs Real Data\cf0\b0\fs22\par\par
+\b 7. Hackathon\b0  — 4 winner cards use # as their link — no real links to winning projects.\par
+\b 8. Hackathon\b0  — 6 past sponsors are missing logos: ASUW, AT&T, GPSS, The HUB, PwC, Student Activities Office.\par
+\b 9. Officers\b0  — Several officers are missing hometown, fun fact, and year fields.\par
+\b 10. Officers\b0  — Hana Kang is missing year and hometown.\par\par
+\fs28\b\cf2 FORMS / BACKEND — No Functionality\cf0\b0\fs22\par\par
+\b 11. Hackathon\b0  — "Sign up for early priority notifications" email form has no backend — submissions go nowhere.\par
+\b 12. Support Us\b0  — Newsletter spotlight, podcast guest, and collaboration cards have no linked forms or CTAs.\par\par
+\fs28\b\cf3 SEO / META TAGS\cf0\b0\fs22\par\par
+\b 13. index.html\b0  — No <meta name="description"> tag.\par
+\b 14. index.html\b0  — No Open Graph tags (og:title, og:description, og:image) — links won't preview on social media.\par
+\b 15. index.html\b0  — No Twitter Card meta tags.\par
+\b 16. Favicon\b0  — Currently a generic favicon.svg — should be replaced with the WINFO logo.\par\par
+\fs28\b TECHNICAL / DEPLOYMENT\b0\fs22\par\par
+\b 17. Build\b0  — Run npm run build and verify zero errors before deploying.\par
+\b 18. Hosting\b0  — Decide on deployment platform (Vercel, Netlify, GitHub Pages, etc.).\par
+\b 19. Domain\b0  — Set up a custom domain (e.g. uwwinfo.org).\par
+\b 20. vite.config.js\b0  — Confirm the base path is correct for the chosen deployment target.\par\par
+\fs28\b\cf4 ALREADY DONE\cf0\b0\fs22\par\par
+\b [DONE]\b0  All 11 podcast episode links updated to point to the YouTube channel.\par
+\b [DONE]\b0  Hero "watch here!" CTA link updated to YouTube.\par
+\b [DONE]\b0  "Watch here!" button size fixed (no longer blob-shaped).\par
+\b [DONE]\b0  Hackathon photo grid styling fixed — equal height, rounded corners.\par
+\b [DONE]\b0  All social links populated (Instagram, LinkedIn, YouTube, Email).\par
+\b [DONE]\b0  Membership signup URL centralized in externalLinks.js.\par
+}

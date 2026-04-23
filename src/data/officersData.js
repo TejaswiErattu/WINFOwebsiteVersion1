@@ -77,7 +77,7 @@ export const officersData = {
       linkedin: '',
       year: '',
       hometown: '',
-      focusArea: '',
+      focusArea: 'informatics | minor in human rights',
       funFact: '',
     },
     {
@@ -86,8 +86,7 @@ export const officersData = {
       image: '/images/team/tejaswi_headshot.JPG',
       linkedin: 'https://www.linkedin.com/in/tejaswi-erattu-2007-uw/',
       year: 'first-year (class of 2029)',
-      hometown: 'sammamish, washington',
-      focusArea: 'informatics | software development & data',
+      focusArea: 'informatics | software development & cyber security',
       funFact: '',
     },
     {
@@ -107,7 +106,7 @@ export const officersData = {
       linkedin: 'https://www.linkedin.com/in/jasnoor-chimni/',
       year: '',
       hometown: '',
-      focusArea: 'informatics',
+      focusArea: 'informatics | information assurance & cybersecurity & data science',
       funFact: '',
     },
     {
@@ -117,7 +116,7 @@ export const officersData = {
       linkedin: 'https://www.linkedin.com/in/sophia-tounalom-221939282/',
       year: 'freshman (class of 2029)',
       hometown: '',
-      focusArea: 'informatics',
+      focusArea: 'informatics | cybersecurity',
       funFact: '',
     },
   ],

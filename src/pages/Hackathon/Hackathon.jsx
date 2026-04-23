@@ -16,7 +16,6 @@ export default function Hackathon() {
     challengeBody,
     beginnerHeading,
     beginnerBody,
-    ctaLabel,
     ctaLink,
     statsHeading,
     stats,
@@ -70,10 +69,6 @@ export default function Hackathon() {
 
             <h3 className="hack-hero__sub-heading">{beginnerHeading}</h3>
             <p className="hack-hero__body">{beginnerBody}</p>
-
-            <Button href={ctaLink} variant="accent" className="hack-hero__cta">
-              {ctaLabel}
-            </Button>
           </div>
         </div>
       </section>
@@ -127,14 +122,9 @@ export default function Hackathon() {
 
         <div className="hack-register__card">
           <p className="hack-register__card-text">{registerCta.cardText}</p>
-          <form className="hack-register__form" onSubmit={(e) => e.preventDefault()}>
-            <input
-              type="email"
-              className="hack-register__input"
-              placeholder={registerCta.inputPlaceholder}
-              aria-label="Email address"
-            />
-          </form>
+          <Button href={ctaLink} variant="primary" className="hack-register__join-btn">
+            join us!
+          </Button>
         </div>
       </section>
 

@@ -52,7 +52,6 @@ export const hackathonData = {
   beginnerHeading: 'we are a beginner-friendly environment!',
   beginnerBody:
     "This is a great experience for college students to network, get hands-on experience coding or designing, and work in teams to problem solve. Whether you\u2019re new to tech, a seasoned hacker, or looking for more experience, WINFO\u2019s hackathon is for you!",
-  ctaLabel: 'register now!',
   ctaLink: MEMBERSHIP_SIGNUP_URL,
 
   /* ---------- Stats ---------- */
@@ -75,8 +74,7 @@ export const hackathonData = {
   /* ---------- Register CTA ---------- */
   registerCta: {
     heading: 'Registration opens late fall!',
-    cardText: 'sign up for early priority notifications!',
-    inputPlaceholder: 'email',
+    cardText: 'be the first to know when the next event drops!',
   },
 
   /* ---------- FAQ ---------- */

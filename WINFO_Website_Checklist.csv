@@ -1,0 +1,27 @@
+Priority,#,Page / Area,Issue,Done?
+🔴 Critical,1,Officers,hero-photo-4.png is referenced in officersData.js but does not exist — will show broken image,
+🔴 Critical,2,Officers,"Jasnoor Chimni and Sophia Tounalom have role: 'officer' — needs a real title",
+🔴 Critical,3,Officers,"Fay Tong is missing LinkedIn URL, year, and focus area",
+🔴 Critical,4,Officers,All 4 committee cards have image blank — no photos for any committee,
+🔴 Critical,5,Events,All 10 event cards have no photos,
+🔴 Critical,6,Podcast,Become a podcast guest button links to /contact which does not exist as a page,
+🟡 Placeholder,7,Hackathon,4 winner cards have link # — no real links to winning projects,
+🟡 Placeholder,8,Hackathon,"6 past sponsors missing logos: ASUW, AT&T, GPSS, The HUB, PwC, Student Activities Office",
+🟡 Placeholder,9,Officers,Several officers missing hometown and fun fact fields,
+🟡 Placeholder,10,Officers,Hana Kang missing year and hometown,
+🟠 Forms / Backend,11,Hackathon,Sign up for early priority notifications email form has no backend — submissions go nowhere,
+🟠 Forms / Backend,12,Support Us,Newsletter spotlight / podcast guest / collaboration cards have no linked forms or CTAs,
+🔵 SEO,13,index.html,No meta description tag,
+🔵 SEO,14,index.html,No Open Graph tags (og:title / og:description / og:image) — links wont preview on social media,
+🔵 SEO,15,index.html,No Twitter Card meta tags,
+🔵 SEO,16,Favicon,Currently a generic favicon.svg — should be replaced with the WINFO logo,
+⚙️ Technical,17,Build,Run npm run build and verify there are no errors before deploying,
+⚙️ Technical,18,Hosting,"Decide on deployment platform (Vercel, Netlify, GitHub Pages, etc.)",
+⚙️ Technical,19,Domain,Set up a custom domain (e.g. uwwinfo.org),
+⚙️ Technical,20,vite.config.js,Confirm the base path is correct for the chosen deployment target,
+✅ Done,—,Podcast,All 11 podcast episode links updated to YouTube channel,✅
+✅ Done,—,Podcast,Hero watch here CTA link updated to YouTube,✅
+✅ Done,—,Podcast,Watch here button size fixed,✅
+✅ Done,—,Hackathon,Photo grid styling fixed (equal height + rounded corners),✅
+✅ Done,—,Site-wide,"All social links populated (Instagram, LinkedIn, YouTube, Email)",✅
+✅ Done,—,Site-wide,Membership signup URL centralized in externalLinks.js,✅
