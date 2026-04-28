@@ -14,7 +14,7 @@ const LinkedInIcon = () => (
  * Officer detail card used on the team page.
  */
 function TeamCard({ officer, large }) {
-  const { name, role, image, linkedin, year, hometown, focusArea, funFact } = officer;
+  const { name, role, image, linkedin, year, focusArea, funFact } = officer;
 
   return (
     <div className={`officer-card ${large ? 'officer-card--large' : ''}`}>
@@ -38,7 +38,6 @@ function TeamCard({ officer, large }) {
         <h3 className="officer-card__name">{name}</h3>
         <p className="officer-card__role">{role}</p>
         {year && <p className="officer-card__detail"><strong>year:</strong> {year}</p>}
-        {hometown && <p className="officer-card__detail"><strong>hometown:</strong> {hometown}</p>}
         {focusArea && <p className="officer-card__detail"><strong>focus area:</strong> {focusArea}</p>}
         {funFact && <p className="officer-card__detail"><strong>fun fact:</strong> {funFact}</p>}
       </div>
@@ -55,11 +54,11 @@ function CommitteeCard({ committee }) {
   return (
     <div className="committee-card">
       <div className="committee-card__image">
-        {image ? (
-          <img src={image} alt={name} loading="lazy" />
-        ) : (
-          <div className="committee-card__placeholder" />
-        )}
+        <img
+          src={image || '/images/comingsoon.png'}
+          alt={image ? name : 'Coming soon'}
+          loading="lazy"
+        />
       </div>
       <h3 className="committee-card__name cursive-title">{name}</h3>
       <p className="committee-card__desc">{description}</p>

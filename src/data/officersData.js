@@ -8,7 +8,7 @@ export const officersData = {
   heroBody:
     'Our team is a passionate group of students dedicated to fostering an inclusive, supportive, and empowering community for students in the field of information science.',
   heroBodySecondary: 'Read more about us below!',
-  heroImage: '/images/hero-photo-4.png',
+  heroImage: '/images/stickfigures.png',
   heroImageAlt: 'WINFO team group photo',
 
   /* ---------- Officers section ---------- */
@@ -94,7 +94,7 @@ export const officersData = {
       role: 'student engagement officer',
       image: '/images/team/hana_headshot.JPG',
       linkedin: 'https://www.linkedin.com/in/hana-kang-614358339/',
-      year: '',
+      year: 'second-year (class of 2028)',
       hometown: '',
       focusArea: 'informatics',
       funFact: '',
@@ -104,7 +104,7 @@ export const officersData = {
       role: 'officer',
       image: '/images/team/jasnoor_headshot.JPG',
       linkedin: 'https://www.linkedin.com/in/jasnoor-chimni/',
-      year: '',
+      year: 'first-year (class of 2029)',
       hometown: '',
       focusArea: 'informatics | information assurance & cybersecurity & data science',
       funFact: '',

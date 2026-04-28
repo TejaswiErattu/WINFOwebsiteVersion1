@@ -60,17 +60,18 @@
 /* Image frame */
 .team-hero__image-frame {
   width: 100%;
-  aspect-ratio: 4 / 3;
   border-radius: 20px;
   overflow: hidden;
   box-shadow: var(--shadow-lg);
   border: 2px solid rgba(255, 255, 255, 0.65);
+  background: transparent;
 }
 
 .team-hero__image-frame img {
   width: 100%;
-  height: 100%;
-  object-fit: cover;
+  height: auto;
+  object-fit: contain;
+  display: block;
 }
 
 .team-hero__image-placeholder {
@@ -128,12 +129,15 @@
   aspect-ratio: 3 / 4;
   overflow: hidden;
   background: #e8e8e8;
+  border-radius: var(--radius-lg) var(--radius-lg) 0 0;
 }
 
 .officer-card__portrait img {
   width: 100%;
   height: 100%;
   object-fit: cover;
+  transform: scale(1.05);
+  transform-origin: center;
 }
 
 .officer-card__placeholder {
