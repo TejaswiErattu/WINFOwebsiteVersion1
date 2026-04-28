@@ -62,8 +62,7 @@
   width: 100%;
   border-radius: 20px;
   overflow: hidden;
-  box-shadow: var(--shadow-lg);
-  border: 2px solid rgba(255, 255, 255, 0.65);
+  box-shadow: none;
   background: transparent;
 }
 

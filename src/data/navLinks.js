@@ -11,12 +11,14 @@ import { MEMBERSHIP_SIGNUP_URL } from './externalLinks';
 
 /* ---------- Navbar links ---------- */
 export const navLinks = [
+  { label: 'home', path: '/' },
   { label: 'hackathon', path: '/hackathon' },
   { label: 'events', path: '/events' },
   { label: 'podcast', path: '/podcast' },
   { label: 'membership', path: '/membership' },
   { label: 'team', path: '/officers' },
   { label: 'support us', path: '/support' },
+  { label: 'merch 🛍️', path: '/merch' },
 ];
 
 /* ---------- Footer quick-links ---------- */

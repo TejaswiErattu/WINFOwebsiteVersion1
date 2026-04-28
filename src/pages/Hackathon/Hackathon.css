@@ -36,8 +36,13 @@
   aspect-ratio: 4 / 3;
   border-radius: 24px;
   overflow: hidden;
-  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.10);
-  background: #f5f0fa;
+  background: transparent;
+  box-shadow: none;
+}
+
+.hack-hero__photo:first-child {
+  background: transparent;
+  box-shadow: none;
 }
 
 .hack-hero__photo img {

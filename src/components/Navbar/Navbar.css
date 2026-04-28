@@ -94,6 +94,15 @@
   transform: translateX(-50%) scaleX(1);
 }
 
+/* Merch link — stands out with a warm accent colour */
+.navbar__link--merch {
+  color: var(--color-accent-dark, #c97b7b);
+  font-weight: 600;
+}
+.navbar__link--merch:hover {
+  color: var(--color-primary);
+}
+
 /* CTA button inside nav — soft blush pink-to-lavender gradient pill (Figma) */
 .navbar__cta {
   margin-left: 0.75rem;

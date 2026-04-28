@@ -40,18 +40,30 @@ export default function Navbar() {
 
         {/* ── Desktop links ── */}
         <div className="navbar__links">
-          {navLinks.map((link) => (
-            <NavLink
-              key={link.path}
-              to={link.path}
-              end={link.path === '/'}
-              className={({ isActive }) =>
-                `navbar__link ${isActive ? 'navbar__link--active' : ''}`
-              }
-            >
-              {link.label}
-            </NavLink>
-          ))}
+          {navLinks.map((link) =>
+            link.external ? (
+              <a
+                key={link.path}
+                href={link.path}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="navbar__link navbar__link--merch"
+              >
+                {link.label}
+              </a>
+            ) : (
+              <NavLink
+                key={link.path}
+                to={link.path}
+                end={link.path === '/'}
+                className={({ isActive }) =>
+                  `navbar__link ${isActive ? 'navbar__link--active' : ''}`
+                }
+              >
+                {link.label}
+              </NavLink>
+            )
+          )}
 
           <Button href={siteInfo.navCtaHref} size="sm" className="navbar__cta">
             {siteInfo.navCtaLabel}
@@ -76,19 +88,32 @@ export default function Navbar() {
         className={`navbar__mobile ${menuOpen ? 'navbar__mobile--open' : ''}`}
         aria-hidden={!menuOpen}
       >
-        {navLinks.map((link) => (
-          <NavLink
-            key={link.path}
-            to={link.path}
-            end={link.path === '/'}
-            className={({ isActive }) =>
-              `navbar__link ${isActive ? 'navbar__link--active' : ''}`
-            }
-            onClick={close}
-          >
-            {link.label}
-          </NavLink>
-        ))}
+        {navLinks.map((link) =>
+          link.external ? (
+            <a
+              key={link.path}
+              href={link.path}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="navbar__link navbar__link--merch"
+              onClick={close}
+            >
+              {link.label}
+            </a>
+          ) : (
+            <NavLink
+              key={link.path}
+              to={link.path}
+              end={link.path === '/'}
+              className={({ isActive }) =>
+                `navbar__link ${isActive ? 'navbar__link--active' : ''}`
+              }
+              onClick={close}
+            >
+              {link.label}
+            </NavLink>
+          )
+        )}
 
         <Button href={siteInfo.navCtaHref} size="sm" onClick={close}>
           {siteInfo.navCtaLabel}
