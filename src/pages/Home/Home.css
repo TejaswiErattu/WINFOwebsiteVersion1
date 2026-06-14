@@ -81,6 +81,7 @@
   border-radius: 20px;
   overflow: hidden;
   box-shadow: none;
+  border: none;
   background: transparent;
 }
 
@@ -139,6 +140,7 @@
   border-radius: 20px;
   overflow: hidden;
   box-shadow: none;
+  border: none;
   background: transparent;
   transform: rotate(-2deg);
   transition: transform var(--transition-base);
