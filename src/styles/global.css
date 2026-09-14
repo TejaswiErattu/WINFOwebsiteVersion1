@@ -442,7 +442,7 @@ img {
  *  Page-specific heroes can extend or override with e.g. .home-hero { ... }
  * ========================================================================= */
 
-[class*='-hero'] {
+[class*='-hero']:not([class*='__']) {
   position: relative;
   overflow: hidden;
   padding: 10px var(--space-6) var(--space-16);
@@ -614,7 +614,7 @@ html {
     --section-padding: var(--space-12) 0;
   }
 
-  [class*='-hero'] {
+  [class*='-hero']:not([class*='__']) {
     padding: 10px var(--space-6) var(--space-12);
   }
 
@@ -648,7 +648,7 @@ html {
     --container-padding: 0 var(--space-4);
   }
 
-  [class*='-hero'] {
+  [class*='-hero']:not([class*='__']) {
     padding: 10px var(--space-4) var(--space-10);
   }
 
