@@ -14,14 +14,12 @@
   align-items: center;
   justify-content: center;
   height: 48px;
-  opacity: 0.55;
-  filter: grayscale(0.3);
-  transition: opacity var(--transition-base), filter var(--transition-base), transform var(--transition-fast);
+  /* Logos are shown in their original colours — no grayscale filter */
+  opacity: 1;
+  transition: transform var(--transition-fast);
 }
 
 .sponsor-grid__item:hover {
-  opacity: 1;
-  filter: grayscale(0);
   transform: scale(1.08);
 }
 

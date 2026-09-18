@@ -58,7 +58,7 @@ export const socialLinks = [
 
 /* ---------- Site-wide brand & contact info ---------- */
 export const siteInfo = {
-  brandName: 'w;nfo',
+  brandName: 'winfo',
   brandTagline:
     'Women in Informatics at the University of Washington. Empowering students through community, mentorship, and opportunity.',
   email: 'winfo@uw.edu',
@@ -67,7 +67,7 @@ export const siteInfo = {
     'Mary Gates Hall',
     'Seattle, WA 98195',
   ],
-  copyright: 'W;NFO — Women in Informatics',
+  copyright: 'WINFO — Women in Informatics',
   navCtaLabel: 'join us!',
   navCtaHref: MEMBERSHIP_SIGNUP_URL,
 };

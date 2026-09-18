@@ -4,14 +4,20 @@
 
 import { MEMBERSHIP_SIGNUP_URL } from './externalLinks';
 
+/* ---------- Hero ---------- */
+export const heroData = {
+  heading: 'Women in Informatics',
+  tagline: 'A student-led community at the University of Washington Information School.',
+};
+
 /* ---------- Who We Are ---------- */
 export const missionData = {
   title: 'who we are',
-  body: 'Women in Informatics (WINFO) is a student-led organization at the University of Washington\'s Information School dedicated to uplifting women and underrepresented voices in technology.',
+  body: 'Women in Informatics (WINFO) is a **student-led organization at the University of Washington\'s Information School** dedicated to **uplifting women and underrepresented voices in technology**.',
   bodySecondary:
-    'We believe that diversity drives innovation, and that every student deserves the tools, community, and confidence to shape the future of technology. By hosting professional workshops, social events, and hackathons, our mission is to nurture a blossoming community of fearless technology leaders.',
+    'We believe that **diversity drives innovation**, and that every student deserves the tools, community, and confidence to shape the future of technology. By hosting professional workshops, social events, and hackathons, our mission is to **nurture a blossoming community of fearless technology leaders**.',
   bodyTertiary:
-    'We welcome all majors, genders, and identities united by a shared passion for creating a more equitable tech industry.',
+    'We welcome **all majors, genders, and identities** united by a shared passion for creating a more equitable tech industry.',
   ctaLabel: 'join us!',
   ctaLink: MEMBERSHIP_SIGNUP_URL,
   image: '/images/hackathon-1.jpg',
@@ -21,11 +27,13 @@ export const missionData = {
 /* ---------- Our Story ---------- */
 export const storyData = {
   title: 'our story',
-  body: 'WINFO began in 2012 with a simple mission: to connect women in the Informatics program and help them feel supported. Back then, only 28% of students in the Informatics major were women.',
+  body: 'WINFO began in **2012** with a simple mission: to **connect women in the Informatics program and help them feel supported**.',
+  /* Featured impact statistic — rendered larger, as a pull-quote */
+  statHighlight: 'Back then, only 28% of students in the Informatics major were women.',
   bodySecondary:
-    'As of 2023, 53% of Informatics students are women, and our blossoming community is stronger than ever.',
+    'As of 2023, **53% of Informatics students are women**, and our blossoming community is stronger than ever.',
   bodyTertiary:
-    'Through everything we do, we stay rooted in the same values: connection, courage, and care.',
+    'Through everything we do, we stay rooted in the same values: **connection, courage, and care**.',
   ctaLabel: 'meet our team',
   ctaLink: '/officers',
   image: '/images/support-group.jpg',
@@ -39,26 +47,23 @@ export const whatWeDoHeading = {
 
 export const whatWeDoData = [
   {
-    icon: '�',
-    title: 'hackathons',
+    title: 'Hackathons',
     text: 'WINFO\'s annual hackathon invites students of all experience levels to collaborate, innovate, and solve real-world problems through tech.',
-    linkLabel: '🏆 learn more',
+    linkLabel: 'Learn more',
     linkTo: '/hackathon',
     accent: 'purple',
   },
   {
-    icon: '😊',
-    title: 'events',
-    text: 'We host a diverse range of social and professional events throughout the year to help you meet new people and grow your skill set!',
-    linkLabel: '😊 get involved',
+    title: 'Events',
+    text: 'We host a diverse range of social and professional events throughout the year to help you meet new people and grow your skill set.',
+    linkLabel: 'Get involved',
     linkTo: '/events',
     accent: 'pink',
   },
   {
-    icon: '🎙️',
-    title: 'podcast',
-    text: 'Decoding With WINFO is our signature podcast featuring guests within the tech field and the informatics community.',
-    linkLabel: '🎙️ tune in',
+    title: 'Podcast',
+    text: 'Decoding With WINFO is our signature podcast featuring guests within the tech field and the Informatics community.',
+    linkLabel: 'Tune in',
     linkTo: '/podcast',
     accent: 'blue',
   },

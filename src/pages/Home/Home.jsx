@@ -3,7 +3,9 @@ import { FeatureCard } from '../../components/Cards';
 import Button from '../../components/Buttons/Buttons';
 import WinfoLogo from '../../components/WinfoLogo/WinfoLogo';
 import CircuitSVG from '../../components/CircuitSVG/CircuitSVG';
+import { renderBold } from '../../utils/renderBold';
 import {
+  heroData,
   missionData,
   storyData,
   whatWeDoHeading,
@@ -27,6 +29,8 @@ export default function Home() {
         </div>
         <div className="home-hero__center">
           <WinfoLogo color="multi" className="home-hero__logo" />
+          <h1 className="home-hero__title">{heroData.heading}</h1>
+          <p className="home-hero__tagline">{heroData.tagline}</p>
         </div>
       </section>
 
@@ -35,9 +39,9 @@ export default function Home() {
         <div className="home-who">
           <div className="home-who__content">
             <h2 className="home-who__title cursive-title">{missionData.title}</h2>
-            <p className="home-who__text">{missionData.body}</p>
-            <p className="home-who__text">{missionData.bodySecondary}</p>
-            <p className="home-who__text">{missionData.bodyTertiary}</p>
+            <p className="home-who__text">{renderBold(missionData.body)}</p>
+            <p className="home-who__text">{renderBold(missionData.bodySecondary)}</p>
+            <p className="home-who__text">{renderBold(missionData.bodyTertiary)}</p>
             <Button href={missionData.ctaLink} variant="primary" className="home-who__btn">
               {missionData.ctaLabel}
             </Button>
@@ -64,9 +68,10 @@ export default function Home() {
           </div>
           <div className="home-story__content">
             <h2 className="home-story__title cursive-title">{storyData.title}</h2>
-            <p className="home-story__text">{storyData.body}</p>
-            <p className="home-story__text">{storyData.bodySecondary}</p>
-            <p className="home-story__text">{storyData.bodyTertiary}</p>
+            <p className="home-story__text">{renderBold(storyData.body)}</p>
+            <p className="impact-stat home-story__stat">{storyData.statHighlight}</p>
+            <p className="home-story__text">{renderBold(storyData.bodySecondary)}</p>
+            <p className="home-story__text">{renderBold(storyData.bodyTertiary)}</p>
             <Button to={storyData.ctaLink} variant="secondary" className="home-story__btn">
               {storyData.ctaLabel}
             </Button>
@@ -76,14 +81,13 @@ export default function Home() {
 
       {/* ===== 4. WHAT WE DO ===== */}
       <SectionWrapper>
-        <h2 className="cursive-title" style={{ textAlign: 'center', marginBottom: '2.5rem' }}>
+        <h2 className="cursive-title section-title--center">
           {whatWeDoHeading.title}
         </h2>
         <div className="home-features__grid">
           {whatWeDoData.map((item) => (
             <FeatureCard
               key={item.title}
-              icon={item.icon}
               title={item.title}
               text={item.text}
               linkLabel={item.linkLabel}
@@ -106,7 +110,7 @@ export default function Home() {
           <div className="home-informatics__blob home-informatics__blob--2" />
         </div>
         <div className="home-informatics__inner">
-          <h2 className="cursive-title" style={{ textAlign: 'center', marginBottom: '2.75rem' }}>
+          <h2 className="cursive-title section-title--center">
             {informaticsHeading.title}
           </h2>
           <div className="home-informatics__quotes">

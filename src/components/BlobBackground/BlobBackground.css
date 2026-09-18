@@ -13,7 +13,8 @@
   position: absolute;
   border-radius: 50%;
   filter: blur(100px);
-  opacity: 0.35;
+  /* Very low opacity — the page background stays neutral cream */
+  opacity: 0.07;
   animation: blobFloat 18s ease-in-out infinite alternate;
 }
 

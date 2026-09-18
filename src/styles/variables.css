@@ -34,42 +34,45 @@
   --color-warning:        #fbbf24;
   --color-warning-light:  #fef3c7;
 
-  /* Neutrals (from Figma: bg is lavender-pink gradient, text is near-black) */
-  --color-bg:             #FAF5FF;
-  --color-bg-alt:         #EEE8F8;
+  /* Neutrals — cream / off-white base, near-black text.
+     Pink & purple are kept strictly as ACCENTS (see palette above). */
+  --color-bg:             #FBF8F2;  /* cream page background */
+  --color-bg-alt:         #F4EFE5;  /* slightly deeper cream for alt sections */
+  --color-cream:          #FBF8F2;
+  --color-cream-deep:     #F4EFE5;
   --color-surface:        #ffffff;
-  --color-text:           #201E1F;
-  --color-text-secondary: #6F4741;
-  --color-text-muted:     #9ca3af;
-  --color-border:         #EDE4F5;
-  --color-border-light:   #EEE8F8;
+  --color-text:           #1F1D1E;
+  --color-text-secondary: #4E4749;
+  --color-text-muted:     #857E80;
+  --color-border:         #E7DFD1;
+  --color-border-light:   #F0E9DD;
   --color-overlay:        rgba(32, 30, 31, 0.55);
 
   /* ── 2. GRADIENTS ──────────────────────────────────────────────────────── */
-  /* Hero gradient from Figma: lavender top-left → pink bottom-left → near-white right */
+  /* Hero background — neutral cream, accents applied via type & borders only */
   --gradient-hero:    linear-gradient(135deg,
-    #EEE8F8 0%,
-    #E4BDD4 25%,
-    #FEE6EA 50%,
-    #FFF9FB 100%
+    #FBF8F2 0%,
+    #F6F1E6 55%,
+    #FFFDF8 100%
   );
   --gradient-primary: linear-gradient(135deg, #B7A3DF, #9E80BD);
-  --gradient-accent:  linear-gradient(135deg, #FCC1C3 0%, #C2C5E4 100%);
-  --gradient-card:    linear-gradient(145deg, #ffffff 0%, #FAF5FF 100%);
+  --gradient-accent:  linear-gradient(135deg, #FEB0BA 0%, #9E80BD 100%);
+  --gradient-card:    var(--color-surface);
   --gradient-blue:    linear-gradient(135deg, #948DD1, #B7A3DF);
-  --gradient-surface: linear-gradient(160deg, #ffffff 0%, #FAF5FF 100%);
+  --gradient-surface: var(--color-surface);
 
-  /* Tinted card backgrounds */
-  --gradient-card-purple: linear-gradient(160deg, #ffffff 0%, #F9EEFA 100%);
-  --gradient-card-pink:   linear-gradient(160deg, #ffffff 0%, #FEE6EA 100%);
-  --gradient-card-blue:   linear-gradient(160deg, #ffffff 0%, #EEE8F8 100%);
-  --gradient-card-green:  linear-gradient(160deg, #ffffff 0%, #ecfdf5 100%);
-  --gradient-card-amber:  linear-gradient(160deg, #ffffff 0%, #fffbeb 100%);
+  /* Tinted card backgrounds — solid, no gradients */
+  --gradient-card-purple: var(--color-surface);
+  --gradient-card-pink:   var(--color-surface);
+  --gradient-card-blue:   var(--color-surface);
+  --gradient-card-green:  var(--color-surface);
+  --gradient-card-amber:  var(--color-surface);
 
   /* ── 3. TYPOGRAPHY ─────────────────────────────────────────────────────── */
-  --font-heading: 'Poppins', system-ui, -apple-system, sans-serif;
+  /* Heading face: Chakra Petch — a readable, pixel/tech-inspired Google Font */
+  --font-heading: 'Chakra Petch', 'Poppins', system-ui, -apple-system, sans-serif;
   --font-body:    'Inter', system-ui, -apple-system, sans-serif;
-  --font-cursive: 'Caveat', cursive;
+  --font-cursive: 'Chakra Petch', 'Poppins', system-ui, sans-serif;
   --font-mono:    'Space Mono', 'Fira Code', ui-monospace, monospace;
 
   /* Modular type scale — fluid with clamp() */
@@ -142,17 +145,17 @@
   --border-width-thick: 2px;
 
   /* ── 7. SHADOWS ────────────────────────────────────────────────────────── */
-  --shadow-xs:  0 1px 2px rgba(158, 128, 189, 0.05);
-  --shadow-sm:  0 2px 8px rgba(158, 128, 189, 0.07), 0 1px 2px rgba(158, 128, 189, 0.04);
-  --shadow-md:  0 4px 16px rgba(158, 128, 189, 0.09), 0 2px 4px rgba(158, 128, 189, 0.04);
-  --shadow-lg:  0 12px 32px rgba(158, 128, 189, 0.11), 0 4px 8px rgba(158, 128, 189, 0.04);
-  --shadow-xl:  0 24px 56px rgba(158, 128, 189, 0.13), 0 8px 16px rgba(158, 128, 189, 0.05);
+  --shadow-xs:  0 1px 2px rgba(60, 50, 40, 0.05);
+  --shadow-sm:  0 2px 8px rgba(60, 50, 40, 0.07), 0 1px 2px rgba(60, 50, 40, 0.04);
+  --shadow-md:  0 4px 16px rgba(60, 50, 40, 0.09), 0 2px 4px rgba(60, 50, 40, 0.04);
+  --shadow-lg:  0 12px 32px rgba(60, 50, 40, 0.11), 0 4px 8px rgba(60, 50, 40, 0.04);
+  --shadow-xl:  0 24px 56px rgba(60, 50, 40, 0.13), 0 8px 16px rgba(60, 50, 40, 0.05);
   --shadow-glow-primary: 0 4px 20px rgba(158, 128, 189, 0.25), 0 0 0 1px rgba(158, 128, 189, 0.08);
   --shadow-glow-accent:  0 4px 20px rgba(254, 176, 186, 0.25), 0 0 0 1px rgba(254, 176, 186, 0.08);
 
   /* Card-specific refined shadow (for hover states) */
-  --shadow-card-hover: 0 16px 40px rgba(158, 128, 189, 0.12), 0 6px 12px rgba(158, 128, 189, 0.06);
-  --shadow-card-rest:  0 2px 8px rgba(158, 128, 189, 0.06), 0 0 0 1px rgba(237, 228, 245, 0.5);
+  --shadow-card-hover: 0 16px 40px rgba(60, 50, 40, 0.12), 0 6px 12px rgba(60, 50, 40, 0.06);
+  --shadow-card-rest:  0 2px 8px rgba(60, 50, 40, 0.06), 0 0 0 1px rgba(231, 223, 209, 0.7);
 
   /* ── 8. TRANSITIONS ────────────────────────────────────────────────────── */
   --transition-fast:   0.18s ease;

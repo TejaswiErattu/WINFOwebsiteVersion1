@@ -7,6 +7,8 @@ import { MEMBERSHIP_SIGNUP_URL } from './externalLinks';
 export const eventsData = {
   /* ---------- Hero ---------- */
   title: 'events',
+  /* TODO: replace with final copy */
+  subtitle: 'Workshops, socials, and company visits happening all year long.',
 
   /* ---------- Event categories (rows) ---------- */
   categories: [
@@ -15,7 +17,7 @@ export const eventsData = {
       events: [
         { name: 'Annual Hackathon', image: '/images/events/event-10.jpg' },
         { name: 'TechXperience', image: '/images/events/event-07.jpg' },
-        { name: 'Fearless', image: '/images/events/event-09.png' },
+        { name: 'Fearless, TechMore', image: '/images/events/event-09.png' },
       ],
     },
     {

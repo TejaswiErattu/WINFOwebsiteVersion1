@@ -129,7 +129,7 @@ export const officersData = {
       name: 'diversity',
       image: '',
       description:
-        'Organizes quarterly Power Hour events, leads the annual FearLess and TechXperience hackathons, and coordinates outreach for high school and middle school students.',
+        'Organizes quarterly Power Hour events, leads the annual Fearless, TechMore and TechXperience hackathons, and coordinates outreach for high school and middle school students.',
     },
     {
       name: 'student engagement',

@@ -25,7 +25,7 @@
 @import './variables.css';
 
 /* Google Fonts fallback (loaded via <link> in index.html; this is a safety net) */
-@import url('https://fonts.googleapis.com/css2?family=Caveat:wght@400;500;600;700&family=Inter:wght@400;500;600;700&family=Poppins:wght@600;700;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@500;600;700&family=Inter:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap');
 
 /* ===== 1. CSS RESET / NORMALISATION ======================================= */
 /*
@@ -61,12 +61,8 @@ body {
   font-weight: var(--weight-normal);
   color: var(--color-text);
   background-color: var(--color-bg);
-  /* Soft pastel background feel — layered radials for depth */
-  background-image:
-    radial-gradient(ellipse 80% 50% at 5% 0%, rgba(158, 128, 189, 0.05) 0%, transparent 55%),
-    radial-gradient(ellipse 60% 40% at 95% 100%, rgba(254, 176, 186, 0.04) 0%, transparent 50%),
-    radial-gradient(ellipse 50% 50% at 50% 50%, rgba(148, 141, 209, 0.02) 0%, transparent 70%);
-  background-attachment: fixed;
+  /* Flat neutral cream — colour now comes from accents, not the background */
+  background-image: none;
 }
 
 /* Remove default margins from typographic elements */
@@ -149,14 +145,37 @@ h3 { font-size: var(--text-xl);  }
 h4 { font-size: var(--text-lg);  }
 h5 { font-size: var(--text-md);  }
 
-/* Cursive section titles — used across pages (e.g. Home, Footer) */
+/* Section titles — shared across pages (Home, Hackathon, Events, Podcast, Footer).
+   Class name kept for backwards-compatibility; the face is now the tech heading font. */
 .cursive-title {
-  font-family: var(--font-cursive);
+  font-family: var(--font-heading);
   font-weight: 700;
-  font-size: clamp(2rem, 5vw, 3rem);
-  color: var(--color-primary);
-  letter-spacing: 0;
+  font-size: clamp(1.75rem, 3.6vw, 2.5rem);
+  color: var(--color-primary-dark);
+  letter-spacing: var(--tracking-wide);
   line-height: 1.2;
+  text-transform: capitalize;
+}
+
+/* Standard centred section heading — same spacing on every page */
+.section-title--center {
+  text-align: center;
+  margin-bottom: var(--space-10);
+}
+
+/* Featured statistic / pull-quote — used for impact statements in body copy */
+.impact-stat {
+  font-family: var(--font-heading);
+  font-size: clamp(1.35rem, 2.6vw, 1.85rem);
+  font-weight: 700;
+  line-height: 1.35;
+  color: var(--color-primary-dark);
+  background: var(--color-surface);
+  border-left: 5px solid var(--color-accent);
+  border-radius: 0 var(--radius-md) var(--radius-md) 0;
+  padding: var(--space-5) var(--space-6);
+  margin: var(--space-2) 0;
+  box-shadow: var(--shadow-card-rest);
 }
 h6 { font-size: var(--text-base); }
 
@@ -172,7 +191,8 @@ small {
 }
 
 strong, b {
-  font-weight: var(--weight-semibold);
+  font-weight: var(--weight-bold);
+  color: var(--color-text);
 }
 
 /* ===== 4. LINKS & BUTTONS (base) ========================================== */

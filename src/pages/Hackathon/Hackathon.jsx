@@ -101,7 +101,10 @@ export default function Hackathon() {
                     <div className="hack-winner__placeholder" />
                   )}
                 </div>
-                <a href={w.link} className="hack-winner__link">learn more</a>
+                {/* "learn more" link is only rendered when a real destination exists */}
+                {w.link && w.link !== '#' && (
+                  <a href={w.link} className="hack-winner__link">learn more</a>
+                )}
               </div>
             ))}
           </div>
@@ -182,7 +185,7 @@ export default function Hackathon() {
 
       {/* ===== 7 · PAST SPONSORS ===== */}
       <SectionWrapper>
-        <h2 className="cursive-title" style={{ textAlign: 'center', marginBottom: '2rem' }}>
+        <h2 className="cursive-title section-title--center">
           {pastSponsorsHeading}
         </h2>
         <div className="hack-past-sponsors">

@@ -12,7 +12,7 @@ export default function Merch() {
           <div className="merch-hero__text">
             <span className="badge">limited drop</span>
             <h1 className="merch-hero__title">
-              w;nfo <span>merch</span> is live!
+              winfo <span>merch</span> is live!
             </h1>
             <p className="merch-hero__desc">
               Rep your community — grab a cozy WINFO crewneck before they sell
@@ -43,7 +43,7 @@ export default function Merch() {
           {/* Sweatshirt photo */}
           <div className="merch-hero__image">
             <img
-              src="/images/merchpic.png"
+              src="public/images/hoodie1.png"
               alt="WINFO crewneck sweatshirts in brown and cream"
             />
           </div>

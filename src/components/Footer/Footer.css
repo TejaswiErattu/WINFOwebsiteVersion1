@@ -1,14 +1,9 @@
 /* ==========================================================================
-   FOOTER — light lavender-pink gradient (matches Figma screenshot)
+   FOOTER — neutral cream band with accent details
    ========================================================================== */
 .footer {
-  background: linear-gradient(
-    160deg,
-    #EEE8F8 0%,
-    #F9EEFA 30%,
-    #FEE6EA 60%,
-    #FFF4F6 100%
-  );
+  background: var(--color-bg-alt);
+  border-top: 1px solid var(--color-border);
   color: var(--color-text);
   padding: 4rem 1.5rem 0;
   margin-top: auto;

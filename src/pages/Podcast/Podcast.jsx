@@ -83,7 +83,7 @@ export default function Podcast() {
 
       {/* ===== 4 · PAST EPISODES CAROUSEL ===== */}
       <SectionWrapper alt className="podcast-episodes-section">
-        <h2 className="cursive-title" style={{ textAlign: 'center', marginBottom: '2.5rem' }}>
+        <h2 className="cursive-title section-title--center">
           {episodesHeading}
         </h2>
 

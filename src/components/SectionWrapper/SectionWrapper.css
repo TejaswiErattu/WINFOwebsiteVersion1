@@ -6,7 +6,7 @@
 }
 
 .section-wrapper--alt {
-  background: linear-gradient(180deg, rgba(238, 232, 248, 0.35) 0%, rgba(254, 230, 234, 0.15) 50%, rgba(249, 238, 250, 0.3) 100%);
+  background: var(--color-bg-alt);
 }
 
 .section-wrapper--no-padding {

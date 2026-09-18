@@ -5,7 +5,7 @@ import { eventsData } from '../../data/eventsData';
 import './Events.css';
 
 export default function Events() {
-  const { title, categories, bottomCta } = eventsData;
+  const { title, subtitle, categories, bottomCta } = eventsData;
 
   return (
     <>
@@ -17,7 +17,10 @@ export default function Events() {
         </div>
 
         <div className="events-hero__inner">
-          <h1 className="events-hero__title cursive-title">{title}</h1>
+          <div className="events-hero__content">
+            <h1 className="events-hero__title cursive-title">{title}</h1>
+            <p className="events-hero__subtitle">{subtitle}</p>
+          </div>
           <div className="events-hero__image-frame">
             <img src="/images/winfo-community-2.jpg" alt="WINFO community event" />
           </div>
