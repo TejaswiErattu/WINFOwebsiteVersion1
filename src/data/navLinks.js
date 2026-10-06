@@ -18,7 +18,7 @@ export const navLinks = [
   { label: 'membership', path: '/membership' },
   { label: 'team', path: '/officers' },
   { label: 'support us', path: '/support' },
-  { label: 'merch 🛍️', path: '/merch' },
+  { label: 'merch', path: '/merch' },
 ];
 
 /* ---------- Footer quick-links ---------- */
