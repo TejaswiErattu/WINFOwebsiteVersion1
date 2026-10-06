@@ -172,10 +172,12 @@ export const hackathonData = {
   /* ---------- Previous Winners ---------- */
   winnersHeading: 'previous winners',
   winners: [
-    /* TODO: fill projectName + projectDescription (one line). Empty fields are hidden. */
-    { category: 'Best Overall', image: '/images/best-overall-winner.jpg', link: '#', projectName: '', projectDescription: '' },
-    { category: 'Best Design', image: '/images/best-design-winner.jpg', link: '#', projectName: '', projectDescription: '' },
-    { category: 'Best Impact', image: '/images/best-impact-winner.jpg', link: '#', projectName: '', projectDescription: '' },
+    /* TODO: fill projectName + projectDescription (one line). Empty fields are hidden.
+       Image filenames do NOT match categories on purpose: commit e1d655e
+       "Reordered winner images to match correct categories". Confirm with the board. */
+    { category: 'Best Overall', image: '/images/best-impact-winner.jpg', link: '#', projectName: '', projectDescription: '' },
+    { category: 'Best Design', image: '/images/best-overall-winner.jpg', link: '#', projectName: '', projectDescription: '' },
+    { category: 'Best Impact', image: '/images/best-design-winner.jpg', link: '#', projectName: '', projectDescription: '' },
     { category: 'Best Coding', image: '/images/best-coding-winner.jpg', link: '#', projectName: '', projectDescription: '' },
   ],
 
