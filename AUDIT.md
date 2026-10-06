@@ -73,7 +73,12 @@ Bypasses of the tokens:
 - Fixed pixel widths in `CircuitSVG` containers, `BlobBackground`, and a few CTA blocks.
 
 ## 6. Public assets
-- `public/` is about 146 MB. 32 files are over 500 KB, mostly unresized photos: `images/events/*` (up to 16 MB), `images/team/*` headshots (two PNGs about 10 MB each), `best-*-winner.jpg` (about 7 MB each), `podcast-*.jpg/png`, `hoodie*.png`.
+- `public/` is about 9.3 MB (was about 146 MB) after `scripts/compress-images.mjs`: photos are at most 1920px wide (team headshots 800px), JPG quality 80, EXIF rotation baked in, and fully opaque PNGs converted to JPG. File names are lowercase.
+- Still over 500 KB: `images/events/event-03.jpg` (868 KB) and `event-07.jpg` (636 KB), both portrait photos at 1920px wide.
+- Still PNG because of transparency: `hero-photo-1.png`, `hackathon-group.png` (the latter is unused).
+- `scripts/check-image-refs.mjs` checks that every `/images/...` path in `src/` exists in `public/` with exact case. It must report 0 missing; run it after adding or renaming images.
+- New photos should be run through `node scripts/compress-images.mjs` before committing (it only touches JPG/PNG over 300 KB).
+- Lazy loading: images below the first screen use `loading="lazy" decoding="async"`. Heroes, the navbar logo, the Home hero logo and the first three marquee images stay eager.
 - Home hero expects `public/hero-bg.jpg` (not present yet; the fallback gradient shows).
 - Hackathon expects the 15th poster at `public/hackathon/` (not present; `posterSrc` is empty).
 - Sponsor logos live in `src/assets/sponsors/` (imported by `hackathonData.js`); no grayscale filter is applied.
@@ -97,7 +102,6 @@ Bypasses of the tokens:
 Board replies are tracked in `winfo-assets/board-reply-tracker.md`; research is in `winfo-assets/events-draft.md`.
 
 ## 8. Known risks
-- Image weight (section 6) hurts load time; resize and convert before launch.
 - `Hackathon.css` and others still contain hard-coded colours; palette changes will miss them.
 - Hackathon winners' images are not named after their categories (commit `e1d655e`); the mapping lives in `winners[]`.
 - Hackathon schedule and FAQ come from `winfohackathon2027.web.app`; update both places when that site changes.

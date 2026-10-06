@@ -39,7 +39,7 @@ export default function Events() {
                   <div className="events-card" key={i}>
                     <div className="events-card__image">
                       {evt.image ? (
-                        <img src={evt.image} alt={evt.name} />
+                        <img src={evt.image} alt={evt.name} loading="lazy" decoding="async" />
                       ) : (
                         <div className="events-card__placeholder" />
                       )}

@@ -98,7 +98,7 @@ export default function Podcast() {
           <div className="podcast-carousel__card">
             <div className="podcast-carousel__thumb">
               {ep.image ? (
-                <img src={ep.image} alt={ep.imageAlt} />
+                <img src={ep.image} alt={ep.imageAlt} loading="lazy" decoding="async" />
               ) : (
                 <div className="podcast-carousel__thumb-placeholder" />
               )}

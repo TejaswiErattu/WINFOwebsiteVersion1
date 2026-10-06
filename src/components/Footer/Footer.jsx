@@ -46,7 +46,7 @@ export default function Footer() {
         {/* ── Left column: brand + land acknowledgment + socials ── */}
         <div className="footer__col footer__col--brand">
           <div className="footer__brand-logo">
-            <WinfoLogo color="gradient" />
+            <WinfoLogo color="gradient" loading="lazy" decoding="async" />
           </div>
 
           <p className="footer__land-ack">

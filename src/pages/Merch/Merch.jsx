@@ -44,7 +44,7 @@ export default function Merch() {
           {/* Sweatshirt photo */}
           <div className="merch-hero__image">
             <img
-              src="/images/hoodie1.png"
+              src="/images/hoodie1.jpg"
               alt="WINFO crewneck sweatshirts in brown and cream"
             />
           </div>

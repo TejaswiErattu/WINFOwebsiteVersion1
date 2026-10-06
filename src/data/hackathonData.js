@@ -45,10 +45,10 @@ export const hackathonData = {
      while lazy images load). The first `galleryEagerCount` load immediately. */
   galleryEagerCount: 3,
   gallery: [
-    { src: '/images/hackathon-participants.jpg', width: 2976, height: 1984, alt: 'Hackathon participants smiling at their table with laptops open' },
+    { src: '/images/hackathon-participants.jpg', width: 1920, height: 1280, alt: 'Hackathon participants smiling at their table with laptops open' },
     { src: '/images/hackathon-2.jpg', width: 1200, height: 800, alt: 'A full ballroom of students working on laptops at round tables, decorated with white balloons' },
     { src: '/images/hackathon-4.jpg', width: 1200, height: 800, alt: 'A mentor talks with a team of participants during the hackathon' },
-    { src: '/images/hackathon-food.jpg', width: 2976, height: 1984, alt: 'WINFO volunteers serving food to participants' },
+    { src: '/images/hackathon-food.jpg', width: 1920, height: 1280, alt: 'WINFO volunteers serving food to participants' },
     { src: '/images/hackathon-3.jpg', width: 1200, height: 800, alt: 'Two Costco IT Recruiting representatives at their sponsor table' },
     { src: '/images/hackathon-1.jpg', width: 1200, height: 900, alt: 'The WINFO hackathon team in black shirts posing in front of gold WINFO balloons' },
     { src: '/images/hackathon-5.jpg', width: 1200, height: 800, alt: 'WINFO officers posing in front of gold WINFO balloons' },

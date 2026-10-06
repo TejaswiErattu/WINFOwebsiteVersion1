@@ -49,7 +49,7 @@ export default function SupportUs() {
         <div className="support-why">
           <div className="support-why__image">
             {whyImage ? (
-              <img src={whyImage} alt="WINFO members" />
+              <img src={whyImage} alt="WINFO members" loading="lazy" decoding="async" />
             ) : (
               <div className="support-why__placeholder" />
             )}

@@ -17,16 +17,16 @@ export const eventsData = {
       events: [
         { name: 'Annual Hackathon', image: '/images/events/event-10.jpg' },
         { name: 'TechXperience', image: '/images/events/event-07.jpg' },
-        { name: 'Fearless, TechMore', image: '/images/events/event-09.png' },
+        { name: 'Fearless, TechMore', image: '/images/events/event-09.jpg' },
       ],
     },
     {
       label: 'fun with new friends...',
       events: [
-        { name: 'Vision Boards', image: '/images/events/event-11.png' },
-        { name: 'Frost & Frosting', image: '/images/events/event-06.png' },
-        { name: 'Paint & Sip', image: '/images/events/event-05.png' },
-        { name: 'Galentine\'s Floral Arrangement', image: '/images/events/event-04.png' },
+        { name: 'Vision Boards', image: '/images/events/event-11.jpg' },
+        { name: 'Frost & Frosting', image: '/images/events/event-06.jpg' },
+        { name: 'Paint & Sip', image: '/images/events/event-05.jpg' },
+        { name: 'Galentine\'s Floral Arrangement', image: '/images/events/event-04.jpg' },
       ],
     },
     {

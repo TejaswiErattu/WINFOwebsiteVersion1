@@ -8,7 +8,7 @@ export const officersData = {
   heroBody:
     'Our team is a passionate group of students dedicated to fostering an inclusive, supportive, and empowering community for students in the field of information science.',
   heroBodySecondary: 'Read more about us below!',
-  heroImage: '/images/stickfigures.png',
+  heroImage: '/images/stickfigures.jpg',
   heroImageAlt: 'Illustration of stick figures',
 
   /* ---------- Officers section ---------- */
@@ -29,7 +29,7 @@ export const officersData = {
     {
       name: 'stephanie lee',
       role: 'internal co-president',
-      image: '/images/team/stephanie_headshot.JPG',
+      image: '/images/team/stephanie_headshot.jpg',
       linkedin: 'https://www.linkedin.com/in/stephanielee11/',
       year: 'sophomore (class of 2028)',
       hometown: '',
@@ -53,7 +53,7 @@ export const officersData = {
     {
       name: 'tanya manchanda',
       role: 'outreach director',
-      image: '/images/team/tanya_headshot.PNG',
+      image: '/images/team/tanya_headshot.jpg',
       linkedin: 'https://www.linkedin.com/in/tanya-manchanda-605155268/',
       year: 'junior (class of 2027)',
       hometown: '',
@@ -63,7 +63,7 @@ export const officersData = {
     {
       name: 'tiffany guan',
       role: 'public relations director',
-      image: '/images/team/tiffany_headshot.JPG',
+      image: '/images/team/tiffany_headshot.jpg',
       linkedin: 'https://www.linkedin.com/in/tiffany-guan-240697213/',
       year: '',
       hometown: '',
@@ -73,7 +73,7 @@ export const officersData = {
     {
       name: 'fay tong',
       role: 'creative director',
-      image: '/images/team/fay_headshot.PNG',
+      image: '/images/team/fay_headshot.jpg',
       linkedin: 'https://www.linkedin.com/in/fay-tong-4ba9a2337/',
       year: '',
       hometown: '',
@@ -83,7 +83,7 @@ export const officersData = {
     {
       name: 'tejaswi erattu taj',
       role: 'finance executive',
-      image: '/images/team/tejaswi_headshot.JPG',
+      image: '/images/team/tejaswi_headshot.jpg',
       linkedin: 'https://www.linkedin.com/in/tejaswi-erattu-2007-uw/',
       year: 'first-year (class of 2029)',
       focusArea: 'informatics | software development & cyber security',
@@ -92,7 +92,7 @@ export const officersData = {
     {
       name: 'hana kang',
       role: 'student engagement officer',
-      image: '/images/team/hana_headshot.JPG',
+      image: '/images/team/hana_headshot.jpg',
       linkedin: 'https://www.linkedin.com/in/hana-kang-614358339/',
       year: 'second-year (class of 2028)',
       hometown: '',
@@ -102,7 +102,7 @@ export const officersData = {
     {
       name: 'jasnoor kaur chimni',
       role: 'officer',
-      image: '/images/team/jasnoor_headshot.JPG',
+      image: '/images/team/jasnoor_headshot.jpg',
       linkedin: 'https://www.linkedin.com/in/jasnoor-chimni/',
       year: 'first-year (class of 2029)',
       hometown: '',
@@ -112,7 +112,7 @@ export const officersData = {
     {
       name: 'sophia tounalom',
       role: 'officer',
-      image: '/images/team/sophia_headshot.JPG',
+      image: '/images/team/sophia_headshot.jpg',
       linkedin: 'https://www.linkedin.com/in/sophia-tounalom-221939282/',
       year: 'freshman (class of 2029)',
       hometown: '',

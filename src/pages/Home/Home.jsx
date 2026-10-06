@@ -48,7 +48,7 @@ export default function Home() {
           </div>
           <div className="home-who__image-frame">
             {missionData.image ? (
-              <img src={missionData.image} alt={missionData.imageAlt} />
+              <img src={missionData.image} alt={missionData.imageAlt} loading="lazy" decoding="async" />
             ) : (
               <div className="home-who__image-placeholder" />
             )}
@@ -61,7 +61,7 @@ export default function Home() {
         <div className="home-story">
           <div className="home-story__image-frame">
             {storyData.image ? (
-              <img src={storyData.image} alt={storyData.imageAlt} />
+              <img src={storyData.image} alt={storyData.imageAlt} loading="lazy" decoding="async" />
             ) : (
               <div className="home-story__image-placeholder" />
             )}

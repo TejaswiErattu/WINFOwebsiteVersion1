@@ -154,7 +154,7 @@ export default function Hackathon() {
         <div className="hack-current__grid">
           <div className={`hack-current__poster ${current.posterSrc ? '' : 'hack-current__poster--empty'}`}>
             {current.posterSrc ? (
-              <img src={current.posterSrc} alt={current.posterAlt} />
+              <img src={current.posterSrc} alt={current.posterAlt} loading="lazy" decoding="async" />
             ) : (
               <div className="hack-current__poster-placeholder" aria-hidden="true" />
             )}
@@ -271,7 +271,7 @@ export default function Hackathon() {
                 <p className="hack-winner__category">{w.category}</p>
                 <div className="hack-winner__image">
                   {w.image ? (
-                    <img src={w.image} alt={`${w.category} winning team`} loading="lazy" />
+                    <img src={w.image} alt={`${w.category} winning team`} loading="lazy" decoding="async" />
                   ) : (
                     <div className="hack-winner__placeholder" />
                   )}
@@ -328,6 +328,7 @@ export default function Hackathon() {
                   alt={sponsor.name}
                   className="hack-past-sponsor__logo"
                   loading="lazy"
+                  decoding="async"
                 />
               ) : (
                 <span className="hack-past-sponsor__name">{sponsor.name}</span>

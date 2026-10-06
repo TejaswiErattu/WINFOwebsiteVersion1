@@ -21,7 +21,7 @@ function TeamCard({ officer, large }) {
       {/* Photo */}
       <div className="officer-card__portrait">
         {image ? (
-          <img src={image} alt={name} loading="lazy" />
+          <img src={image} alt={name} loading="lazy" decoding="async" />
         ) : (
           <div className="officer-card__placeholder" />
         )}
@@ -55,9 +55,10 @@ function CommitteeCard({ committee }) {
     <div className="committee-card">
       <div className="committee-card__image">
         <img
-          src={image || '/images/comingsoon.png'}
+          src={image || '/images/comingsoon.jpg'}
           alt={image ? name : 'Coming soon'}
           loading="lazy"
+          decoding="async"
         />
       </div>
       <h3 className="committee-card__name cursive-title">{name}</h3>
