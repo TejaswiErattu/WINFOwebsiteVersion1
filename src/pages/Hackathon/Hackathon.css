@@ -2,60 +2,260 @@
    HACKATHON PAGE — matches Figma HiFi screenshots
    ========================================================================== */
 
-/* ===== 1. HERO ===== */
-.hack-hero {
-  position: relative;
-  overflow: hidden;
-  background: var(--gradient-hero);
-  border-bottom: 1px solid var(--color-border);
-  padding: 3.5rem 1.5rem;
+/* Page-scoped accents sampled from the 14th Hackathon poster (event palette,
+   not the org-wide brand — see deck-notes). Contrast on white:
+   teal 7.3:1, red 6.9:1 (both AA for text). */
+.hack-page {
+  --hack-sky:        #BEE9F7;
+  --hack-sky-deep:   #9BDEE9;
+  --hack-teal:       #206173;
+  --hack-red:        #98493E;
+  --hack-nav-h:      62px;   /* main navbar height */
+  --hack-subnav-h:   52px;
 }
 
-.hack-hero__inner {
+/* Sections land below both sticky bars when jumped to */
+.hack-section {
+  scroll-margin-top: calc(var(--hack-nav-h) + var(--hack-subnav-h) + 12px);
+}
+
+/* ===== PAGE HEADER ===== */
+.hack-header {
   max-width: var(--container-max);
   margin: 0 auto;
-  padding: var(--container-padding);
+  padding: 2.5rem 1.5rem 1rem;
 }
 
-.hack-hero__inner .cursive-title {
-  margin-bottom: 1.5rem;
+.hack-header .cursive-title {
+  margin: 0;
 }
 
-/* Photo strip */
-.hack-hero__photos {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 1.5rem;
-  margin-bottom: 2rem;
-  align-items: stretch;
+/* ===== SUB-NAV (sticky under main nav) ===== */
+.hack-subnav {
+  position: sticky;
+  top: var(--hack-nav-h);
+  z-index: calc(var(--z-navbar) - 1);
+  background: var(--color-nav-bg-scrolled);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border-bottom: 1px solid var(--color-border);
 }
 
-.hack-hero__photo {
-  aspect-ratio: 4 / 3;
-  border-radius: 20px;
+.hack-subnav__list {
+  position: relative;          /* offsetParent for the active-pill scroll */
+  display: flex;
+  justify-content: center;
+  gap: 0.25rem;
+  max-width: var(--container-max);
+  min-height: var(--hack-subnav-h);
+  align-items: center;
+  margin: 0 auto;
+  padding: 0 1rem;
+  list-style: none;
+}
+
+.hack-subnav__link {
+  display: inline-block;
+  padding: 0.4rem 0.85rem;
+  border-radius: var(--radius-full);
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: var(--color-text-secondary);
+  white-space: nowrap;
+  transition: color var(--transition-fast), background var(--transition-fast);
+}
+
+.hack-subnav__link:hover {
+  color: var(--hack-teal);
+  background: rgba(190, 233, 247, 0.45);
+}
+
+.hack-subnav__link--active {
+  color: #fff;
+  background: var(--hack-teal);
+  font-weight: 600;
+}
+
+.hack-subnav__link--active:hover {
+  color: #fff;
+  background: var(--hack-teal);
+}
+
+.hack-subnav__link:focus-visible {
+  outline: 2px solid var(--hack-teal);
+  outline-offset: 2px;
+}
+
+/* ===== 1. GALLERY MARQUEE ===== */
+.hack-gallery {
+  padding: 2rem 0;
+  overflow: hidden;            /* never widens the page */
+}
+
+.hack-marquee {
+  width: 100%;
   overflow: hidden;
-  background: transparent;
-  box-shadow: none;
 }
 
-.hack-hero__photo:first-child {
-  background: transparent;
-  box-shadow: none;
+.hack-marquee:focus-visible {
+  outline: 2px solid var(--hack-teal);
+  outline-offset: -2px;
 }
 
-.hack-hero__photo img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  object-position: center;
+.hack-marquee__track {
+  display: flex;
+  width: max-content;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  animation: hack-marquee 70s linear infinite;
+}
+
+/* Spacing lives on each item (not `gap`) so both halves are identical
+   widths and -50% lands exactly on the start of the second copy. */
+.hack-marquee__item {
+  flex: 0 0 auto;
+  margin-right: 0.75rem;
+}
+
+.hack-marquee__item img {
   display: block;
-  border-radius: 20px;
+  height: 260px;
+  width: auto;
+  object-fit: cover;
+  border-radius: var(--radius-lg);
+  background: var(--color-bg-alt);
 }
 
-.hack-hero__photo-placeholder {
+.hack-marquee:hover .hack-marquee__track,
+.hack-marquee:focus-within .hack-marquee__track {
+  animation-play-state: paused;
+}
+
+@keyframes hack-marquee {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
+
+/* Reduced motion: static, swipeable row with a single copy */
+@media (prefers-reduced-motion: reduce) {
+  .hack-marquee {
+    overflow-x: auto;
+    scroll-snap-type: x proximity;
+    padding: 0 1.5rem;
+  }
+  .hack-marquee__track {
+    animation: none;
+  }
+  .hack-marquee__item--dupe {
+    display: none;
+  }
+  .hack-marquee__item {
+    scroll-snap-align: start;
+  }
+}
+
+/* ===== 2. THIS YEAR'S HACKATHON ===== */
+.hack-current__grid {
+  display: grid;
+  grid-template-columns: minmax(0, 0.85fr) minmax(0, 1.15fr);
+  gap: 3rem;
+  align-items: center;
+}
+
+/* Fixed portrait frame; poster is contained, never cropped */
+.hack-current__poster {
+  aspect-ratio: 4 / 5;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  background: linear-gradient(180deg, var(--hack-sky) 0%, #D5EAF2 55%, var(--hack-sky-deep) 100%);
+}
+
+.hack-current__poster img {
   width: 100%;
   height: 100%;
-  background: var(--color-bg-alt);
+  object-fit: contain;
+  display: block;
+}
+
+.hack-current__poster-placeholder {
+  width: 100%;
+  height: 100%;
+}
+
+.hack-current__eyebrow {
+  font-size: var(--text-xs);
+  font-weight: 700;
+  letter-spacing: var(--tracking-widest);
+  text-transform: uppercase;
+  color: var(--color-text-muted);
+  margin-bottom: 0.75rem;
+}
+
+.hack-current__theme {
+  font-family: var(--font-body);
+  font-style: italic;
+  font-weight: 700;
+  font-size: clamp(1.9rem, 4.2vw, 3rem);
+  line-height: 1.1;
+  letter-spacing: -0.01em;
+  color: var(--hack-teal);
+  margin: 0 0 1.25rem;
+}
+
+.hack-current__meta {
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+  margin-bottom: 1.25rem;
+}
+
+.hack-current__date {
+  font-size: var(--text-xl);
+  font-weight: 600;
+  color: var(--hack-teal);
+}
+
+.hack-current__location {
+  font-size: var(--text-lg);
+  font-weight: 500;
+  color: var(--hack-teal);
+}
+
+.hack-current__location-detail {
+  font-size: var(--text-sm);
+  color: var(--color-text-muted);
+}
+
+.hack-current__body {
+  font-size: var(--text-base);
+  line-height: 1.7;
+  color: var(--color-text-secondary);
+  margin-bottom: 0.85rem;
+  max-width: 36rem;
+}
+
+.hack-current__register {
+  margin-top: 0.75rem;
+}
+
+/* Shown until a real registration URL is set in hackathonData.js */
+.hack-current__register-soon {
+  display: inline-flex;
+  margin-top: 0.75rem;
+  padding: 0.85rem 1.75rem;
+  border-radius: var(--radius-full);
+  border: 1.5px dashed var(--hack-teal);
+  color: var(--hack-teal);
+  font-weight: 600;
+}
+
+/* ===== 3. ABOUT ===== */
+.hack-about {
+  display: grid;
+  grid-template-columns: minmax(0, 1.3fr) minmax(0, 1fr);
+  gap: 3rem;
+  align-items: start;
 }
 
 /* About blurbs */
@@ -182,6 +382,20 @@
   background: #d9d9d9;
 }
 
+.hack-winner__project {
+  font-family: var(--font-heading);
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: var(--hack-teal);
+  margin-bottom: 0.15rem;
+}
+
+.hack-winner__desc {
+  font-size: 0.8rem;
+  line-height: 1.45;
+  color: var(--color-text-secondary);
+}
+
 .hack-winner__link {
   font-size: 0.8rem;
   font-weight: 600;
@@ -194,77 +408,145 @@
   color: var(--color-primary-dark);
 }
 
-/* ===== 4. REGISTER CTA ===== */
-.hack-register {
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  text-align: center;
-  padding: var(--space-20) 1.5rem;
-  background: var(--color-bg-alt);
-  border-block: 1px solid var(--color-border);
-  overflow: hidden;
+/* ===== 4. PRIZE TRACKS ===== */
+.hack-tracks {
+  list-style: none;
+  padding: 0;
+  margin: 2rem auto 0;
+  max-width: 820px;
 }
 
-/* Soft accent glow behind card */
-.hack-register__glow {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: 420px;
-  height: 420px;
-  border-radius: 50%;
-  background: radial-gradient(circle, rgba(254, 176, 186, 0.22) 0%, transparent 70%);
-  pointer-events: none;
-  z-index: 0;
-}
-
-.hack-register__circuit {
-  position: absolute;
-  right: 5vw;
-  bottom: 1rem;
-  width: 160px;
-  height: 260px;
-  color: rgba(158, 128, 189, 0.22);
-  pointer-events: none;
-  z-index: 0;
-}
-
-.hack-register__heading {
-  position: relative;
-  z-index: 1;
-  margin-bottom: 2rem;
-}
-
-/* Register card — solid surface for readable contrast */
-.hack-register__card {
-  position: relative;
-  z-index: 1;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+.hack-track {
+  display: grid;
+  grid-template-columns: 3rem 1fr;
   gap: 1rem;
-  padding: 1.8rem 2.5rem 2rem;
-  border-radius: var(--radius-lg);
+  padding: 1.5rem 0;
+  border-top: 1px solid var(--color-text);
+}
+
+.hack-track:last-child {
+  border-bottom: 1px solid var(--color-text);
+}
+
+.hack-track__num {
+  font-family: var(--font-mono);
+  font-size: var(--text-sm);
+  color: var(--color-text-muted);
+  padding-top: 0.2rem;
+}
+
+.hack-track__name {
+  font-family: var(--font-heading);
+  font-size: var(--text-xl);
+  font-weight: 700;
+  color: var(--hack-teal);
+  margin-bottom: 0.35rem;
+}
+
+.hack-track__desc {
+  font-size: var(--text-base);
+  line-height: 1.65;
+  color: var(--color-text-secondary);
+  margin-bottom: 0.75rem;
+}
+
+.hack-track__focus-label {
+  font-size: var(--text-xs);
+  font-weight: 700;
+  letter-spacing: var(--tracking-widest);
+  text-transform: uppercase;
+  color: var(--hack-red);
+  margin-bottom: 0.4rem;
+}
+
+.hack-track__focus {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.hack-track__focus li {
+  font-size: var(--text-sm);
+  padding: 0.25rem 0.7rem;
+  border-radius: var(--radius-full);
+  background: rgba(190, 233, 247, 0.5);
+  color: var(--hack-teal);
+}
+
+/* ===== 5. SCHEDULE ===== */
+.hack-schedule {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1.5rem;
+  margin-top: 2rem;
+}
+
+.hack-schedule__day {
   background: var(--color-surface);
   border: 1px solid var(--color-border);
-  box-shadow: var(--shadow-md);
-  max-width: 420px;
-  width: 100%;
+  border-radius: var(--radius-lg);
+  padding: 1.75rem;
+  box-shadow: var(--shadow-card-rest);
 }
 
-.hack-register__card-text {
+.hack-schedule__title {
   font-family: var(--font-heading);
-  font-size: 1.05rem;
+  font-size: var(--text-xl);
+  font-weight: 700;
+  color: var(--hack-teal);
+}
+
+.hack-schedule__date {
   font-weight: 600;
   color: var(--color-text);
-  line-height: 1.5;
+  margin-top: 0.25rem;
 }
 
-.hack-register__join-btn {
-  margin-top: 0.5rem;
+.hack-schedule__place {
+  font-size: var(--text-sm);
+  color: var(--color-text-muted);
+  margin-bottom: 1rem;
+}
+
+.hack-schedule__list {
+  margin: 0;
+}
+
+.hack-schedule__row {
+  display: grid;
+  grid-template-columns: 8.5rem 1fr;
+  gap: 0.75rem;
+  padding: 0.55rem 0;
+  border-top: 1px solid var(--color-border-light);
+}
+
+.hack-schedule__row dt {
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
+  color: var(--hack-red);
+  padding-top: 0.15rem;
+}
+
+.hack-schedule__row dd {
+  margin: 0;
+  font-size: var(--text-sm);
+  color: var(--color-text);
+}
+
+.hack-schedule__note {
+  text-align: center;
+  font-size: var(--text-sm);
+  color: var(--color-text-muted);
+  margin-top: 1.5rem;
+}
+
+/* ===== 6b. PAST THEMES (inside winners section) ===== */
+.hack-past {
+  max-width: 780px;
+  margin: 3rem auto 0;
 }
 
 /* ===== 5. FAQ ===== */
@@ -411,6 +693,17 @@
   color: var(--color-text-secondary);
 }
 
+/* Sponsor CTA + past-sponsor heading */
+.hack-sponsor__cta {
+  text-align: center;
+  margin-top: 2rem;
+}
+
+.hack-past-sponsors__heading {
+  margin-top: 4rem;
+  margin-bottom: 2rem;
+}
+
 /* ===== 7. PAST SPONSORS ===== */
 .hack-past-sponsors {
   display: flex;
@@ -486,15 +779,21 @@
 
 /* ===== RESPONSIVE ===== */
 @media (max-width: 900px) {
-  .hack-hero__photos {
-    grid-template-columns: 1fr 1fr;
-    gap: 0.75rem;
+  .hack-current__grid,
+  .hack-about,
+  .hack-schedule {
+    grid-template-columns: 1fr;
   }
 
-  .hack-hero__photos .hack-hero__photo:last-child {
-    grid-column: 1 / -1;
-    max-width: 50%;
+  .hack-current__poster {
+    max-width: 420px;
+    width: 100%;
     margin: 0 auto;
+  }
+
+  /* Until a poster file is added, don't spend a phone screen on an empty frame */
+  .hack-current__poster--empty {
+    display: none;
   }
 
   .hack-winners-grid {
@@ -512,23 +811,41 @@
   .hack-faq__circuit {
     display: none;
   }
+}
 
-  .hack-register__circuit {
+/* Sub-nav becomes a horizontally scrollable pill row */
+@media (max-width: 767px) {
+  .hack-subnav__list {
+    justify-content: flex-start;
+    overflow-x: auto;
+    scrollbar-width: none;
+    scroll-padding-inline: 1rem;
+  }
+  .hack-subnav__list::-webkit-scrollbar {
     display: none;
+  }
+  .hack-subnav__link {
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+  }
+  .hack-subnav__link--active,
+  .hack-subnav__link--active:hover {
+    color: #fff;
+    background: var(--hack-teal);
+    border-color: var(--hack-teal);
+  }
+  .hack-marquee__item img {
+    height: 180px;
   }
 }
 
 @media (max-width: 600px) {
-  .hack-hero {
-    padding: 2.5rem 1rem;
+  .hack-header {
+    padding: 2rem 1rem 0.75rem;
   }
 
-  .hack-hero__photos {
-    grid-template-columns: 1fr;
-  }
-
-  .hack-hero__photos .hack-hero__photo:last-child {
-    max-width: 100%;
+  .hack-schedule__row {
+    grid-template-columns: 6.5rem 1fr;
   }
 
   .hack-winners-card {
