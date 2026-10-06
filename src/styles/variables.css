@@ -61,6 +61,20 @@
   --gradient-blue:    linear-gradient(135deg, #948DD1, #B7A3DF);
   --gradient-surface: var(--color-surface);
 
+  /* Home hero — used only by .home-hero. The photo (public/hero-bg.jpg)
+     sits between the overlay and the fallback gradient; if the file is
+     missing, the gradient shows through. Overlay #1F1530 @ 60% keeps white
+     text >= 4.6:1 even over a pure-white photo (WCAG AA). */
+  --gradient-home-hero-fallback: linear-gradient(135deg, #7A5C9E 0%, #9E80BD 45%, #FEB0BA 100%);
+  --color-home-hero-overlay:     rgba(31, 21, 48, 0.6);
+  --color-home-hero-text:        #ffffff;
+  --color-home-hero-text-muted:  rgba(255, 255, 255, 0.92);
+
+  /* Navbar — shared nav only */
+  --color-nav-bg:          rgba(251, 248, 242, 0.72);
+  --color-nav-bg-scrolled: rgba(251, 248, 242, 0.94);
+  --shadow-nav-scrolled:   0 4px 20px rgba(60, 50, 40, 0.08);
+
   /* Tinted card backgrounds — solid, no gradients */
   --gradient-card-purple: var(--color-surface);
   --gradient-card-pink:   var(--color-surface);

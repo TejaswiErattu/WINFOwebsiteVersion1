@@ -2,17 +2,25 @@
    HOME PAGE — matches Figma screenshots
    ========================================================================== */
 
-/* ===== 1. HERO — full-width cream band with circuit pattern & centred logo ===== */
+/* ===== 1. HERO — full-width photo band with brand overlay & centred logo =====
+   Layers (top → bottom): overlay · hero-bg.jpg · fallback gradient.
+   A missing hero-bg.jpg simply fails to paint, leaving the gradient. */
 .home-hero {
   position: relative;
   overflow: hidden;
-  min-height: 480px;
+  min-height: clamp(420px, 70vh, 640px);
   display: flex;
   align-items: center;
   justify-content: center;
-  background: var(--gradient-hero);
-  border-bottom: 1px solid var(--color-border);
-  padding: 3.5rem 1.5rem;
+  background-color: var(--color-primary-dark);
+  background-image:
+    linear-gradient(var(--color-home-hero-overlay), var(--color-home-hero-overlay)),
+    url('/hero-bg.jpg'),
+    var(--gradient-home-hero-fallback);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  padding: 4rem 1.5rem;
 }
 
 /* ── Circuit board decorations ── */
@@ -21,7 +29,7 @@
   top: 0;
   bottom: 0;
   width: 320px;
-  color: rgba(158, 128, 189, 0.22);
+  color: rgba(255, 255, 255, 0.14);
   pointer-events: none;
   z-index: 1;
 }
@@ -61,15 +69,25 @@
   font-size: clamp(2.1rem, 6vw, 3.75rem);
   font-weight: 700;
   letter-spacing: var(--tracking-wide);
-  color: var(--color-primary-dark);
+  line-height: var(--leading-tight);
+  color: var(--color-home-hero-text);
   margin: 0;
 }
 
 .home-hero__tagline {
   max-width: 34rem;
   font-size: var(--text-lg);
-  color: var(--color-text-secondary);
+  color: var(--color-home-hero-text-muted);
   margin: 0;
+}
+
+@media (max-width: 1024px) {
+  .home-hero__circuits { width: 200px; }
+}
+
+@media (max-width: 480px) {
+  .home-hero { padding: 3rem 1rem; }
+  .home-hero__circuits { display: none; }
 }
 
 /* No longer needed — image handles everything */
