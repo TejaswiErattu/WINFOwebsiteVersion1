@@ -30,10 +30,10 @@
   transform: scale(0.97);
 }
 
-/* ── Variant: Primary ── */
+/* ── Variant: Primary ── (solid: white text 5.45:1) */
 .btn--primary {
-  background: var(--gradient-primary);
-  color: #fff;
+  background: var(--color-primary-dark);
+  color: var(--color-on-primary);
   box-shadow: 0 2px 8px rgba(158, 128, 189, 0.2),
               0 0 0 1px rgba(158, 128, 189, 0.1) inset;
 }
@@ -47,7 +47,7 @@
 /* ── Variant: Secondary ── */
 .btn--secondary {
   background: rgba(158, 128, 189, 0.06);
-  color: var(--color-primary);
+  color: var(--color-primary-dark);
   border: 1.5px solid rgba(183, 163, 223, 0.4);
 }
 .btn--secondary:hover {
@@ -57,10 +57,10 @@
   box-shadow: 0 4px 12px rgba(158, 128, 189, 0.12);
 }
 
-/* ── Variant: Accent ── */
+/* ── Variant: Accent ── (rose-to-purple; every stop >= 5.4:1 with white) */
 .btn--accent {
-  background: var(--gradient-accent);
-  color: #fff;
+  background: var(--gradient-accent-strong);
+  color: var(--color-on-primary);
   box-shadow: 0 2px 8px rgba(252, 190, 191, 0.25);
 }
 .btn--accent:hover {

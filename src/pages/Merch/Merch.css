@@ -31,8 +31,9 @@
   margin: 0.4rem 0 0;
 }
 
-.merch-hero__title span {
-  background: var(--gradient-accent);
+/* Extra class beats the global [class*='-hero__title'] span rule (same specificity, loads later) */
+.merch-hero .merch-hero__title span {
+  background: var(--gradient-accent-strong);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;

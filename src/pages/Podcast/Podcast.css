@@ -150,13 +150,13 @@
 
 /* Primary accent colour (was green) */
 .podcast-guest-cta__btn {
-  background: var(--color-primary) !important;
-  color: #fff !important;
+  background: var(--color-primary-dark) !important;
+  color: var(--color-on-primary) !important;
   border: none !important;
 }
 
 .podcast-guest-cta__btn:hover {
-  background: var(--color-primary-hover) !important;
+  background: var(--color-primary-dark) !important;
   transform: translateY(-2px);
 }
 

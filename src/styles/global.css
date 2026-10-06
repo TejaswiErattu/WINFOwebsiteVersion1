@@ -308,7 +308,7 @@ img {
   gap: 0.4rem;
   padding: 0.3rem 1rem;
   background: rgba(158, 128, 189, 0.08);
-  color: var(--color-primary);
+  color: var(--color-primary-dark);
   font-size: var(--text-xs);
   font-weight: var(--weight-semibold);
   text-transform: uppercase;

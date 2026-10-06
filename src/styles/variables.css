@@ -21,6 +21,7 @@
   --color-accent:         #FEB0BA;
   --color-accent-light:   #FEE6EA;
   --color-accent-dark:    #E8919E;
+  --color-accent-strong:  #9E4754;  /* AA-safe rose for filled accent buttons/text (6.0:1 with white) */
 
   /* Informational / secondary accent — lavender blue */
   --color-info:           #948DD1;
@@ -59,6 +60,8 @@
   );
   --gradient-primary: linear-gradient(135deg, #B7A3DF, #9E80BD);
   --gradient-accent:  linear-gradient(135deg, #FEB0BA 0%, #9E80BD 100%);
+  /* AA-safe accent gradient: both stops reach >= 5.4:1 with white text */
+  --gradient-accent-strong: linear-gradient(135deg, var(--color-accent-strong) 0%, var(--color-primary-dark) 100%);
   --gradient-card:    var(--color-surface);
   --gradient-blue:    linear-gradient(135deg, #948DD1, #B7A3DF);
   --gradient-surface: var(--color-surface);
