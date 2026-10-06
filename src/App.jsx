@@ -12,6 +12,7 @@ import Officers from './pages/Officers/Officers';
 import Membership from './pages/Membership/Membership';
 import SupportUs from './pages/SupportUs/SupportUs';
 import Merch from './pages/Merch/Merch';
+import NotFound from './pages/NotFound/NotFound';
 
 import './styles/global.css';
 
@@ -31,6 +32,7 @@ export default function App() {
           <Route path="/membership" element={<Membership />} />
           <Route path="/support" element={<SupportUs />} />
           <Route path="/merch" element={<Merch />} />
+          <Route path="*" element={<NotFound />} />
         </Routes>
       </main>
       <Footer />

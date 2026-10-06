@@ -65,7 +65,7 @@
      sits between the overlay and the fallback gradient; if the file is
      missing, the gradient shows through. Overlay #1F1530 @ 60% keeps white
      text >= 4.6:1 even over a pure-white photo (WCAG AA). */
-  --gradient-home-hero-fallback: linear-gradient(135deg, #7A5C9E 0%, #9E80BD 45%, #FEB0BA 100%);
+  --gradient-home-hero-fallback: linear-gradient(135deg, var(--color-text) 0%, var(--color-text-secondary) 100%);
   --color-home-hero-overlay:     rgba(31, 21, 48, 0.6);
   --color-home-hero-text:        #ffffff;
   --color-home-hero-text-muted:  rgba(255, 255, 255, 0.92);

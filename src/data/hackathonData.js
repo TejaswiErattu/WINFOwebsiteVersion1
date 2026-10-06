@@ -2,8 +2,6 @@
    Hackathon page data — matches Figma HiFi screenshots
    =================================================================== */
 
-import { MEMBERSHIP_SIGNUP_URL } from './externalLinks';
-
 /* —— Local sponsor logos (from src/assets/sponsors) —— */
 import logoAccenture     from '../assets/sponsors/accenture.svg';
 import logoAdobe         from '../assets/sponsors/adobe.svg';
@@ -143,11 +141,6 @@ export const hackathonData = {
       ],
     },
   ],
-  heroPhotos: [
-    { src: '/images/hackathon-participants.jpg', alt: 'Hackathon participants working together' },
-    { src: '/images/hackathon-food.jpg', alt: 'Food being served at hackathon' },
-    { src: '/images/hackathon-4.jpg', alt: 'WINFO hackathon group photo' },
-  ],
 
   /* ---------- About blurbs ---------- */
   tagline: 'COLLABORATE. NETWORK. SOLVE.',
@@ -159,7 +152,6 @@ export const hackathonData = {
   beginnerHeading: 'we are a beginner-friendly environment!',
   beginnerBody:
     "This is a great experience for college students to network, get hands-on experience coding or designing, and work in teams to problem solve. Whether you\u2019re new to tech, a seasoned hacker, or looking for more experience, WINFO\u2019s hackathon is for you!",
-  ctaLink: MEMBERSHIP_SIGNUP_URL,
 
   /* ---------- Stats ---------- */
   statsHeading: 'at our latest hackathon\u2026',
@@ -170,22 +162,15 @@ export const hackathonData = {
   ],
 
   /* ---------- Previous Winners ---------- */
-  winnersHeading: 'previous winners',
+  winnersHeading: '14th hackathon winners',
   winners: [
-    /* TODO: fill projectName + projectDescription (one line). Empty fields are hidden.
-       Image filenames do NOT match categories on purpose: commit e1d655e
-       "Reordered winner images to match correct categories". Confirm with the board. */
-    { category: 'Best Overall', image: '/images/best-impact-winner.jpg', link: '#', projectName: '', projectDescription: '' },
-    { category: 'Best Design', image: '/images/best-overall-winner.jpg', link: '#', projectName: '', projectDescription: '' },
-    { category: 'Best Impact', image: '/images/best-design-winner.jpg', link: '#', projectName: '', projectDescription: '' },
-    { category: 'Best Coding', image: '/images/best-coding-winner.jpg', link: '#', projectName: '', projectDescription: '' },
+    /* Source: iSchool news, January 2026. NewFuse photo matched by elimination; confirm with the board.
+       Image filenames do not match categories (see commit e1d655e). projectDescription is optional and hidden when empty. */
+    { category: 'Best Product', image: '/images/best-impact-winner.jpg', projectName: 'NewFuse', projectDescription: '' },
+    { category: 'Best Impact', image: '/images/best-design-winner.jpg', projectName: 'Canario', projectDescription: '' },
+    { category: 'Best Design', image: '/images/best-overall-winner.jpg', projectName: 'Fantasy WNBA app', projectDescription: '' },
+    { category: 'Best Implementation', image: '/images/best-coding-winner.jpg', projectName: 'Nudge', projectDescription: '' },
   ],
-
-  /* ---------- Register CTA ---------- */
-  registerCta: {
-    heading: 'Registration opens late fall!',
-    cardText: 'be the first to know when the next event drops!',
-  },
 
   /* ---------- FAQ ---------- */
   faqHeading: 'frequently asked questions',

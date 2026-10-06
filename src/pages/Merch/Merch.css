@@ -170,6 +170,11 @@
   font-size: 2rem;
   display: block;
   margin-bottom: 0.6rem;
+  color: var(--color-primary);
+}
+
+.merch-detail-card__icon .icon {
+  display: inline-block;
 }
 
 .merch-detail-card h3 {

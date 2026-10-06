@@ -100,7 +100,7 @@ export default function Officers() {
             {heroImage ? (
               <img src={heroImage} alt={heroImageAlt} />
             ) : (
-              <div className="team-hero__image-placeholder">👩‍💻</div>
+              <div className="team-hero__image-placeholder" />
             )}
           </div>
         </div>

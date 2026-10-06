@@ -1,5 +1,5 @@
 /* ===================================================================
-   Team / Officers page data — 2025–2026 board
+   Team / Officers page data — 2026-2027 board
    =================================================================== */
 
 export const officersData = {
@@ -9,7 +9,7 @@ export const officersData = {
     'Our team is a passionate group of students dedicated to fostering an inclusive, supportive, and empowering community for students in the field of information science.',
   heroBodySecondary: 'Read more about us below!',
   heroImage: '/images/stickfigures.png',
-  heroImageAlt: 'WINFO team group photo',
+  heroImageAlt: 'Illustration of stick figures',
 
   /* ---------- Officers section ---------- */
   officersHeading: 'officers',

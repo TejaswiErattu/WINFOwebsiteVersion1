@@ -7,7 +7,7 @@ The official website for **WINFO (Women in Informatics)** at the University of W
 - **React 19** + **Vite** — fast dev server & optimised builds
 - **React Router DOM** — client-side routing
 - **CSS Custom Properties** — design tokens in `src/styles/variables.css`
-- **Google Fonts** — Poppins, Inter, Caveat, Space Mono
+- **Google Fonts** — Chakra Petch (headings), Inter (body), Space Mono (labels)
 
 ## Pages
 
@@ -20,12 +20,15 @@ The official website for **WINFO (Women in Informatics)** at the University of W
 | `/officers` | Team / Officers |
 | `/membership` | Membership (Join Us) |
 | `/support` | Support Us |
+| `/merch` | Merch |
+| `*` | 404 Not Found |
 
 ## Project Structure
 
 ```
 public/
   images/             # Logo files & event photos
+design-ref/           # Figma reference screenshots (not deployed)
 src/
   components/         # Reusable UI components (Navbar, Footer, WinfoLogo, Button, Cards, etc.)
   data/               # Page-specific data files (homeData.js, hackathonData.js, etc.)
@@ -53,12 +56,12 @@ npm run preview
 
 ## Updating Content
 
-All page content lives in `src/data/` — edit the data files to update text, events, officers, FAQs, etc. without touching JSX.
+All page content lives in `src/data/` — edit the data files to update text, events, officers, Hackathon FAQs, etc. without touching JSX.
 
 Replace placeholder images by adding files to `public/images/` and updating the corresponding `image: ''` fields in the data files.
 
 ## Design
 
-- Figma HiFi designs in `public/figma-ref/`
+- Figma HiFi designs in `design-ref/` (kept out of `public/` so they don't ship to production)
 - Colour palette: soft violet (`#9E80BD`), blush pink (`#FEB0BA`), lavender (`#B7A3DF`)
-- Fonts: Poppins (headings), Inter (body), Caveat (cursive titles), Space Mono (monospace labels)
+- Fonts: Chakra Petch (headings and titles), Inter (body), Space Mono (monospace labels)

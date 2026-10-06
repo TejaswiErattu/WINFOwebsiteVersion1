@@ -3,6 +3,7 @@ import SectionWrapper from '../../components/SectionWrapper/SectionWrapper';
 import Button from '../../components/Buttons/Buttons';
 import CircuitSVG from '../../components/CircuitSVG/CircuitSVG';
 import { podcastData } from '../../data/podcastData';
+import { PlayIcon } from '../../components/Icons/Icons';
 import './Podcast.css';
 
 export default function Podcast() {
@@ -44,7 +45,7 @@ export default function Podcast() {
             </p>
             <p className="podcast-hero__text">{heroBodySecondary}</p>
             <Button href={ctaLink} variant="accent" className="podcast-hero__btn">
-              {ctaLabel}
+              <PlayIcon className="icon icon--inline" /> {ctaLabel}
             </Button>
           </div>
 
@@ -53,7 +54,7 @@ export default function Podcast() {
             {heroImage ? (
               <img src={heroImage} alt={heroImageAlt} />
             ) : (
-              <div className="podcast-hero__image-placeholder">🎙️</div>
+              <div className="podcast-hero__image-placeholder" />
             )}
           </div>
         </div>
@@ -75,7 +76,7 @@ export default function Podcast() {
       <SectionWrapper>
         <div className="podcast-guest-cta">
           <p className="podcast-guest-cta__text cursive-title">{guestCta.text}</p>
-          <Button to={guestCta.btnTo} variant="primary" className="podcast-guest-cta__btn">
+          <Button href={guestCta.btnHref} variant="primary" className="podcast-guest-cta__btn">
             {guestCta.btnLabel}
           </Button>
         </div>
@@ -99,7 +100,7 @@ export default function Podcast() {
               {ep.image ? (
                 <img src={ep.image} alt={ep.imageAlt} />
               ) : (
-                <div className="podcast-carousel__thumb-placeholder">🎙️</div>
+                <div className="podcast-carousel__thumb-placeholder" />
               )}
               {ep.guests && ep.guests.length > 0 && (
                 <div className="podcast-carousel__guests">
@@ -115,7 +116,7 @@ export default function Podcast() {
               <h3 className="podcast-carousel__title">{ep.title}</h3>
               <p className="podcast-carousel__desc">{ep.description}</p>
               <Button href={ep.watchUrl || '#'} variant="accent" size="sm" className="podcast-carousel__btn">
-                ▶ watch here!
+                <PlayIcon className="icon icon--inline" /> watch here!
               </Button>
             </div>
           </div>

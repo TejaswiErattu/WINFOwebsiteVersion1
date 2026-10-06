@@ -7,7 +7,7 @@ import './Buttons.css';
  * Props:
  *   children  – button label
  *   to        – internal route (renders react-router <Link>)
- *   href      – external URL (renders <a> with target="_blank")
+ *   href      – external URL (renders <a> with target="_blank"; mailto: links skip it)
  *   variant   – 'primary' | 'secondary' | 'accent'  (default: 'primary')
  *   size      – 'sm' | 'lg' | '' (default: '')
  *   className – extra class names
@@ -45,14 +45,14 @@ export default function Button({
     );
   }
 
-  /* External link */
+  /* External link (mailto: opens the mail client, so no new tab) */
   if (href) {
+    const isMailto = href.startsWith('mailto:');
     return (
       <a
         href={href}
         className={classes}
-        target="_blank"
-        rel="noopener noreferrer"
+        {...(isMailto ? {} : { target: '_blank', rel: 'noopener noreferrer' })}
         {...rest}
       >
         {children}

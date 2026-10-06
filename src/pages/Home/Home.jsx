@@ -50,7 +50,7 @@ export default function Home() {
             {missionData.image ? (
               <img src={missionData.image} alt={missionData.imageAlt} />
             ) : (
-              <div className="home-who__image-placeholder">🤝</div>
+              <div className="home-who__image-placeholder" />
             )}
           </div>
         </div>
@@ -63,7 +63,7 @@ export default function Home() {
             {storyData.image ? (
               <img src={storyData.image} alt={storyData.imageAlt} />
             ) : (
-              <div className="home-story__image-placeholder">📖</div>
+              <div className="home-story__image-placeholder" />
             )}
           </div>
           <div className="home-story__content">

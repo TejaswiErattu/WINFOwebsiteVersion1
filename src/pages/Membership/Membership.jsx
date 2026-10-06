@@ -73,7 +73,7 @@ export default function Membership() {
             {heroImage ? (
               <img src={heroImage} alt={heroImageAlt} />
             ) : (
-              <div className="membership-hero__image-placeholder">👩‍💻</div>
+              <div className="membership-hero__image-placeholder" />
             )}
           </div>
         </div>

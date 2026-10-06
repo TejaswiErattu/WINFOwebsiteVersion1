@@ -1,3 +1,4 @@
+import { CartIcon, ShirtIcon, MoneyIcon, BoxIcon, ClockIcon } from '../../components/Icons/Icons';
 import './Merch.css';
 
 const ORDER_URL =
@@ -33,7 +34,7 @@ export default function Merch() {
               rel="noopener noreferrer"
               className="merch-cta-btn"
             >
-              🛒 order now
+              <CartIcon className="icon icon--inline" /> order now
             </a>
             <p className="merch-hero__note">
               Opens in a new tab — Google Form order.
@@ -43,7 +44,7 @@ export default function Merch() {
           {/* Sweatshirt photo */}
           <div className="merch-hero__image">
             <img
-              src="public/images/hoodie1.png"
+              src="/images/hoodie1.png"
               alt="WINFO crewneck sweatshirts in brown and cream"
             />
           </div>
@@ -56,22 +57,22 @@ export default function Merch() {
           <h2 className="merch-details__heading cursive-title">the details</h2>
           <div className="merch-details__grid">
             <div className="merch-detail-card">
-              <span className="merch-detail-card__icon">👕</span>
+              <span className="merch-detail-card__icon"><ShirtIcon /></span>
               <h3>Style</h3>
               <p>Unisex crewneck sweatshirt — available in brown and cream.</p>
             </div>
             <div className="merch-detail-card">
-              <span className="merch-detail-card__icon">💸</span>
+              <span className="merch-detail-card__icon"><MoneyIcon /></span>
               <h3>Price</h3>
               <p>$40 per crewneck.</p>
             </div>
             <div className="merch-detail-card">
-              <span className="merch-detail-card__icon">📦</span>
+              <span className="merch-detail-card__icon"><BoxIcon /></span>
               <h3>How to order</h3>
               <p>Fill out the Google Form to place your order. Link below!</p>
             </div>
             <div className="merch-detail-card">
-              <span className="merch-detail-card__icon">⏰</span>
+              <span className="merch-detail-card__icon"><ClockIcon /></span>
               <h3>Deadline</h3>
               <p>Orders close soon — grab yours before it's too late!</p>
             </div>
@@ -89,7 +90,7 @@ export default function Merch() {
           rel="noopener noreferrer"
           className="merch-cta-btn merch-cta-btn--light"
         >
-          🛒 order now
+          <CartIcon className="icon icon--inline" /> order now
         </a>
       </section>
     </div>

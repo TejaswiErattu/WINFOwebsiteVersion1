@@ -1,0 +1,58 @@
+/* ==========================================================================
+   404 PAGE
+   ========================================================================== */
+.notfound {
+  position: relative;
+  overflow: hidden;
+  min-height: 60vh;
+  display: flex;
+  align-items: center;
+  background: var(--gradient-hero);
+}
+
+.notfound > .section-wrapper {
+  width: 100%;
+}
+
+.notfound__circuit {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 220px;
+  height: 100%;
+  color: rgba(158, 128, 189, 0.14);
+  pointer-events: none;
+}
+
+.notfound__inner {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  text-align: center;
+}
+
+.notfound__code {
+  font-family: var(--font-heading);
+  font-size: clamp(4rem, 14vw, 7rem);
+  font-weight: 700;
+  line-height: 1;
+  color: var(--color-primary-light);
+  margin: 0;
+}
+
+.notfound__text {
+  max-width: 28rem;
+  font-size: var(--text-lg);
+  line-height: var(--leading-relaxed);
+  color: var(--color-text-secondary);
+  margin: 0 0 0.75rem;
+}
+
+@media (max-width: 768px) {
+  .notfound__circuit {
+    display: none;
+  }
+}
