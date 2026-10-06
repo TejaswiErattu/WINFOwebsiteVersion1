@@ -109,7 +109,7 @@ export default function Officers() {
 
       {/* ===== 2 · OFFICERS ===== */}
       <SectionWrapper>
-        <h2 className="cursive-title team-section-heading" style={{ textAlign: 'center', marginBottom: '2.5rem' }}>
+        <h2 className="cursive-title section-title--center team-section-heading">
           {officersHeading}
         </h2>
 
@@ -130,7 +130,7 @@ export default function Officers() {
 
       {/* ===== 3 · COMMITTEES ===== */}
       <SectionWrapper alt className="committees-section">
-        <h2 className="cursive-title team-section-heading" style={{ textAlign: 'center', marginBottom: '2.5rem' }}>
+        <h2 className="cursive-title section-title--center team-section-heading">
           {committeesHeading}
         </h2>
 

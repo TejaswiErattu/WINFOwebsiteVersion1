@@ -81,7 +81,7 @@ export default function Membership() {
 
       {/* ===== 2 · MEMBERSHIP PERKS ===== */}
       <SectionWrapper alt className="membership-perks-section">
-        <h2 className="cursive-title" style={{ textAlign: 'center', marginBottom: '1rem' }}>
+        <h2 className="cursive-title section-title--center membership-perks__heading">
           {perksHeading}
         </h2>
         <p className="membership-perks__subtitle">{perksSubtitle}</p>
