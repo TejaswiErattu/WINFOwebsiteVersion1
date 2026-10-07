@@ -734,6 +734,16 @@
   transition: transform var(--transition-fast);
 }
 
+.hack-past-sponsor--dark {
+  background: #2b2630;
+  border-radius: 8px;
+  padding: 0 0.85rem;
+}
+
+.hack-past-sponsor--dark .hack-past-sponsor__logo {
+  height: 24px;
+}
+
 .hack-past-sponsor__logo:hover {
   transform: scale(1.06);
 }
@@ -760,9 +770,10 @@
 }
 
 .hack-past-item {
-  display: flex;
+  display: grid;
+  grid-template-columns: 3.5rem minmax(0, 1fr);
   align-items: baseline;
-  gap: 0.65rem;
+  column-gap: 0.85rem;
 }
 
 .hack-past-item__theme {
@@ -773,6 +784,7 @@
 }
 
 .hack-past-item__year {
+  order: -1;                       /* year first so every row lines up */
   font-family: var(--font-heading);
   font-size: 1.15rem;
   font-weight: 700;
@@ -854,7 +866,46 @@
     gap: 0.75rem;
   }
 
-  .hack-sponsor-benefit--1 {
-    align-self: flex-start;
+}
+
+/* Phones: centre the whole sponsor section so nothing sits off-axis */
+@media (max-width: 767px) {
+  .hack-sponsor-benefits {
+    align-items: center;
+    gap: 1.5rem;
+  }
+
+  .hack-sponsor-benefit,
+  .hack-sponsor-benefit--0,
+  .hack-sponsor-benefit--1,
+  .hack-sponsor-benefit--2 {
+    align-self: center;
+    max-width: 22rem;
+    text-align: center;
+  }
+
+  .hack-past-sponsors {
+    gap: 1rem 1.25rem;
+  }
+
+  .hack-past-sponsor {
+    height: 36px;
+  }
+
+  .hack-past-sponsor__logo {
+    height: 28px;
+    max-width: 96px;
+  }
+
+  .hack-past {
+    margin-top: 2rem;
+  }
+
+  .hack-past__heading {
+    text-align: center;
+  }
+
+  .hack-past-list {
+    margin-inline: auto;
   }
 }

@@ -24,17 +24,17 @@ export const supportData = {
   involvedHeading: 'get involved with winfo!',
   involvedCards: [
     {
-      title: 'newsletter\nspotlights',
+      title: 'Newsletter\nSpotlights',
       body: 'Have a local event, achievement, or opportunity to share? Submit a quick form to spotlight it in our signature newsletter!',
       accent: 'purple',
     },
     {
-      title: 'star as a\npodcast guest',
+      title: 'Star as a\nPodcast Guest',
       body: 'From student stories to industry insights, we want to hear from you—sign up to be a guest on our podcast, Decoding With WINFO!',
       accent: 'pink',
     },
     {
-      title: 'collaborate\nwith us',
+      title: 'Collaborate\nWith Us',
       body: 'Whether you\'re a brand ambassador or an RSO, we always love to collaborate here at WINFO! Reach out to plan our next collaboration.',
       accent: 'lavender',
     },

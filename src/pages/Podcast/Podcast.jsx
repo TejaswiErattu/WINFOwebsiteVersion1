@@ -39,7 +39,7 @@ export default function Podcast() {
         <div className="podcast-hero__inner">
           {/* Text side */}
           <div className="podcast-hero__content">
-            <h1 className="cursive-title">{title}</h1>
+            <h1 className="cursive-title page-title">{title}</h1>
             <p className="podcast-hero__text">
               <strong>Decoding With WINFO</strong> {heroBody.replace('Decoding With WINFO ', '')}
             </p>

@@ -10,8 +10,8 @@ export default function Merch() {
         <div className="merch-hero__inner">
           <div className="merch-hero__text">
             <span className="badge">limited drop</span>
-            <h1 className="merch-hero__title">
-              winfo <span>merch</span> is live!
+            <h1 className="merch-hero__title cursive-title page-title">
+              WINFO merch is live!
             </h1>
             <p className="merch-hero__desc">
               Rep your community — grab a cozy WINFO crewneck before they sell

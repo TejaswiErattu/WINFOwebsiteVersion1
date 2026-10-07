@@ -17,17 +17,17 @@ export const podcastData = {
   /* ---------- Who / What / Why cards ---------- */
   infoCards: [
     {
-      title: 'who',
+      title: 'Who',
       text: 'Each episode features a new guest with a fresh story to share, from iSchool professors to local business owners and industry professionals.',
       accent: 'purple',
     },
     {
-      title: 'what',
+      title: 'What',
       text: 'From inspiring career journeys to cutting-edge technology trends, we decode the powerful stories that matter most to our community.',
       accent: 'pink',
     },
     {
-      title: 'why',
+      title: 'Why',
       text: 'Our goal is to uplift diverse voices in our community while uncovering valuable insights and inspiring our fellow students, members, and beyond.',
       accent: 'blue',
     },

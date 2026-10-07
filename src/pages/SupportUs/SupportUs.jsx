@@ -29,7 +29,7 @@ export default function SupportUs() {
 
         <div className="support-hero__inner">
           <div className="support-hero__text">
-            <h1 className="support-hero__title cursive-title">{title}</h1>
+            <h1 className="support-hero__title cursive-title page-title">{title}</h1>
             {heroText.map((p, i) => (
               <p key={i} className="support-hero__paragraph">{p}</p>
             ))}

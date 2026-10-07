@@ -146,10 +146,10 @@ export const hackathonData = {
   tagline: 'COLLABORATE. NETWORK. SOLVE.',
   aboutBody:
     "WINFO\u2019s Hackathon is an annual, 12-hour hackathon that brings together UW students with diverse skill sets to develop solutions that address a wide array of issues. Here at the iSchool, we believe in designing and developing technology-based solutions that positively impact the world.",
-  challengeHeading: 'we challenge you...',
+  challengeHeading: 'We challenge you...',
   challengeBody:
     'to venture into a new problem space, develop thoughtful solutions, and empower those around you to promote equity!',
-  beginnerHeading: 'we are a beginner-friendly environment!',
+  beginnerHeading: 'We are a beginner-friendly environment!',
   beginnerBody:
     "This is a great experience for college students to network, get hands-on experience coding or designing, and work in teams to problem solve. Whether you\u2019re new to tech, a seasoned hacker, or looking for more experience, WINFO\u2019s hackathon is for you!",
 
@@ -244,15 +244,15 @@ export const hackathonData = {
     "By sponsoring the **WINFO Hackathon**, you\u2019ll gain **exclusive access** to inspire the next generation of tech talent. Mentor passionate students, judge groundbreaking projects, and spotlight your brand on both digital and in-person stages.",
   sponsorBenefits: [
     {
-      title: 'targeted recruitment access',
+      title: 'Targeted recruitment access',
       text: 'Connect with top talent in Informatics, Computer Science, UX Design, and Data Science through real-time collaboration and mentorship.',
     },
     {
-      title: 'brand visibility',
+      title: 'Brand visibility',
       text: 'Gain exposure through social media promotion, on-site tabling, branded swag distribution, and logo placement on all marketing materials.',
     },
     {
-      title: 'early engagement in innovation',
+      title: 'Early engagement in innovation',
       text: "Evaluate and guide student projects aligned with emerging technologies, tools, or themes tied to your company\u2019s mission.",
     },
   ],
@@ -261,18 +261,19 @@ export const hackathonData = {
 
   /* ---------- Past Sponsors ---------- */
   pastSponsorsHeading: 'past sponsors',
+  /* dark: true = white-only logo, shown on a charcoal tile so it stays visible */
   pastSponsors: [
     { name: 'Accenture',              logo: logoAccenture },
     { name: 'Adobe',                  logo: logoAdobe },
-    { name: 'Alaska Airlines',        logo: logoAlaska },
-    { name: 'Amazon Catalyst',        logo: logoAmazon },
+    { name: 'Alaska Airlines',        logo: logoAlaska, dark: true },
+    { name: 'Amazon Catalyst',        logo: logoAmazon, dark: true },
     { name: 'ASUW',                   logo: '' },
     { name: 'AT&T',                   logo: '' },
     { name: 'Avanade',                logo: logoAvanade },
-    { name: 'Best Buy',               logo: logoBestBuy },
-    { name: 'Deloitte',               logo: logoDeloitte },
+    { name: 'Best Buy',               logo: logoBestBuy, dark: true },
+    { name: 'Deloitte',               logo: logoDeloitte, dark: true },
     { name: 'The Walt Disney Company', logo: logoDisney },
-    { name: 'ExtraHop',               logo: logoExtrahop },
+    { name: 'ExtraHop',               logo: logoExtrahop, dark: true },
     { name: 'GE Digital',             logo: logoGE },
     { name: 'Google',                 logo: logoGoogle },
     { name: 'GPSS',                   logo: '' },
@@ -284,13 +285,13 @@ export const hackathonData = {
     { name: 'Liberty Mutual',         logo: logoLibertyMutual },
     { name: 'Microsoft',              logo: logoMicrosoft },
     { name: 'Nordstrom',              logo: logoNordstrom },
-    { name: 'Okta',                   logo: logoOkta },
+    { name: 'Okta',                   logo: logoOkta, dark: true },
     { name: 'Oracle',                 logo: logoOracle },
     { name: 'PwC',                    logo: '' },
     { name: 'Sage Bionetworks',       logo: logoSageBio },
     { name: 'Student Activities Office', logo: '' },
     { name: 'Smartsheet',             logo: logoSmartsheet },
-    { name: 'Ticketmaster',           logo: logoTicketmaster },
+    { name: 'Ticketmaster',           logo: logoTicketmaster, dark: true },
     { name: 'TUNE',                   logo: logoTUNE },
     { name: 'UW Alumni Association',  logo: logoUW },
     { name: 'Visa',                   logo: logoVisa },

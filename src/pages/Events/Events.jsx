@@ -14,7 +14,7 @@ export default function Events() {
       <header className="events-header">
         <div className="events-header__inner">
           <div className="events-header__main">
-            <h1 className="events-header__title">{title}</h1>
+            <h1 className="events-header__title cursive-title page-title">{title}</h1>
 
             <div className="events-header__copy">
               {subtitle && <p className="events-header__subtitle">{subtitle}</p>}

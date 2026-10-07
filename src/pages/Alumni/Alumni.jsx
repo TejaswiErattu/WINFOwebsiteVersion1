@@ -14,7 +14,7 @@ export default function Alumni() {
         <div className="alumni-hero__inner">
           <div className="alumni-hero__content">
             <p className="alumni-eyebrow">{d.eyebrow}</p>
-            <h1 className="cursive-title">{d.title}</h1>
+            <h1 className="cursive-title page-title">{d.title}</h1>
             <p className="alumni-hero__text">{renderBold(d.heroBody)}</p>
             <p className="alumni-hero__text">{renderBold(d.heroBodySecondary)}</p>
             <Button href={d.ctaLink} variant="primary" className="alumni-hero__btn">

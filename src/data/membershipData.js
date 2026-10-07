@@ -26,19 +26,19 @@ export const membershipData = {
   perks: [
     {
       icon: 'mail',
-      title: 'newsletter',
+      title: 'Newsletter',
       text: 'Stay in the loop with the **WINFO Weekly**\u2014our signature newsletter which delivers events and opportunities to your inbox.',
       accent: 'purple',
     },
     {
       icon: 'check',
-      title: 'early registration',
+      title: 'Early Registration',
       text: 'Enjoy **exclusive** early registration to company tours at major tech companies to discover industry insights!',
       accent: 'pink',
     },
     {
       icon: 'people',
-      title: 'opportunities',
+      title: 'Opportunities',
       text: 'Be the first to know about exciting **internship, career, and community involvement** opportunities!',
       accent: 'blue',
     },

@@ -92,7 +92,7 @@ export default function Officers() {
 
         <div className="team-hero__inner">
           <div className="team-hero__content">
-            <h1 className="cursive-title">{title}</h1>
+            <h1 className="cursive-title page-title">{title}</h1>
             <p className="team-hero__text">{heroBody}</p>
             <p className="team-hero__text">{heroBodySecondary}</p>
           </div>

@@ -29,7 +29,7 @@ export default function Home() {
         </div>
         <div className="home-hero__center">
           <WinfoLogo color="multi" className="home-hero__logo" />
-          <h1 className="home-hero__title">{heroData.heading}</h1>
+          <h1 className="home-hero__title page-title--hero">{heroData.heading}</h1>
           {heroData.slogan && <p className="home-hero__slogan">{heroData.slogan}</p>}
           <p className="home-hero__tagline">{heroData.tagline}</p>
         </div>

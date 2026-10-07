@@ -101,7 +101,7 @@ export default function Hackathon() {
     <div className="hack-page">
       {/* ===== PAGE HEADER ===== */}
       <header className="hack-header">
-        <h1 className="cursive-title">{title}</h1>
+        <h1 className="cursive-title page-title">{title}</h1>
       </header>
 
       {/* ===== IN-PAGE SUB-NAV ===== */}
@@ -188,7 +188,7 @@ export default function Hackathon() {
       <SectionWrapper id="about" alt className="hack-section">
         <div className="hack-about">
           <div className="hack-about__text">
-            <h2 className="hack-hero__tagline">{tagline}</h2>
+            <h2 className="cursive-title hack-hero__tagline">{tagline}</h2>
             <p className="hack-hero__body">{aboutBody}</p>
 
             <h3 className="hack-hero__sub-heading">{challengeHeading}</h3>
@@ -319,7 +319,7 @@ export default function Hackathon() {
         </h3>
         <div className="hack-past-sponsors">
           {pastSponsors.map((sponsor) => (
-            <div key={sponsor.name} className="hack-past-sponsor">
+            <div key={sponsor.name} className={`hack-past-sponsor${sponsor.dark ? ' hack-past-sponsor--dark' : ''}`}>
               {sponsor.logo ? (
                 <img
                   src={sponsor.logo}

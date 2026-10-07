@@ -59,7 +59,7 @@ export default function Membership() {
         <div className="membership-hero__inner">
           {/* Text side */}
           <div className="membership-hero__content">
-            <h1 className="cursive-title">{title}</h1>
+            <h1 className="cursive-title page-title">{title}</h1>
             <p className="membership-hero__text">{heroBody}</p>
             <p className="membership-hero__text">{heroBodySecondary}</p>
             <p className="membership-hero__text">{heroBodyTertiary}</p>
