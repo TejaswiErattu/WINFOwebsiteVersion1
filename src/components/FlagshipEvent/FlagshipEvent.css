@@ -1,0 +1,424 @@
+/* ==========================================================================
+   FLAGSHIP EVENT — editorial two-column band (tokens only)
+   ========================================================================== */
+.flagship {
+  background: var(--color-bg-alt);
+  padding: var(--space-16) var(--space-6);
+  border-top: 1px solid var(--color-border);
+}
+
+/* Alternate background bands (hero above is --color-bg, so start on alt) */
+.flagships > .flagship:nth-child(even) {
+  background: var(--color-bg);
+}
+
+/* [ media ≈45% ] [ copy ≈55% ] */
+.flagship__inner {
+  max-width: var(--container-max);
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: minmax(0, 45fr) minmax(0, 55fr);
+  gap: var(--space-12);
+  align-items: start;    /* media lines up with the heading; spare space falls below */
+}
+
+/* [ copy ≈55% ] [ media ≈45% ] */
+.flagship--flipped .flagship__inner {
+  grid-template-columns: minmax(0, 55fr) minmax(0, 45fr);
+}
+
+.flagship--flipped .flagship__media {
+  order: 2;
+}
+
+/* No photos: a deliberate single editorial column, centered in the band.
+   Adding a photo later switches back to the two-column layout automatically. */
+.flagship__inner--no-media,
+.flagship--flipped .flagship__inner--no-media {
+  grid-template-columns: minmax(0, 54rem);
+  justify-content: center;
+}
+
+.flagship__inner--no-media .flagship__description {
+  max-width: none;
+}
+
+/* ---------- Media ---------- */
+.flagship__media {
+  display: grid;
+  gap: var(--space-2);
+}
+
+.flagship__photo {
+  margin: 0;
+  overflow: hidden;
+  border-radius: var(--radius-lg);
+  background: var(--color-bg-alt);
+}
+
+.flagship__photo img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 40%;
+}
+
+/* One photo: balanced 4:3 crop on desktop (faces sit in the middle band) */
+.flagship__media--single .flagship__photo {
+  aspect-ratio: 4 / 3;
+}
+
+.flagship__media--single .flagship__photo img {
+  object-position: center 60%;
+}
+
+/* Two photos side by side */
+.flagship__media--pair {
+  grid-template-columns: 1fr 1fr;
+}
+
+.flagship__media--pair .flagship__photo {
+  aspect-ratio: 3 / 4;
+}
+
+/* 3–5 photos: one clear primary image, the rest in a tight row beneath */
+.flagship__media--collage .flagship__photo {
+  aspect-ratio: 4 / 3;
+}
+
+.flagship__media--collage .flagship__photo:first-child {
+  grid-column: 1 / -1;
+  aspect-ratio: 16 / 10;
+}
+
+.flagship__media--collage.flagship__media--count-3 { grid-template-columns: repeat(2, 1fr); }
+.flagship__media--collage.flagship__media--count-4 { grid-template-columns: repeat(3, 1fr); }
+.flagship__media--collage.flagship__media--count-5 { grid-template-columns: repeat(4, 1fr); }
+
+/* ---------- Copy ---------- */
+.flagship__copy {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  min-width: 0;
+}
+
+.flagship__badge {
+  display: inline-block;
+  margin: 0 0 var(--space-4);
+  padding: var(--space-1) var(--space-3);
+  border-radius: var(--radius-full);
+  border: 1px solid var(--color-border);
+  background: var(--color-surface);
+  color: var(--color-primary-dark);
+  font-size: var(--text-xs);
+  font-weight: var(--weight-semibold);
+  letter-spacing: var(--tracking-wider);
+  text-transform: uppercase;
+}
+
+.flagship__name {
+  font-family: var(--font-heading);
+  font-size: clamp(2.25rem, 4vw, 3.25rem);
+  font-weight: var(--weight-bold);
+  line-height: var(--leading-tight);
+  letter-spacing: var(--tracking-tight);
+  color: var(--color-text);
+  margin: 0 0 var(--space-3);
+}
+
+.flagship__tagline {
+  font-family: var(--font-heading);
+  font-size: var(--text-xl);
+  line-height: var(--leading-snug);
+  color: var(--color-primary-dark);
+  margin: 0 0 var(--space-5);
+}
+
+.flagship__dates {
+  font-family: var(--font-heading);
+  font-size: var(--text-md);
+  font-weight: var(--weight-semibold);
+  color: var(--color-text);
+  margin: calc(-1 * var(--space-2)) 0 var(--space-5);
+}
+
+.flagship__description {
+  font-size: var(--text-md);
+  line-height: var(--leading-relaxed);
+  color: var(--color-text-secondary);
+  margin: 0 0 var(--space-6);
+}
+
+/* ---------- Stats: one compact strip ---------- */
+.flagship__stats {
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+  margin: 0 0 var(--space-6);
+  padding: var(--space-4) 0;
+  border-top: 1px solid var(--color-border);
+  border-bottom: 1px solid var(--color-border);
+}
+
+.flagship__stat {
+  display: flex;
+  flex-direction: column-reverse;   /* number above its caption */
+  padding-right: var(--space-6);
+}
+
+.flagship__stat + .flagship__stat {
+  padding-left: var(--space-6);
+  border-left: 1px solid var(--color-border);
+}
+
+.flagship__stat-value {
+  margin: 0;
+  font-family: var(--font-heading);
+  font-size: clamp(1.75rem, 3vw, 2.25rem);
+  font-weight: var(--weight-bold);
+  line-height: var(--leading-none);
+  color: var(--color-primary-dark);
+}
+
+.flagship__stat-label {
+  margin-top: var(--space-1);
+  font-size: var(--text-sm);
+  color: var(--color-text-secondary);
+}
+
+/* ---------- Numbered rows (matches .hack-track) ---------- */
+.flagship__rows {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 var(--space-6);
+  width: 100%;
+}
+
+.flagship__row {
+  display: grid;
+  grid-template-columns: 3rem minmax(0, 1fr);
+  gap: var(--space-4);
+  padding: var(--space-4) 0;
+  border-top: 1px solid var(--color-text);
+}
+
+.flagship__row:last-child {
+  border-bottom: 1px solid var(--color-text);
+}
+
+.flagship__row-num {
+  font-family: var(--font-mono);
+  font-size: var(--text-sm);
+  color: var(--color-text-secondary);
+  padding-top: var(--space-1);
+}
+
+.flagship__row-title {
+  font-family: var(--font-heading);
+  font-size: var(--text-lg);
+  font-weight: var(--weight-bold);
+  color: var(--color-primary-dark);
+  margin: 0 0 var(--space-1);
+}
+
+.flagship__row-body p,
+.flagship__list {
+  margin: 0;
+  font-size: var(--text-base);
+  line-height: var(--leading-normal);
+  color: var(--color-text-secondary);
+}
+
+.flagship__list {
+  list-style: disc;          /* the global reset removes markers */
+  padding-left: 1.1rem;
+}
+
+.flagship__list li::marker {
+  color: var(--color-primary-dark);
+}
+
+.flagship__list li + li {
+  margin-top: var(--space-1);
+}
+
+.flagship__list strong {
+  color: var(--color-text);
+}
+
+/* ---------- Posters ---------- */
+.flagship__posters {
+  width: 100%;
+  margin: 0 0 var(--space-8);
+}
+
+.flagship__posters-title {
+  font-family: var(--font-heading);
+  font-size: var(--text-base);
+  color: var(--color-text);
+  margin: 0 0 var(--space-3);
+}
+
+.flagship__poster-strip {
+  display: flex;
+  gap: var(--space-3);
+  overflow-x: auto;
+  list-style: none;
+  margin: 0;
+  padding: var(--space-1) var(--space-1) var(--space-2);
+}
+
+.flagship__poster-thumb {
+  position: relative;
+  display: block;
+  width: 88px;
+  aspect-ratio: 3 / 4;
+  padding: 0;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-sm);
+  overflow: hidden;
+  background: var(--color-surface);
+  cursor: zoom-in;
+  transition: transform var(--transition-fast);
+}
+
+.flagship__poster-thumb:hover {
+  transform: translateY(-2px);
+}
+
+.flagship__poster-thumb:focus-visible {
+  outline: 2px solid var(--color-primary-dark);
+  outline-offset: 2px;
+}
+
+.flagship__poster-thumb img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.flagship__poster-year {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  padding: 2px 0;
+  font-size: var(--text-xs);
+  text-align: center;
+  color: var(--color-on-primary);
+  background: var(--color-primary-dark);
+}
+
+/* ---------- Lightbox ---------- */
+.poster-lightbox {
+  position: fixed;
+  inset: 0;
+  z-index: calc(var(--z-navbar) + 1);   /* above the sticky navbar */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--space-6);
+  background: color-mix(in srgb, var(--color-text) 85%, transparent);
+}
+
+.poster-lightbox__dialog {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-4);
+  max-width: min(90vw, 720px);
+}
+
+.poster-lightbox__img {
+  max-width: 100%;
+  max-height: 78vh;
+  border-radius: var(--radius-md);
+  background: var(--color-surface);
+}
+
+.poster-lightbox button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  border: none;
+  border-radius: var(--radius-full);
+  background: var(--color-surface);
+  color: var(--color-text);
+  font-size: var(--text-xl);
+  cursor: pointer;
+}
+
+.poster-lightbox button:focus-visible {
+  outline: 3px solid var(--color-primary-light);
+  outline-offset: 2px;
+}
+
+.poster-lightbox__close {
+  position: absolute;
+  top: calc(-1 * var(--space-12));
+  right: 0;
+}
+
+.poster-lightbox__nav {
+  display: flex;
+  align-items: center;
+  gap: var(--space-4);
+}
+
+.poster-lightbox__count {
+  margin: 0;
+  color: var(--color-on-primary);
+  font-size: var(--text-sm);
+}
+
+/* ---------- Responsive ---------- */
+@media (max-width: 1024px) {
+  .flagship__inner {
+    gap: var(--space-8);
+  }
+}
+
+/* Single column below ~900px so tablets aren't squeezed into two narrow columns */
+@media (max-width: 899px) {
+  .flagship {
+    padding: var(--space-12) var(--space-4);
+  }
+
+  .flagship__inner,
+  .flagship--flipped .flagship__inner,
+  .flagship__inner--no-media {
+    grid-template-columns: minmax(0, 1fr);
+    gap: var(--space-6);
+  }
+
+  /* Media always comes first on small screens */
+  .flagship--flipped .flagship__media {
+    order: 0;
+  }
+
+  /* Single photo follows its own shape on small screens (capped height) */
+  .flagship__media--single .flagship__photo {
+    aspect-ratio: auto;
+  }
+
+  .flagship__media--single .flagship__photo img {
+    height: auto;
+    max-height: 460px;
+  }
+
+  .flagship__row {
+    grid-template-columns: 2.25rem minmax(0, 1fr);
+    gap: var(--space-3);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .flagship__poster-thumb {
+    transition: none;
+  }
+}

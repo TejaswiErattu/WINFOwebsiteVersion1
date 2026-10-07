@@ -1,59 +1,82 @@
-import SectionWrapper from '../../components/SectionWrapper/SectionWrapper';
 import Button from '../../components/Buttons/Buttons';
-import CircuitSVG from '../../components/CircuitSVG/CircuitSVG';
+import FlagshipEvent from '../../components/FlagshipEvent/FlagshipEvent';
 import { eventsData } from '../../data/eventsData';
+import { flagshipEvents } from '../../data/flagshipEvents';
 import './Events.css';
 
+/* The header photo strip only appears with at least this many distinct photos */
+const MIN_HEADER_PHOTOS = 3;
+
 export default function Events() {
-  const { title, subtitle, categories, bottomCta } = eventsData;
+  const { title, subtitle, intro, goals, headerPhotos = [], flagshipLabels, moreEvents, bottomCta } = eventsData;
+  const showStrip = headerPhotos.length >= MIN_HEADER_PHOTOS;
 
   return (
     <>
-      {/* ===== 1 · HERO ===== */}
-      <section className="events-hero">
-        {/* Circuit decoration */}
-        <div className="events-hero__circuit" aria-hidden="true">
-          <CircuitSVG variant="vertical" />
-        </div>
+      {/* ===== 1 · PAGE HEADER ===== */}
+      <header className="events-header">
+        <div className="events-header__inner">
+          {showStrip && (
+            <ul className="events-header__strip">
+              {headerPhotos.map((p) => (
+                <li key={p.src} className="events-header__thumb">
+                  <img src={p.src} alt={p.alt} width={p.width} height={p.height} decoding="async" />
+                </li>
+              ))}
+            </ul>
+          )}
 
-        <div className="events-hero__inner">
-          <div className="events-hero__content">
-            <h1 className="events-hero__title cursive-title">{title}</h1>
-            <p className="events-hero__subtitle">{subtitle}</p>
-          </div>
-          <div className="events-hero__image-frame">
-            <img src="/images/winfo-community-2.jpg" alt="WINFO community event" />
-          </div>
-        </div>
-      </section>
+          <div className="events-header__main">
+            <h1 className="events-header__title">{title}</h1>
 
-      {/* ===== 2 · EVENT CATEGORY ROWS ===== */}
-      <SectionWrapper>
-        <div className="events-rows">
-          {categories.map((cat, idx) => (
-            <div className="events-row" key={idx}>
-              <p className="events-row__label">{cat.label}</p>
-
-              <div className="events-row__cards">
-                {cat.events.map((evt, i) => (
-                  <div className="events-card" key={i}>
-                    <div className="events-card__image">
-                      {evt.image ? (
-                        <img src={evt.image} alt={evt.name} loading="lazy" decoding="async" />
-                      ) : (
-                        <div className="events-card__placeholder" />
-                      )}
-                    </div>
-                    <p className="events-card__name">{evt.name}</p>
-                  </div>
-                ))}
-              </div>
+            <div className="events-header__copy">
+              {subtitle && <p className="events-header__subtitle">{subtitle}</p>}
+              {intro && <p className="events-header__text">{intro}</p>}
+              {goals && <p className="events-header__text">{goals}</p>}
             </div>
-          ))}
+          </div>
         </div>
-      </SectionWrapper>
+      </header>
 
-      {/* ===== 3 · BOTTOM CTA ===== */}
+      {/* ===== 2 · FLAGSHIP EVENTS ===== */}
+      <div className="flagships">
+        {flagshipEvents.map((event, i) => (
+          <FlagshipEvent
+            key={event.slug}
+            event={event}
+            labels={flagshipLabels}
+            flipped={i % 2 === 1}
+            eagerMedia={i === 0}
+          />
+        ))}
+      </div>
+
+      {/* ===== 3 · MORE EVENTS ===== */}
+      {moreEvents?.events?.length > 0 && (
+        <section className="more-events" aria-labelledby="more-events-title">
+          <div className="more-events__inner">
+            <h2 id="more-events-title" className="more-events__heading">{moreEvents.heading}</h2>
+            {moreEvents.intro && <p className="more-events__intro">{moreEvents.intro}</p>}
+
+            <ul className="more-events__grid">
+              {moreEvents.events.map((evt) => (
+                <li key={evt.name} className="more-events__item">
+                  <div className="more-events__image">
+                    {evt.image ? (
+                      <img src={evt.image} alt={evt.alt ?? ''} loading="lazy" decoding="async" />
+                    ) : (
+                      <div className="more-events__placeholder" />
+                    )}
+                  </div>
+                  <p className="more-events__name">{evt.name}</p>
+                </li>
+              ))}
+            </ul>
+          </div>
+        </section>
+      )}
+
+      {/* ===== 4 · BOTTOM CTA ===== */}
       <section className="events-cta">
         <h2 className="events-cta__heading cursive-title">{bottomCta.heading}</h2>
         <p className="events-cta__body">

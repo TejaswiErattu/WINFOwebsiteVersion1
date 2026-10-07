@@ -1,141 +1,151 @@
 /* ==========================================================================
    EVENTS PAGE
+   Rhythm: hero (bg) → flagships (alt / bg / alt) → more events (bg) → CTA (alt)
+   Every major section uses the same container and vertical padding token.
    ========================================================================== */
 
-/* ===== 1. HERO ===== */
-.events-hero {
-  position: relative;
-  display: flex;
-  align-items: flex-start;
-  justify-content: flex-start;
-  padding: 3.5rem 1.5rem;
-  background: var(--gradient-hero);
-  border-bottom: 1px solid var(--color-border);
-  overflow: hidden;
+/* ===== 1. PAGE HEADER ===== */
+.events-header {
+  background: var(--color-bg);
+  padding: var(--space-12) var(--space-6) var(--space-16);
 }
 
-.events-hero__inner {
-  position: relative;
-  z-index: 1;
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 2.5rem;
-  align-items: center;
-  width: 100%;
+.events-header__inner {
   max-width: var(--container-max);
   margin: 0 auto;
-  padding: var(--container-padding);
 }
 
-.events-hero__content {
+/* Compact thumbnail row, sitting directly above the heading */
+.events-header__strip {
   display: flex;
-  flex-direction: column;
-  gap: 0.75rem;
+  gap: var(--space-3);
+  list-style: none;
+  margin: 0 0 var(--space-8);
+  padding: 0;
 }
 
-.events-hero__title {
+.events-header__thumb {
+  height: 88px;
+  flex: 0 1 auto;
+  min-width: 0;
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  background: var(--color-bg-alt);
+}
+
+.events-header__thumb img {
+  display: block;
+  height: 100%;
+  width: auto;
+  max-width: 100%;
+  object-fit: cover;
+}
+
+/* Title (≈45%) and copy (≈55%) read as one composition */
+.events-header__main {
+  display: grid;
+  grid-template-columns: minmax(0, 45fr) minmax(0, 55fr);
+  gap: var(--space-12);
+  align-items: center;
+}
+
+.events-header__title {
+  font-family: var(--font-heading);
+  font-size: clamp(3.5rem, 8vw, 6.5rem);
+  font-weight: var(--weight-bold);
+  line-height: var(--leading-none);
+  letter-spacing: var(--tracking-tight);
+  color: var(--color-primary-dark);
   margin: 0;
 }
 
-.events-hero__subtitle {
-  font-size: var(--text-lg);
+.events-header__copy {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+}
+
+.events-header__subtitle {
+  font-family: var(--font-heading);
+  font-size: var(--text-xl);
+  font-weight: var(--weight-semibold);
+  line-height: var(--leading-snug);
+  color: var(--color-text);
+  margin: 0;
+}
+
+.events-header__text {
+  font-size: var(--text-base);
+  line-height: var(--leading-relaxed);
   color: var(--color-text-secondary);
-  max-width: 30rem;
   margin: 0;
 }
 
-/* Header image — reduced so it no longer dominates the hero */
-.events-hero__image-frame {
-  width: 100%;
-  max-width: 380px;
-  margin-left: auto;
+/* ===== 2. MORE EVENTS ===== */
+.more-events {
+  background: var(--color-bg);
+  padding: var(--space-16) var(--space-6);
+  border-top: 1px solid var(--color-border);
+}
+
+.more-events__inner {
+  max-width: var(--container-max);
+  margin: 0 auto;
+}
+
+.more-events__heading {
+  font-family: var(--font-heading);
+  font-size: var(--text-3xl);
+  font-weight: var(--weight-bold);
+  line-height: var(--leading-tight);
+  color: var(--color-text);
+  margin: 0 0 var(--space-3);
+}
+
+.more-events__intro {
+  font-size: var(--text-md);
+  line-height: var(--leading-relaxed);
+  color: var(--color-text-secondary);
+  max-width: 44rem;
+  margin: 0 0 var(--space-8);
+}
+
+.more-events__grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: var(--space-6);
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+/* Lightweight items: image + name, no card chrome */
+.more-events__image {
   aspect-ratio: 4 / 3;
-  border-radius: 20px;
+  border-radius: var(--radius-md);
   overflow: hidden;
-  box-shadow: none;
-  border: none;
-  background: transparent;
+  background: var(--color-bg-alt);
 }
 
-.events-hero__image-frame img {
+.more-events__image img {
+  display: block;
   width: 100%;
   height: 100%;
   object-fit: cover;
-  border-radius: 20px;
 }
 
-/* Circuit decoration — top-right */
-.events-hero__circuit {
-  position: absolute;
-  top: 1rem;
-  right: 6vw;
-  width: 100px;
-  height: 250px;
-  color: rgba(158, 128, 189, 0.3);
-  pointer-events: none;
-}
-
-/* ===== 2. EVENT CATEGORY ROWS ===== */
-.events-rows {
-  display: flex;
-  flex-direction: column;
-  gap: 2.5rem;
-}
-
-.events-row__label {
-  font-family: var(--font-heading);
-  font-size: 1.05rem;
-  font-weight: 700;
-  color: var(--color-text);
-  margin-bottom: 1.2rem;
-  letter-spacing: var(--tracking-wide);
-}
-
-/* Flex row of cards — wraps naturally */
-.events-row__cards {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 1.5rem;
-}
-
-/* Individual event card */
-.events-card {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  width: 170px;
-  flex-shrink: 0;
-}
-
-.events-card__image {
-  width: 170px;
-  height: 140px;
-  border-radius: var(--radius-lg);
-  overflow: hidden;
-  background: var(--color-bg-alt);
-  box-shadow: var(--shadow-sm);
-}
-
-.events-card__image img {
+.more-events__placeholder {
   width: 100%;
   height: 100%;
-  object-fit: cover;
-  border-radius: var(--radius-lg);
 }
 
-.events-card__placeholder {
-  width: 100%;
-  height: 100%;
-  background: var(--color-bg-alt);
-}
-
-.events-card__name {
+.more-events__name {
   font-family: var(--font-heading);
-  font-size: 0.9rem;
-  font-weight: 700;
+  font-size: var(--text-base);
+  font-weight: var(--weight-bold);
+  line-height: var(--leading-snug);
   color: var(--color-text);
-  margin-top: 0.6rem;
-  line-height: 1.3;
+  margin: var(--space-3) 0 0;
 }
 
 /* ===== 3. BOTTOM CTA ===== */
@@ -144,7 +154,7 @@
   flex-direction: column;
   align-items: center;
   text-align: center;
-  padding: var(--space-20) 1.5rem;
+  padding: var(--space-16) var(--space-6);
   background: var(--color-bg-alt);
   border-top: 1px solid var(--color-border);
 }
@@ -180,58 +190,43 @@
 }
 
 /* ===== RESPONSIVE ===== */
-@media (max-width: 768px) {
-  .events-hero {
-    padding: 2.5rem 1.5rem;
+@media (max-width: 1024px) {
+  .more-events__grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 767px) {
+  .events-header {
+    padding: var(--space-8) var(--space-4) var(--space-12);
   }
 
-  .events-hero__inner {
-    grid-template-columns: 1fr;
-    gap: 1.5rem;
-    text-align: center;
+  .events-header__strip {
+    margin-bottom: var(--space-6);
   }
 
-  .events-hero__subtitle {
-    margin-inline: auto;
+  .events-header__thumb {
+    height: 64px;
   }
 
-  .events-hero__image-frame {
-    max-width: 320px;
-    margin: 0 auto;
+  .events-header__main {
+    grid-template-columns: minmax(0, 1fr);
+    gap: var(--space-5);
   }
 
-  .events-row__cards {
-    gap: 1rem;
+  .more-events,
+  .events-cta {
+    padding: var(--space-12) var(--space-4);
   }
+}
 
-  .events-card {
-    width: 140px;
-  }
-
-  .events-card__image {
-    width: 140px;
-    height: 115px;
+@media (max-width: 600px) {
+  .more-events__grid {
+    grid-template-columns: minmax(0, 1fr);
   }
 }
 
 @media (max-width: 500px) {
-  .events-hero {
-    padding: 2rem 1.25rem;
-  }
-
-  .events-card {
-    width: 120px;
-  }
-
-  .events-card__image {
-    width: 120px;
-    height: 100px;
-  }
-
-  .events-card__name {
-    font-size: 0.75rem;
-  }
-
   .events-cta__btn {
     font-size: 0.95rem;
     padding: 0.8rem 2rem;
