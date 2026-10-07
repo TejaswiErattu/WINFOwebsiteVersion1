@@ -44,7 +44,7 @@ export const socialLinks = [
   },
   {
     label: 'LinkedIn',
-    url: 'https://linkedin.com/company/winfo-uw',
+    url: 'https://www.linkedin.com/company/women-in-informatics/posts/?feedView=all',
     icon: 'linkedin',
   },
   {
