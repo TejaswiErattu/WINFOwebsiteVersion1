@@ -3,8 +3,7 @@
    ========================================================================== */
 
 /* ===== 1. HERO — full-width photo band with brand overlay & centred logo =====
-   Layers (top → bottom): overlay · hero-bg.jpg · fallback gradient.
-   A missing hero-bg.jpg simply fails to paint, leaving the gradient. */
+   Light cream background with soft pink/lavender washes. */
 .home-hero {
   position: relative;
   overflow: hidden;
@@ -12,11 +11,9 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: var(--color-primary-dark);
-  background-image:
-    linear-gradient(var(--color-home-hero-overlay), var(--color-home-hero-overlay)),
-    url('/hero-bg.jpg'),
-    var(--gradient-home-hero-fallback);
+  background-color: var(--color-bg);
+  background-image: var(--gradient-home-hero-fallback);
+  border-bottom: 1px solid var(--color-border);
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -29,7 +26,7 @@
   top: 0;
   bottom: 0;
   width: 320px;
-  color: rgba(255, 255, 255, 0.14);
+  color: rgba(122, 92, 158, 0.18);
   pointer-events: none;
   z-index: 1;
 }
@@ -71,6 +68,16 @@
   letter-spacing: var(--tracking-wide);
   line-height: var(--leading-tight);
   color: var(--color-home-hero-text);
+  margin: 0;
+}
+
+.home-hero__slogan {
+  font-family: var(--font-heading);
+  font-size: clamp(1.1rem, 2.4vw, 1.45rem);
+  font-weight: 600;
+  font-style: italic;
+  color: var(--color-primary-dark);
+  max-width: 38rem;
   margin: 0;
 }
 

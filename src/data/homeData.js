@@ -7,6 +7,8 @@ import { MEMBERSHIP_SIGNUP_URL } from './externalLinks';
 /* ---------- Hero ---------- */
 export const heroData = {
   heading: 'Women in Informatics',
+  /* Slogan adapted from WINFO's mission line. Swap here if the board picks another. */
+  slogan: 'Nurturing a blossoming community of fearless technology leaders.',
   tagline: 'A student-led community at the University of Washington Information School.',
 };
 
@@ -29,7 +31,7 @@ export const storyData = {
   title: 'our story',
   body: 'WINFO began in **2012** with a simple mission: to **connect women in the Informatics program and help them feel supported**.',
   /* Featured impact statistic — rendered larger, as a pull-quote */
-  statHighlight: 'Back then, only 28% of students in the Informatics major were women.',
+  statHighlight: 'Back then, only **28%** of students in the Informatics major were women.',
   bodySecondary:
     'As of 2023, **53% of Informatics students are women**, and our blossoming community is stronger than ever.',
   bodyTertiary:

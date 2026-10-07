@@ -22,3 +22,9 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+
+# Local working folders (not part of the site)
+/WINFOwebsiteVersion1/
+/winfo-assets/
+/.claude/
+deck-notes.md

@@ -16,8 +16,8 @@ export const supportData = {
   whyTitle: 'why support us?',
   whyImage: '/images/hackathon-4.jpg',
   whyText: [
-    'By supporting WINFO, you help build a world where technology education is <u>inclusive</u> and <u>empowering</u> for all. Your involvement empowers underrepresented students to thrive as innovators and leaders, sparking meaningful connections across our community.',
-    'Together, we can <u>break down barriers</u> in tech, ensuring all students have the tools, confidence, and support to lead and blossom in an inclusive and collaborative community.',
+    'By supporting WINFO, you help build a world where technology education is **inclusive** and **empowering** for all. Your involvement empowers underrepresented students to thrive as innovators and leaders, sparking meaningful connections across our community.',
+    'Together, we can **break down barriers** in tech, ensuring all students have the tools, confidence, and support to lead and blossom in an inclusive and collaborative community.',
   ],
 
   /* ---------- Get Involved ---------- */

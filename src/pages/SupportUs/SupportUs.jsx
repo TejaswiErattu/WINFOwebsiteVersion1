@@ -1,3 +1,4 @@
+import { renderBold } from '../../utils/renderBold';
 import SectionWrapper from '../../components/SectionWrapper/SectionWrapper';
 import CircuitSVG from '../../components/CircuitSVG/CircuitSVG';
 import { supportData } from '../../data/supportData';
@@ -58,11 +59,9 @@ export default function SupportUs() {
           <div className="support-why__content">
             <h2 className="support-why__title cursive-title">{whyTitle}</h2>
             {whyText.map((p, i) => (
-              <p
-                key={i}
-                className="support-why__paragraph"
-                dangerouslySetInnerHTML={{ __html: p }}
-              />
+              <p key={i} className="support-why__paragraph">
+                {renderBold(p)}
+              </p>
             ))}
           </div>
         </div>

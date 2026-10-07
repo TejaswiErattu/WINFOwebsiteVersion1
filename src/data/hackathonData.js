@@ -64,7 +64,7 @@ export const hackathonData = {
     locationDetail: 'University of Washington Husky Union Building',
     registrationUrl: REGISTRATION_URL_TBD,
     /* Poster — add the file to public/hackathon/ and set the path here,
-       e.g. '/hackathon/poster-15.png'. Empty shows a soft placeholder frame. */
+       e.g. '/hackathon/poster-15.png'. Empty hides the poster column. */
     posterSrc: '',
     posterAlt: 'Poster for the 15th WINFO Hackathon, Peaks of Possibility, Paths of Progress',
     intro:

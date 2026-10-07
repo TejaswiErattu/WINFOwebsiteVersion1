@@ -151,14 +151,12 @@ export default function Hackathon() {
 
       {/* ===== 2 · THIS YEAR'S HACKATHON ===== */}
       <SectionWrapper id="this-year" className="hack-section hack-current">
-        <div className="hack-current__grid">
-          <div className={`hack-current__poster ${current.posterSrc ? '' : 'hack-current__poster--empty'}`}>
-            {current.posterSrc ? (
+        <div className={`hack-current__grid ${current.posterSrc ? '' : 'hack-current__grid--no-poster'}`}>
+          {current.posterSrc && (
+            <div className="hack-current__poster">
               <img src={current.posterSrc} alt={current.posterAlt} loading="lazy" decoding="async" />
-            ) : (
-              <div className="hack-current__poster-placeholder" aria-hidden="true" />
-            )}
-          </div>
+            </div>
+          )}
 
           <div className="hack-current__info">
             <p className="hack-current__eyebrow">WINFO {current.edition}th Hackathon</p>
@@ -352,6 +350,7 @@ export default function Hackathon() {
             return (
               <div key={i} className={`hack-faq__item ${isOpen ? 'hack-faq__item--open' : ''}`}>
                 <button
+                  type="button"
                   className="hack-faq__trigger"
                   onClick={() => toggleFaq(i)}
                   aria-expanded={isOpen}
@@ -362,11 +361,9 @@ export default function Hackathon() {
                     {isOpen ? '∧' : '∨'}
                   </span>
                 </button>
-                {isOpen && (
-                  <div className="hack-faq__answer" id={`hack-faq-${i}`}>
-                    <p>{item.answer}</p>
-                  </div>
-                )}
+                <div className="hack-faq__answer" id={`hack-faq-${i}`} hidden={!isOpen}>
+                  <p>{item.answer}</p>
+                </div>
               </div>
             );
           })}

@@ -30,6 +30,7 @@ export default function Home() {
         <div className="home-hero__center">
           <WinfoLogo color="multi" className="home-hero__logo" />
           <h1 className="home-hero__title">{heroData.heading}</h1>
+          {heroData.slogan && <p className="home-hero__slogan">{heroData.slogan}</p>}
           <p className="home-hero__tagline">{heroData.tagline}</p>
         </div>
       </section>
@@ -69,7 +70,7 @@ export default function Home() {
           <div className="home-story__content">
             <h2 className="home-story__title cursive-title">{storyData.title}</h2>
             <p className="home-story__text">{renderBold(storyData.body)}</p>
-            <p className="impact-stat home-story__stat">{storyData.statHighlight}</p>
+            <p className="impact-stat home-story__stat">{renderBold(storyData.statHighlight)}</p>
             <p className="home-story__text">{renderBold(storyData.bodySecondary)}</p>
             <p className="home-story__text">{renderBold(storyData.bodyTertiary)}</p>
             <Button to={storyData.ctaLink} variant="secondary" className="home-story__btn">

@@ -563,7 +563,7 @@ img {
 
 /* Focus-visible ring — consistent across all interactive elements */
 :focus-visible {
-  outline: 2px solid var(--color-primary);
+  outline: 2px solid var(--color-primary-dark);
   outline-offset: 2px;
   border-radius: var(--radius-sm);
 }
@@ -699,3 +699,95 @@ html {
   vertical-align: -0.125em;
   margin-right: 0.3em;
 }
+
+/* Skip link — visible only on keyboard focus */
+.skip-link {
+  position: absolute;
+  left: 1rem;
+  top: -100px;
+  z-index: 10000;
+  padding: 0.75rem 1.25rem;
+  background: var(--color-primary-dark);
+  color: #fff;
+  border-radius: var(--radius-sm);
+  font-weight: 600;
+  text-decoration: none;
+}
+.skip-link:focus { top: 1rem; }
+
+/* ===== PHOTO FRAMES ========================================================
+   Polaroid-style frame with a hand-drawn doodle accent. Applied to every
+   content photo wrapper across the site. */
+.photo-frame,
+.home-who__image-frame,
+.home-story__image-frame,
+.team-hero__image-frame,
+.podcast-hero__image-frame,
+.support-hero__image,
+.flagship__photo,
+.more-events__image,
+.hack-winner__image {
+  position: relative;
+  background: #fff;
+  padding: 10px 10px 28px;
+  border: 1px solid var(--color-border);
+  border-radius: 6px !important;
+  box-shadow: 0 10px 24px -14px rgba(31, 29, 30, 0.35) !important;
+  overflow: visible !important;
+}
+.photo-frame img,
+.home-who__image-frame img,
+.home-story__image-frame img,
+.team-hero__image-frame img,
+.podcast-hero__image-frame img,
+.flagship__photo img,
+.more-events__image img,
+.hack-winner__image img {
+  border-radius: 3px;
+  display: block;
+  width: 100%;
+}
+/* washi tape on top */
+.home-who__image-frame::before,
+.home-story__image-frame::before,
+.team-hero__image-frame::before,
+.podcast-hero__image-frame::before,
+.flagship__photo::before,
+.more-events__image::before {
+  content: '';
+  position: absolute;
+  top: -12px;
+  left: 50%;
+  width: 92px;
+  height: 24px;
+  transform: translateX(-50%) rotate(-3deg);
+  background: rgba(254, 176, 186, 0.7);
+  border-left: 2px dashed rgba(255,255,255,0.6);
+  border-right: 2px dashed rgba(255,255,255,0.6);
+  z-index: 2;
+  pointer-events: none;
+}
+/* hand-drawn sparkle doodle in the corner */
+.home-who__image-frame::after,
+.home-story__image-frame::after,
+.team-hero__image-frame::after,
+.podcast-hero__image-frame::after,
+.flagship__photo::after {
+  content: '';
+  position: absolute;
+  right: -18px;
+  bottom: -18px;
+  width: 44px;
+  height: 44px;
+  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 44 44' fill='none' stroke='%239E80BD' stroke-width='2.4' stroke-linecap='round'%3E%3Cpath d='M22 4c1 8 2 13 0 18M22 22c-1 6 0 12 0 18M4 22c8-1 13 1 18 0M22 22c6 1 12-1 18 0'/%3E%3Cpath d='M9 9l5 5M30 30l5 5M35 9l-5 5M14 30l-5 5' stroke='%23FEB0BA'/%3E%3C/svg%3E") no-repeat center / contain;
+  pointer-events: none;
+  z-index: 2;
+}
+.home-story__image-frame { transform: rotate(1.2deg); }
+.home-who__image-frame { transform: rotate(-1.2deg); }
+@media (prefers-reduced-motion: no-preference) {
+  .more-events__image { transition: transform 0.25s ease; }
+  .more-events__image:hover { transform: rotate(-1deg) translateY(-2px); }
+}
+
+.impact-stat strong { color: var(--color-accent-strong); font-size: 1.2em; }

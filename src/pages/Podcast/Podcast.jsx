@@ -65,7 +65,7 @@ export default function Podcast() {
         <div className="podcast-info-cards">
           {infoCards.map((card) => (
             <div key={card.title} className={`podcast-info-card podcast-info-card--${card.accent}`}>
-              <h3 className="podcast-info-card__title cursive-title">{card.title}</h3>
+              <h2 className="podcast-info-card__title cursive-title">{card.title}</h2>
               <p className="podcast-info-card__text">{card.text}</p>
             </div>
           ))}
@@ -88,14 +88,14 @@ export default function Podcast() {
           {episodesHeading}
         </h2>
 
-        <div className="podcast-carousel">
+        <div className="podcast-carousel" role="region" aria-roledescription="carousel" aria-label="Past episodes">
           {/* Left arrow */}
-          <button className="podcast-carousel__arrow podcast-carousel__arrow--left" onClick={prev} aria-label="Previous episode">
+          <button type="button" className="podcast-carousel__arrow podcast-carousel__arrow--left" onClick={prev} aria-label="Previous episode">
             ‹
           </button>
 
           {/* Episode card */}
-          <div className="podcast-carousel__card">
+          <div className="podcast-carousel__card" aria-live="polite" aria-atomic="true">
             <div className="podcast-carousel__thumb">
               {ep.image ? (
                 <img src={ep.image} alt={ep.imageAlt} loading="lazy" decoding="async" />
@@ -115,14 +115,16 @@ export default function Podcast() {
               <span className="podcast-carousel__tag">{ep.tag}</span>
               <h3 className="podcast-carousel__title">{ep.title}</h3>
               <p className="podcast-carousel__desc">{ep.description}</p>
-              <Button href={ep.watchUrl || '#'} variant="accent" size="sm" className="podcast-carousel__btn">
-                <PlayIcon className="icon icon--inline" /> watch here!
-              </Button>
+              {ep.watchUrl && (
+                <Button href={ep.watchUrl} variant="accent" size="sm" className="podcast-carousel__btn">
+                  <PlayIcon className="icon icon--inline" /> watch here!
+                </Button>
+              )}
             </div>
           </div>
 
           {/* Right arrow */}
-          <button className="podcast-carousel__arrow podcast-carousel__arrow--right" onClick={next} aria-label="Next episode">
+          <button type="button" className="podcast-carousel__arrow podcast-carousel__arrow--right" onClick={next} aria-label="Next episode">
             ›
           </button>
         </div>
@@ -133,8 +135,10 @@ export default function Podcast() {
             <button
               key={i}
               className={`podcast-carousel__dot ${i === current ? 'podcast-carousel__dot--active' : ''}`}
+              type="button"
               onClick={() => setCurrent(i)}
               aria-label={`Go to episode ${i + 1}`}
+              aria-current={i === current ? 'true' : undefined}
             />
           ))}
         </div>

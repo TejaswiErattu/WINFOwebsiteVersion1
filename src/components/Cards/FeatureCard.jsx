@@ -8,7 +8,7 @@ import './FeatureCard.css';
  *   title     – card heading
  *   text      – card body text
  *   linkLabel – text for the bottom link (default: 'Learn more')
- *   linkTo    – route for the link (default: '#')
+ *   linkTo    – route for the link (link hidden when omitted)
  *   accent    – 'purple' | 'pink' | 'blue' — sets the accent colour
  *   className – extra class names
  */
@@ -16,7 +16,7 @@ export default function FeatureCard({
   title,
   text,
   linkLabel = 'Learn more',
-  linkTo = '#',
+  linkTo,
   accent = 'purple',
   className = '',
 }) {
@@ -25,7 +25,7 @@ export default function FeatureCard({
       <h3 className="feature-card__title">{title}</h3>
       <p className="feature-card__text">{text}</p>
 
-      {linkLabel && (
+      {linkLabel && linkTo && (
         <Link to={linkTo} className="feature-card__link">
           {linkLabel}
           <span className="feature-card__link-arrow" aria-hidden="true">→</span>
