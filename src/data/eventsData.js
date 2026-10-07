@@ -6,14 +6,14 @@ import { MEMBERSHIP_SIGNUP_URL } from './externalLinks';
 
 export const eventsData = {
   /* ---------- Page header ---------- */
-  title: 'Events',
+  title: 'events',
   subtitle: 'Building community through technology, connection, and hands-on experiences.',
   intro:
     'WINFO brings students together through technical, professional, and community-focused events designed to make technology more welcoming and accessible.',
   goals:
     'From large annual programs to workshops, company visits, and social events, our events create opportunities to learn, build, connect, and explore different paths in technology.',
-  /* Small photo strip above the heading. Distinct photos only (not used
-     elsewhere on this page); the strip is hidden if fewer than 3 exist. */
+  /* Photo carousel below the header copy. Distinct photos only (not used
+     elsewhere on this page). Add more by appending to this list. */
   headerPhotos: [
     { src: '/images/winfo-community-1.jpg', alt: 'Students making vision boards at long tables in a classroom', width: 1200, height: 683 },
     { src: '/images/winfo-community-2.jpg', alt: 'A WINFO officer with a microphone presenting judging criteria to a room of students', width: 1200, height: 900 },

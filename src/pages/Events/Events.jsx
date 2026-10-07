@@ -1,31 +1,18 @@
 import Button from '../../components/Buttons/Buttons';
 import FlagshipEvent from '../../components/FlagshipEvent/FlagshipEvent';
+import PhotoCarousel from '../../components/PhotoCarousel/PhotoCarousel';
 import { eventsData } from '../../data/eventsData';
 import { flagshipEvents } from '../../data/flagshipEvents';
 import './Events.css';
 
-/* The header photo strip only appears with at least this many distinct photos */
-const MIN_HEADER_PHOTOS = 3;
-
 export default function Events() {
   const { title, subtitle, intro, goals, headerPhotos = [], flagshipLabels, moreEvents, bottomCta } = eventsData;
-  const showStrip = headerPhotos.length >= MIN_HEADER_PHOTOS;
 
   return (
     <>
       {/* ===== 1 · PAGE HEADER ===== */}
       <header className="events-header">
         <div className="events-header__inner">
-          {showStrip && (
-            <ul className="events-header__strip">
-              {headerPhotos.map((p) => (
-                <li key={p.src} className="events-header__thumb">
-                  <img src={p.src} alt={p.alt} width={p.width} height={p.height} decoding="async" />
-                </li>
-              ))}
-            </ul>
-          )}
-
           <div className="events-header__main">
             <h1 className="events-header__title">{title}</h1>
 
@@ -35,6 +22,12 @@ export default function Events() {
               {goals && <p className="events-header__text">{goals}</p>}
             </div>
           </div>
+
+          {headerPhotos.length > 0 && (
+            <div className="events-header__carousel">
+              <PhotoCarousel photos={headerPhotos} label="WINFO event photos" />
+            </div>
+          )}
         </div>
       </header>
 

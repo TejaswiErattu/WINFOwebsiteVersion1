@@ -92,11 +92,11 @@ export const flagshipEvents = [
 
   {
     slug: 'fearless',
-    name: 'FearLess, Tech More',
+    name: 'Fearless, TechMore',
     tagline: 'Build ideas that use technology for positive impact.',
     dates: 'October 12–16, 2026',
     description:
-      'FearLess, Tech More is a week-long, online innovation challenge where middle and high school students work in teams with UW mentors to explore technology, user experience design, and real-world problem solving.',
+      'Fearless, TechMore is a week-long, online innovation challenge where middle and high school students work in teams with UW mentors to explore technology, user experience design, and real-world problem solving.',
     mission:
       'Create an accessible introduction to technology and design while helping students build confidence, collaborate with others, and explore how technology can support equity and positive social impact.',
     audienceLabel: 'Middle & high school students',
