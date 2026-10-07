@@ -752,7 +752,7 @@ html {
 .home-story__image-frame::before,
 .team-hero__image-frame::before,
 .podcast-hero__image-frame::before,
-.flagship__photo::before,
+.flagship__media--single .flagship__photo::before,
 .more-events__image::before {
   content: '';
   position: absolute;
@@ -772,7 +772,7 @@ html {
 .home-story__image-frame::after,
 .team-hero__image-frame::after,
 .podcast-hero__image-frame::after,
-.flagship__photo::after {
+.flagship__media--single .flagship__photo::after {
   content: '';
   position: absolute;
   right: -18px;
@@ -791,3 +791,100 @@ html {
 }
 
 .impact-stat strong { color: var(--color-accent-strong); font-size: 1.2em; }
+
+/* ===== TOUCH TARGETS ======================================================
+   Visually small controls get an invisible 44px hit area on touch screens. */
+.podcast-carousel__dot,
+.photo-carousel__dot,
+.officer-card__linkedin {
+  position: relative;
+}
+.podcast-carousel__dot::after,
+.photo-carousel__dot::after,
+.officer-card__linkedin::after {
+  content: '';
+  position: absolute;
+  inset: -12px;
+}
+.officer-card__linkedin { position: absolute; } /* keep its badge positioning */
+
+@media (pointer: coarse) {
+  body .footer__link,
+  body .feature-card__link,
+  body .navbar__logo {
+    display: inline-flex;
+    align-items: center;
+    min-height: 44px;
+  }
+  body .footer__links-list { gap: 0; }
+}
+
+/* ===== PHONE LANDSCAPE ====================================================
+   Short, wide screens (phones on their side): keep two-column layouts instead
+   of stacking, tighten vertical padding, and stop sticky bars eating the view. */
+@media (orientation: landscape) and (max-height: 500px) and (min-width: 560px) {
+  body .section-wrapper { padding: 2rem 1.5rem; }
+
+  /* Hero bands */
+  body .home-hero { min-height: 0; padding: 1.75rem 1.5rem; }
+  body .home-hero__logo { height: 3.25rem; }
+  body .home-hero__title { font-size: 2rem; }
+  body .home-hero__center { gap: 0.6rem; }
+  body [class*='-hero']:not([class*='__']), body .events-header { padding-top: 1.75rem; padding-bottom: 1.75rem; }
+  /* Beats the generic "stack every hero" rule above (which uses !important) */
+  body [class*='-hero__inner'] { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr) !important; text-align: left; }
+  body [class*='-hero__text'] { align-items: flex-start; }
+
+  /* Two-column heroes and splits stay side by side */
+  body .membership-hero__inner, body .team-hero__inner, body .podcast-hero__inner, body .alumni-hero__inner, body .home-who, body .home-story {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    gap: 1.5rem;
+    text-align: left;
+  }
+  body .membership-hero__content, body .team-hero__content, body .podcast-hero__content, body .alumni-hero__content { align-items: flex-start; }
+  body .membership-hero__btn, body .podcast-hero__btn, body .alumni-hero__btn, body .home-who__btn, body .home-story__btn { align-self: flex-start; }
+  body .home-who__image-frame, body .home-story__image-frame { order: 0; max-width: none; margin: 0; }
+  body .membership-hero__image-frame, body .team-hero__image-frame, body .podcast-hero__image-frame {
+    max-width: none; margin: 0;
+  }
+
+  body .events-header__main { grid-template-columns: minmax(0, 45fr) minmax(0, 55fr); gap: 1.5rem; }
+
+  body .merch-hero__inner, body .support-hero__inner, body .support-why { flex-direction: row; gap: 1.5rem; }
+  body .merch-hero__image { width: 38%; max-width: 240px; margin: 0; }
+  body .support-hero__image, body .support-why__image { width: 45%; max-width: 300px; height: 200px; }
+
+  body .alumni-why, body .alumni-pillars { grid-template-columns: 1fr 1fr; }
+  body .alumni-pillars { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  body .alumni-structure__leads, body .alumni-cycle { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+
+  /* Flagship events: photo beside the copy instead of a full-screen photo above it */
+  body .flagship { padding: 2rem 1.5rem; }
+  body .flagship__inner, body .flagship--flipped .flagship__inner {
+    grid-template-columns: minmax(0, 0.8fr) minmax(0, 1.2fr);
+    gap: 1.5rem;
+    align-items: start;
+  }
+  body .flagship__inner--no-media, body .flagship--flipped .flagship__inner--no-media {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  body .flagship__media { position: sticky; top: 76px; }
+
+  /* Cap tall media so a photo never fills the whole screen */
+  body .flagship__media--single .flagship__photo img { max-height: 280px; }
+  body .photo-carousel__frame img { aspect-ratio: 21 / 9; }
+  body .flagship__poster-lightbox img, body .poster-lightbox__img { max-height: 70vh; }
+
+  /* Sticky bars: let the hackathon sub-nav scroll away to free vertical space */
+  body .hack-subnav { position: static; }
+
+  /* Hamburger menu panel: tighter rows so most links show without scrolling */
+  body .navbar__mobile--open { padding: 0.5rem 1.5rem 1rem; }
+  body .navbar__mobile .navbar__link { padding: 0.45rem 1rem; }
+}
+
+/* Small photos in multi-photo grids: slim frame, no tape or doodle */
+.flagship__media:not(.flagship__media--single) .flagship__photo {
+  padding: 4px 4px 8px;
+  border-radius: 4px !important;
+}
