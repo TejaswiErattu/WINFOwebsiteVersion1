@@ -128,25 +128,25 @@ export const officersData = {
   committees: [
     {
       name: 'diversity',
-      image: '/images/team/rithika_headshot.jpg',
+      image: '',
       description:
         'Organizes quarterly Power Hour events, leads the annual Fearless, TechMore and TechXperience hackathons, and coordinates outreach for high school and middle school students.',
     },
     {
       name: 'student engagement',
-      image: '/images/team/rithika_headshot.jpg',
+      image: '',
       description:
         'Hosts fun community-building events and fundraisers throughout the year to foster connection among students.',
     },
     {
       name: 'hackathon',
-      image: '/images/team/rithika_headshot.jpg',
+      image: '',
       description:
         "Manages all aspects of WINFO's annual hackathon, including planning themes, coordinating logistics, recruiting mentors and judges, and more.",
     },
     {
       name: 'creative content',
-      image: '/images/team/rithika_headshot.jpg',
+      image: '',
       description:
         "Supports WINFO's storytelling by curating social media content, producing the WINFO podcast, and writing for the WINFO Weekly newsletter.",
     },
