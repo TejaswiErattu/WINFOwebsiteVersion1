@@ -1,8 +1,6 @@
 import { CartIcon, ShirtIcon, MoneyIcon, BoxIcon, ClockIcon } from '../../components/Icons/Icons';
+import { MERCH_ORDER_URL as ORDER_URL } from '../../data/externalLinks';
 import './Merch.css';
-
-const ORDER_URL =
-  'https://docs.google.com/forms/d/e/1FAIpQLSe11gQXz_OIKfNHMFx8wJ6w6zpyhBvcXcYO2PUy3eMbqBCBHQ/viewform';
 
 export default function Merch() {
   return (
@@ -44,8 +42,11 @@ export default function Merch() {
           {/* Sweatshirt photo */}
           <div className="merch-hero__image">
             <img
-              src="/images/hoodie1.jpg"
-              alt="WINFO crewneck sweatshirts in brown and cream"
+              src="/images/hoodie1.webp"
+              alt="Brown WINFO crewneck sweatshirt with a small cream winfo logo on the chest"
+              width="1029"
+              height="1125"
+              decoding="async"
             />
           </div>
         </div>
