@@ -17,6 +17,7 @@ export const navLinks = [
   { label: 'podcast', path: '/podcast' },
   { label: 'membership', path: '/membership' },
   { label: 'team', path: '/officers' },
+  { label: 'alumni', path: '/alumni' },
   { label: 'support us', path: '/support' },
   { label: 'merch', path: '/merch' },
 ];
@@ -28,8 +29,10 @@ export const footerLinks = [
   { label: 'events', path: '/events' },
   { label: 'podcast', path: '/podcast' },
   { label: 'team', path: '/officers' },
+  { label: 'alumni', path: '/alumni' },
   { label: 'support us', path: '/support' },
   { label: 'membership', path: '/membership' },
+  { label: 'merch', path: '/merch' },
 ];
 
 /* ---------- Social links ---------- */

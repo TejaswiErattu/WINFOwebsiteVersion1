@@ -1,0 +1,323 @@
+/* ==========================================================================
+   ALUMNI PAGE — layout mirrors the Membership page
+   ========================================================================== */
+
+.alumni-hero {
+  background: var(--gradient-hero);
+  border-bottom: 1px solid var(--color-border);
+  padding: 3.5rem 1.5rem;
+}
+
+.alumni-hero__inner {
+  max-width: var(--container-max, 1140px);
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1.1fr 1fr;
+  gap: 3rem;
+  align-items: center;
+}
+
+.alumni-hero__content {
+  display: flex;
+  flex-direction: column;
+  gap: 0.85rem;
+}
+
+.alumni-hero__content .cursive-title {
+  font-size: clamp(2rem, 5vw, 2.75rem);
+  margin: 0;
+}
+
+.alumni-eyebrow {
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--color-accent-strong);
+  margin: 0;
+}
+
+.alumni-hero__text {
+  line-height: 1.75;
+  color: var(--color-text-secondary);
+  margin: 0;
+}
+
+.alumni-hero__text strong { color: var(--color-text); }
+
+.alumni-hero__btn { align-self: flex-start; margin-top: 0.5rem; }
+
+.alumni-hero__image-frame img {
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+}
+
+/* Cycle */
+.alumni-cycle {
+  list-style: none;
+  padding: 0;
+  margin: 2rem auto 0;
+  max-width: 1100px;
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 1.5rem;
+  counter-reset: none;
+}
+
+.alumni-cycle__step {
+  position: relative;
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  padding: 1.5rem;
+}
+
+.alumni-cycle__step:not(:last-child)::after {
+  content: '→';
+  position: absolute;
+  right: -1.15rem;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--color-primary-dark);
+  font-weight: 700;
+}
+
+.alumni-cycle__num {
+  font-family: var(--font-mono);
+  font-size: var(--text-sm);
+  color: var(--color-accent-strong);
+}
+
+.alumni-cycle__title {
+  font-family: var(--font-heading);
+  font-size: 1.15rem;
+  margin: 0.4rem 0;
+  color: var(--color-text);
+}
+
+.alumni-cycle__text {
+  margin: 0;
+  color: var(--color-text-secondary);
+  font-size: var(--text-sm);
+  line-height: 1.6;
+}
+
+/* Why */
+.alumni-why {
+  max-width: 900px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1.4fr;
+  gap: 2.5rem;
+  align-items: center;
+}
+
+.alumni-why__list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  gap: 0.75rem;
+}
+
+.alumni-why__list li {
+  background: var(--color-surface);
+  border-left: 4px solid var(--color-accent);
+  border-radius: 0 var(--radius-md) var(--radius-md) 0;
+  padding: 0.85rem 1.1rem;
+  color: var(--color-text-secondary);
+}
+
+.alumni-why__list strong { color: var(--color-text); }
+
+/* Pillars */
+.alumni-pillars {
+  max-width: 1100px;
+  margin: 2rem auto 0;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1.5rem;
+}
+
+.alumni-pillar {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-top: 4px solid var(--color-primary);
+  border-radius: var(--radius-lg);
+  padding: 1.75rem;
+}
+
+.alumni-pillar--pink { border-top-color: var(--color-accent); }
+.alumni-pillar--blue { border-top-color: var(--color-info); }
+
+.alumni-pillar__label {
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--color-text-muted);
+  margin: 0;
+}
+
+.alumni-pillar__title {
+  font-family: var(--font-heading);
+  font-size: 1.4rem;
+  margin: 0.3rem 0 1rem;
+  color: var(--color-text);
+}
+
+.alumni-pillar ul {
+  margin: 0;
+  padding-left: 1.1rem;
+  display: grid;
+  gap: 0.45rem;
+  color: var(--color-text-secondary);
+}
+
+/* Structure */
+.alumni-structure {
+  max-width: 1000px;
+  margin: 2rem auto 0;
+  text-align: center;
+}
+
+.alumni-structure__chair {
+  display: inline-block;
+  padding: 0.85rem 2.5rem;
+  border-radius: var(--radius-full);
+  background: var(--color-primary-dark);
+  color: var(--color-on-primary, #fff);
+  font-family: var(--font-heading);
+  font-weight: 700;
+  font-size: 1.15rem;
+}
+
+.alumni-structure__leads {
+  list-style: none;
+  padding: 0;
+  margin: 1.75rem 0 1.25rem;
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 1rem;
+}
+
+.alumni-structure__leads li {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+
+.alumni-structure__leads strong { color: var(--color-text); }
+
+.alumni-structure__leads span {
+  font-size: var(--text-sm);
+  color: var(--color-text-secondary);
+}
+
+.alumni-structure__reps {
+  color: var(--color-text-secondary);
+  font-style: italic;
+  margin: 0;
+}
+
+/* Vision */
+.alumni-vision {
+  margin: 0;
+  padding: 2rem 2.25rem;
+  background: var(--color-surface);
+  border-left: 6px solid var(--color-accent);
+  border-radius: 0 var(--radius-lg) var(--radius-lg) 0;
+}
+
+.alumni-vision p {
+  margin: 0;
+  font-family: var(--font-heading);
+  font-size: clamp(1.25rem, 2.6vw, 1.7rem);
+  line-height: 1.45;
+  color: var(--color-primary-dark);
+}
+
+.alumni-vision strong { color: var(--color-accent-strong); }
+
+/* Past boards */
+.alumni-past__intro {
+  text-align: center;
+  max-width: 640px;
+  margin: 0.75rem auto 2rem;
+  color: var(--color-text-secondary);
+}
+
+.alumni-past {
+  max-width: 900px;
+  margin: 0 auto;
+  display: grid;
+  gap: 0.75rem;
+}
+
+.alumni-past__year {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+}
+
+.alumni-past__year summary {
+  cursor: pointer;
+  padding: 1rem 1.25rem;
+  font-family: var(--font-heading);
+  font-weight: 700;
+  font-size: 1.1rem;
+  color: var(--color-primary-dark);
+}
+
+.alumni-past__year ul {
+  list-style: none;
+  margin: 0;
+  padding: 0 1.25rem 1.25rem;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.6rem 1.5rem;
+}
+
+.alumni-past__year li {
+  display: flex;
+  flex-direction: column;
+}
+
+.alumni-past__name { font-weight: 600; color: var(--color-text); }
+
+.alumni-past__role { font-size: var(--text-sm); color: var(--color-text-secondary); }
+
+/* CTA */
+.alumni-cta {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.25rem;
+}
+
+.alumni-cta__text { font-size: clamp(1.5rem, 3.5vw, 2.1rem); margin: 0; }
+
+@media (max-width: 1024px) {
+  .alumni-cycle,
+  .alumni-structure__leads { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .alumni-cycle__step::after { display: none; }
+}
+
+@media (max-width: 768px) {
+  .alumni-hero__inner,
+  .alumni-why,
+  .alumni-pillars { grid-template-columns: 1fr; }
+  .alumni-hero__btn { align-self: center; }
+  .alumni-hero__content { text-align: center; }
+}
+
+@media (max-width: 500px) {
+  .alumni-cycle,
+  .alumni-structure__leads,
+  .alumni-past__year ul { grid-template-columns: 1fr; }
+}

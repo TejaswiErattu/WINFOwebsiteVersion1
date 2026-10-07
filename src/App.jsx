@@ -12,6 +12,7 @@ import Officers from './pages/Officers/Officers';
 import Membership from './pages/Membership/Membership';
 import SupportUs from './pages/SupportUs/SupportUs';
 import Merch from './pages/Merch/Merch';
+import Alumni from './pages/Alumni/Alumni';
 import NotFound from './pages/NotFound/NotFound';
 
 import './styles/global.css';
@@ -19,10 +20,11 @@ import './styles/global.css';
 export default function App() {
   return (
     <div className="page-wrapper">
+      <a href="#main-content" className="skip-link">Skip to main content</a>
       <ScrollToTop />
       <BlobBackground />
       <Navbar />
-      <main>
+      <main id="main-content" tabIndex={-1}>
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/events" element={<Events />} />
@@ -32,6 +34,7 @@ export default function App() {
           <Route path="/membership" element={<Membership />} />
           <Route path="/support" element={<SupportUs />} />
           <Route path="/merch" element={<Merch />} />
+          <Route path="/alumni" element={<Alumni />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </main>
