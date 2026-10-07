@@ -56,7 +56,7 @@ function CommitteeCard({ committee }) {
       <div className="committee-card__image">
         <img
           src={image || '/images/comingsoon.jpg'}
-          alt={image ? name : 'Coming soon'}
+          alt={image ? `${name} committee` : `${name} committee photo coming soon`}
           loading="lazy"
           decoding="async"
         />

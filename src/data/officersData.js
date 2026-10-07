@@ -41,13 +41,14 @@ export const officersData = {
   /* Directors (displayed in 4-column grid) */
   directors: [
     {
-      name: 'maryory ajpop',
+      name: 'rithika madey',
       role: 'hackathon director',
-      image: '/images/team/maryory_headshot.jpeg',
-      linkedin: 'https://www.linkedin.com/in/maryoryajpop/',
-      year: 'junior (class of 2027)',
+      /* TODO: add Rithika's headshot to public/images/team/ and set the path */
+      image: '',
+      linkedin: 'https://www.linkedin.com/in/rithika-madey/',
+      year: '',
       hometown: '',
-      focusArea: 'informatics',
+      focusArea: '',
       funFact: '',
     },
     {
