@@ -44,7 +44,7 @@ export const officersData = {
       name: 'rithika madey',
       role: 'hackathon director',
       /* TODO: add Rithika's headshot to public/images/team/ and set the path */
-      image: '',
+      image: '/images/team/rithika_headshot.jpg',
       linkedin: 'https://www.linkedin.com/in/rithika-madey/',
       year: '',
       hometown: '',
@@ -128,25 +128,25 @@ export const officersData = {
   committees: [
     {
       name: 'diversity',
-      image: '',
+      image: '/images/team/rithika_headshot.jpg',
       description:
         'Organizes quarterly Power Hour events, leads the annual Fearless, TechMore and TechXperience hackathons, and coordinates outreach for high school and middle school students.',
     },
     {
       name: 'student engagement',
-      image: '',
+      image: '/images/team/rithika_headshot.jpg',
       description:
         'Hosts fun community-building events and fundraisers throughout the year to foster connection among students.',
     },
     {
       name: 'hackathon',
-      image: '',
+      image: '/images/team/rithika_headshot.jpg',
       description:
         "Manages all aspects of WINFO's annual hackathon, including planning themes, coordinating logistics, recruiting mentors and judges, and more.",
     },
     {
       name: 'creative content',
-      image: '',
+      image: '/images/team/rithika_headshot.jpg',
       description:
         "Supports WINFO's storytelling by curating social media content, producing the WINFO podcast, and writing for the WINFO Weekly newsletter.",
     },
