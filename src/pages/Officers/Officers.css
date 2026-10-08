@@ -260,6 +260,8 @@
 .committee-card {
   display: flex;
   flex-direction: column;
+  align-items: center;
+  text-align: center;
 }
 
 .committee-card__image {
@@ -269,7 +271,7 @@
   border-radius: var(--radius-md);
   overflow: hidden;
   background: var(--color-bg-alt);
-  margin-bottom: 0.75rem;
+  margin: 0 auto 0.75rem;
 }
 
 .committee-card__image img {
