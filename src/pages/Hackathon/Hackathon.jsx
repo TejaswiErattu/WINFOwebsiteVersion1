@@ -2,6 +2,7 @@ import { useEffect, useRef, useState } from 'react';
 import SectionWrapper from '../../components/SectionWrapper/SectionWrapper';
 import Button from '../../components/Buttons/Buttons';
 import CircuitSVG from '../../components/CircuitSVG/CircuitSVG';
+import GalleryScroller from '../../components/GalleryScroller/GalleryScroller';
 import { renderBold } from '../../utils/renderBold';
 import { hackathonData, REGISTRATION_URL_TBD } from '../../data/hackathonData';
 import './Hackathon.css';
@@ -121,32 +122,9 @@ export default function Hackathon() {
         </ul>
       </nav>
 
-      {/* ===== 1 · GALLERY MARQUEE ===== */}
+      {/* ===== 1 · GALLERY (scroll, swipe or drag; also drifts on its own) ===== */}
       <section id="gallery" className="hack-section hack-gallery" aria-label="Hackathon photo gallery">
-        {/* The track holds the photos twice; animating 0 → -50% loops with no seam.
-            tabIndex lets keyboard users pause it (via :focus-within). */}
-        <div className="hack-marquee" tabIndex={0}>
-          <ul className="hack-marquee__track">
-            {[0, 1].map((copy) =>
-              gallery.map((img, i) => (
-                <li
-                  key={`${copy}-${img.src}`}
-                  className={`hack-marquee__item ${copy === 1 ? 'hack-marquee__item--dupe' : ''}`}
-                  aria-hidden={copy === 1 ? 'true' : undefined}
-                >
-                  <img
-                    src={img.src}
-                    alt={copy === 0 ? img.alt : ''}
-                    width={img.width}
-                    height={img.height}
-                    loading={copy === 0 && i < galleryEagerCount ? 'eager' : 'lazy'}
-                    decoding="async"
-                  />
-                </li>
-              ))
-            )}
-          </ul>
-        </div>
+        <GalleryScroller photos={gallery} label="Hackathon photos" eagerCount={galleryEagerCount} />
       </section>
 
       {/* ===== 2 · THIS YEAR'S HACKATHON ===== */}

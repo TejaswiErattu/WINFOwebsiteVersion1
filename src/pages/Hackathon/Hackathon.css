@@ -86,73 +86,10 @@
   outline-offset: 2px;
 }
 
-/* ===== 1. GALLERY MARQUEE ===== */
+/* ===== 1. GALLERY (see components/GalleryScroller) ===== */
 .hack-gallery {
   padding: 2rem 0;
   overflow: hidden;            /* never widens the page */
-}
-
-.hack-marquee {
-  width: 100%;
-  overflow: hidden;
-}
-
-.hack-marquee:focus-visible {
-  outline: 2px solid var(--hack-teal);
-  outline-offset: -2px;
-}
-
-.hack-marquee__track {
-  display: flex;
-  width: max-content;
-  margin: 0;
-  padding: 0;
-  list-style: none;
-  animation: hack-marquee 70s linear infinite;
-}
-
-/* Spacing lives on each item (not `gap`) so both halves are identical
-   widths and -50% lands exactly on the start of the second copy. */
-.hack-marquee__item {
-  flex: 0 0 auto;
-  margin-right: 0.75rem;
-}
-
-.hack-marquee__item img {
-  display: block;
-  height: 260px;
-  width: auto;
-  object-fit: cover;
-  border-radius: var(--radius-lg);
-  background: var(--color-bg-alt);
-}
-
-.hack-marquee:hover .hack-marquee__track,
-.hack-marquee:focus-within .hack-marquee__track {
-  animation-play-state: paused;
-}
-
-@keyframes hack-marquee {
-  from { transform: translateX(0); }
-  to   { transform: translateX(-50%); }
-}
-
-/* Reduced motion: static, swipeable row with a single copy */
-@media (prefers-reduced-motion: reduce) {
-  .hack-marquee {
-    overflow-x: auto;
-    scroll-snap-type: x proximity;
-    padding: 0 1.5rem;
-  }
-  .hack-marquee__track {
-    animation: none;
-  }
-  .hack-marquee__item--dupe {
-    display: none;
-  }
-  .hack-marquee__item {
-    scroll-snap-align: start;
-  }
 }
 
 /* ===== 2. THIS YEAR'S HACKATHON ===== */
@@ -848,9 +785,6 @@
     color: #fff;
     background: var(--hack-teal);
     border-color: var(--hack-teal);
-  }
-  .hack-marquee__item img {
-    height: 180px;
   }
 }
 
