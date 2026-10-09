@@ -45,9 +45,9 @@ export const officersData = {
       role: 'director of hackathon',
       image: '/images/team/rithika_headshot.jpg',
       linkedin: 'https://www.linkedin.com/in/rithika-madey/',
-      year: '',
+      year: 'third-year (class of 2028)',
       hometown: '',
-      focusArea: '',
+      focusArea: 'informatics',
       funFact: '',
     },
     {
