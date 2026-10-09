@@ -98,9 +98,3 @@ export const informaticsQuotes = [
     role: 'Community Efforts Director',
   },
 ];
-
-/* ---------- CTA ---------- */
-export const homeCta = {
-  btnLabel: 'join us!',
-  btnTo: MEMBERSHIP_SIGNUP_URL,
-};

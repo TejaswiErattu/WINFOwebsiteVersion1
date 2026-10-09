@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom';
 import { footerLinks, socialLinks, siteInfo } from '../../data/navLinks';
 import WinfoLogo from '../WinfoLogo/WinfoLogo';
+import Button from '../Buttons/Buttons';
 import './Footer.css';
 
 /* ── Tiny inline SVG icons (outlined style to match screenshot) ── */
@@ -67,6 +68,10 @@ export default function Footer() {
               </a>
             ))}
           </div>
+
+          <Button href={siteInfo.navCtaHref} variant="primary" className="footer__join">
+            {siteInfo.navCtaLabel}
+          </Button>
         </div>
 
         {/* ── Right column: quick links ── */}

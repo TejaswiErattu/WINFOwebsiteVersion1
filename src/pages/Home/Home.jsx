@@ -12,7 +12,6 @@ import {
   whatWeDoData,
   informaticsHeading,
   informaticsQuotes,
-  homeCta,
 } from '../../data/homeData';
 import './Home.css';
 
@@ -73,7 +72,7 @@ export default function Home() {
             <p className="impact-stat home-story__stat">{renderBold(storyData.statHighlight)}</p>
             <p className="home-story__text">{renderBold(storyData.bodySecondary)}</p>
             <p className="home-story__text">{renderBold(storyData.bodyTertiary)}</p>
-            <Button to={storyData.ctaLink} variant="secondary" className="home-story__btn">
+            <Button to={storyData.ctaLink} variant="primary" className="home-story__btn">
               {storyData.ctaLabel}
             </Button>
           </div>
@@ -96,11 +95,6 @@ export default function Home() {
               accent={item.accent}
             />
           ))}
-        </div>
-        <div className="home-features__cta">
-          <Button href={homeCta.btnTo} variant="primary" size="lg">
-            {homeCta.btnLabel}
-          </Button>
         </div>
       </SectionWrapper>
 

@@ -13,7 +13,7 @@ export const membershipData = {
     'At WINFO, we believe that every student deserves a space where they feel seen and supported. Becoming a member means more than joining an RSO\u2014it means joining a community that empowers you to thrive in tech and beyond. With innovative opportunities to grow your skills, connect with peers, and build your confidence, WINFO is your home.',
   heroBodyTertiary:
     'Whether you\u2019re exploring tech for the first time or already on your journey, WINFO always welcomes all majors, genders, and identities.',
-  ctaLabel: 'sign up!',
+  ctaLabel: 'join us!',
   ctaLink: MEMBERSHIP_SIGNUP_URL,
   heroImage: '/images/hackathon-1.jpg',
   heroImageAlt: 'WINFO members smiling together',
@@ -47,7 +47,7 @@ export const membershipData = {
   /* ---------- Bottom CTA ---------- */
   bottomCta: {
     text: 'ready to take the leap?',
-    btnLabel: 'sign up!',
+    btnLabel: 'join us!',
     btnLink: MEMBERSHIP_SIGNUP_URL,
   },
 };
