@@ -222,7 +222,7 @@ export default function Hackathon() {
             <div key={d.day} className="hack-schedule__day">
               <h3 className="hack-schedule__title">{d.day}</h3>
               <p className="hack-schedule__date">{d.date}</p>
-              <p className="hack-schedule__place">{d.location}</p>
+              {d.location && <p className="hack-schedule__place">{d.location}</p>}
               <dl className="hack-schedule__list">
                 {d.items.map((it) => (
                   <div key={it.time + it.label} className="hack-schedule__row">

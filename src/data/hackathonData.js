@@ -127,7 +127,6 @@ export const hackathonData = {
     {
       day: 'Judging Day',
       date: 'Sunday, January 31, 2027',
-      location: 'University of Washington Maple Great Room',
       items: [
         { time: '11:30 AM', label: 'Judges Sign-In' },
         { time: '12:00 PM', label: 'Finalists Sign-In' },
