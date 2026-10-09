@@ -38,7 +38,7 @@ function TeamCard({ officer, large }) {
         <h3 className="officer-card__name">{name}</h3>
         <p className="officer-card__role">{role}</p>
         {year && <p className="officer-card__detail"><strong>year:</strong> {year}</p>}
-        {focusArea && <p className="officer-card__detail"><strong>focus area:</strong> {focusArea}</p>}
+        {focusArea && <p className="officer-card__detail"><strong>major:</strong> {focusArea}</p>}
         {funFact && <p className="officer-card__detail"><strong>fun fact:</strong> {funFact}</p>}
       </div>
     </div>
