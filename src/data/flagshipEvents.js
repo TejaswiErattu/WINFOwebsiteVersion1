@@ -114,7 +114,7 @@ export const flagshipEvents = [
     ],
     /* timesHeld, firstYear: waiting for board confirmation.
        attendance: intentionally omitted (no participant or school counts).
-       photos: event-09.jpg removed until the board confirms publication
+       photos: event-09.jpg was removed from the site (and public/) until the board confirms publication; it is still in git history
        permission (identifiable participants). The file is kept in
        public/images/events/ and can be restored here. */
   },
