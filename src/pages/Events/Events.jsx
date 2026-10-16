@@ -1,6 +1,8 @@
 import Button from '../../components/Buttons/Buttons';
 import FlagshipEvent from '../../components/FlagshipEvent/FlagshipEvent';
 import PhotoCarousel from '../../components/PhotoCarousel/PhotoCarousel';
+import EventCalendar from '../../components/EventCalendar/EventCalendar';
+import { quarter, events as calendarEvents, buildings } from '../../data/calendarEvents';
 import { eventsData } from '../../data/eventsData';
 import { flagshipEvents } from '../../data/flagshipEvents';
 import './Events.css';
@@ -30,6 +32,9 @@ export default function Events() {
           )}
         </div>
       </header>
+
+      {/* ===== 2 · THIS QUARTER'S CALENDAR (edit src/data/calendarEvents.js) ===== */}
+      <EventCalendar quarter={quarter} events={calendarEvents} buildings={buildings} />
 
       {/* ===== 2 · FLAGSHIP EVENTS ===== */}
       <div className="flagships">
