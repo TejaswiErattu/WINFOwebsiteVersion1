@@ -65,16 +65,17 @@ export default function GalleryScroller({ photos = [], label = 'Photo gallery', 
     return () => { clearTimeout(t); ro.disconnect(); };
   }, [photos.length]);
 
-  /* Automatic drift */
+  /* Automatic drift — the frame loop only runs while the gallery is on screen */
   useEffect(() => {
-    let raf;
-    let last = performance.now();
+    const el = scrollerRef.current;
+    if (!el) return undefined;
+    let raf = 0;
+    let last = 0;
     const tick = (now) => {
       const dt = Math.min(now - last, 100) / 1000;   // seconds since last frame (capped)
       last = now;
-      const el = scrollerRef.current;
       const idle = now - lastInteractRef.current > RESUME_AFTER_MS;
-      if (el && playingRef.current && idle && !hoverRef.current && !dragRef.current && !document.hidden) {
+      if (playingRef.current && idle && !hoverRef.current && !dragRef.current && !document.hidden) {
         if (Math.abs(el.scrollLeft - lastSetRef.current) > 2) posRef.current = el.scrollLeft;
         posRef.current += SPEED * dt;
         el.scrollLeft = posRef.current;
@@ -83,8 +84,21 @@ export default function GalleryScroller({ photos = [], label = 'Photo gallery', 
       }
       raf = requestAnimationFrame(tick);
     };
-    raf = requestAnimationFrame(tick);
-    return () => cancelAnimationFrame(raf);
+    const start = () => {
+      if (raf) return;
+      last = performance.now();
+      raf = requestAnimationFrame(tick);
+    };
+    const stop = () => {
+      cancelAnimationFrame(raf);
+      raf = 0;
+    };
+    const io = new IntersectionObserver(([entry]) => (entry.isIntersecting ? start() : stop()));
+    io.observe(el);
+    return () => {
+      stop();
+      io.disconnect();
+    };
   }, [wrap]);
 
   const touched = () => { lastInteractRef.current = performance.now(); };

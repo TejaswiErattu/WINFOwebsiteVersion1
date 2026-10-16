@@ -47,13 +47,13 @@ export default function PhotoCarousel({ photos = [], label = 'Photo gallery' }) 
       onKeyDown={onKeyDown}
     >
       <div className="photo-carousel__viewport">
-        <ul
+        <div
           className="photo-carousel__track"
           style={{ transform: `translateX(-${index * 100}%)` }}
           aria-live={playing && !hovered ? 'off' : 'polite'}
         >
           {photos.map((p, i) => (
-            <li
+            <div
               key={p.src}
               className="photo-carousel__slide"
               role="group"
@@ -72,9 +72,9 @@ export default function PhotoCarousel({ photos = [], label = 'Photo gallery' }) 
                 />
                 {p.caption && <figcaption>{p.caption}</figcaption>}
               </figure>
-            </li>
+            </div>
           ))}
-        </ul>
+        </div>
       </div>
 
       {count > 1 && (

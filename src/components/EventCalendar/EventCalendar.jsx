@@ -3,6 +3,7 @@ import './EventCalendar.css';
 const MONTHS = ['January', 'February', 'March', 'April', 'May', 'June', 'July',
   'August', 'September', 'October', 'November', 'December'];
 const WEEKDAYS = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
+const WEEKDAY_NAMES = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
 const ACCENTS = ['pink', 'lavender', 'blue'];
 
 /* 'YYYY-MM-DD' → local Date at midnight (avoids the UTC off-by-one) */
@@ -78,8 +79,11 @@ function MiniMonth({ year, month, byDay, today }) {
       <caption className="cal-month__name">{MONTHS[month]}</caption>
       <thead>
         <tr>
-          {WEEKDAYS.map((w) => (
-            <th key={w} scope="col" abbr={w}><span aria-hidden="true">{w[0]}</span></th>
+          {WEEKDAYS.map((w, i) => (
+            <th key={w} scope="col">
+              <span aria-hidden="true">{w[0]}</span>
+              <span className="sr-only">{WEEKDAY_NAMES[i]}</span>
+            </th>
           ))}
         </tr>
       </thead>
