@@ -28,3 +28,8 @@ dist-ssr
 /winfo-assets/
 /.claude/
 deck-notes.md
+
+# Environment files (never commit secrets)
+.env
+.env.*
+!.env.example
