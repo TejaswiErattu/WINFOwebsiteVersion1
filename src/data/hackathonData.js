@@ -58,7 +58,7 @@ export const hackathonData = {
      Source: winfohackathon2027.web.app */
   currentHackathon: {
     edition: 15,
-    theme: 'Peaks of Possibility, Paths of Progress',
+    theme: 'Peaks of Possibility',
     dates: 'January 30–31, 2027',
     location: 'HUB North Ballroom',
     locationDetail: 'University of Washington Husky Union Building',
@@ -66,7 +66,7 @@ export const hackathonData = {
     /* Poster — add the file to public/hackathon/ and set the path here,
        e.g. '/hackathon/poster-15.png'. Empty hides the poster column. */
     posterSrc: '',
-    posterAlt: 'Poster for the 15th WINFO Hackathon, Peaks of Possibility, Paths of Progress',
+    posterAlt: 'Poster for the 15th WINFO Hackathon, Peaks of Possibility',
     intro:
       'Women in Informatics is excited to invite you to our 15th Annual Hackathon, \u201cPeaks of Possibility\u201d. Join us for a day of developing technology solutions for social good and celebrating equity and inclusion in the technology field.',
     themeBody: [

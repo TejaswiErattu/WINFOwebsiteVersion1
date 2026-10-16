@@ -3,6 +3,7 @@ import { FeatureCard } from '../../components/Cards';
 import Button from '../../components/Buttons/Buttons';
 import WinfoLogo from '../../components/WinfoLogo/WinfoLogo';
 import CircuitSVG from '../../components/CircuitSVG/CircuitSVG';
+import GalleryScroller from '../../components/GalleryScroller/GalleryScroller';
 import { renderBold } from '../../utils/renderBold';
 import {
   heroData,
@@ -12,6 +13,8 @@ import {
   whatWeDoData,
   informaticsHeading,
   informaticsQuotes,
+  communityHeading,
+  communityPhotos,
 } from '../../data/homeData';
 import './Home.css';
 
@@ -98,7 +101,15 @@ export default function Home() {
         </div>
       </SectionWrapper>
 
-      {/* ===== 5. WHAT IS INFORMATICS ===== */}
+      {/* ===== 5. OUR COMMUNITY (photo strip; edit communityPhotos in homeData.js) ===== */}
+      <section className="section-wrapper section-wrapper--alt home-community" aria-labelledby="home-community-title">
+        <div className="container">
+          <h2 id="home-community-title" className="cursive-title section-title--center">{communityHeading}</h2>
+        </div>
+        <GalleryScroller photos={communityPhotos} label="Photos from WINFO events" eagerCount={0} />
+      </section>
+
+      {/* ===== 6. WHAT IS INFORMATICS ===== */}
       <SectionWrapper className="home-informatics">
         <div className="home-informatics__bg" aria-hidden="true">
           <div className="home-informatics__blob home-informatics__blob--1" />

@@ -98,3 +98,20 @@ export const informaticsQuotes = [
     role: 'Community Efforts Director',
   },
 ];
+
+/* ---------- Our Community (scrolling photo strip) ----------
+   Real WINFO moments. width/height are each file's pixel size.
+   `alt` describes the photo for screen readers. */
+export const communityHeading = 'our community';
+export const communityPhotos = [
+  { src: '/images/events/event-06.jpg', width: 1452, height: 1089, alt: 'Four students holding decorated cookies beside gingerbread houses on a table' },
+  { src: '/images/hackathon-2.jpg', width: 1200, height: 800, alt: 'A full ballroom of students working on laptops at round tables, decorated with white balloons' },
+  { src: '/images/events/event-05.jpg', width: 765, height: 808, alt: 'Students sitting on a blanket on the grass painting on paper plates' },
+  { src: '/images/winfo-community-3.jpg', width: 1200, height: 800, alt: 'WINFO volunteers smiling behind a Women in Informatics table with laptops' },
+  { src: '/images/events/event-11.jpg', width: 1920, height: 1094, alt: 'Students working on vision boards with magazine cutouts at long classroom tables' },
+  { src: '/images/hackathon-4.jpg', width: 1200, height: 800, alt: 'A mentor talks with a team of participants during the hackathon' },
+  { src: '/images/events/event-02.jpg', width: 1920, height: 1280, alt: 'A panel of speakers seated at a table in front of a presentation screen' },
+  { src: '/images/hackathon-5.jpg', width: 1200, height: 800, alt: 'WINFO officers posing in front of gold WINFO balloons' },
+  { src: '/images/events/event-08.jpg', width: 1920, height: 1280, alt: 'Two people smiling in front of a Decoding with WINFO title slide' },
+  { src: '/images/winfo-community-2.jpg', width: 1200, height: 900, alt: 'A WINFO officer with a microphone presenting judging criteria to a room of students' },
+];

@@ -236,6 +236,11 @@
   gap: 1.75rem;
 }
 
+/* ===== OUR COMMUNITY — full-width photo strip ===== */
+.home-community {
+  overflow: hidden;            /* the strip never widens the page */
+}
+
 /* ===== 5. WHAT IS INFORMATICS — quotes layout ===== */
 .home-informatics {
   position: relative;

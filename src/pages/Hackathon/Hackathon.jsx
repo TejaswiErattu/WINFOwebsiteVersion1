@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useLayoutEffect, useRef, useState } from 'react';
 import SectionWrapper from '../../components/SectionWrapper/SectionWrapper';
 import Button from '../../components/Buttons/Buttons';
 import CircuitSVG from '../../components/CircuitSVG/CircuitSVG';
@@ -94,9 +94,22 @@ export default function Hackathon() {
   const registrationOpen =
     current.registrationUrl && current.registrationUrl !== REGISTRATION_URL_TBD;
 
-  /* FAQ accordion state */
+  /* FAQ accordion state. Opening one question closes the other; when the
+     closed answer sits above, the page would jump up. Keep the clicked
+     question fixed on screen so every question opens the same way. */
   const [openFaq, setOpenFaq] = useState(null);
-  const toggleFaq = (i) => setOpenFaq((prev) => (prev === i ? null : i));
+  const faqAnchor = useRef(null);
+  const toggleFaq = (i, trigger) => {
+    faqAnchor.current = { el: trigger, top: trigger.getBoundingClientRect().top };
+    setOpenFaq((prev) => (prev === i ? null : i));
+  };
+  useLayoutEffect(() => {
+    const anchor = faqAnchor.current;
+    faqAnchor.current = null;
+    if (!anchor) return;
+    const shift = anchor.el.getBoundingClientRect().top - anchor.top;
+    if (Math.abs(shift) > 1) window.scrollBy({ top: shift, behavior: 'instant' });
+  }, [openFaq]);
 
   return (
     <div className="hack-page">
@@ -330,7 +343,7 @@ export default function Hackathon() {
                 <button
                   type="button"
                   className="hack-faq__trigger"
-                  onClick={() => toggleFaq(i)}
+                  onClick={(e) => toggleFaq(i, e.currentTarget)}
                   aria-expanded={isOpen}
                   aria-controls={`hack-faq-${i}`}
                 >
