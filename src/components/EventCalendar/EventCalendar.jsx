@@ -21,6 +21,45 @@ function mapsUrl(name, code) {
   return `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(place)}`;
 }
 
+/* '5–7 PM', '5:30-7pm', '11 AM–1 PM' → { start: [h, m], end: [h, m] } in 24h, or null */
+function parseTimeRange(text) {
+  const m = text
+    .replace(/\s+/g, ' ')
+    .match(/^(\d{1,2})(?::(\d{2}))?\s*(am|pm)?\s*[-–—to]+\s*(\d{1,2})(?::(\d{2}))?\s*(am|pm)$/i);
+  if (!m) return null;
+  const [, sh, sm = '0', sap, eh, em = '0', eap] = m;
+  const to24 = (h, ap) => (Number(h) % 12) + (ap.toLowerCase() === 'pm' ? 12 : 0);
+  const end = [to24(eh, eap), Number(em)];
+  let startAp = sap || eap;
+  if (!sap && to24(sh, eap) > end[0]) startAp = eap.toLowerCase() === 'pm' ? 'am' : 'pm';
+  return { start: [to24(sh, startAp), Number(sm)], end };
+}
+
+const pad = (n) => String(n).padStart(2, '0');
+
+/* Google Calendar "add event" link. Times are Seattle local time. */
+function googleCalUrl(e, where) {
+  const ymd = e.date.replace(/-/g, '');
+  const range = parseTimeRange(e.time);
+  let dates;
+  if (range) {
+    const t = ([h, m]) => `${ymd}T${pad(h)}${pad(m)}00`;
+    dates = `${t(range.start)}/${t(range.end)}`;
+  } else {
+    const next = new Date(e.when.getFullYear(), e.when.getMonth(), e.when.getDate() + 1);
+    dates = `${ymd}/${next.getFullYear()}${pad(next.getMonth() + 1)}${pad(next.getDate())}`;
+  }
+  const params = new URLSearchParams({
+    action: 'TEMPLATE',
+    text: e.title,
+    dates,
+    ctz: 'America/Los_Angeles',
+    location: `${where}, University of Washington, Seattle, WA`,
+    details: `${e.blurb ? `${e.blurb}\n\n` : ''}Hosted by Women in Informatics (WINFO) at UW.`,
+  });
+  return `https://calendar.google.com/calendar/render?${params.toString()}`;
+}
+
 function slug(e) {
   return `cal-${e.date}-${e.title.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, '')}`;
 }
@@ -159,6 +198,20 @@ export default function EventCalendar({ quarter, events, buildings = {}, heading
                         </a>
                       </p>
                       {e.blurb && <p className="cal-card__blurb">{e.blurb}</p>}
+                      <a
+                        className="cal-card__gcal"
+                        href={googleCalUrl(e, where)}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        aria-label={`Add ${e.title} to Google Calendar (opens in a new tab)`}
+                      >
+                        <svg className="cal-card__icon" viewBox="0 0 24 24" aria-hidden="true">
+                          <rect x="3" y="5" width="18" height="16" rx="3" fill="none" stroke="currentColor" strokeWidth="2" />
+                          <path d="M3 10h18M8 3v4M16 3v4M12 13v5M9.5 15.5h5" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
+                        </svg>
+                        <span className="cal-card__gcal-long">Add to Google Calendar</span>
+                        <span className="cal-card__gcal-short">Add to calendar</span>
+                      </a>
                     </div>
                   </li>
                 );
