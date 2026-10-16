@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://winfo-website-version1.vercel.app/sitemap.xml
