@@ -126,11 +126,22 @@
 
 .more-events__name {
   font-family: var(--font-heading);
-  font-size: var(--text-xl);
+  font-size: clamp(1.25rem, 2vw, 1.5rem);
   font-weight: var(--weight-bold);
   line-height: var(--leading-snug);
-  color: var(--color-text);
-  margin: var(--space-3) 0 0;
+  color: var(--color-primary-dark);
+  text-align: center;
+  margin: var(--space-4) 0 0;
+}
+
+/* Small hand-drawn squiggle under each event name */
+.more-events__name::after {
+  content: '';
+  display: block;
+  width: 64px;
+  height: 8px;
+  margin: 0.35rem auto 0;
+  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 90 10' fill='none' stroke='%23FEB0BA' stroke-width='3' stroke-linecap='round'%3E%3Cpath d='M2 6c8-6 14 6 22 0s14-6 22 0 14 6 22 0 14-6 20-1'/%3E%3C/svg%3E") no-repeat center / contain;
 }
 
 /* ===== 3. BOTTOM CTA ===== */

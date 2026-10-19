@@ -45,29 +45,7 @@ export default function SupportUs() {
         </div>
       </section>
 
-      {/* ===== 2 · WHY SUPPORT US ===== */}
-      <SectionWrapper>
-        <div className="support-why">
-          <div className="support-why__image">
-            {whyImage ? (
-              <img src={whyImage} alt="WINFO members" loading="lazy" decoding="async" />
-            ) : (
-              <div className="support-why__placeholder" />
-            )}
-          </div>
-
-          <div className="support-why__content">
-            <h2 className="support-why__title cursive-title">{whyTitle}</h2>
-            {whyText.map((p, i) => (
-              <p key={i} className="support-why__paragraph">
-                {renderBold(p)}
-              </p>
-            ))}
-          </div>
-        </div>
-      </SectionWrapper>
-
-      {/* ===== 3 · GET INVOLVED ===== */}
+      {/* ===== 2 · GET INVOLVED (first, so it is easy to find) ===== */}
       <section className="support-involved">
         {/* Circuit decoration */}
         <div className="support-involved__circuit" aria-hidden="true">
@@ -102,6 +80,28 @@ export default function SupportUs() {
           {ctaLabel}
         </a>
       </section>
+
+      {/* ===== 3 · WHY SUPPORT US ===== */}
+      <SectionWrapper>
+        <div className="support-why">
+          <div className="support-why__image">
+            {whyImage ? (
+              <img src={whyImage} alt="WINFO members" loading="lazy" decoding="async" />
+            ) : (
+              <div className="support-why__placeholder" />
+            )}
+          </div>
+
+          <div className="support-why__content">
+            <h2 className="support-why__title cursive-title">{whyTitle}</h2>
+            {whyText.map((p, i) => (
+              <p key={i} className="support-why__paragraph">
+                {renderBold(p)}
+              </p>
+            ))}
+          </div>
+        </div>
+      </SectionWrapper>
     </>
   );
 }

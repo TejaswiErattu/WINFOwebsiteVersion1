@@ -21,7 +21,7 @@ export const supportData = {
   ],
 
   /* ---------- Get Involved ---------- */
-  involvedHeading: 'get involved with winfo!',
+  involvedHeading: 'get involved with WINFO!',
   involvedCards: [
     {
       title: 'Newsletter\nSpotlights',
