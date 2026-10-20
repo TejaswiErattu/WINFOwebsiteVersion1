@@ -239,22 +239,20 @@
 }
 
 .hack-stats {
-  display: flex;
-  flex-direction: column;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 1rem;
   max-width: 600px;
 }
 
+/* One row: each number sits above its label */
 .hack-stat {
   display: flex;
-  align-items: baseline;
-  gap: 0.65rem;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.4rem;
+  text-align: center;
 }
-
-/* Staggered alignment from screenshots */
-.hack-stat--0 { padding-left: 0; }
-.hack-stat--1 { padding-left: 15%; text-align: right; justify-content: flex-end; }
-.hack-stat--2 { padding-left: 0; }
 
 .hack-stat__number {
   font-family: var(--font-heading);
@@ -607,21 +605,20 @@
 }
 
 .hack-sponsor-benefits {
-  display: flex;
-  flex-direction: column;
-  gap: 2rem;
-  max-width: 700px;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 2rem 3rem;
+  max-width: 760px;
   margin: 0 auto;
+  text-align: center;
 }
 
-.hack-sponsor-benefit {
-  max-width: 320px;
+/* Two benefits on the top row, the third centred underneath */
+.hack-sponsor-benefit:last-child:nth-child(odd) {
+  grid-column: 1 / -1;
+  justify-self: center;
+  max-width: calc(50% - 1.5rem);
 }
-
-/* Staggered layout from screenshot */
-.hack-sponsor-benefit--0 { align-self: flex-start; }
-.hack-sponsor-benefit--1 { align-self: flex-end; }
-.hack-sponsor-benefit--2 { align-self: flex-start; }
 
 .hack-sponsor-benefit__title {
   font-family: var(--font-heading);
@@ -756,10 +753,6 @@
     max-width: 100%;
   }
 
-  .hack-stat--1 {
-    padding-left: 10%;
-  }
-
   .hack-faq__circuit {
     display: none;
   }
@@ -811,17 +804,14 @@
 /* Phones: centre the whole sponsor section so nothing sits off-axis */
 @media (max-width: 767px) {
   .hack-sponsor-benefits {
-    align-items: center;
+    grid-template-columns: minmax(0, 1fr);
+    justify-items: center;
     gap: 1.5rem;
   }
 
   .hack-sponsor-benefit,
-  .hack-sponsor-benefit--0,
-  .hack-sponsor-benefit--1,
-  .hack-sponsor-benefit--2 {
-    align-self: center;
+  .hack-sponsor-benefit:last-child:nth-child(odd) {
     max-width: 22rem;
-    text-align: center;
   }
 
   .hack-past-sponsors {

@@ -139,10 +139,11 @@
   overflow: hidden;
   box-shadow: 0 12px 26px -20px rgba(31, 29, 30, 0.5);
   scroll-margin-top: 100px;
-  transition: transform 0.2s ease;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
-.cal-card:hover { transform: translateY(-2px) rotate(-0.4deg); }
+/* Lift the whole card evenly (no rotation, so neither side stays put) */
+.cal-card:hover { transform: translateY(-4px); box-shadow: 0 18px 30px -20px rgba(31, 29, 30, 0.55); }
 
 .cal-card:target { outline: 3px solid var(--color-accent); outline-offset: 3px; }
 

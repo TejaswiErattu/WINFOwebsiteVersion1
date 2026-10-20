@@ -787,7 +787,7 @@ html {
 .home-who__image-frame { transform: rotate(-1.2deg); }
 @media (prefers-reduced-motion: no-preference) {
   .more-events__image { transition: transform 0.25s ease; }
-  .more-events__image:hover { transform: rotate(-1deg) translateY(-2px); }
+  .more-events__image:hover { transform: translateY(-4px); }
 }
 
 .impact-stat strong { color: var(--color-accent-strong); font-size: 1.2em; }
