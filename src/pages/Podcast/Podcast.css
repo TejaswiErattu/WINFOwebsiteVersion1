@@ -104,7 +104,6 @@
 .podcast-info-card {
   background: var(--color-surface);
   border: 1px solid var(--color-border);
-  border-top: 4px solid var(--color-primary);
   border-radius: var(--radius-md);
   padding: 2rem 1.5rem;
   text-align: left;
@@ -131,9 +130,6 @@
 }
 
 /* Card accent colours — solid top rule only, no gradients */
-.podcast-info-card--purple { border-top-color: var(--color-primary); }
-.podcast-info-card--pink   { border-top-color: var(--color-accent-dark); }
-.podcast-info-card--blue   { border-top-color: var(--color-info); }
 
 /* ===== 3. GUEST CTA ===== */
 .podcast-guest-cta {

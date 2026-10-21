@@ -172,15 +172,11 @@
   border-radius: var(--radius-md);
   background: var(--color-surface);
   border: 1px solid var(--color-border);
-  border-top: 4px solid var(--color-primary);
   text-align: center;
   box-shadow: var(--shadow-card-rest);
   position: relative;
 }
 
-.support-involved-card--purple   { border-top-color: var(--color-primary); }
-.support-involved-card--pink     { border-top-color: var(--color-accent-dark); }
-.support-involved-card--lavender { border-top-color: var(--color-primary-light); }
 
 .support-involved-card__title {
   font-family: var(--font-mono);

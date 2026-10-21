@@ -1,10 +1,10 @@
+import { useEffect, useRef, useState } from 'react';
 import './EventCalendar.css';
 
 const MONTHS = ['January', 'February', 'March', 'April', 'May', 'June', 'July',
   'August', 'September', 'October', 'November', 'December'];
 const WEEKDAYS = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
 const WEEKDAY_NAMES = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
-const ACCENTS = ['pink', 'lavender', 'blue'];
 
 /* 'YYYY-MM-DD' → local Date at midnight (avoids the UTC off-by-one) */
 function parseDate(iso) {
@@ -65,8 +65,111 @@ function slug(e) {
   return `cal-${e.date}-${e.title.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, '')}`;
 }
 
-/* One small month grid; days with events link down to their card */
-function MiniMonth({ year, month, byDay, today }) {
+
+const DEFAULT_TYPE = 'fun';
+
+function whereText(e, buildings) {
+  const name = buildings[e.building];
+  return { name, where: `${name || e.building}${e.room ? ` ${e.room}` : ''}` };
+}
+
+function LocationLink({ e, buildings, short = false }) {
+  const { name, where } = whereText(e, buildings);
+  return (
+    <a
+      className="cal-where"
+      href={mapsUrl(name, e.building)}
+      target="_blank"
+      rel="noopener noreferrer"
+      aria-label={`${where} (opens Google Maps in a new tab)`}
+    >
+      <svg className="cal-icon" viewBox="0 0 24 24" aria-hidden="true">
+        <path fill="currentColor" d="M12 2a7 7 0 0 0-7 7c0 5.2 7 13 7 13s7-7.8 7-13a7 7 0 0 0-7-7Zm0 9.5A2.5 2.5 0 1 1 12 6.5a2.5 2.5 0 0 1 0 5Z" />
+      </svg>
+      {e.building}{e.room ? ` ${e.room}` : ''}
+      {name && !short && <span className="cal-where__bldg"> · {name}</span>}
+    </a>
+  );
+}
+
+function TimeText({ e }) {
+  return (
+    <time dateTime={e.date} className="cal-time">
+      <svg className="cal-icon" viewBox="0 0 24 24" aria-hidden="true">
+        <circle cx="12" cy="12" r="9" fill="none" stroke="currentColor" strokeWidth="2" />
+        <path d="M12 7v5l3 2" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
+      </svg>
+      <span className="sr-only">{`${WEEKDAY_NAMES[e.when.getDay()]}, ${MONTHS[e.when.getMonth()]} ${e.when.getDate()}, `}</span>
+      {e.time}
+    </time>
+  );
+}
+
+function GoogleCalButton({ e, buildings }) {
+  return (
+    <a
+      className="cal-gcal"
+      href={googleCalUrl(e, whereText(e, buildings).where)}
+      target="_blank"
+      rel="noopener noreferrer"
+      aria-label={`Add ${e.title} to Google Calendar (opens in a new tab)`}
+    >
+      <svg className="cal-icon" viewBox="0 0 24 24" aria-hidden="true">
+        <rect x="3" y="5" width="18" height="16" rx="3" fill="none" stroke="currentColor" strokeWidth="2" />
+        <path d="M3 10h18M8 3v4M16 3v4M12 13v5M9.5 15.5h5" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
+      </svg>
+      <span className="cal-gcal__long">Add to Google Calendar</span>
+      <span className="cal-gcal__short">Add to calendar</span>
+    </a>
+  );
+}
+
+/* Event details that pop out over the calendar */
+function EventPopover({ e, buildings, types, onClose, returnFocusTo }) {
+  const ref = useRef(null);
+  useEffect(() => {
+    const el = ref.current;
+    el?.focus();
+    const onKey = (ev) => { if (ev.key === 'Escape') onClose(); };
+    const onDown = (ev) => { if (el && !el.contains(ev.target)) onClose(); };
+    document.addEventListener('keydown', onKey);
+    document.addEventListener('pointerdown', onDown);
+    return () => {
+      document.removeEventListener('keydown', onKey);
+      document.removeEventListener('pointerdown', onDown);
+      returnFocusTo?.focus?.();
+    };
+  }, [onClose, returnFocusTo]);
+
+  const type = types[e.type] || types[DEFAULT_TYPE];
+  return (
+    <div
+      ref={ref}
+      className="cal-pop"
+      role="dialog"
+      aria-modal="false"
+      aria-labelledby="cal-pop-title"
+      tabIndex={-1}
+      style={{ '--type-color': type.color, '--type-ink': type.ink }}
+    >
+      <button type="button" className="cal-pop__close" onClick={onClose} aria-label="Close event details">
+        <svg viewBox="0 0 12 12" aria-hidden="true"><path d="M2 2l8 8M10 2 2 10" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" /></svg>
+      </button>
+      <p className="cal-pop__type">{type.label}</p>
+      <h3 id="cal-pop-title" className="cal-pop__title">{e.title}</h3>
+      <p className="cal-pop__date">{`${WEEKDAY_NAMES[e.when.getDay()]}, ${MONTHS[e.when.getMonth()]} ${e.when.getDate()}`}</p>
+      <div className="cal-pop__meta">
+        <TimeText e={e} />
+        <LocationLink e={e} buildings={buildings} />
+      </div>
+      {e.blurb && <p className="cal-pop__blurb">{e.blurb}</p>}
+      <GoogleCalButton e={e} buildings={buildings} />
+    </div>
+  );
+}
+
+/* Large month grid; each event is a clickable colored tag on its day */
+function BigMonth({ year, month, byDay, today, types, onOpen }) {
   const first = new Date(year, month, 1).getDay();
   const days = new Date(year, month + 1, 0).getDate();
   const cells = [...Array(first).fill(null), ...Array.from({ length: days }, (_, i) => i + 1)];
@@ -75,13 +178,13 @@ function MiniMonth({ year, month, byDay, today }) {
   for (let i = 0; i < cells.length; i += 7) weeks.push(cells.slice(i, i + 7));
 
   return (
-    <table className="cal-month">
-      <caption className="cal-month__name">{MONTHS[month]}</caption>
+    <table className="cal-grid">
+      <caption className="sr-only">{`${MONTHS[month]} ${year}`}</caption>
       <thead>
         <tr>
           {WEEKDAYS.map((w, i) => (
             <th key={w} scope="col">
-              <span aria-hidden="true">{w[0]}</span>
+              <span aria-hidden="true">{w}</span>
               <span className="sr-only">{WEEKDAY_NAMES[i]}</span>
             </th>
           ))}
@@ -91,24 +194,28 @@ function MiniMonth({ year, month, byDay, today }) {
         {weeks.map((week, wi) => (
           <tr key={wi}>
             {week.map((day, di) => {
-              if (!day) return <td key={di} />;
-              const key = `${year}-${String(month + 1).padStart(2, '0')}-${String(day).padStart(2, '0')}`;
-              const evs = byDay[key];
+              if (!day) return <td key={di} className="cal-cell cal-cell--empty" />;
+              const key = `${year}-${pad(month + 1)}-${pad(day)}`;
+              const evs = byDay[key] || [];
               const isToday = today.getFullYear() === year && today.getMonth() === month && today.getDate() === day;
-              const cls = `cal-day${evs ? ` cal-day--event cal-day--${evs[0].accent}` : ''}${isToday ? ' cal-day--today' : ''}`;
               return (
-                <td key={di}>
-                  {evs ? (
-                    <a
-                      className={cls}
-                      href={`#${evs[0].id}`}
-                      aria-label={`${MONTHS[month]} ${day}: ${evs.map((e) => e.title).join(', ')}`}
-                    >
-                      {day}
-                    </a>
-                  ) : (
-                    <span className={cls} aria-current={isToday ? 'date' : undefined}>{day}</span>
-                  )}
+                <td key={di} className={`cal-cell${evs.length ? ' cal-cell--has' : ''}${isToday ? ' cal-cell--today' : ''}`}>
+                  <span className="cal-cell__day" aria-current={isToday ? 'date' : undefined}>{day}</span>
+                  {evs.map((e) => {
+                    const type = types[e.type] || types[DEFAULT_TYPE];
+                    return (
+                      <button
+                        key={e.id}
+                        type="button"
+                        className="cal-chip"
+                        style={{ '--type-color': type.color, '--type-ink': type.ink }}
+                        onClick={(ev) => onOpen(e, ev.currentTarget)}
+                        aria-label={`${e.title}, ${MONTHS[month]} ${day}, ${e.time}. Show details`}
+                      >
+                        <span className="cal-chip__title">{e.title}</span>
+                      </button>
+                    );
+                  })}
                 </td>
               );
             })}
@@ -120,10 +227,11 @@ function MiniMonth({ year, month, byDay, today }) {
 }
 
 /**
- * Quarter events calendar: mini month grids plus a list of event cards.
+ * Quarter events calendar: a large month view (click an event to pop out its
+ * details) beside a list of upcoming events, color-coded by type.
  * Past events and events after the quarter's end date are hidden automatically.
  */
-export default function EventCalendar({ quarter, events, buildings = {}, heading = 'upcoming events' }) {
+export default function EventCalendar({ quarter, events, buildings = {}, types = {}, heading = 'upcoming events' }) {
   const today = startOfToday();
   const end = parseDate(quarter.endsOn);
 
@@ -131,7 +239,7 @@ export default function EventCalendar({ quarter, events, buildings = {}, heading
     .map((e) => ({ ...e, when: parseDate(e.date) }))
     .filter((e) => e.when >= today && e.when <= end)
     .sort((a, b) => a.when - b.when)
-    .map((e, i) => ({ ...e, id: slug(e), accent: ACCENTS[i % ACCENTS.length] }));
+    .map((e) => ({ ...e, id: slug(e), type: types[e.type] ? e.type : DEFAULT_TYPE }));
 
   const byDay = {};
   upcoming.forEach((e) => { (byDay[e.date] = byDay[e.date] || []).push(e); });
@@ -145,10 +253,22 @@ export default function EventCalendar({ quarter, events, buildings = {}, heading
     }
   }
 
+  const [monthIndex, setMonthIndex] = useState(0);
+  const [openEvent, setOpenEvent] = useState(null);
+  const [opener, setOpener] = useState(null);
+  const shown = months[Math.min(monthIndex, Math.max(months.length - 1, 0))];
+  const usedTypes = [...new Set(upcoming.map((e) => e.type))];
+
+  const openDetails = (e, el) => { setOpener(el); setOpenEvent(e); };
+  const closeDetails = () => setOpenEvent(null);
+  const showMonthOf = (e) => {
+    const i = months.findIndex((m) => m.year === e.when.getFullYear() && m.month === e.when.getMonth());
+    if (i >= 0) setMonthIndex(i);
+  };
+
   return (
     <section className="cal" id="calendar" aria-labelledby="cal-heading">
       <div className="cal__inner">
-        <p className="cal__eyebrow">{quarter.name}</p>
         <h2 id="cal-heading" className="cursive-title section-title--center cal__heading">{heading}</h2>
 
         {upcoming.length === 0 ? (
@@ -157,65 +277,72 @@ export default function EventCalendar({ quarter, events, buildings = {}, heading
           </p>
         ) : (
           <div className="cal__layout">
-            <div className="cal__months" aria-label="Calendar overview">
-              {months.map((m) => (
-                <MiniMonth key={`${m.year}-${m.month}`} {...m} byDay={byDay} today={today} />
-              ))}
+            <div className="cal__main">
+              <div className="cal__toolbar">
+                <button
+                  type="button"
+                  className="cal__nav"
+                  onClick={() => setMonthIndex((i) => Math.max(0, i - 1))}
+                  disabled={monthIndex === 0}
+                  aria-label="Previous month"
+                >
+                  <span aria-hidden="true">‹</span>
+                </button>
+                <p className="cal__month" aria-live="polite">{`${MONTHS[shown.month]} ${shown.year}`}</p>
+                <button
+                  type="button"
+                  className="cal__nav"
+                  onClick={() => setMonthIndex((i) => Math.min(months.length - 1, i + 1))}
+                  disabled={monthIndex >= months.length - 1}
+                  aria-label="Next month"
+                >
+                  <span aria-hidden="true">›</span>
+                </button>
+              </div>
+
+              <ul className="cal__key" aria-label="Event types">
+                {usedTypes.map((t) => (
+                  <li key={t} style={{ '--type-color': types[t].color, '--type-ink': types[t].ink }}>
+                    <span className="cal__key-dot" aria-hidden="true" />
+                    {types[t].label}
+                  </li>
+                ))}
+              </ul>
+
+              <div className="cal__grid-wrap">
+                <BigMonth {...shown} byDay={byDay} today={today} types={types} onOpen={openDetails} />
+                {openEvent && (
+                  <EventPopover e={openEvent} buildings={buildings} types={types} onClose={closeDetails} returnFocusTo={opener} />
+                )}
+              </div>
             </div>
 
-            <ol className="cal__list">
+            <ol className="cal__list" aria-label="Upcoming events list">
               {upcoming.map((e) => {
-                const name = buildings[e.building];
-                const where = `${name || e.building}${e.room ? ` ${e.room}` : ''}`;
+                const type = types[e.type];
                 return (
-                  <li key={e.id} id={e.id} className={`cal-card cal-card--${e.accent}`}>
+                  <li
+                    key={e.id}
+                    id={e.id}
+                    className="cal-card"
+                    style={{ '--type-color': type.color, '--type-ink': type.ink }}
+                  >
                     <div className="cal-card__stub" aria-hidden="true">
                       <span className="cal-card__mon">{MONTHS[e.when.getMonth()].slice(0, 3)}</span>
                       <span className="cal-card__day">{e.when.getDate()}</span>
                       <span className="cal-card__dow">{WEEKDAYS[e.when.getDay()]}</span>
                     </div>
                     <div className="cal-card__body">
-                      <h3 className="cal-card__title">{e.title}</h3>
-                      <p className="cal-card__meta">
-                        <time dateTime={e.date} className="cal-card__time">
-                          <svg className="cal-card__icon" viewBox="0 0 24 24" aria-hidden="true">
-                            <circle cx="12" cy="12" r="9" fill="none" stroke="currentColor" strokeWidth="2" />
-                            <path d="M12 7v5l3 2" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
-                          </svg>
-                          <span className="sr-only">
-                            {`${WEEKDAYS[e.when.getDay()]}, ${MONTHS[e.when.getMonth()]} ${e.when.getDate()}, `}
-                          </span>
-                          {e.time}
-                        </time>
-                        <a
-                          className="cal-card__where"
-                          href={mapsUrl(name, e.building)}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          aria-label={`${where} (opens Google Maps in a new tab)`}
-                        >
-                          <svg className="cal-card__pin" viewBox="0 0 24 24" aria-hidden="true">
-                            <path d="M12 2a7 7 0 0 0-7 7c0 5.2 7 13 7 13s7-7.8 7-13a7 7 0 0 0-7-7Zm0 9.5A2.5 2.5 0 1 1 12 6.5a2.5 2.5 0 0 1 0 5Z" />
-                          </svg>
-                          {e.building}{e.room ? ` ${e.room}` : ''}
-                          {name && <span className="cal-card__bldg"> · {name}</span>}
-                        </a>
-                      </p>
-                      {e.blurb && <p className="cal-card__blurb">{e.blurb}</p>}
-                      <a
-                        className="cal-card__gcal"
-                        href={googleCalUrl(e, where)}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        aria-label={`Add ${e.title} to Google Calendar (opens in a new tab)`}
-                      >
-                        <svg className="cal-card__icon" viewBox="0 0 24 24" aria-hidden="true">
-                          <rect x="3" y="5" width="18" height="16" rx="3" fill="none" stroke="currentColor" strokeWidth="2" />
-                          <path d="M3 10h18M8 3v4M16 3v4M12 13v5M9.5 15.5h5" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
-                        </svg>
-                        <span className="cal-card__gcal-long">Add to Google Calendar</span>
-                        <span className="cal-card__gcal-short">Add to calendar</span>
-                      </a>
+                      <h3 className="cal-card__title">
+                        <button type="button" className="cal-card__open" onClick={(ev) => { showMonthOf(e); openDetails(e, ev.currentTarget); }}>
+                          {e.title}
+                        </button>
+                      </h3>
+                      <p className="cal-card__type">{type.label}</p>
+                      <div className="cal-card__meta">
+                        <TimeText e={e} />
+                        <LocationLink e={e} buildings={buildings} short />
+                      </div>
                     </div>
                   </li>
                 );

@@ -28,14 +28,6 @@
   margin: 0;
 }
 
-.alumni-eyebrow {
-  font-family: var(--font-mono);
-  font-size: var(--text-xs);
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  color: var(--color-accent-strong);
-  margin: 0;
-}
 
 .alumni-hero__text {
   line-height: 1.75;
@@ -142,13 +134,10 @@
 .alumni-pillar {
   background: var(--color-surface);
   border: 1px solid var(--color-border);
-  border-top: 4px solid var(--color-primary);
   border-radius: var(--radius-lg);
   padding: 1.75rem;
 }
 
-.alumni-pillar--pink { border-top-color: var(--color-accent); }
-.alumni-pillar--blue { border-top-color: var(--color-info); }
 
 .alumni-pillar__label {
   font-family: var(--font-mono);

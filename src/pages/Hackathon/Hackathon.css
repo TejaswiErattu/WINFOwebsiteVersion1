@@ -128,14 +128,6 @@
   max-width: 40rem;
 }
 
-.hack-current__eyebrow {
-  font-size: var(--text-xs);
-  font-weight: 700;
-  letter-spacing: var(--tracking-widest);
-  text-transform: uppercase;
-  color: var(--color-text-secondary);
-  margin-bottom: 0.75rem;
-}
 
 .hack-current__theme {
   font-family: var(--font-body);
@@ -182,6 +174,25 @@
 
 .hack-current__register {
   margin-top: 0.75rem;
+}
+
+/* Registration status + hackathon website, side by side (wraps on phones) */
+.hack-current__actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.75rem;
+  margin-top: 0.75rem;
+}
+
+.hack-current__grid--no-poster .hack-current__actions { justify-content: center; }
+
+.hack-current__actions > * { margin-top: 0; }
+
+.hack-faq__answer a {
+  color: var(--color-primary-dark);
+  font-weight: 600;
+  text-decoration: underline;
 }
 
 /* Shown until a real registration URL is set in hackathonData.js */

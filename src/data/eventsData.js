@@ -70,7 +70,7 @@ export const eventsData = {
   bottomCta: {
     heading: 'We\'ve got you covered!',
     body: 'want to stay in the loop?\nfollow @uwwinfo or register below:',
-    btnLabel: 'join us!',
+    btnLabel: 'Join Us!',
     btnTo: MEMBERSHIP_SIGNUP_URL,
   },
 };

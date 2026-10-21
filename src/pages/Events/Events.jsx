@@ -2,7 +2,7 @@ import Button from '../../components/Buttons/Buttons';
 import FlagshipEvent from '../../components/FlagshipEvent/FlagshipEvent';
 import PhotoCarousel from '../../components/PhotoCarousel/PhotoCarousel';
 import EventCalendar from '../../components/EventCalendar/EventCalendar';
-import { quarter, events as calendarEvents, buildings } from '../../data/calendarEvents';
+import { quarter, events as calendarEvents, buildings, eventTypes } from '../../data/calendarEvents';
 import { eventsData } from '../../data/eventsData';
 import { flagshipEvents } from '../../data/flagshipEvents';
 import './Events.css';
@@ -34,7 +34,7 @@ export default function Events() {
       </header>
 
       {/* ===== 2 · THIS QUARTER'S CALENDAR (edit src/data/calendarEvents.js) ===== */}
-      <EventCalendar quarter={quarter} events={calendarEvents} buildings={buildings} />
+      <EventCalendar quarter={quarter} events={calendarEvents} buildings={buildings} types={eventTypes} />
 
       {/* ===== 2 · FLAGSHIP EVENTS ===== */}
       <div className="flagships">

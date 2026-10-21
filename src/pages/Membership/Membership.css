@@ -121,7 +121,6 @@
 .membership-perk {
   background: var(--color-surface);
   border: 1px solid var(--color-border);
-  border-top: 4px solid var(--color-primary);
   border-radius: var(--radius-md);
   padding: 2rem 1.5rem;
   text-align: center;
@@ -148,13 +147,10 @@
 }
 
 /* Card accents: solid top rule + matching icon colour (same as Home feature cards) */
-.membership-perk--purple { border-top-color: var(--color-primary); }
 .membership-perk--purple .membership-perk__svg { color: var(--color-primary); }
 
-.membership-perk--pink { border-top-color: var(--color-accent-dark); }
 .membership-perk--pink .membership-perk__svg { color: var(--color-accent-dark); }
 
-.membership-perk--blue { border-top-color: var(--color-info); }
 .membership-perk--blue .membership-perk__svg { color: var(--color-info); }
 
 .membership-perk__title {

@@ -28,7 +28,6 @@ export const flagshipEvents = [
     tagline: hackathonData.tagline,
     description: hackathonData.aboutBody,
     mission: `${challenge.charAt(0).toUpperCase()}${challenge.slice(1)} ${hackathonData.challengeBody}`,
-    audienceLabel: 'UW undergraduates',
     audience: hackFaq('Who can participate in the hackathon?'),
     /* timesHeld, firstYear, attendance: waiting for board confirmation.
        (The 266 / 67 / 45 figures on the Hackathon page are not used until
@@ -56,7 +55,6 @@ export const flagshipEvents = [
       'TechXperience is a half-day, in-person technology experience where middle and high school students work in teams with UW mentors to explore technology through beginner-friendly challenges.',
     mission:
       'Give students an approachable introduction to technology and Informatics through collaboration, problem solving, mentorship, and exposure to college and technology pathways.',
-    audienceLabel: 'Middle & high school students',
     audience:
       'Middle and high school students, including students with little or no previous technical experience.',
     timesHeld: 2,
@@ -99,7 +97,6 @@ export const flagshipEvents = [
       'Fearless, TechMore is a week-long, online innovation challenge where middle and high school students work in teams with UW mentors to explore technology, user experience design, and real-world problem solving.',
     mission:
       'Create an accessible introduction to technology and design while helping students build confidence, collaborate with others, and explore how technology can support equity and positive social impact.',
-    audienceLabel: 'Middle & high school students',
     audience:
       'Middle and high school students ages 13–18, including students with little or no prior coding or design experience.',
     howItWorks:

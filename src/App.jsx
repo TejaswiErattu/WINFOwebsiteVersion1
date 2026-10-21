@@ -28,6 +28,7 @@ import './pages/SupportUs/SupportUs.css';
 import './pages/Merch/Merch.css';
 import './pages/Alumni/Alumni.css';
 import './pages/NotFound/NotFound.css';
+import './components/AnnouncementBanner/AnnouncementBanner.css';
 import './styles/global.css';
 
 const RELOAD_FLAG = 'winfo-chunk-reload';

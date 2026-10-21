@@ -14,7 +14,7 @@ import './FlagshipEvent.css';
  */
 export default function FlagshipEvent({ event, labels, flipped = false, eagerMedia = false }) {
   const {
-    slug, name, tagline, dates, description, mission, audience, audienceLabel, howItWorks,
+    slug, name, tagline, dates, description, mission, audience, howItWorks,
     timesHeld, timesHeldAsOf, firstYear, attendance, reach, tracks,
     posters = [], photos = [], link,
   } = event;
@@ -98,7 +98,6 @@ export default function FlagshipEvent({ event, labels, flipped = false, eagerMed
         )}
 
         <div className="flagship__copy">
-          {audienceLabel && <p className="flagship__badge">{audienceLabel}</p>}
           <h2 id={headingId} className="flagship__name">{name}</h2>
           {tagline && <p className="flagship__tagline">{tagline}</p>}
           {dates && <p className="flagship__dates">{dates}</p>}

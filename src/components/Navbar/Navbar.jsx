@@ -89,33 +89,36 @@ export default function Navbar() {
     };
   }, [menuOpen]);
 
-  const renderLinks = (onClick) =>
-    navLinks.map((link) =>
-      link.external ? (
-        <a
-          key={link.path}
-          href={link.path}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="navbar__link navbar__link--merch"
-          onClick={onClick}
-        >
-          {link.label}
-        </a>
-      ) : (
-        <NavLink
-          key={link.path}
-          to={link.path}
-          end={link.path === '/'}
-          className={({ isActive }) =>
-            `navbar__link ${isActive ? 'navbar__link--active' : ''}`
-          }
-          onClick={onClick}
-        >
-          {link.label}
-        </NavLink>
-      )
-    );
+  const linkClass = ({ isActive }) => `navbar__link ${isActive ? 'navbar__link--active' : ''}`;
+
+  /* Desktop row: plain links and dropdown groups */
+  const desktopLinks = navLinks.map((item) =>
+    item.children ? (
+      <NavGroup key={item.label} group={item} pathname={pathname} />
+    ) : (
+      <NavLink key={item.path} to={item.path} end={item.path === '/'} className={linkClass}>
+        {item.label}
+      </NavLink>
+    ),
+  );
+
+  /* Mobile panel: groups become a small label with their pages underneath */
+  const mobileLinks = navLinks.map((item) =>
+    item.children ? (
+      <div key={item.label} className="navbar__mobile-group" role="group" aria-label={item.label}>
+        <p className="navbar__mobile-group-label" aria-hidden="true">{item.label}</p>
+        {item.children.map((child) => (
+          <NavLink key={child.path} to={child.path} className={linkClass} onClick={close}>
+            {child.label}
+          </NavLink>
+        ))}
+      </div>
+    ) : (
+      <NavLink key={item.path} to={item.path} end={item.path === '/'} className={linkClass} onClick={close}>
+        {item.label}
+      </NavLink>
+    ),
+  );
 
   return (
     <nav
@@ -130,7 +133,7 @@ export default function Navbar() {
 
         {/* ── Desktop links ── */}
         <div className="navbar__links">
-          {renderLinks()}
+          {desktopLinks}
 
           <Button href={siteInfo.navCtaHref} size="sm" className="navbar__cta">
             {siteInfo.navCtaLabel}
@@ -160,12 +163,99 @@ export default function Navbar() {
         className={`navbar__mobile ${menuOpen ? 'navbar__mobile--open' : ''}`}
         inert={!menuOpen}
       >
-        {renderLinks(close)}
+        {mobileLinks}
 
         <Button href={siteInfo.navCtaHref} size="sm" className="navbar__cta" onClick={close}>
           {siteInfo.navCtaLabel}
         </Button>
       </div>
     </nav>
+  );
+}
+
+/**
+ * Desktop dropdown: opens on hover or click, closes on Escape, outside
+ * click, focus leaving the group, or choosing a page.
+ */
+function NavGroup({ group, pathname }) {
+  const [open, setOpen] = useState(false);
+  const [prevPath, setPrevPath] = useState(pathname);
+  const rootRef = useRef(null);
+  const buttonRef = useRef(null);
+  const closeTimer = useRef(0);
+  const menuId = `nav-group-${group.label.toLowerCase().replace(/[^a-z0-9]+/g, '-')}`;
+  const active = group.children.some((c) => pathname === c.path || pathname.startsWith(`${c.path}/`));
+
+  /* Close when the route changes (state-driven, no effect) */
+  if (prevPath !== pathname) {
+    setPrevPath(pathname);
+    if (open) setOpen(false);
+  }
+
+  useEffect(() => {
+    if (!open) return undefined;
+    const onPointerDown = (e) => {
+      if (!rootRef.current?.contains(e.target)) setOpen(false);
+    };
+    const onKeyDown = (e) => {
+      if (e.key === 'Escape') {
+        setOpen(false);
+        buttonRef.current?.focus();
+      }
+    };
+    document.addEventListener('pointerdown', onPointerDown);
+    document.addEventListener('keydown', onKeyDown);
+    return () => {
+      document.removeEventListener('pointerdown', onPointerDown);
+      document.removeEventListener('keydown', onKeyDown);
+    };
+  }, [open]);
+
+  useEffect(() => () => clearTimeout(closeTimer.current), []);
+
+  const openNow = () => {
+    clearTimeout(closeTimer.current);
+    setOpen(true);
+  };
+  const closeSoon = () => {
+    clearTimeout(closeTimer.current);
+    closeTimer.current = setTimeout(() => setOpen(false), 150);
+  };
+
+  return (
+    <div
+      ref={rootRef}
+      className={`navbar__group ${open ? 'navbar__group--open' : ''}`}
+      onPointerEnter={(e) => e.pointerType === 'mouse' && openNow()}
+      onPointerLeave={(e) => e.pointerType === 'mouse' && closeSoon()}
+      onBlur={(e) => { if (!rootRef.current?.contains(e.relatedTarget)) setOpen(false); }}
+    >
+      <button
+        ref={buttonRef}
+        type="button"
+        className={`navbar__link navbar__group-toggle ${active ? 'navbar__link--active' : ''}`}
+        aria-expanded={open}
+        aria-controls={menuId}
+        onClick={() => setOpen((v) => !v)}
+      >
+        {group.label}
+        <svg className="navbar__chevron" viewBox="0 0 12 12" aria-hidden="true">
+          <path d="M2.5 4.5 6 8l3.5-3.5" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" />
+        </svg>
+      </button>
+      <ul id={menuId} className="navbar__menu" hidden={!open}>
+        {group.children.map((child) => (
+          <li key={child.path}>
+            <NavLink
+              to={child.path}
+              className={({ isActive }) => `navbar__menu-link ${isActive ? 'navbar__menu-link--active' : ''}`}
+              onClick={() => setOpen(false)}
+            >
+              {child.label}
+            </NavLink>
+          </li>
+        ))}
+      </ul>
+    </div>
   );
 }

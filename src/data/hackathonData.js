@@ -63,6 +63,12 @@ export const hackathonData = {
     location: 'HUB North Ballroom',
     locationDetail: 'University of Washington Husky Union Building',
     registrationUrl: REGISTRATION_URL_TBD,
+    /* The hackathon's own site (schedule, rules, FAQ) */
+    websiteUrl: 'https://winfohackathon2027.web.app/',
+    websiteLabel: 'Visit the hackathon website',
+    /* Pop-up announcement at the top of the page (shows once per visit) */
+    banner: 'WINFO\u2019s 15th Hackathon is January 30\u201331, 2027 \u2014 registration opens soon!',
+    bannerLinkLabel: 'Learn more',
     /* Poster — add the file to public/hackathon/ and set the path here,
        e.g. '/hackathon/poster-15.png'. Empty hides the poster column. */
     posterSrc: '',

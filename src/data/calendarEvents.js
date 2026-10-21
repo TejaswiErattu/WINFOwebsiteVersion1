@@ -3,9 +3,10 @@
    ===================================================================
    HOW TO UPDATE (takes ~5 minutes a quarter)
    1. Change `quarter` below: its name and the last day of finals.
-   2. Replace `events` with the new quarter's events. One line each:
+   2. Replace `events` with the new quarter's events. One block each:
         { title: 'Event name', date: 'YYYY-MM-DD', time: '5–7 PM',
-          building: 'MGH', room: '254', blurb: 'optional one-liner' },
+          building: 'MGH', room: '254', type: 'fun', blurb: 'optional one-liner' },
+      `type` sets the color: 'fun', 'professional', or 'rso' (with another RSO).
    3. Using a building that isn't in `buildings` yet? Add its code and
       full name there so the map link finds the right place.
 
@@ -28,6 +29,7 @@ export const events = [
     time: '5–7 PM',
     building: 'DEN',
     room: '258',
+    type: 'fun',
     blurb: 'Pumpkin painting!',
   },
   {
@@ -36,6 +38,7 @@ export const events = [
     time: '5:30–7 PM',
     building: 'MGH',
     room: '254',
+    type: 'fun',
   },
   {
     title: 'UWiB Closing the Gap',
@@ -43,6 +46,7 @@ export const events = [
     time: '6–8 PM',
     building: 'DEM',
     room: '302',
+    type: 'rso',
     blurb: 'Hosted with UW Women in Business.',
   },
   {
@@ -51,6 +55,7 @@ export const events = [
     time: '5–7 PM',
     building: 'DEN',
     room: '212',
+    type: 'fun',
   },
   {
     title: 'Spookie Clay & Chat',
@@ -58,6 +63,7 @@ export const events = [
     time: '5–7 PM',
     building: 'HUB',
     room: '214',
+    type: 'fun',
   },
   {
     title: 'WINFO Speed Mentoring',
@@ -65,8 +71,16 @@ export const events = [
     time: '5–7 PM',
     building: 'HUB',
     room: '214',
+    type: 'professional',
   },
 ];
+
+/* Event types → label and colors (used for the calendar and the key) */
+export const eventTypes = {
+  fun: { label: 'Fun & social', color: '#fdd5db', ink: '#9e4754' },
+  professional: { label: 'Professional', color: '#d6e6f5', ink: '#2e5f86' },
+  rso: { label: 'With another RSO', color: '#e3d8f2', ink: '#5f4483' },
+};
 
 /* UW building codes → full names (used for the label and the map search) */
 export const buildings = {

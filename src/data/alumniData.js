@@ -8,7 +8,9 @@ import { ALUMNI_INTEREST_FORM_URL } from './externalLinks';
 
 export const alumniData = {
   title: 'alumni',
-  eyebrow: 'WINFO Alumni Board · launching Fall 2026',
+  /* Pop-up announcement at the top of the page (shows once per visit) */
+  banner: 'The WINFO Alumni Board is launching Fall 2026!',
+  bannerLinkLabel: 'Join the network',
   heroBody:
     'Graduating shouldn\'t mean drifting away. The **WINFO Alumni Board** is a formal alumni network that keeps WINFO grads **connected and involved** after graduation.',
   heroBodySecondary:
@@ -84,6 +86,21 @@ export const alumniData = {
 
 /* Past officer boards, newest first. */
 export const pastBoards = [
+  {
+    year: '2025–2026',
+    members: [
+      { name: 'Anushka Verma', role: 'Internal Co-President' },
+      { name: 'Maryory Ajpop', role: 'External Co-President' },
+      { name: 'Dawn Nguyen', role: 'Finance Director' },
+      { name: 'Stephanie Lee', role: 'Public Relations Director' },
+      { name: 'Claire Li', role: 'Creative Director' },
+      { name: 'Rithika Madey', role: 'Outreach Director' },
+      { name: 'Mia McDunnah', role: 'Diversity Efforts Director' },
+      { name: 'Jenny Speelmon', role: 'Community Efforts Director' },
+      { name: 'Varsha Bharath', role: 'Student Engagement Director' },
+      { name: 'Renee Singh', role: 'Hackathon Director' },
+    ],
+  },
   {
     year: '2024–2025',
     members: [

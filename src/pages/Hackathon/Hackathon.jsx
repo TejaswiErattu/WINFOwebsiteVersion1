@@ -1,11 +1,19 @@
 import { useEffect, useLayoutEffect, useRef, useState } from 'react';
 import SectionWrapper from '../../components/SectionWrapper/SectionWrapper';
 import Button from '../../components/Buttons/Buttons';
+import AnnouncementBanner from '../../components/AnnouncementBanner/AnnouncementBanner';
 import CircuitSVG from '../../components/CircuitSVG/CircuitSVG';
 import GalleryScroller from '../../components/GalleryScroller/GalleryScroller';
 import { renderBold } from '../../utils/renderBold';
 import { hackathonData, REGISTRATION_URL_TBD } from '../../data/hackathonData';
 import './Hackathon.css';
+
+/* Turn any email address in plain text into a mailto link */
+function linkEmails(text) {
+  return text.split(/([\w.+-]+@[\w-]+(?:\.[\w-]+)+)/g).map((part, i) =>
+    i % 2 === 1 ? <a key={i} href={`mailto:${part}`}>{part}</a> : part,
+  );
+}
 
 /* In-page sections, in render order. `id` doubles as the anchor target. */
 const SECTIONS = [
@@ -113,6 +121,9 @@ export default function Hackathon() {
 
   return (
     <div className="hack-page">
+      {current.banner && (
+        <AnnouncementBanner id="hackathon-15" message={current.banner} linkLabel={current.bannerLinkLabel} linkHref={current.websiteUrl} />
+      )}
       {/* ===== PAGE HEADER ===== */}
       <header className="hack-header">
         <h1 className="cursive-title page-title">{title}</h1>
@@ -150,7 +161,6 @@ export default function Hackathon() {
           )}
 
           <div className="hack-current__info">
-            <p className="hack-current__eyebrow">WINFO {current.edition}th Hackathon</p>
             <h2 className="hack-current__theme">{current.theme}</h2>
             <p className="hack-current__meta">
               <span className="hack-current__date">{current.dates}</span>
@@ -162,15 +172,22 @@ export default function Hackathon() {
               <p key={i} className="hack-current__body">{p}</p>
             ))}
 
-            {registrationOpen ? (
-              <Button href={current.registrationUrl} variant="primary" size="lg" className="hack-current__register">
-                Register
-              </Button>
-            ) : (
-              <span className="hack-current__register-soon" role="status">
-                Registration opening soon
-              </span>
-            )}
+            <div className="hack-current__actions">
+              {registrationOpen ? (
+                <Button href={current.registrationUrl} variant="primary" size="lg" className="hack-current__register">
+                  Register
+                </Button>
+              ) : (
+                <span className="hack-current__register-soon" role="status">
+                  Registration opening soon
+                </span>
+              )}
+              {current.websiteUrl && (
+                <Button href={current.websiteUrl} variant="primary" size="lg" className="hack-current__register">
+                  {current.websiteLabel}
+                </Button>
+              )}
+            </div>
           </div>
         </div>
       </SectionWrapper>
@@ -353,7 +370,7 @@ export default function Hackathon() {
                   </span>
                 </button>
                 <div className="hack-faq__answer" id={`hack-faq-${i}`} hidden={!isOpen}>
-                  <p>{item.answer}</p>
+                  <p>{linkEmails(item.answer)}</p>
                 </div>
               </div>
             );

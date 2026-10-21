@@ -1,15 +1,17 @@
 import { CartIcon, ShirtIcon, MoneyIcon, BoxIcon, ClockIcon } from '../../components/Icons/Icons';
 import { MERCH_ORDER_URL as ORDER_URL } from '../../data/externalLinks';
+import AnnouncementBanner from '../../components/AnnouncementBanner/AnnouncementBanner';
 import './Merch.css';
 
 export default function Merch() {
   return (
     <div className="merch-page">
+      <AnnouncementBanner id="merch-drop" message="Limited drop: WINFO crewnecks are live and orders close soon!" linkLabel="Order now" linkHref={ORDER_URL} />
+
       {/* ===== HERO ===== */}
       <section className="merch-hero">
         <div className="merch-hero__inner">
           <div className="merch-hero__text">
-            <span className="badge">limited drop</span>
             <h1 className="merch-hero__title cursive-title page-title">
               WINFO merch is live!
             </h1>

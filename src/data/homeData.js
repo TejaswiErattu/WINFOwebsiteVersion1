@@ -20,7 +20,7 @@ export const missionData = {
     'We believe that **diversity drives innovation**, and that every student deserves the tools, community, and confidence to shape the future of technology. By hosting professional workshops, social events, and hackathons, our mission is to **nurture a blossoming community of fearless technology leaders**.',
   bodyTertiary:
     'We welcome **all majors, genders, and identities** united by a shared passion for creating a more equitable tech industry.',
-  ctaLabel: 'join us!',
+  ctaLabel: 'Join Us!',
   ctaLink: MEMBERSHIP_SIGNUP_URL,
   image: '/images/hackathon-1.jpg',
   imageAlt: 'WINFO members at a community event',
@@ -80,22 +80,22 @@ export const informaticsQuotes = [
   {
     quote: '"It\'s about asking thoughtful questions, noticing everyday frustrations, and creating solutions that feel intuitive and human."',
     name: 'Mia McDunnah',
-    role: 'Diversity Director',
+    role: 'Past Diversity Efforts Director',
   },
   {
     quote: '"Informatics is all about leveraging information to build technology that works for real people."',
     name: 'Renee Singh',
-    role: 'Hackathon Director',
+    role: 'Past Hackathon Director',
   },
   {
     quote: '"It\'s about being thoughtful with design and intentional with the way we build things."',
     name: 'Dawn Nguyen',
-    role: 'Finance Director',
+    role: 'Past Finance Director',
   },
   {
     quote: '"Informatics uplifts voices that are marginalized to make meaningful changes in technological solutions."',
     name: 'Jenny Speelmon',
-    role: 'Community Efforts Director',
+    role: 'Past Community Efforts Director',
   },
 ];
 

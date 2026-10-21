@@ -1,7 +1,6 @@
 .feature-card {
   background: var(--color-surface);
   border: 1px solid var(--color-border);
-  border-top: 4px solid var(--color-primary);
   border-radius: var(--radius-md);
   padding: 1.75rem 1.65rem;
   text-align: left;
@@ -20,9 +19,6 @@
 }
 
 /* Colour accents per card — solid top rule only, no gradients */
-.feature-card--purple { border-top-color: var(--color-primary); }
-.feature-card--pink   { border-top-color: var(--color-accent-dark); }
-.feature-card--blue   { border-top-color: var(--color-info); }
 
 .feature-card__title {
   font-family: var(--font-heading);

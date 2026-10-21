@@ -76,7 +76,7 @@ export default function Footer() {
 
         {/* ── Right column: quick links ── */}
         <div className="footer__col footer__col--links">
-          <h2 className="footer__col-title">quick links</h2>
+          <h2 className="footer__col-title">Quick Links</h2>
           <nav className="footer__links-list" aria-label="Footer">
             {footerLinks.map((l) => (
               <Link key={l.path} to={l.path} className="footer__link">

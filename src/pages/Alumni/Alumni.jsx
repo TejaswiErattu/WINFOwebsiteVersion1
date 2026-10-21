@@ -1,5 +1,6 @@
 import SectionWrapper from '../../components/SectionWrapper/SectionWrapper';
 import Button from '../../components/Buttons/Buttons';
+import AnnouncementBanner from '../../components/AnnouncementBanner/AnnouncementBanner';
 import { renderBold } from '../../utils/renderBold';
 import { alumniData, pastBoards } from '../../data/alumniData';
 import './Alumni.css';
@@ -9,11 +10,12 @@ export default function Alumni() {
 
   return (
     <>
+      <AnnouncementBanner id="alumni-launch" message={d.banner} linkLabel={d.bannerLinkLabel} linkHref={d.ctaLink} />
+
       {/* ===== 1 · HERO ===== */}
       <section className="alumni-hero">
         <div className="alumni-hero__inner">
           <div className="alumni-hero__content">
-            <p className="alumni-eyebrow">{d.eyebrow}</p>
             <h1 className="cursive-title page-title">{d.title}</h1>
             <p className="alumni-hero__text">{renderBold(d.heroBody)}</p>
             <p className="alumni-hero__text">{renderBold(d.heroBodySecondary)}</p>

@@ -9,30 +9,41 @@
 
 import { MEMBERSHIP_SIGNUP_URL } from './externalLinks';
 
-/* ---------- Navbar links ---------- */
+/* ---------- Navbar links ----------
+   A link is { label, path }. A dropdown group is { label, children: [links] }. */
 export const navLinks = [
-  { label: 'home', path: '/' },
-  { label: 'hackathon', path: '/hackathon' },
-  { label: 'events', path: '/events' },
-  { label: 'podcast', path: '/podcast' },
-  { label: 'membership', path: '/membership' },
-  { label: 'our team', path: '/officers' },
-  { label: 'alumni', path: '/alumni' },
-  { label: 'support us', path: '/support' },
-  { label: 'merch', path: '/merch' },
+  { label: 'Home', path: '/' },
+  { label: 'Hackathon', path: '/hackathon' },
+  { label: 'Events', path: '/events' },
+  { label: 'Podcast', path: '/podcast' },
+  {
+    label: 'Our Team',
+    children: [
+      { label: 'Current Team', path: '/officers' },
+      { label: 'Alumni', path: '/alumni' },
+    ],
+  },
+  {
+    label: 'Get Involved',
+    children: [
+      { label: 'Membership', path: '/membership' },
+      { label: 'Support Us', path: '/support' },
+      { label: 'Merch', path: '/merch' },
+    ],
+  },
 ];
 
 /* ---------- Footer quick-links ---------- */
 export const footerLinks = [
-  { label: 'home', path: '/' },
-  { label: 'hackathon', path: '/hackathon' },
-  { label: 'events', path: '/events' },
-  { label: 'podcast', path: '/podcast' },
-  { label: 'our team', path: '/officers' },
-  { label: 'alumni', path: '/alumni' },
-  { label: 'support us', path: '/support' },
-  { label: 'membership', path: '/membership' },
-  { label: 'merch', path: '/merch' },
+  { label: 'Home', path: '/' },
+  { label: 'Hackathon', path: '/hackathon' },
+  { label: 'Events', path: '/events' },
+  { label: 'Podcast', path: '/podcast' },
+  { label: 'Our Team', path: '/officers' },
+  { label: 'Alumni', path: '/alumni' },
+  { label: 'Membership', path: '/membership' },
+  { label: 'Support Us', path: '/support' },
+  { label: 'Merch', path: '/merch' },
 ];
 
 /* ---------- Social links ---------- */
@@ -71,6 +82,6 @@ export const siteInfo = {
     'Seattle, WA 98195',
   ],
   copyright: 'WINFO — Women in Informatics',
-  navCtaLabel: 'join us!',
+  navCtaLabel: 'Join Us!',
   navCtaHref: MEMBERSHIP_SIGNUP_URL,
 };
