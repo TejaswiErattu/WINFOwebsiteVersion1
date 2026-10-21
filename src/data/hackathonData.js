@@ -57,7 +57,6 @@ export const hackathonData = {
   /* ---------- This Year's Hackathon (featured block) ----------
      Source: winfohackathon2027.web.app */
   currentHackathon: {
-    edition: 15,
     theme: 'Peaks of Possibility',
     dates: 'January 30–31, 2027',
     location: 'HUB North Ballroom',

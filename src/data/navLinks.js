@@ -72,15 +72,6 @@ export const socialLinks = [
 
 /* ---------- Site-wide brand & contact info ---------- */
 export const siteInfo = {
-  brandName: 'winfo',
-  brandTagline:
-    'Women in Informatics at the University of Washington. Empowering students through community, mentorship, and opportunity.',
-  email: 'winfo@uw.edu',
-  address: [
-    'University of Washington',
-    'Mary Gates Hall',
-    'Seattle, WA 98195',
-  ],
   copyright: 'WINFO — Women in Informatics',
   navCtaLabel: 'Join Us!',
   navCtaHref: MEMBERSHIP_SIGNUP_URL,

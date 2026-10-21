@@ -170,21 +170,50 @@
   text-align: center;
 }
 
+.alumni-structure {
+  position: relative;
+}
+
+/* A card like the leads below it (not a pill, so it doesn't read as a button) */
 .alumni-structure__chair {
-  display: inline-block;
-  padding: 0.85rem 2.5rem;
-  border-radius: var(--radius-full);
-  background: var(--color-primary-dark);
-  color: var(--color-on-primary, #fff);
-  font-family: var(--font-heading);
-  font-weight: 700;
-  font-size: 1.15rem;
+  position: relative;
+  display: inline-flex;
+  flex-direction: column;
+  gap: 0.2rem;
+  min-width: 15rem;
+  padding: 1rem 1.75rem;
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+}
+
+.alumni-structure__chair strong {
+  font-size: 1.1rem;
+  color: var(--color-primary-dark);
+}
+
+.alumni-structure__chair span {
+  font-size: var(--text-sm);
+  color: var(--color-text-secondary);
+}
+
+/* Org-chart connector from the chair down to the leads */
+.alumni-structure__chair::after {
+  content: '';
+  position: absolute;
+  left: 50%;
+  top: 100%;
+  width: 2px;
+  height: 1.75rem;
+  background: var(--color-border);
+  transform: translateX(-50%);
 }
 
 .alumni-structure__leads {
   list-style: none;
-  padding: 0;
-  margin: 1.75rem 0 1.25rem;
+  padding: 1.25rem 0 0;
+  margin: 1.75rem 0 1.25rem;     /* the chair's connector line fills this gap */
+  border-top: 2px solid var(--color-border);
   display: grid;
   grid-template-columns: repeat(4, minmax(0, 1fr));
   gap: 1rem;

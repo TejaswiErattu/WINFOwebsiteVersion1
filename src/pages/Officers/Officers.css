@@ -279,12 +279,6 @@
   object-fit: cover;
 }
 
-.committee-card__placeholder {
-  width: 100%;
-  height: 100%;
-  background: var(--color-bg-alt);
-}
-
 .committee-card__name {
   font-size: clamp(1.2rem, 3vw, 1.5rem);
   margin-bottom: 0.5rem;

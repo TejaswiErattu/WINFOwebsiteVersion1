@@ -79,23 +79,6 @@
   color: var(--color-primary);
 }
 
-.merch-pricing__original {
-  font-size: 0.85rem;
-  color: var(--color-text-muted);
-  text-decoration: line-through;
-}
-
-.merch-pricing__sale {
-  font-size: 0.75rem;
-  font-weight: 700;
-  color: var(--color-text-secondary);
-  background: var(--color-accent-light);
-  border-radius: var(--radius-full);
-  padding: 0.15rem 0.6rem;
-  display: inline-block;
-  margin-top: 0.25rem;
-}
-
 /* CTA button */
 .merch-cta-btn {
   display: inline-block;
@@ -166,7 +149,6 @@
   text-align: center;
   box-shadow: var(--shadow-card-rest);
 }
-
 
 .merch-detail-card__icon {
   font-size: 2rem;

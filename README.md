@@ -7,7 +7,7 @@ The official website for **WINFO (Women in Informatics)** at the University of W
 - **React 19** + **Vite** — fast dev server & optimised builds
 - **React Router DOM** — client-side routing
 - **CSS Custom Properties** — design tokens in `src/styles/variables.css`
-- **Google Fonts** — Chakra Petch (headings), Inter (body), Space Mono (labels)
+- **Google Fonts** — Poppins everywhere
 
 ## Pages
 
@@ -17,7 +17,8 @@ The official website for **WINFO (Women in Informatics)** at the University of W
 | `/hackathon` | Hackathon |
 | `/events` | Events |
 | `/podcast` | Podcast |
-| `/officers` | Team / Officers |
+| `/officers` | Our Team |
+| `/alumni` | Alumni |
 | `/membership` | Membership (Join Us) |
 | `/support` | Support Us |
 | `/merch` | Merch |
@@ -58,10 +59,21 @@ npm run preview
 
 All page content lives in `src/data/` — edit the data files to update text, events, officers, Hackathon FAQs, etc. without touching JSX.
 
+| To update… | Edit |
+|---|---|
+| Events calendar (each quarter) | `src/data/calendarEvents.js` — steps are at the top of the file |
+| Team, committees | `src/data/officersData.js` |
+| Hackathon (dates, theme, FAQ, sponsors, top banner) | `src/data/hackathonData.js` |
+| Alumni page and past boards | `src/data/alumniData.js` |
+| Navbar, footer links, socials | `src/data/navLinks.js` |
+| Membership / merch / alumni form links | `src/data/externalLinks.js` |
+
 Replace placeholder images by adding files to `public/images/` and updating the corresponding `image: ''` fields in the data files.
+
+Every push to `main` runs lint, the build, an image-reference check and `npm audit` (`.github/workflows/ci.yml`); Vercel then deploys automatically.
 
 ## Design
 
 - Figma HiFi designs in `design-ref/` (kept out of `public/` so they don't ship to production)
 - Colour palette: soft violet (`#9E80BD`), blush pink (`#FEB0BA`), lavender (`#B7A3DF`)
-- Fonts: Chakra Petch (headings and titles), Inter (body), Space Mono (monospace labels)
+- Font: Poppins

@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useRef, useState } from 'react';
 import SectionWrapper from '../../components/SectionWrapper/SectionWrapper';
 import Button from '../../components/Buttons/Buttons';
 import CircuitSVG from '../../components/CircuitSVG/CircuitSVG';
@@ -25,7 +25,16 @@ export default function Podcast() {
   const [current, setCurrent] = useState(0);
   const prev = () => setCurrent((c) => (c === 0 ? episodes.length - 1 : c - 1));
   const next = () => setCurrent((c) => (c === episodes.length - 1 ? 0 : c + 1));
-  const ep = episodes[current];
+  /* Swipe left/right on touch screens */
+  const swipeStart = useRef(null);
+  const onTouchStart = (e) => { swipeStart.current = e.touches[0].clientX; };
+  const onTouchEnd = (e) => {
+    if (swipeStart.current == null) return;
+    const dx = e.changedTouches[0].clientX - swipeStart.current;
+    swipeStart.current = null;
+    if (dx < -40) next();
+    else if (dx > 40) prev();
+  };
 
   return (
     <>
@@ -94,34 +103,56 @@ export default function Podcast() {
             ‹
           </button>
 
-          {/* Episode card */}
-          <div className="podcast-carousel__card" aria-live="polite" aria-atomic="true">
-            <div className="podcast-carousel__thumb">
-              {ep.image ? (
-                <img src={ep.image} alt={ep.imageAlt} loading="lazy" decoding="async" />
-              ) : (
-                <div className="podcast-carousel__thumb-placeholder" />
-              )}
-              {ep.guests && ep.guests.length > 0 && (
-                <div className="podcast-carousel__guests">
-                  {ep.guests.map((g) => (
-                    <span key={g} className="podcast-carousel__guest-tag">{g}</span>
-                  ))}
-                </div>
-              )}
-            </div>
+          {/* Episodes sit side by side in a track that slides to the current one */}
+          <div className="podcast-carousel__viewport" onTouchStart={onTouchStart} onTouchEnd={onTouchEnd}>
+            <div className="podcast-carousel__track" style={{ transform: `translateX(-${current * 100}%)` }}>
+              {episodes.map((ep, i) => (
+                <div
+                  key={ep.title}
+                  className="podcast-carousel__slide"
+                  role="group"
+                  aria-roledescription="slide"
+                  aria-label={`${i + 1} of ${episodes.length}`}
+                  aria-hidden={i !== current}
+                  inert={i !== current}
+                >
+                  <div className="podcast-carousel__card">
+                    <div className="podcast-carousel__thumb">
+                      {ep.image ? (
+                        <img
+                          src={ep.image}
+                          alt={ep.imageAlt}
+                          loading={Math.abs(i - current) <= 1 ? 'eager' : 'lazy'}
+                          decoding="async"
+                        />
+                      ) : (
+                        <div className="podcast-carousel__thumb-placeholder" />
+                      )}
+                      {ep.guests && ep.guests.length > 0 && (
+                        <div className="podcast-carousel__guests">
+                          {ep.guests.map((g) => (
+                            <span key={g} className="podcast-carousel__guest-tag">{g}</span>
+                          ))}
+                        </div>
+                      )}
+                    </div>
 
-            <div className="podcast-carousel__content">
-              <span className="podcast-carousel__tag">{ep.tag}</span>
-              <h3 className="podcast-carousel__title">{ep.title}</h3>
-              <p className="podcast-carousel__desc">{ep.description}</p>
-              {ep.watchUrl && (
-                <Button href={ep.watchUrl} variant="accent" size="sm" className="podcast-carousel__btn">
-                  <PlayIcon className="icon icon--inline" /> watch here!
-                </Button>
-              )}
+                    <div className="podcast-carousel__content">
+                      <span className="podcast-carousel__tag">{ep.tag}</span>
+                      <h3 className="podcast-carousel__title">{ep.title}</h3>
+                      <p className="podcast-carousel__desc">{ep.description}</p>
+                      {ep.watchUrl && (
+                        <Button href={ep.watchUrl} variant="accent" size="sm" className="podcast-carousel__btn">
+                          <PlayIcon className="icon icon--inline" /> watch here!
+                        </Button>
+                      )}
+                    </div>
+                  </div>
+                </div>
+              ))}
             </div>
           </div>
+          <p className="sr-only" aria-live="polite">{`Episode ${current + 1} of ${episodes.length}: ${episodes[current].title}`}</p>
 
           {/* Right arrow */}
           <button type="button" className="podcast-carousel__arrow podcast-carousel__arrow--right" onClick={next} aria-label="Next episode">

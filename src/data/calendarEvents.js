@@ -6,7 +6,9 @@
    2. Replace `events` with the new quarter's events. One block each:
         { title: 'Event name', date: 'YYYY-MM-DD', time: '5–7 PM',
           building: 'MGH', room: '254', type: 'fun', blurb: 'optional one-liner' },
-      `type` sets the color: 'fun', 'professional', or 'rso' (with another RSO).
+      `type` sets the color: 'fun' or 'professional'.
+      Co-hosting with another RSO? Add `with: 'Club name'` — it shows as a
+      small note when someone opens the event.
    3. Using a building that isn't in `buildings` yet? Add its code and
       full name there so the map link finds the right place.
 
@@ -29,7 +31,8 @@ export const events = [
     time: '4–6 PM',
     building: 'NAN',
     room: '181',
-    type: 'rso',
+    type: 'fun',
+    with: 'IUGA',
     blurb: 'Come say hi at the WINFO table!',
   },
   {
@@ -56,7 +59,7 @@ export const events = [
     building: 'DEM',
     room: '302',
     type: 'professional',
-    blurb: 'Hosted with UW Women in Business.',
+    with: 'UW Women in Business',
   },
   {
     title: 'Crumbs & Connections: Fall Cookie Decorating',
@@ -88,7 +91,6 @@ export const events = [
 export const eventTypes = {
   fun: { label: 'Fun & social', color: '#fdd5db', ink: '#9e4754' },
   professional: { label: 'Professional', color: '#d6e6f5', ink: '#2e5f86' },
-  rso: { label: 'With another RSO', color: '#e3d8f2', ink: '#5f4483' },
 };
 
 /* UW building codes → full names (used for the label and the map search) */

@@ -56,7 +56,7 @@ function googleCalUrl(e, where) {
     dates,
     ctz: 'America/Los_Angeles',
     location: `${where}, University of Washington, Seattle, WA`,
-    details: `${e.blurb ? `${e.blurb}\n\n` : ''}Hosted by Women in Informatics (WINFO) at UW.`,
+    details: `${e.blurb ? `${e.blurb}\n\n` : ''}Hosted by Women in Informatics (WINFO) at UW${e.with ? ` with ${e.with}` : ''}.`,
   });
   return `https://calendar.google.com/calendar/render?${params.toString()}`;
 }
@@ -162,6 +162,16 @@ function EventPopover({ e, buildings, types, onClose, returnFocusTo }) {
         <TimeText e={e} />
         <LocationLink e={e} buildings={buildings} />
       </div>
+      {e.with && (
+        <p className="cal-pop__with">
+          <svg className="cal-icon" viewBox="0 0 24 24" aria-hidden="true">
+            <circle cx="9" cy="8" r="3.2" fill="none" stroke="currentColor" strokeWidth="2" />
+            <circle cx="16.5" cy="9.5" r="2.6" fill="none" stroke="currentColor" strokeWidth="2" />
+            <path d="M3 19c0-3.3 2.7-5.5 6-5.5s6 2.2 6 5.5M14.5 14.2c3 0 6.5 1.6 6.5 4.8" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
+          </svg>
+          In collaboration with {e.with}
+        </p>
+      )}
       {e.blurb && <p className="cal-pop__blurb">{e.blurb}</p>}
       {e.past ? <p className="cal-pop__past">This event already happened.</p> : <GoogleCalButton e={e} buildings={buildings} />}
     </div>

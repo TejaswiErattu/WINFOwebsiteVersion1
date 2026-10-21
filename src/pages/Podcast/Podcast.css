@@ -193,9 +193,35 @@
   border-color: var(--color-primary);
 }
 
+/* Sliding window: one episode visible, the rest wait off to the side */
+.podcast-carousel__viewport {
+  flex: 1;
+  min-width: 0;
+  overflow: hidden;
+  padding: 6px 4px 14px;       /* room for the card shadow */
+  touch-action: pan-y;
+}
+
+.podcast-carousel__track {
+  display: flex;
+  transition: transform 0.5s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+.podcast-carousel__slide {
+  flex: 0 0 100%;
+  min-width: 0;
+  padding: 0 4px;
+  display: flex;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .podcast-carousel__track { transition: none; }
+}
+
 /* Episode card */
 .podcast-carousel__card {
   flex: 1;
+  min-width: 0;
   display: grid;
   grid-template-columns: 1fr 1.1fr;
   gap: 1.5rem;

@@ -75,7 +75,10 @@ export default function Alumni() {
       <SectionWrapper alt>
         <h2 className="cursive-title section-title--center">{d.structureHeading}</h2>
         <div className="alumni-structure">
-          <div className="alumni-structure__chair">{d.chair}</div>
+          <div className="alumni-structure__chair">
+            <strong>{d.chair}</strong>
+            <span>{d.chairText}</span>
+          </div>
           <ul className="alumni-structure__leads">
             {d.leads.map((l) => (
               <li key={l.role}>

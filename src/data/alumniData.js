@@ -62,6 +62,7 @@ export const alumniData = {
 
   structureHeading: 'who\'s on the board',
   chair: 'Chair',
+  chairText: 'Leads the alumni board',
   leads: [
     { role: 'Programming Lead', text: 'Panels, socials & events' },
     { role: 'Mentorship Lead', text: 'Mentor matches & interview prep' },
