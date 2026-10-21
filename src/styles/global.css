@@ -107,8 +107,10 @@ textarea {
   resize: vertical;
 }
 
-/* Anything that has been anchored to should have extra scroll margin */
-:target {
+/* Anything that has been anchored to should have extra scroll margin.
+   :where() keeps this at zero specificity so page rules (like the hackathon
+   sections, which sit under two sticky bars) can set a larger offset. */
+:where(:target) {
   scroll-margin-block: 5ex;
 }
 

@@ -84,8 +84,6 @@ export default function Hackathon() {
     sponsorCtaLink,
     pastSponsorsHeading,
     pastSponsors,
-    pastHackathonsHeading,
-    pastHackathons,
   } = hackathonData;
 
   const activeSection = useActiveSection(SECTION_IDS);
@@ -289,17 +287,6 @@ export default function Hackathon() {
           </div>
         </div>
 
-        <div className="hack-past">
-          <h3 className="cursive-title hack-past__heading">{pastHackathonsHeading}</h3>
-          <div className="hack-past-list">
-            {pastHackathons.map((ph) => (
-              <div key={ph.year} className="hack-past-item">
-                <span className="hack-past-item__theme">{ph.theme}</span>
-                <span className="hack-past-item__year">{ph.year}</span>
-              </div>
-            ))}
-          </div>
-        </div>
       </SectionWrapper>
 
       {/* ===== 7 · SPONSORS ===== */}
@@ -325,22 +312,31 @@ export default function Hackathon() {
         <h3 className="cursive-title section-title--center hack-past-sponsors__heading">
           {pastSponsorsHeading}
         </h3>
-        <div className="hack-past-sponsors">
-          {pastSponsors.map((sponsor) => (
-            <div key={sponsor.name} className={`hack-past-sponsor${sponsor.dark ? ' hack-past-sponsor--dark' : ''}`}>
-              {sponsor.logo ? (
-                <img
-                  src={sponsor.logo}
-                  alt={sponsor.name}
-                  className="hack-past-sponsor__logo"
-                  loading="lazy"
-                  decoding="async"
-                />
-              ) : (
-                <span className="hack-past-sponsor__name">{sponsor.name}</span>
-              )}
-            </div>
-          ))}
+        {/* One looping row; the track holds the logos twice so the loop is seamless */}
+        <div className="hack-sponsor-marquee" role="region" aria-label="Past sponsors" tabIndex={0}>
+          <ul className="hack-sponsor-marquee__track">
+            {[0, 1].map((copy) =>
+              pastSponsors.map((sponsor) => (
+                <li
+                  key={`${copy}-${sponsor.name}`}
+                  className={`hack-past-sponsor${sponsor.dark ? ' hack-past-sponsor--dark' : ''}${sponsor.logo ? '' : ' hack-past-sponsor--text'}`}
+                  aria-hidden={copy === 1 ? 'true' : undefined}
+                >
+                  {sponsor.logo ? (
+                    <img
+                      src={sponsor.logo}
+                      alt={copy === 0 ? sponsor.name : ''}
+                      className="hack-past-sponsor__logo"
+                      loading="lazy"
+                      decoding="async"
+                    />
+                  ) : (
+                    <span className="hack-past-sponsor__name">{sponsor.name}</span>
+                  )}
+                </li>
+              )),
+            )}
+          </ul>
         </div>
       </SectionWrapper>
 

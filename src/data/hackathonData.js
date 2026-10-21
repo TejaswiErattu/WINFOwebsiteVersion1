@@ -305,16 +305,4 @@ export const hackathonData = {
   ],
 
   /* ---------- Past Hackathons ---------- */
-  pastHackathonsHeading: 'past hackathons',
-  pastHackathons: [
-    { theme: 'Depths of Discovery, Currents of Creation', year: '2026' },
-    { theme: 'Breaking Grounds, Discovering Solutions', year: '2025' },
-    { theme: 'Infinite Possibilities, Infinite Solutions', year: '2024' },
-    { theme: 'Reframe, Build, Innovate Onwards', year: '2023' },
-    { theme: 'Embracing the New', year: '2022' },
-    { theme: 'Hacking Forward, Together', year: '2021' },
-    { theme: 'Driven By Difference', year: '2020' },
-    { theme: 'A World of Difference', year: '2019' },
-    { theme: 'What Does Diversity Mean to You?', year: '2018' },
-  ],
 };

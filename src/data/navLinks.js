@@ -19,16 +19,16 @@ export const navLinks = [
   {
     label: 'Our Team',
     children: [
-      { label: 'Current Team', path: '/officers' },
-      { label: 'Alumni', path: '/alumni' },
+      { label: 'Current Team', path: '/officers', description: 'Meet our officers and committees' },
+      { label: 'Alumni', path: '/alumni', description: 'The WINFO Alumni Board and past boards' },
     ],
   },
   {
     label: 'Get Involved',
     children: [
-      { label: 'Membership', path: '/membership' },
-      { label: 'Support Us', path: '/support' },
-      { label: 'Merch', path: '/merch' },
+      { label: 'Membership', path: '/membership', description: 'Become an official WINFO member' },
+      { label: 'Support Us', path: '/support', description: 'Sponsor, mentor, or collaborate with us' },
+      { label: 'Merch', path: '/merch', description: 'Grab a cozy WINFO crewneck' },
     ],
   },
 ];

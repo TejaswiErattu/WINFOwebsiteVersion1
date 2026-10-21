@@ -155,7 +155,7 @@ function EventPopover({ e, buildings, types, onClose, returnFocusTo }) {
       <button type="button" className="cal-pop__close" onClick={onClose} aria-label="Close event details">
         <svg viewBox="0 0 12 12" aria-hidden="true"><path d="M2 2l8 8M10 2 2 10" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" /></svg>
       </button>
-      <p className="cal-pop__type">{type.label}</p>
+      <p className={`cal-pop__type${e.past ? ' cal-pop__type--past' : ''}`}>{type.label}</p>
       <h3 id="cal-pop-title" className="cal-pop__title">{e.title}</h3>
       <p className="cal-pop__date">{`${WEEKDAY_NAMES[e.when.getDay()]}, ${MONTHS[e.when.getMonth()]} ${e.when.getDate()}`}</p>
       <div className="cal-pop__meta">
@@ -163,7 +163,7 @@ function EventPopover({ e, buildings, types, onClose, returnFocusTo }) {
         <LocationLink e={e} buildings={buildings} />
       </div>
       {e.blurb && <p className="cal-pop__blurb">{e.blurb}</p>}
-      <GoogleCalButton e={e} buildings={buildings} />
+      {e.past ? <p className="cal-pop__past">This event already happened.</p> : <GoogleCalButton e={e} buildings={buildings} />}
     </div>
   );
 }
@@ -207,10 +207,10 @@ function BigMonth({ year, month, byDay, today, types, onOpen }) {
                       <button
                         key={e.id}
                         type="button"
-                        className="cal-chip"
+                        className={`cal-chip${e.past ? ' cal-chip--past' : ''}`}
                         style={{ '--type-color': type.color, '--type-ink': type.ink }}
                         onClick={(ev) => onOpen(e, ev.currentTarget)}
-                        aria-label={`${e.title}, ${MONTHS[month]} ${day}, ${e.time}. Show details`}
+                        aria-label={`${e.title}, ${MONTHS[month]} ${day}, ${e.time}${e.past ? ' (already happened)' : ''}. Show details`}
                       >
                         <span className="cal-chip__title">{e.title}</span>
                       </button>
@@ -235,29 +235,35 @@ export default function EventCalendar({ quarter, events, buildings = {}, types =
   const today = startOfToday();
   const end = parseDate(quarter.endsOn);
 
-  const upcoming = events
+  /* Every event this quarter; ones before today are greyed out */
+  const all = events
     .map((e) => ({ ...e, when: parseDate(e.date) }))
-    .filter((e) => e.when >= today && e.when <= end)
+    .filter((e) => e.when <= end)
     .sort((a, b) => a.when - b.when)
-    .map((e) => ({ ...e, id: slug(e), type: types[e.type] ? e.type : DEFAULT_TYPE }));
+    .map((e) => ({ ...e, id: slug(e), type: types[e.type] ? e.type : DEFAULT_TYPE, past: e.when < today }));
+  const upcoming = all.filter((e) => !e.past);
+  const past = all.filter((e) => e.past);
 
   const byDay = {};
-  upcoming.forEach((e) => { (byDay[e.date] = byDay[e.date] || []).push(e); });
+  all.forEach((e) => { (byDay[e.date] = byDay[e.date] || []).push(e); });
 
-  /* Months from now through the last month that has an event */
+  /* Months from the first event through the last one */
   const months = [];
-  if (upcoming.length) {
-    const last = upcoming[upcoming.length - 1].when;
-    for (let d = new Date(today.getFullYear(), today.getMonth(), 1); d <= last; d = new Date(d.getFullYear(), d.getMonth() + 1, 1)) {
+  if (all.length) {
+    const firstEvent = all[0].when;
+    const last = all[all.length - 1].when;
+    for (let d = new Date(firstEvent.getFullYear(), firstEvent.getMonth(), 1); d <= last; d = new Date(d.getFullYear(), d.getMonth() + 1, 1)) {
       months.push({ year: d.getFullYear(), month: d.getMonth() });
     }
   }
+  /* Open on the current month (or the first month still to come) */
+  const startIndex = Math.max(0, months.findIndex((m) => m.year > today.getFullYear() || (m.year === today.getFullYear() && m.month >= today.getMonth())));
 
-  const [monthIndex, setMonthIndex] = useState(0);
+  const [monthIndex, setMonthIndex] = useState(startIndex);
   const [openEvent, setOpenEvent] = useState(null);
   const [opener, setOpener] = useState(null);
   const shown = months[Math.min(monthIndex, Math.max(months.length - 1, 0))];
-  const usedTypes = [...new Set(upcoming.map((e) => e.type))];
+  const usedTypes = Object.keys(types).filter((t) => all.some((e) => e.type === t));
 
   const openDetails = (e, el) => { setOpener(el); setOpenEvent(e); };
   const closeDetails = () => setOpenEvent(null);
@@ -266,12 +272,57 @@ export default function EventCalendar({ quarter, events, buildings = {}, types =
     if (i >= 0) setMonthIndex(i);
   };
 
+  const renderCard = (e) => {
+    const type = types[e.type];
+    return (
+      <li
+        key={e.id}
+        id={e.id}
+        className={`cal-card${e.past ? ' cal-card--past' : ''}`}
+        style={{ '--type-color': type.color, '--type-ink': type.ink }}
+      >
+        <div className="cal-card__stub" aria-hidden="true">
+          <span className="cal-card__mon">{MONTHS[e.when.getMonth()].slice(0, 3)}</span>
+          <span className="cal-card__day">{e.when.getDate()}</span>
+          <span className="cal-card__dow">{WEEKDAYS[e.when.getDay()]}</span>
+        </div>
+        <div className="cal-card__body">
+          <h3 className="cal-card__title">
+            <button type="button" className="cal-card__open" onClick={(ev) => { showMonthOf(e); openDetails(e, ev.currentTarget); }}>
+              {e.title}
+            </button>
+          </h3>
+          <p className="cal-card__type">{e.past ? `${type.label} · already happened` : type.label}</p>
+          <div className="cal-card__meta">
+            <TimeText e={e} />
+            <LocationLink e={e} buildings={buildings} short />
+          </div>
+        </div>
+        {!e.past && (
+          <a
+            className="cal-card__gcal"
+            href={googleCalUrl(e, whereText(e, buildings).where)}
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label={`Add ${e.title} to Google Calendar (opens in a new tab)`}
+            title="Add to Google Calendar"
+          >
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <rect x="3" y="5" width="18" height="16" rx="3" fill="none" stroke="currentColor" strokeWidth="2" />
+              <path d="M3 10h18M8 3v4M16 3v4M12 13v5M9.5 15.5h5" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
+            </svg>
+          </a>
+        )}
+      </li>
+    );
+  };
+
   return (
     <section className="cal" id="calendar" aria-labelledby="cal-heading">
       <div className="cal__inner">
         <h2 id="cal-heading" className="cursive-title section-title--center cal__heading">{heading}</h2>
 
-        {upcoming.length === 0 ? (
+        {all.length === 0 ? (
           <p className="cal__empty">
             New events are on the way! Follow <a href="https://instagram.com/uwwinfo" target="_blank" rel="noopener noreferrer">@uwwinfo</a> to hear first.
           </p>
@@ -300,14 +351,17 @@ export default function EventCalendar({ quarter, events, buildings = {}, types =
                 </button>
               </div>
 
-              <ul className="cal__key" aria-label="Event types">
-                {usedTypes.map((t) => (
-                  <li key={t} style={{ '--type-color': types[t].color, '--type-ink': types[t].ink }}>
-                    <span className="cal__key-dot" aria-hidden="true" />
-                    {types[t].label}
-                  </li>
-                ))}
-              </ul>
+              <div className="cal__key">
+                <p className="cal__key-title" id="cal-key-title">Color key</p>
+                <ul aria-labelledby="cal-key-title">
+                  {usedTypes.map((t) => (
+                    <li key={t} className="cal__key-item" style={{ '--type-color': types[t].color, '--type-ink': types[t].ink }}>
+                      {types[t].label}
+                    </li>
+                  ))}
+                  {past.length > 0 && <li className="cal__key-item cal__key-item--past">Already happened</li>}
+                </ul>
+              </div>
 
               <div className="cal__grid-wrap">
                 <BigMonth {...shown} byDay={byDay} today={today} types={types} onOpen={openDetails} />
@@ -317,37 +371,23 @@ export default function EventCalendar({ quarter, events, buildings = {}, types =
               </div>
             </div>
 
-            <ol className="cal__list" aria-label="Upcoming events list">
-              {upcoming.map((e) => {
-                const type = types[e.type];
-                return (
-                  <li
-                    key={e.id}
-                    id={e.id}
-                    className="cal-card"
-                    style={{ '--type-color': type.color, '--type-ink': type.ink }}
-                  >
-                    <div className="cal-card__stub" aria-hidden="true">
-                      <span className="cal-card__mon">{MONTHS[e.when.getMonth()].slice(0, 3)}</span>
-                      <span className="cal-card__day">{e.when.getDate()}</span>
-                      <span className="cal-card__dow">{WEEKDAYS[e.when.getDay()]}</span>
-                    </div>
-                    <div className="cal-card__body">
-                      <h3 className="cal-card__title">
-                        <button type="button" className="cal-card__open" onClick={(ev) => { showMonthOf(e); openDetails(e, ev.currentTarget); }}>
-                          {e.title}
-                        </button>
-                      </h3>
-                      <p className="cal-card__type">{type.label}</p>
-                      <div className="cal-card__meta">
-                        <TimeText e={e} />
-                        <LocationLink e={e} buildings={buildings} short />
-                      </div>
-                    </div>
-                  </li>
-                );
-              })}
-            </ol>
+            <div className="cal__side">
+              {upcoming.length > 0 ? (
+                <ol className="cal__list" aria-label="Upcoming events">
+                  {upcoming.map((e) => renderCard(e))}
+                </ol>
+              ) : (
+                <p className="cal__empty">That's a wrap on this quarter's events! Follow <a href="https://instagram.com/uwwinfo" target="_blank" rel="noopener noreferrer">@uwwinfo</a> for what's next.</p>
+              )}
+              {past.length > 0 && (
+                <>
+                  <h3 className="cal__past-heading">Earlier this quarter</h3>
+                  <ol className="cal__list" aria-label="Past events this quarter">
+                    {past.slice().reverse().map((e) => renderCard(e))}
+                  </ol>
+                </>
+              )}
+            </div>
           </div>
         )}
       </div>

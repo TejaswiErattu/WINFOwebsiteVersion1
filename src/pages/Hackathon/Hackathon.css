@@ -187,7 +187,19 @@
 
 .hack-current__grid--no-poster .hack-current__actions { justify-content: center; }
 
-.hack-current__actions > * { margin-top: 0; }
+.hack-current .hack-current__actions > * {
+  margin: 0;
+  height: 3.375rem;
+  padding-top: 0;
+  padding-bottom: 0;
+  box-sizing: border-box;
+}
+
+.hack-current .hack-current__actions > .hack-current__register-soon {
+  align-items: center;
+  padding: 0 2rem;
+  font-size: 1rem;
+}
 
 .hack-faq__answer a {
   color: var(--color-primary-dark);
@@ -497,11 +509,6 @@
   margin-top: 1.5rem;
 }
 
-/* ===== 6b. PAST THEMES (inside winners section) ===== */
-.hack-past {
-  max-width: 780px;
-  margin: 3rem auto 0;
-}
 
 /* ===== 5. FAQ ===== */
 .hack-faq-section {
@@ -658,14 +665,56 @@
 }
 
 /* ===== 7. PAST SPONSORS ===== */
-.hack-past-sponsors {
+.hack-sponsor-marquee {
+  overflow: hidden;
+  padding: 0.5rem 0;
+  /* soft fade at both edges */
+  -webkit-mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent);
+          mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent);
+}
+
+.hack-sponsor-marquee:focus-visible {
+  outline: 2px solid var(--color-primary-dark);
+  outline-offset: 2px;
+}
+
+.hack-sponsor-marquee__track {
   display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
   align-items: center;
-  gap: 1.5rem 2.5rem;
-  max-width: 920px;
-  margin: 0 auto;
+  width: max-content;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  animation: hack-sponsor-scroll 60s linear infinite;
+}
+
+/* Spacing on each item (not gap) so both halves match and -50% loops cleanly */
+.hack-sponsor-marquee__track > .hack-past-sponsor {
+  flex: 0 0 auto;
+  margin-right: 2.5rem;
+}
+
+.hack-sponsor-marquee:hover .hack-sponsor-marquee__track,
+.hack-sponsor-marquee:focus-within .hack-sponsor-marquee__track {
+  animation-play-state: paused;
+}
+
+@keyframes hack-sponsor-scroll {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
+
+/* Reduced motion: a still, wrapped grid of logos instead */
+@media (prefers-reduced-motion: reduce) {
+  .hack-sponsor-marquee { -webkit-mask-image: none; mask-image: none; }
+  .hack-sponsor-marquee__track {
+    animation: none;
+    width: auto;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1rem 0;
+  }
+  .hack-sponsor-marquee__track > [aria-hidden='true'] { display: none; }
 }
 
 .hack-past-sponsor {
@@ -708,39 +757,10 @@
   white-space: nowrap;
 }
 
-/* ===== 8. PAST HACKATHONS ===== */
-.hack-past__heading {
-  margin-bottom: 1.5rem;
-}
 
-.hack-past-list {
-  display: flex;
-  flex-direction: column;
-  gap: 0.85rem;
-  max-width: 600px;
-}
 
-.hack-past-item {
-  display: grid;
-  grid-template-columns: 3.5rem minmax(0, 1fr);
-  align-items: baseline;
-  column-gap: 0.85rem;
-}
 
-.hack-past-item__theme {
-  font-family: var(--font-body);
-  font-size: 1.05rem;
-  font-weight: 600;
-  color: var(--color-text);
-}
 
-.hack-past-item__year {
-  order: -1;                       /* year first so every row lines up */
-  font-family: var(--font-heading);
-  font-size: 1.15rem;
-  font-weight: 700;
-  color: var(--color-primary-dark);
-}
 
 /* ===== RESPONSIVE ===== */
 @media (max-width: 900px) {
@@ -825,8 +845,8 @@
     max-width: 22rem;
   }
 
-  .hack-past-sponsors {
-    gap: 1rem 1.25rem;
+  .hack-sponsor-marquee__track > .hack-past-sponsor {
+    margin-right: 1.5rem;
   }
 
   .hack-past-sponsor {
@@ -838,15 +858,6 @@
     max-width: 96px;
   }
 
-  .hack-past {
-    margin-top: 2rem;
-  }
 
-  .hack-past__heading {
-    text-align: center;
-  }
 
-  .hack-past-list {
-    margin-inline: auto;
-  }
 }

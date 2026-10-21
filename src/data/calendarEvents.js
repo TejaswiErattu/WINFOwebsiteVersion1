@@ -11,7 +11,7 @@
       full name there so the map link finds the right place.
 
    The site does the rest by itself:
-   • events that already happened disappear the day after
+   • events that already happened turn grey the day after
    • events after the quarter's end date stay hidden until you change it
    • the location links open Google Maps (the Maps app on phones)
    =================================================================== */
@@ -23,6 +23,15 @@ export const quarter = {
 };
 
 export const events = [
+  {
+    title: 'IUGA Fall 2026 RSO Fair',
+    date: '2026-10-06',
+    time: '4–6 PM',
+    building: 'NAN',
+    room: '181',
+    type: 'rso',
+    blurb: 'Come say hi at the WINFO table!',
+  },
   {
     title: 'WINFO Fall General Meeting',
     date: '2026-10-21',
@@ -46,7 +55,7 @@ export const events = [
     time: '6–8 PM',
     building: 'DEM',
     room: '302',
-    type: 'rso',
+    type: 'professional',
     blurb: 'Hosted with UW Women in Business.',
   },
   {

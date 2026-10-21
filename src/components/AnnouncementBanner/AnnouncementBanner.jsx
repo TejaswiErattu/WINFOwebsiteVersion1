@@ -5,9 +5,9 @@ const SHOW_AFTER_MS = 700;
 const VISIBLE_MS = 7000;
 
 /**
- * A small announcement that slides down under the navbar, then leaves on its
- * own. Pauses while hovered or focused, has a close button, and shows once
- * per page per browser session.
+ * A full-width announcement strip that slides down at the very top of the
+ * site, then leaves on its own, as soon as the visitor scrolls, or when
+ * closed. Pauses while hovered or focused and shows once per page per session.
  *
  * Props: id (unique key), message, linkLabel?, linkHref?
  */
@@ -35,6 +35,17 @@ export default function AnnouncementBanner({ id, message, linkLabel, linkHref })
     leaveTimer.current = setTimeout(() => setState('leaving'), VISIBLE_MS);
     return () => clearTimeout(leaveTimer.current);
   }, [state, paused]);
+
+  /* Scrolling the page dismisses it */
+  useEffect(() => {
+    if (state !== 'shown') return undefined;
+    const startY = window.scrollY;
+    const onScroll = () => {
+      if (Math.abs(window.scrollY - startY) > 24) setState('leaving');
+    };
+    window.addEventListener('scroll', onScroll, { passive: true });
+    return () => window.removeEventListener('scroll', onScroll);
+  }, [state]);
 
   if (state === 'hidden' || state === 'gone') return null;
 

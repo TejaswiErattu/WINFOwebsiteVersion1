@@ -309,18 +309,38 @@
 
 .navbar__menu {
   position: absolute;
-  top: calc(100% + 0.35rem);
+  top: calc(100% + 0.7rem);
   left: 50%;
   transform: translateX(-50%);
-  min-width: 190px;
+  width: 270px;
   margin: 0;
-  padding: 0.4rem;
+  padding: 0.5rem;
   list-style: none;
   background: var(--color-surface);
   border: 1px solid var(--color-border);
-  border-radius: var(--radius-md);
-  box-shadow: 0 14px 30px -16px rgba(31, 29, 30, 0.35);
+  border-radius: 18px;
+  box-shadow: 0 22px 44px -18px rgba(31, 29, 30, 0.35), 0 2px 6px rgba(31, 29, 30, 0.05);
   z-index: 1001;
+  animation: navbar-menu-in 0.18s ease-out both;
+}
+
+@keyframes navbar-menu-in {
+  from { opacity: 0; transform: translate(-50%, -6px); }
+  to   { opacity: 1; transform: translate(-50%, 0); }
+}
+
+/* Little pointer arrow under the tab */
+.navbar__menu::after {
+  content: '';
+  position: absolute;
+  top: -7px;
+  left: 50%;
+  width: 12px;
+  height: 12px;
+  background: var(--color-surface);
+  border-left: 1px solid var(--color-border);
+  border-top: 1px solid var(--color-border);
+  transform: translateX(-50%) rotate(45deg);
 }
 
 /* Invisible bridge so the menu stays open while the pointer moves down to it */
@@ -329,8 +349,8 @@
   position: absolute;
   left: 0;
   right: 0;
-  top: -0.5rem;
-  height: 0.5rem;
+  top: -0.9rem;
+  height: 0.9rem;
 }
 
 .navbar__menu[hidden] {
@@ -338,25 +358,42 @@
 }
 
 .navbar__menu-link {
-  display: block;
-  padding: 0.55rem 0.85rem;
-  border-radius: var(--radius-sm);
-  font-size: 0.9rem;
-  font-weight: 500;
-  color: var(--color-text-secondary);
-  white-space: nowrap;
+  display: flex;
+  flex-direction: column;
+  gap: 0.1rem;
+  padding: 0.65rem 0.85rem;
+  border-radius: 12px;
   text-decoration: none;
+  transition: background var(--transition-fast);
+}
+
+.navbar__menu-label {
+  font-size: 0.92rem;
+  font-weight: 600;
+  color: var(--color-text);
+}
+
+.navbar__menu-desc {
+  font-size: 0.78rem;
+  line-height: 1.35;
+  color: var(--color-text-muted);
 }
 
 .navbar__menu-link:hover,
 .navbar__menu-link:focus-visible {
   background: var(--color-accent-light);
-  color: var(--color-text);
 }
 
 .navbar__menu-link--active {
+  background: #efe8f8;
+}
+
+.navbar__menu-link--active .navbar__menu-label {
   color: var(--color-primary-dark);
-  font-weight: 600;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .navbar__menu { animation: none; }
 }
 
 /* ── Mobile panel groups ── */

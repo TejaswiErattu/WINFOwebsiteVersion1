@@ -81,22 +81,42 @@
 .cal__key {
   display: flex;
   flex-wrap: wrap;
-  gap: 0.4rem 1.1rem;
-  list-style: none;
-  margin: 0.75rem 0 0.9rem;
-  padding: 0;
-  font-size: 0.82rem;
-  color: var(--color-text-secondary);
+  align-items: center;
+  gap: 0.5rem 0.75rem;
+  margin: 0.85rem 0 1rem;
+  padding: 0.6rem 0.8rem;
+  background: var(--color-bg);
+  border-radius: 14px;
 }
 
-.cal__key li { display: inline-flex; align-items: center; gap: 0.4rem; }
+.cal__key-title {
+  margin: 0;
+  font-size: 0.82rem;
+  font-weight: 700;
+  color: var(--color-text);
+}
 
-.cal__key-dot {
-  width: 12px;
-  height: 12px;
-  border-radius: 50%;
+.cal__key ul {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.cal__key-item {
+  padding: 0.25rem 0.7rem;
+  border-radius: var(--radius-full);
   background: var(--type-color);
-  box-shadow: inset 0 0 0 1.5px var(--type-ink);
+  color: var(--type-ink);
+  font-size: 0.8rem;
+  font-weight: 600;
+}
+
+.cal__key-item--past {
+  background: #ebe8e6;
+  color: #6b6466;
 }
 
 .cal__grid-wrap { position: relative; }
@@ -175,6 +195,14 @@
   overflow: hidden;
 }
 
+/* Past events: greyed out */
+.cal-chip--past {
+  background: #ebe8e6;
+  color: #6b6466;
+  text-decoration: line-through;
+  text-decoration-color: rgba(107, 100, 102, 0.5);
+}
+
 /* ── Pop-out event details ── */
 .cal-pop {
   position: absolute;
@@ -250,6 +278,15 @@
   font-size: 0.9rem;
 }
 
+.cal-pop__type--past { background: #ebe8e6; color: #6b6466; }
+
+.cal-pop__past {
+  margin: 0.85rem 0 0;
+  font-size: 0.88rem;
+  font-weight: 600;
+  color: var(--color-text-muted);
+}
+
 .cal-pop__blurb {
   margin: 0.6rem 0 0;
   font-size: 0.9rem;
@@ -309,6 +346,16 @@
 .cal-gcal__short { display: none; }
 
 /* ── Upcoming list (side) ── */
+.cal__side { min-width: 0; }
+
+.cal__past-heading {
+  margin: var(--space-8) 0 var(--space-3);
+  font-family: var(--font-heading);
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--color-text-muted);
+}
+
 .cal__list {
   list-style: none;
   margin: 0;
@@ -318,6 +365,7 @@
 }
 
 .cal-card {
+  position: relative;
   display: grid;
   grid-template-columns: 70px minmax(0, 1fr);
   background: var(--color-surface);
@@ -380,6 +428,47 @@
 }
 
 .cal-card .cal-where { min-height: 30px; font-size: 0.85rem; }
+
+/* Small "add to Google Calendar" icon in the card's corner */
+.cal-card__gcal {
+  position: absolute;
+  top: 0.55rem;
+  right: 0.55rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  border: 1.5px dashed var(--color-primary);
+  color: var(--color-primary-dark);
+  background: var(--color-surface);
+  transition: background 0.15s ease, border-style 0.15s ease;
+}
+
+.cal-card__gcal svg { width: 16px; height: 16px; }
+.cal-card__gcal:hover { background: #efe8f8; border-style: solid; }
+
+/* Leave room so a long title never runs under the icon */
+.cal-card:not(.cal-card--past) .cal-card__body { padding-right: 3rem; }
+
+/* Past events: greyed out */
+.cal-card--past {
+  box-shadow: none;
+  background: #f6f4f2;
+}
+
+.cal-card--past .cal-card__stub {
+  background: #ebe8e6;
+  color: #6b6466;
+}
+
+.cal-card--past .cal-card__open,
+.cal-card--past .cal-card__type,
+.cal-card--past .cal-time { color: #6b6466; }
+
+.cal-card--past .cal-where { background: #ebe8e6; color: #6b6466; }
+.cal-card--past .cal-icon { color: #6b6466; }
 
 /* ── Responsive ── */
 @media (max-width: 1000px) {

@@ -183,6 +183,7 @@ function NavGroup({ group, pathname }) {
   const rootRef = useRef(null);
   const buttonRef = useRef(null);
   const closeTimer = useRef(0);
+  const openedByHover = useRef(false);
   const menuId = `nav-group-${group.label.toLowerCase().replace(/[^a-z0-9]+/g, '-')}`;
   const active = group.children.some((c) => pathname === c.path || pathname.startsWith(`${c.path}/`));
 
@@ -215,7 +216,19 @@ function NavGroup({ group, pathname }) {
 
   const openNow = () => {
     clearTimeout(closeTimer.current);
+    if (!open) openedByHover.current = true;
     setOpen(true);
+  };
+  /* A click always opens the menu. If hovering already opened it, the click
+     just keeps it open; a second click on an open menu closes it. */
+  const onToggleClick = () => {
+    clearTimeout(closeTimer.current);
+    if (open && openedByHover.current) {
+      openedByHover.current = false;
+      return;
+    }
+    openedByHover.current = false;
+    setOpen((v) => !v);
   };
   const closeSoon = () => {
     clearTimeout(closeTimer.current);
@@ -236,7 +249,7 @@ function NavGroup({ group, pathname }) {
         className={`navbar__link navbar__group-toggle ${active ? 'navbar__link--active' : ''}`}
         aria-expanded={open}
         aria-controls={menuId}
-        onClick={() => setOpen((v) => !v)}
+        onClick={onToggleClick}
       >
         {group.label}
         <svg className="navbar__chevron" viewBox="0 0 12 12" aria-hidden="true">
@@ -251,7 +264,8 @@ function NavGroup({ group, pathname }) {
               className={({ isActive }) => `navbar__menu-link ${isActive ? 'navbar__menu-link--active' : ''}`}
               onClick={() => setOpen(false)}
             >
-              {child.label}
+              <span className="navbar__menu-label">{child.label}</span>
+              {child.description && <span className="navbar__menu-desc">{child.description}</span>}
             </NavLink>
           </li>
         ))}
