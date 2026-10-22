@@ -86,11 +86,11 @@
   --gradient-card-amber:  var(--color-surface);
 
   /* ── 3. TYPOGRAPHY ─────────────────────────────────────────────────────── */
-  /* One typeface everywhere: Poppins */
-  --font-heading: 'Poppins', system-ui, -apple-system, sans-serif;
-  --font-body:    'Poppins', system-ui, -apple-system, sans-serif;
-  --font-cursive: 'Poppins', system-ui, -apple-system, sans-serif;
-  --font-mono:    'Poppins', system-ui, -apple-system, sans-serif;
+  /* Type pairing: Outfit for headings, Manrope for everything else */
+  --font-heading: 'Outfit', system-ui, -apple-system, sans-serif;
+  --font-body:    'Manrope', system-ui, -apple-system, sans-serif;
+  --font-cursive: 'Outfit', system-ui, -apple-system, sans-serif;
+  --font-mono:    'Manrope', system-ui, -apple-system, sans-serif;
 
   /* Modular type scale — fluid with clamp() */
   --text-xs:   0.75rem;                            /* 12 px */

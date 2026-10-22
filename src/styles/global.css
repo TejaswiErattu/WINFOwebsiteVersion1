@@ -24,7 +24,7 @@
 /* ===== 0. IMPORTS ========================================================= */
 @import './variables.css';
 
-/* Fonts (Poppins) are loaded once from index.html */
+/* Fonts (Outfit + Manrope) are loaded once from index.html */
 
 /* ===== 1. CSS RESET / NORMALISATION ======================================= */
 /*
@@ -690,7 +690,7 @@ html {
 }
 
 /* ===== HEADING SYSTEM ======================================================
-   One scale for the whole site, all in Poppins:
+   One scale for the whole site (headings in Outfit):
      page title   h1  2.75rem  purple   (.page-title)
      section      h2  2.5rem   purple   (.cursive-title and the h2s below)
      card title   h3  1.25rem  dark     (every card / row / list heading)
