@@ -31,7 +31,14 @@ export default function Home() {
         </div>
         <div className="home-hero__center">
           <WinfoLogo color="multi" className="home-hero__logo" />
-          <h1 className="home-hero__title page-title--hero">{heroData.heading}</h1>
+          <h1 className="home-hero__title page-title--hero">
+            {heroData.heading.map((line, i) => (
+              <span key={line} className="home-hero__title-line">
+                {i > 0 && ' '}
+                {line}
+              </span>
+            ))}
+          </h1>
           {heroData.slogan && <p className="home-hero__slogan">{heroData.slogan}</p>}
           <p className="home-hero__tagline">{heroData.tagline}</p>
         </div>

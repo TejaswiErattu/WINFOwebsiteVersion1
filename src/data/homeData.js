@@ -6,10 +6,10 @@ import { MEMBERSHIP_SIGNUP_URL } from './externalLinks';
 
 /* ---------- Hero ---------- */
 export const heroData = {
-  heading: 'Women in Informatics',
-  /* Slogan adapted from WINFO's mission line. Swap here if the board picks another. */
-  slogan: 'Nurturing a blossoming community of fearless technology leaders.',
-  tagline: 'A student-led community at the University of Washington Information School.',
+  /* Headline: each array item is its own line on wide screens */
+  heading: ['Empowering Women', 'in Technology.'],
+  slogan: 'Where our community meets to build, learn, and connect.',
+  tagline: 'Women in Informatics (WINFO) is a student-led community at the University of Washington Information School.',
 };
 
 /* ---------- Who We Are ---------- */

@@ -71,6 +71,18 @@
   margin: 0;
 }
 
+.home-hero__title-line {
+  display: block;               /* one line per phrase on wide screens */
+}
+
+/* Keep the headline solid dark (a global hero rule would turn spans into
+   light gradient text that is hard to read on the cream background) */
+.home-hero .home-hero__title .home-hero__title-line {
+  background: none;
+  -webkit-text-fill-color: currentColor;
+  color: inherit;
+}
+
 .home-hero__slogan {
   font-family: var(--font-heading);
   font-size: clamp(1.1rem, 2.4vw, 1.45rem);
