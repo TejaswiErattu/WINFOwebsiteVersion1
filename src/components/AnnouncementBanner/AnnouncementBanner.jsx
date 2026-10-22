@@ -1,66 +1,35 @@
-import { useEffect, useRef, useState } from 'react';
+import { useState } from 'react';
+import { createPortal } from 'react-dom';
 import './AnnouncementBanner.css';
 
-const SHOW_AFTER_MS = 700;
-const VISIBLE_MS = 7000;
+/* index.html has this element just above the app root; banners mount into it */
+const BANNER_SLOT_ID = 'announcement-slot';
 
 /**
- * A full-width announcement strip that slides down at the very top of the
- * site, then leaves on its own, as soon as the visitor scrolls, or when
- * closed. Pauses while hovered or focused and shows once per page per session.
+ * Standard site announcement bar: sits at the very top of the page, above
+ * the navbar, and scrolls away with the page. It stays until the visitor
+ * closes it; closing hides it for the rest of their visit.
  *
  * Props: id (unique key), message, linkLabel?, linkHref?
  */
 export default function AnnouncementBanner({ id, message, linkLabel, linkHref }) {
-  const [state, setState] = useState('hidden'); // hidden → shown → leaving → gone
-  const [paused, setPaused] = useState(false);
-  const leaveTimer = useRef(0);
-  const storageKey = `winfo-banner-${id}`;
+  const storageKey = `winfo-banner-closed-${id}`;
+  const [closed, setClosed] = useState(() => {
+    try { return sessionStorage.getItem(storageKey) === '1'; } catch { return false; }
+  });
 
-  /* Appear shortly after the page loads (unless already seen this session) */
-  useEffect(() => {
-    let seen = false;
-    try { seen = sessionStorage.getItem(storageKey) === '1'; } catch { /* storage blocked */ }
-    if (seen) return undefined;
-    const t = setTimeout(() => {
-      setState('shown');
-      try { sessionStorage.setItem(storageKey, '1'); } catch { /* storage blocked */ }
-    }, SHOW_AFTER_MS);
-    return () => clearTimeout(t);
-  }, [storageKey]);
+  const close = () => {
+    setClosed(true);
+    try { sessionStorage.setItem(storageKey, '1'); } catch { /* storage blocked */ }
+  };
 
-  /* Leave on its own after a while, unless the visitor is reading it */
-  useEffect(() => {
-    if (state !== 'shown' || paused) return undefined;
-    leaveTimer.current = setTimeout(() => setState('leaving'), VISIBLE_MS);
-    return () => clearTimeout(leaveTimer.current);
-  }, [state, paused]);
-
-  /* Scrolling the page dismisses it */
-  useEffect(() => {
-    if (state !== 'shown') return undefined;
-    const startY = window.scrollY;
-    const onScroll = () => {
-      if (Math.abs(window.scrollY - startY) > 24) setState('leaving');
-    };
-    window.addEventListener('scroll', onScroll, { passive: true });
-    return () => window.removeEventListener('scroll', onScroll);
-  }, [state]);
-
-  if (state === 'hidden' || state === 'gone') return null;
+  const slot = typeof document !== 'undefined' ? document.getElementById(BANNER_SLOT_ID) : null;
+  if (closed || !slot) return null;
 
   const external = linkHref && /^https?:/.test(linkHref);
 
-  return (
-    <div
-      className={`announce ${state === 'leaving' ? 'announce--leaving' : ''}`}
-      role="status"
-      onAnimationEnd={() => state === 'leaving' && setState('gone')}
-      onMouseEnter={() => setPaused(true)}
-      onMouseLeave={() => setPaused(false)}
-      onFocus={() => setPaused(true)}
-      onBlur={() => setPaused(false)}
-    >
+  return createPortal(
+    <div className="announce" role="region" aria-label="Announcement">
       <p className="announce__text">
         {message}
         {linkHref && (
@@ -76,11 +45,12 @@ export default function AnnouncementBanner({ id, message, linkLabel, linkHref })
           </>
         )}
       </p>
-      <button type="button" className="announce__close" aria-label="Dismiss announcement" onClick={() => setState('leaving')}>
+      <button type="button" className="announce__close" aria-label="Dismiss announcement" onClick={close}>
         <svg viewBox="0 0 12 12" aria-hidden="true">
           <path d="M2 2l8 8M10 2 2 10" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" />
         </svg>
       </button>
-    </div>
+    </div>,
+    slot,
   );
 }
