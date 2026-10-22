@@ -118,7 +118,7 @@ export const officersData = {
   committees: [
     {
       name: 'Diversity',
-      image: '',
+      image: '/images/team/committee-diversity.webp',
       description:
         'Organizes quarterly Power Hour events, leads the annual Fearless, TechMore and TechXperience hackathons, and coordinates outreach for high school and middle school students.',
     },
@@ -136,7 +136,7 @@ export const officersData = {
     },
     {
       name: 'Content',
-      image: '',
+      image: '/images/team/committee-content.webp',
       description:
         "Supports WINFO's storytelling by curating social media content, producing the WINFO podcast, and writing for the WINFO Weekly newsletter.",
     },
