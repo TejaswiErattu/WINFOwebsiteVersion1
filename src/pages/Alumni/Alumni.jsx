@@ -5,6 +5,15 @@ import { renderBold } from '../../utils/renderBold';
 import { alumniData, pastBoards } from '../../data/alumniData';
 import './Alumni.css';
 
+/* Opening one past board closes the others */
+function closeOtherBoards(e) {
+  const opened = e.currentTarget;
+  if (!opened.open) return;
+  opened.parentElement?.querySelectorAll('details[open]').forEach((d) => {
+    if (d !== opened) d.open = false;
+  });
+}
+
 export default function Alumni() {
   const d = alumniData;
 
@@ -104,7 +113,13 @@ export default function Alumni() {
         <p className="alumni-past__intro">{d.pastBoardIntro}</p>
         <div className="alumni-past">
           {pastBoards.map((b, i) => (
-            <details key={b.year} className="alumni-past__year" open={i === 0}>
+            <details
+              key={b.year}
+              className="alumni-past__year"
+              name="past-boards"            /* browsers: only one open at a time */
+              open={i === 0}
+              onToggle={closeOtherBoards}   /* same behavior for older browsers */
+            >
               <summary>{b.year} board</summary>
               <ul>
                 {b.members.map((m) => (
