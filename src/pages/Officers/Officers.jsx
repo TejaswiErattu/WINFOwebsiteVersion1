@@ -1,6 +1,7 @@
 import SectionWrapper from '../../components/SectionWrapper/SectionWrapper';
 import CircuitSVG from '../../components/CircuitSVG/CircuitSVG';
 import { officersData } from '../../data/officersData';
+import { siteInfo } from '../../data/navLinks';
 import './Officers.css';
 
 /* Inline LinkedIn SVG icon */
@@ -139,6 +140,16 @@ export default function Officers() {
             <CommitteeCard key={c.name} committee={c} />
           ))}
         </div>
+
+        {siteInfo.credit && (
+          <p className="team-credit">
+            This website was designed and built by{' '}
+            <a href={siteInfo.credit.url} target="_blank" rel="noopener noreferrer">
+              {siteInfo.credit.name}
+            </a>
+            , {siteInfo.credit.role}.
+          </p>
+        )}
       </SectionWrapper>
     </>
   );

@@ -101,6 +101,17 @@ a.footer__link:hover {
 }
 
 /* ── Bottom bar ── */
+.footer__credit {
+  color: var(--color-primary-dark);
+  font-weight: 600;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+.footer__credit:hover {
+  color: var(--color-text);
+}
+
 .footer__bottom {
   max-width: var(--container-max);
   margin: 0 auto;

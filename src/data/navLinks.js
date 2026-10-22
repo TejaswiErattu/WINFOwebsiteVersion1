@@ -73,6 +73,12 @@ export const socialLinks = [
 /* ---------- Site-wide brand & contact info ---------- */
 export const siteInfo = {
   copyright: 'WINFO — Women in Informatics',
+  /* Website credit (footer + bottom of the Team page) */
+  credit: {
+    name: 'Tejaswi Erattu Taj',
+    role: 'Director of Finance',
+    url: 'https://www.linkedin.com/in/tejaswi-erattu-2007-uw/',
+  },
   navCtaLabel: 'Join Us!',
   navCtaHref: MEMBERSHIP_SIGNUP_URL,
 };

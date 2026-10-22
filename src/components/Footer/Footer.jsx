@@ -90,6 +90,15 @@ export default function Footer() {
       {/* ── Bottom copyright bar ── */}
       <div className="footer__bottom">
         © {new Date().getFullYear()} {siteInfo.copyright}. All rights reserved.
+        {siteInfo.credit && (
+          <>
+            {' · '}
+            Website by{' '}
+            <a href={siteInfo.credit.url} target="_blank" rel="noopener noreferrer" className="footer__credit">
+              {siteInfo.credit.name}
+            </a>
+          </>
+        )}
       </div>
     </footer>
   );
