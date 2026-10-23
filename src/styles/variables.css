@@ -68,7 +68,7 @@
 
   /* Home hero — used only by .home-hero. Light cream with soft washes;
      dark text keeps contrast well above WCAG AA. */
-  --gradient-home-hero-fallback: radial-gradient(ellipse at 20% 20%, #fee6ea 0%, transparent 55%), radial-gradient(ellipse at 85% 80%, #ece4f6 0%, transparent 55%), linear-gradient(180deg, #fbf8f2 0%, #f4efe5 100%);
+  --gradient-home-hero-fallback: radial-gradient(ellipse at 20% 20%, #fee6ea 0%, transparent 55%), radial-gradient(ellipse at 85% 80%, #ece4f6 0%, transparent 55%), linear-gradient(180deg, #fbf8f2 0%, #f4efe5 60%, var(--color-bg) 100%);
   --color-home-hero-overlay:     rgba(251, 248, 242, 0.55);
   --color-home-hero-text:        var(--color-text);
   --color-home-hero-text-muted:  var(--color-text-secondary);

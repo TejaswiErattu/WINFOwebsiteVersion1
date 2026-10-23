@@ -32,7 +32,7 @@ export default function Merch() {
               href={ORDER_URL}
               target="_blank"
               rel="noopener noreferrer"
-              className="merch-cta-btn"
+              className="btn btn--accent btn--lg merch-hero__btn"
             >
               <CartIcon className="icon icon--inline" /> order now
             </a>

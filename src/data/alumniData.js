@@ -17,8 +17,8 @@ export const alumniData = {
     'Alumni want to stay close, and students want access to people a few steps ahead. The board connects the two.',
   ctaLabel: 'join the alumni network',
   ctaLink: ALUMNI_INTEREST_FORM_URL,
-  heroImage: '/images/winfo-community-3.jpg',
-  heroImageAlt: 'WINFO volunteers smiling behind a Women in Informatics table with laptops',
+  heroImage: '/images/winfo-community-1.jpg',
+  heroImageAlt: 'Students making vision boards at long tables in a classroom',
 
   /* The WINFO cycle */
   cycleHeading: 'the WINFO cycle',

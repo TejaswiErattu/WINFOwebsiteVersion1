@@ -13,7 +13,6 @@
   justify-content: center;
   background-color: var(--color-bg);
   background-image: var(--gradient-home-hero-fallback);
-  border-bottom: 1px solid var(--color-border);
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;

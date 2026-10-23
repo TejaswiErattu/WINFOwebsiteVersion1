@@ -53,7 +53,7 @@ export default function Podcast() {
               <strong>Decoding With WINFO</strong> {heroBody.replace('Decoding With WINFO ', '')}
             </p>
             <p className="podcast-hero__text">{heroBodySecondary}</p>
-            <Button href={ctaLink} variant="accent" className="podcast-hero__btn">
+            <Button href={ctaLink} variant="primary" className="podcast-hero__btn">
               <PlayIcon className="icon icon--inline" /> {ctaLabel}
             </Button>
           </div>
@@ -142,7 +142,7 @@ export default function Podcast() {
                       <h3 className="podcast-carousel__title">{ep.title}</h3>
                       <p className="podcast-carousel__desc">{ep.description}</p>
                       {ep.watchUrl && (
-                        <Button href={ep.watchUrl} variant="accent" size="sm" className="podcast-carousel__btn">
+                        <Button href={ep.watchUrl} variant="primary" size="sm" className="podcast-carousel__btn">
                           <PlayIcon className="icon icon--inline" /> watch here!
                         </Button>
                       )}

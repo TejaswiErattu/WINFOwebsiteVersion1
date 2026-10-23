@@ -79,25 +79,26 @@
   color: var(--color-primary);
 }
 
-/* CTA button */
+/* Hero CTA uses the shared gradient (accent) button */
+.merch-hero__btn {
+  align-self: center;
+}
+
+/* Light pill for the gradient banner */
 .merch-cta-btn {
   display: inline-block;
   padding: 0.85rem 2rem;
-  background: var(--color-primary-dark);
-  color: var(--color-on-primary);
   font-weight: 700;
   font-size: 1rem;
   border-radius: var(--radius-full);
   text-decoration: none;
   transition: opacity 0.2s, transform 0.2s;
-  align-self: center;
   box-shadow: var(--shadow-md);
 }
 
 .merch-cta-btn:hover {
   opacity: 0.9;
   transform: translateY(-2px);
-  color: var(--color-on-primary);
 }
 
 .merch-hero__note {

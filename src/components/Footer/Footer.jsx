@@ -69,7 +69,7 @@ export default function Footer() {
             ))}
           </div>
 
-          <Button href={siteInfo.navCtaHref} variant="primary" className="footer__join">
+          <Button href={siteInfo.navCtaHref} variant="accent" className="footer__join">
             {siteInfo.navCtaLabel}
           </Button>
         </div>

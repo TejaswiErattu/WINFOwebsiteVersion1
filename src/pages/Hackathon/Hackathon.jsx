@@ -172,7 +172,7 @@ export default function Hackathon() {
 
             <div className="hack-current__actions">
               {registrationOpen ? (
-                <Button href={current.registrationUrl} variant="primary" size="lg" className="hack-current__register">
+                <Button href={current.registrationUrl} variant="accent" size="lg" className="hack-current__register">
                   Register
                 </Button>
               ) : (
@@ -304,7 +304,7 @@ export default function Hackathon() {
         </div>
 
         <div className="hack-sponsor__cta">
-          <Button href={sponsorCtaLink} variant="accent" size="lg">
+          <Button href={sponsorCtaLink} variant="primary" size="lg">
             {sponsorCtaLabel}
           </Button>
         </div>

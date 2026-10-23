@@ -13,11 +13,9 @@ export const eventsData = {
   goals:
     'From large annual programs to workshops, company visits, and social events, our events create opportunities to learn, build, connect, and explore different paths in technology.',
   /* Photo carousel below the header copy. Distinct photos only (not used
-     elsewhere on this page). Add more by appending to this list. */
+     elsewhere on this page or in the Home gallery). Add more by appending to this list. */
   headerPhotos: [
     { src: '/images/winfo-community-1.jpg', alt: 'Students making vision boards at long tables in a classroom', width: 1200, height: 683 },
-    { src: '/images/winfo-community-2.jpg', alt: 'A WINFO officer with a microphone presenting judging criteria to a room of students', width: 1200, height: 900 },
-    { src: '/images/winfo-community-3.jpg', alt: 'WINFO volunteers smiling behind a Women in Informatics table with laptops', width: 1200, height: 800 },
   ],
 
   /* ---------- Flagship events: content lives in flagshipEvents.js ---------- */

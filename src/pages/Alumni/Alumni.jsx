@@ -28,7 +28,7 @@ export default function Alumni() {
             <h1 className="cursive-title page-title">{d.title}</h1>
             <p className="alumni-hero__text">{renderBold(d.heroBody)}</p>
             <p className="alumni-hero__text">{renderBold(d.heroBodySecondary)}</p>
-            <Button href={d.ctaLink} variant="primary" className="alumni-hero__btn">
+            <Button href={d.ctaLink} variant="accent" className="alumni-hero__btn">
               {d.ctaLabel}
             </Button>
           </div>
@@ -138,7 +138,7 @@ export default function Alumni() {
       <SectionWrapper>
         <div className="alumni-cta">
           <p className="alumni-cta__text cursive-title">{d.bottomCta.text}</p>
-          <Button href={d.bottomCta.btnLink} variant="accent" size="lg">
+          <Button href={d.bottomCta.btnLink} variant="primary" size="lg">
             {d.bottomCta.btnLabel}
           </Button>
         </div>

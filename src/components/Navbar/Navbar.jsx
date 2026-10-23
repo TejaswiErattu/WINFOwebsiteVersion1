@@ -135,7 +135,7 @@ export default function Navbar() {
         <div className="navbar__links">
           {desktopLinks}
 
-          <Button href={siteInfo.navCtaHref} size="sm" className="navbar__cta">
+          <Button href={siteInfo.navCtaHref} variant="accent" size="sm" className="navbar__cta">
             {siteInfo.navCtaLabel}
           </Button>
         </div>
@@ -165,7 +165,7 @@ export default function Navbar() {
       >
         {mobileLinks}
 
-        <Button href={siteInfo.navCtaHref} size="sm" className="navbar__cta" onClick={close}>
+        <Button href={siteInfo.navCtaHref} variant="accent" size="sm" className="navbar__cta" onClick={close}>
           {siteInfo.navCtaLabel}
         </Button>
       </div>

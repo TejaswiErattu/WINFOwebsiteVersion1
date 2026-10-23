@@ -52,7 +52,7 @@ export default function Home() {
             <p className="home-who__text">{renderBold(missionData.body)}</p>
             <p className="home-who__text">{renderBold(missionData.bodySecondary)}</p>
             <p className="home-who__text">{renderBold(missionData.bodyTertiary)}</p>
-            <Button href={missionData.ctaLink} variant="primary" className="home-who__btn">
+            <Button href={missionData.ctaLink} variant="accent" className="home-who__btn">
               {missionData.ctaLabel}
             </Button>
           </div>
