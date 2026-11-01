@@ -1,11 +1,21 @@
 import { Link } from 'react-router-dom';
 import Button from '../../components/Buttons/Buttons';
 import FlagshipEvent from '../../components/FlagshipEvent/FlagshipEvent';
+import PinBoard from '../../components/PinBoard/PinBoard';
 import EventCalendar from '../../components/EventCalendar/EventCalendar';
 import { quarter, events as calendarEvents, buildings, eventTypes } from '../../data/calendarEvents';
 import { eventsData } from '../../data/eventsData';
 import { flagshipEvents } from '../../data/flagshipEvents';
 import './Events.css';
+
+/* Loose stickers on the bulletin board (artwork in Events.css) */
+const STICKERS = [
+  { id: 'heart', label: 'Heart' },
+  { id: 'star', label: 'Star' },
+  { id: 'flower', label: 'Flower' },
+  { id: 'smiley', label: 'Smiley face' },
+  { id: 'winfo', label: 'WINFO' },
+];
 
 /* The hackathon has its own page; this page covers the youth programs */
 const youthEvents = flagshipEvents.filter((e) => e.slug !== 'hackathon');
@@ -52,18 +62,44 @@ export default function Events() {
       {moreEvents?.events?.length > 0 && (
         <section className="more-events" aria-labelledby="more-events-title">
           <div className="more-events__inner">
-            <h3 id="more-events-title" className="more-events__heading">{moreEvents.heading}</h3>
-            {/* Masonry: photos keep their own shape, so heights vary */}
-            <ul className="more-events__masonry">
-              {moreEvents.events.map((evt, i) => (
-                <li key={evt.name} className={`more-events__item more-events__item--${i % 4}`}>
-                  <figure className="more-events__image">
-                    <img src={evt.image} alt={evt.alt ?? ''} loading="lazy" decoding="async" />
-                    <figcaption className="more-events__name">{evt.name}</figcaption>
-                  </figure>
-                </li>
-              ))}
-            </ul>
+            {/* Bulletin board: photos and stickers can be dragged (mouse) or
+                nudged with arrow keys; nothing is saved */}
+            <PinBoard
+              className="more-events__board"
+              heading={<h3 id="more-events-title" className="more-events__heading">{moreEvents.heading}</h3>}
+              hint={moreEvents.boardHint}
+              resetLabel={moreEvents.resetLabel}
+            >
+              {(pin) => (
+                <>
+                  <ul className="more-events__masonry">
+                    {moreEvents.events.map((evt, i) => {
+                      const p = pin(`photo-${i}`);
+                      return (
+                        <li key={evt.name} {...p} className={`more-events__item ${p.className}`}>
+                          <figure className="more-events__image">
+                            <img src={evt.image} alt={evt.alt ?? ''} loading="lazy" decoding="async" draggable="false" />
+                            <figcaption className="more-events__name">{evt.name}</figcaption>
+                          </figure>
+                        </li>
+                      );
+                    })}
+                  </ul>
+                  {STICKERS.map((st) => {
+                    const p = pin(`sticker-${st.id}`);
+                    return (
+                      <span
+                        key={st.id}
+                        {...p}
+                        role="img"
+                        aria-label={`${st.label} sticker`}
+                        className={`pin-sticker pin-sticker--${st.id} ${p.className}`}
+                      />
+                    );
+                  })}
+                </>
+              )}
+            </PinBoard>
           </div>
         </section>
       )}

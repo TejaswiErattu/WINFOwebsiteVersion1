@@ -117,28 +117,77 @@ body .events-category__name:not(#_) {
   margin: 0;
 }
 
-/* ===== 4. PAST EVENTS: masonry gallery ===== */
+/* ===== 4. PAST EVENTS: scrapbook masonry ===== */
 .more-events {
-  background: var(--color-bg);
+  position: relative;
+  overflow: hidden;
   padding: var(--space-8) var(--space-6) var(--space-16);
+  /* faint dotted-paper background */
+  background:
+    radial-gradient(circle, rgba(158, 128, 189, 0.16) 1.2px, transparent 1.3px) 0 0 / 22px 22px,
+    var(--color-bg);
 }
 
 .more-events__inner {
+  position: relative;
   max-width: var(--container-max);
   margin: 0 auto;
 }
 
-.more-events__heading {
-  font-family: var(--font-heading);
-  font-size: var(--text-xl);
+/* Handwritten heading with a little arrow doodle
+   (body … :not(#_) beats the site-wide heading rule in global.css) */
+body h3.more-events__heading:not(#_) {
+  display: inline-block;
+  position: relative;
+  font-family: 'Caveat', var(--font-heading), cursive;
+  font-size: clamp(2rem, 4vw, 2.6rem);
   font-weight: 700;
   color: var(--color-primary-dark);
-  margin: 0 0 var(--space-6);
+  transform: rotate(-2deg);
+  margin: 0;
+  padding: 0.1rem 1.2rem 0.3rem;
+  background: #fff;
+  box-shadow: 0 4px 10px -5px rgba(0, 0, 0, 0.45);
+}
+.more-events__heading::after {
+  content: '';
+  position: absolute;
+  display: none;
+  right: -70px;
+  top: 55%;
+  width: 60px;
+  height: 36px;
+  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 60 36' fill='none' stroke='%23FEB0BA' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M3 6c14 2 30 8 40 22'/%3E%3Cpath d='M34 27l9 2 2-9'/%3E%3C/svg%3E") no-repeat center / contain;
+}
+
+/* Scattered background doodles (decorative) */
+.more-events__inner::before,
+.more-events__inner::after {
+  content: '';
+  position: absolute;
+  pointer-events: none;
+  z-index: 0;
+}
+.more-events__inner::before {           /* sparkle cluster, top right */
+  top: -8px;
+  right: 2%;
+  width: 90px;
+  height: 70px;
+  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 90 70' fill='none' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M30 8l4 12 12 4-12 4-4 12-4-12-12-4 12-4z' stroke='%239E80BD' stroke-width='2.4'/%3E%3Cpath d='M70 34l2.5 7 7 2.5-7 2.5-2.5 7-2.5-7-7-2.5 7-2.5z' stroke='%23FEB0BA' stroke-width='2.2'/%3E%3Ccircle cx='60' cy='12' r='2.5' fill='%239BDEE9'/%3E%3C/svg%3E") no-repeat center / contain;
+}
+.more-events__inner::after {            /* loopy squiggle, bottom left */
+  bottom: -40px;
+  left: -10px;
+  width: 160px;
+  height: 50px;
+  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 160 50' fill='none' stroke='%239BDEE9' stroke-width='3' stroke-linecap='round'%3E%3Cpath d='M4 30c16-20 26 14 40 2s-2-26 12-18 6 30 24 22 8-26 26-16 10 24 28 14 18-10 22-8'/%3E%3C/svg%3E") no-repeat center / contain;
 }
 
 .more-events__masonry {
+  position: relative;
+  z-index: 1;
   columns: 3 260px;
-  column-gap: var(--space-6);
+  column-gap: var(--space-8);
   list-style: none;
   margin: 0;
   padding: 0;
@@ -146,25 +195,210 @@ body .events-category__name:not(#_) {
 
 .more-events__item {
   break-inside: avoid;
-  margin-bottom: var(--space-8);
-  padding-top: 12px;              /* room for the tape */
+  margin-bottom: var(--space-10);
+  padding-top: 14px;              /* room for the tape / clip */
 }
 
-.more-events__image { margin: 0; }
+.more-events__image {
+  margin: 0;
+  padding-bottom: 12px !important;
+}
 .more-events__image img { height: auto; }
 
-/* A little scrapbook wobble */
-.more-events__item--0 .more-events__image { transform: rotate(-1.2deg); }
-.more-events__item--1 .more-events__image { transform: rotate(0.8deg); }
-.more-events__item--3 .more-events__image { transform: rotate(1.4deg); }
+/* Polaroid tilt, alternating */
+.more-events__item:nth-child(4n+1) .more-events__image { transform: rotate(-2deg); }
+.more-events__item:nth-child(4n+2) .more-events__image { transform: rotate(1.5deg); }
+.more-events__item:nth-child(4n+3) .more-events__image { transform: rotate(-0.8deg); }
+.more-events__item:nth-child(4n)   .more-events__image { transform: rotate(2.2deg); }
 
+/* Washi tape in mixed colours and angles */
+.more-events__item:nth-child(3n+2) .more-events__image::before {
+  background: rgba(155, 222, 233, 0.75);
+  transform: translateX(-50%) rotate(4deg);
+}
+.more-events__item:nth-child(3n) .more-events__image::before {
+  background: rgba(158, 128, 189, 0.55);
+  transform: translateX(-50%) rotate(-6deg);
+  left: 30%;
+}
+/* Every 4th photo: two corner tapes instead of one centred strip */
+.more-events__item:nth-child(4n) .more-events__image::before {
+  left: -14px;
+  top: -6px;
+  width: 64px;
+  transform: rotate(-38deg);
+}
+
+/* Paper clip on every 5th photo */
+.more-events__item:nth-child(5n+3) .more-events__image::before {
+  top: -18px;
+  left: auto;
+  right: 18px;
+  width: 22px;
+  height: 52px;
+  transform: rotate(8deg);
+  border: none;
+  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 22 52' fill='none' stroke='%239E80BD' stroke-width='2.4' stroke-linecap='round'%3E%3Cpath d='M15 16v24a5 5 0 0 1-10 0V10a7 7 0 0 1 14 0v28'/%3E%3C/svg%3E") no-repeat center / contain;
+}
+
+/* Corner doodles: heart, star, smiley, cycling */
+.more-events__image::after {
+  content: '';
+  position: absolute;
+  right: -16px;
+  bottom: 18px;
+  width: 38px;
+  height: 38px;
+  z-index: 2;
+  pointer-events: none;
+  background: no-repeat center / contain;
+}
+.more-events__item:nth-child(3n+1) .more-events__image::after {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 40 40' fill='%23FEB0BA' stroke='%23E8919E' stroke-width='2' stroke-linejoin='round'%3E%3Cpath d='M20 34S5 25 5 14a7.5 7.5 0 0 1 15-3 7.5 7.5 0 0 1 15 3c0 11-15 20-15 20z'/%3E%3C/svg%3E");
+  transform: rotate(12deg);
+}
+.more-events__item:nth-child(3n+2) .more-events__image::after {
+  left: -16px;
+  right: auto;
+  top: 30%;
+  bottom: auto;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 40 40' fill='%23FFF4C2' stroke='%239E80BD' stroke-width='2' stroke-linejoin='round'%3E%3Cpath d='M20 4l4.6 10 10.9 1.2-8.1 7.4 2.3 10.7L20 27.8 10.3 33.3l2.3-10.7-8.1-7.4L15.4 14z'/%3E%3C/svg%3E");
+  transform: rotate(-10deg);
+}
+.more-events__item:nth-child(3n) .more-events__image::after {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 40 40' fill='none' stroke='%239BDEE9' stroke-width='2.4' stroke-linecap='round'%3E%3Ccircle cx='20' cy='20' r='15' fill='%23fff'/%3E%3Cpath d='M14 23c3 4 9 4 12 0'/%3E%3Ccircle cx='15' cy='16' r='1.4' fill='%239BDEE9'/%3E%3Ccircle cx='25' cy='16' r='1.4' fill='%239BDEE9'/%3E%3C/svg%3E");
+}
+
+/* Handwritten caption on the polaroid's bottom strip */
 .more-events__name {
-  font-family: var(--font-heading);
-  font-size: 1.05rem;
+  font-family: 'Caveat', var(--font-heading), cursive;
+  font-size: 1.55rem;
   font-weight: 700;
+  line-height: 1.1;
   color: var(--color-primary-dark);
   text-align: center;
   margin: var(--space-2) 0 0;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .more-events__item .more-events__image { transition: transform 0.25s ease; }
+  .more-events__item:hover .more-events__image { transform: rotate(0deg) scale(1.02); }
+}
+
+/* ===== 4b. BULLETIN BOARD (cork + wood frame) ===== */
+.more-events__board {
+  position: relative;
+  z-index: 1;
+  padding: var(--space-6) var(--space-8) var(--space-4);
+  border-radius: 10px;
+  border: 14px solid #a8774f;
+  box-shadow:
+    inset 0 0 0 2px rgba(0, 0, 0, 0.12),
+    inset 0 4px 18px rgba(0, 0, 0, 0.25),
+    0 14px 30px -16px rgba(60, 35, 15, 0.55);
+  /* cork: speckles over a warm tan */
+  background:
+    radial-gradient(circle at 20% 30%, rgba(120, 72, 35, 0.35) 1px, transparent 1.6px) 0 0 / 13px 13px,
+    radial-gradient(circle at 70% 60%, rgba(255, 236, 205, 0.45) 1px, transparent 1.6px) 0 0 / 17px 17px,
+    radial-gradient(circle at 40% 80%, rgba(95, 55, 25, 0.28) 1.4px, transparent 2px) 0 0 / 23px 23px,
+    #d4a373;
+}
+
+.pin-board__bar {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-3);
+  margin-bottom: var(--space-4);
+}
+
+/* Hint written on a little note card */
+.pin-board__hint {
+  margin: 0 auto 0 var(--space-4);
+  padding: 0.3rem 0.8rem;
+  background: #fffbea;
+  box-shadow: 0 3px 8px -4px rgba(0, 0, 0, 0.4);
+  transform: rotate(-1.5deg);
+  font-family: 'Caveat', var(--font-heading), cursive;
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: var(--color-primary-dark);
+}
+
+.pin-board__reset {
+  padding: 0.4rem 1rem;
+  border: 2px solid #fff;
+  border-radius: var(--radius-full);
+  background: var(--color-primary-dark);
+  color: #fff;
+  font-family: var(--font-heading);
+  font-weight: 700;
+  font-size: 0.9rem;
+  cursor: pointer;
+}
+.pin-board__reset:disabled { opacity: 0.45; cursor: default; }
+.pin-board__reset:focus-visible { outline: 3px solid #fff; outline-offset: 2px; }
+
+/* Movable items */
+.pin-item { position: relative; }
+@media (pointer: fine) {
+  .pin-item { cursor: grab; touch-action: none; user-select: none; }
+  .pin-item--dragging { cursor: grabbing; }
+}
+.pin-item:focus-visible { outline: 3px dashed #fff; outline-offset: 4px; border-radius: 6px; }
+.pin-item--dragging .more-events__image,
+.pin-item--dragging.pin-sticker { filter: drop-shadow(0 16px 18px rgba(0, 0, 0, 0.35)); }
+
+/* Push pin on every photo */
+.more-events__item::after {
+  content: '';
+  position: absolute;
+  top: 2px;
+  left: calc(50% + 46px);
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: radial-gradient(circle at 35% 35%, #fff 0 2px, #e8919e 3px 100%);
+  box-shadow: 1px 3px 3px rgba(0, 0, 0, 0.35);
+  z-index: 3;
+}
+.more-events__item:nth-child(3n+2)::after { background: radial-gradient(circle at 35% 35%, #fff 0 2px, #9e80bd 3px 100%); left: 20%; }
+.more-events__item:nth-child(3n)::after   { background: radial-gradient(circle at 35% 35%, #fff 0 2px, #6cc3d1 3px 100%); left: 70%; }
+
+/* Loose stickers, scattered in the gaps */
+.pin-sticker {
+  position: absolute;
+  z-index: 2;
+  display: block;
+  width: 64px;
+  height: 64px;
+  background: no-repeat center / contain;
+  filter: drop-shadow(0 3px 3px rgba(0, 0, 0, 0.25));
+}
+.pin-sticker--heart  { top: 0.5%; right: 18%; transform: rotate(-12deg);
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 40 40'%3E%3Cpath d='M20 35S4 25.5 4 14a8 8 0 0 1 16-3 8 8 0 0 1 16 3c0 11.5-16 21-16 21z' fill='%23FEB0BA' stroke='%23fff' stroke-width='3' stroke-linejoin='round'/%3E%3C/svg%3E"); }
+.pin-sticker--star   { top: 48%; left: 64%; transform: rotate(14deg);
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 40 40'%3E%3Cpath d='M20 3l5 10.5 11.5 1.4-8.5 7.8 2.3 11.3L20 28.3 9.7 34l2.3-11.3-8.5-7.8L15 13.5z' fill='%23FFE27A' stroke='%23fff' stroke-width='3' stroke-linejoin='round'/%3E%3C/svg%3E"); }
+.pin-sticker--flower { bottom: 6%; left: 2%;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 40 40'%3E%3Cg fill='%23C9B3E3' stroke='%23fff' stroke-width='2.5'%3E%3Ccircle cx='20' cy='9' r='7'/%3E%3Ccircle cx='31' cy='17' r='7'/%3E%3Ccircle cx='27' cy='30' r='7'/%3E%3Ccircle cx='13' cy='30' r='7'/%3E%3Ccircle cx='9' cy='17' r='7'/%3E%3C/g%3E%3Ccircle cx='20' cy='20' r='6' fill='%23FFE27A' stroke='%23fff' stroke-width='2.5'/%3E%3C/svg%3E"); }
+.pin-sticker--smiley { top: 75%; right: 3%;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 40 40'%3E%3Ccircle cx='20' cy='20' r='17' fill='%239BDEE9' stroke='%23fff' stroke-width='3'/%3E%3Ccircle cx='14' cy='16' r='2' fill='%23206173'/%3E%3Ccircle cx='26' cy='16' r='2' fill='%23206173'/%3E%3Cpath d='M12 23c4 6 12 6 16 0' fill='none' stroke='%23206173' stroke-width='2.4' stroke-linecap='round'/%3E%3C/svg%3E"); }
+.pin-sticker--winfo  { bottom: 1%; left: 42%; width: 96px; height: 44px; transform: rotate(6deg);
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 96 44'%3E%3Crect x='3' y='3' width='90' height='38' rx='19' fill='%239E80BD' stroke='%23fff' stroke-width='3'/%3E%3Ctext x='48' y='29' text-anchor='middle' font-family='sans-serif' font-weight='800' font-size='18' fill='%23fff'%3Ewinfo%3C/text%3E%3C/svg%3E"); }
+
+@media (max-width: 767px) {
+  .more-events__board { padding: var(--space-4); border-width: 10px; }
+  .pin-sticker { width: 44px; height: 44px; }
+  .pin-sticker--winfo { width: 72px; height: 33px; }
+  .pin-board__hint { font-size: 1.1rem; }
+}
+
+/* Touch screens can't drag (a swipe scrolls), so hide the hint and reset */
+@media (pointer: coarse) {
+  .pin-board__bar { display: none; }
 }
 
 /* ===== 5. BOTTOM CTA ===== */

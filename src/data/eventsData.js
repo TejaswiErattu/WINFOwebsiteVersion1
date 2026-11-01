@@ -73,6 +73,8 @@ export const eventsData = {
   /* ---------- Past on-campus events (masonry gallery) ---------- */
   moreEvents: {
     heading: 'from past quarters',
+    boardHint: 'Psst: drag the photos and stickers around the board.',
+    resetLabel: 'Tidy up',
     /* alt describes what's in each photo (the event name is already the caption).
        Use alt: '' only for a purely decorative image. */
     events: [
