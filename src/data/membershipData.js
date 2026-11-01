@@ -44,10 +44,4 @@ export const membershipData = {
     },
   ],
 
-  /* ---------- Bottom CTA ---------- */
-  bottomCta: {
-    text: 'ready to take the leap?',
-    btnLabel: 'Join Us!',
-    btnLink: MEMBERSHIP_SIGNUP_URL,
-  },
 };

@@ -13,8 +13,15 @@ import { MEMBERSHIP_SIGNUP_URL } from './externalLinks';
    A link is { label, path }. A dropdown group is { label, children: [links] }. */
 export const navLinks = [
   { label: 'Home', path: '/' },
-  { label: 'Hackathon', path: '/hackathon' },
-  { label: 'Events', path: '/events' },
+  /* Proposal from the website review: every event type under one menu */
+  {
+    label: 'Events',
+    children: [
+      { label: 'WINFO Annual Hackathon', path: '/hackathon', description: 'Our flagship two-day hackathon' },
+      { label: 'On-Campus Events', path: '/events#on-campus', description: 'This quarter\u2019s calendar and past events' },
+      { label: 'Middle & High School Events', path: '/events#youth', description: 'TechXperience and Fearless, TechMore' },
+    ],
+  },
   { label: 'Podcast', path: '/podcast' },
   {
     label: 'Our Team',

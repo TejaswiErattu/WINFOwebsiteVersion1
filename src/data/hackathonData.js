@@ -1,5 +1,5 @@
 /* ===================================================================
-   Hackathon page data — matches Figma HiFi screenshots
+   Hackathon page data — evergreen overview of WINFO's annual hackathon
    =================================================================== */
 
 /* —— Local sponsor logos (from src/assets/sponsors) —— */
@@ -38,27 +38,46 @@ export const REGISTRATION_URL_TBD = 'REGISTRATION_URL_TBD';
 export const hackathonData = {
   /* ---------- Hero ---------- */
   title: 'hackathon',
+  heroLede: 'Our annual flagship event, where hundreds of students spend two days building technology for social good.',
+  /* Photos in /images/hackathon/ are from the 14th hackathon album (Hackathon Day) */
+  heroImage: '/images/hackathon/crowd-ballroom.jpg',
+  heroImageAlt: 'A packed ballroom of hackathon teams working at round tables decorated with purple balloons',
 
-  /* ---------- Gallery marquee (top of page) ----------
-     Edit captions here; `alt` is read by screen readers.
-     width/height are the file's pixel size (keeps the strip from shifting
-     while lazy images load). The first `galleryEagerCount` load immediately. */
-  galleryEagerCount: 3,
-  gallery: [
-    { src: '/images/hackathon-participants.jpg', width: 1920, height: 1280, alt: 'Hackathon participants smiling at their table with laptops open' },
-    { src: '/images/hackathon-2.jpg', width: 1200, height: 800, alt: 'A full ballroom of students working on laptops at round tables, decorated with white balloons' },
-    { src: '/images/hackathon-4.jpg', width: 1200, height: 800, alt: 'A mentor talks with a team of participants during the hackathon' },
-    { src: '/images/hackathon-food.jpg', width: 1920, height: 1280, alt: 'WINFO volunteers serving food to participants' },
-    { src: '/images/hackathon-3.jpg', width: 1200, height: 800, alt: 'Two Costco IT Recruiting representatives at their sponsor table' },
-    { src: '/images/hackathon-1.jpg', width: 1200, height: 900, alt: 'The WINFO hackathon team in black shirts posing in front of gold WINFO balloons' },
-    { src: '/images/hackathon-5.jpg', width: 1200, height: 800, alt: 'WINFO officers posing in front of gold WINFO balloons' },
+  /* ---------- 1 · Overview (evergreen: history, scale, mission) ---------- */
+  overviewHeading: 'WINFO\u2019s annual hackathon',
+  overviewBody: [
+    'For about 15 years, WINFO has hosted one of the largest student hackathons at the University of Washington. What started as a small gathering of Informatics students has grown into a two-day event that fills the HUB ballroom.',
+    'Participants form teams, design and build projects that tackle real-world problems, get feedback from industry mentors, and meet the sponsors who support the next generation of tech talent.',
+    'It\u2019s beginner-friendly and open to all current UW undergraduates: no coding experience required. Teams of 3\u20134 can submit working builds, prototypes, slide decks or concept demos, and lunch and dinner are on us.',
+  ],
+  /* Figures from the 14th hackathon (January 2026) */
+  statsHeading: 'at our latest hackathon\u2026',
+  stats: [
+    { number: '266', label: 'student participants' },
+    { number: '67', label: 'projects submitted' },
+    { number: '45', label: 'industry mentors' },
+    { number: '2', label: 'days of hacking & judging' },
   ],
 
-  /* ---------- This Year's Hackathon (featured block) ----------
+  /* ---------- 2 · Collaborate. Network. Solve. ---------- */
+  tagline: 'COLLABORATE. NETWORK. SOLVE.',
+  aboutBody:
+    "WINFO\u2019s Hackathon brings together UW students with diverse skill sets to develop solutions that address a wide array of issues. Here at the iSchool, we believe in designing and developing technology-based solutions that positively impact the world.",
+  challengeHeading: 'We challenge you...',
+  challengeBody:
+    'to venture into a new problem space, develop thoughtful solutions, and empower those around you to promote equity!',
+  beginnerHeading: 'We are a beginner-friendly environment!',
+  beginnerBody:
+    "This is a great experience for college students to network, get hands-on experience coding or designing, and work in teams to problem solve. Whether you\u2019re new to tech, a seasoned hacker, or looking for more experience, WINFO\u2019s hackathon is for you!",
+  aboutImage: '/images/hackathon/mentor-team.jpg',
+  aboutImageAlt: 'An industry mentor talks through ideas with a hackathon team gathered around their table',
+
+  /* ---------- 3 · This year's theme ----------
      Source: winfohackathon2027.web.app */
   currentHackathon: {
+    label: 'This year: the 15th hackathon',
     theme: 'Peaks of Possibility',
-    dates: 'January 30–31, 2027',
+    dates: 'January 30\u201331, 2027',
     location: 'HUB North Ballroom',
     locationDetail: 'University of Washington Husky Union Building',
     registrationUrl: REGISTRATION_URL_TBD,
@@ -68,101 +87,24 @@ export const hackathonData = {
     /* Pop-up announcement at the top of the page (shows once per visit) */
     banner: 'WINFO\u2019s 15th Hackathon is January 30\u201331, 2027 \u2014 registration opens soon!',
     bannerLinkLabel: 'Learn more',
-    /* Poster — add the file to public/hackathon/ and set the path here,
-       e.g. '/hackathon/poster-15.png'. Empty hides the poster column. */
-    posterSrc: '',
-    posterAlt: 'Poster for the 15th WINFO Hackathon, Peaks of Possibility',
-    intro:
-      'Women in Informatics is excited to invite you to our 15th Annual Hackathon, \u201cPeaks of Possibility\u201d. Join us for a day of developing technology solutions for social good and celebrating equity and inclusion in the technology field.',
     themeBody: [
       'Inspired by the winding trails, towering mountains, and the natural beauty of the Pacific Northwest, our theme reflects the journey of discovery in technology. We believe ingenuity emerges when participants venture beyond familiar ground and pursue bold, creative ideas.',
       'Just as every trail leads to a new perspective, every project has the potential to guide us toward bold new possibilities.',
     ],
+    photos: [
+      { src: '/images/hackathon/teams-at-work.jpg', width: 1600, height: 1067, alt: 'Rows of hackathon teams working on laptops under purple balloons' },
+      { src: '/images/hackathon/participants-table.jpg', width: 1600, height: 1067, alt: 'Hackathon participants smiling at their table with laptops open' },
+    ],
   },
 
-  /* ---------- Prize tracks (15th hackathon) ---------- */
-  tracksHeading: 'prize tracks',
-  tracks: [
-    {
-      name: 'Best Product',
-      description: 'This team brings it all: functionality, appeal, innovation, a working demo, and most of all, the potential to scale.',
-      focus: ['Venture potential', 'Solution originality', 'Scalability & marketability'],
-    },
-    {
-      name: 'Best Impact',
-      description: 'This team has built a product that has the greatest potential to influence lives and bring about a positive change to a community.',
-      focus: ['Real-world impact', 'Public value', 'Accessibility & inclusion'],
-    },
-    {
-      name: 'Best Design',
-      description: 'This team crafts a compelling narrative of its own, complemented by breathtaking visuals and intuitive user experiences.',
-      focus: ['Intentional design', 'Visual creativity', 'User Interface/User Experience'],
-    },
-    {
-      name: 'Best Implementation',
-      description: 'This team excels in technical execution, showing exceptional software development and coding skills.',
-      focus: ['Code readability', 'Stability & functionality', 'Integrated components'],
-    },
-  ],
-
-  /* ---------- Schedule (15th hackathon) ---------- */
-  scheduleHeading: 'schedule',
-  scheduleNote: 'The exact schedule will be sent out closer to the hackathon date.',
-  schedule: [
-    {
-      day: 'Hackathon Day',
-      date: 'Saturday, January 30, 2027',
-      location: 'University of Washington HUB, North Ballroom',
-      items: [
-        { time: '8:30 – 9:30 AM', label: 'Participants & Sponsors Check-In' },
-        { time: '9:30 – 9:50 AM', label: 'Opening Ceremonies' },
-        { time: '9:50 AM', label: 'Hacking Begins!' },
-        { time: '10:00 AM', label: 'Mentors Check-In' },
-        { time: '10:50 – 11:50 AM', label: 'Mentoring Round 1' },
-        { time: '11:50 AM', label: 'Lunch — Complimentary Catering by WINFO' },
-        { time: '1:20 – 2:20 PM', label: 'Mentoring Round 2' },
-        { time: '2:50 – 3:50 PM', label: 'Mentoring Round 3' },
-        { time: '4:00 PM', label: 'Dinner — Complimentary Catering by WINFO' },
-        { time: '5:00 – 6:00 PM', label: 'Mentoring Round 4' },
-        { time: '7:00 PM', label: 'Final Project Submissions Due' },
-        { time: '7:00 – 8:15 PM', label: 'Pitching' },
-        { time: '8:15 – 9:00 PM', label: 'Closing Ceremonies' },
-      ],
-    },
-    {
-      day: 'Judging Day',
-      date: 'Sunday, January 31, 2027',
-      items: [
-        { time: '11:30 AM', label: 'Judges Sign-In' },
-        { time: '12:00 PM', label: 'Finalists Sign-In' },
-        { time: '12:30 PM', label: 'Welcome Presentation' },
-        { time: '1:00 PM', label: 'Best Product Presentations' },
-        { time: '1:30 PM', label: 'Best Impact Presentations' },
-        { time: '2:00 PM', label: 'Best Implementation Presentations' },
-        { time: '2:30 PM', label: 'Best Design Presentations' },
-        { time: '3:30 PM', label: 'Buffer Time' },
-        { time: '4:00 PM', label: 'Winners Announced' },
-      ],
-    },
-  ],
-
-  /* ---------- About blurbs ---------- */
-  tagline: 'COLLABORATE. NETWORK. SOLVE.',
-  aboutBody:
-    "WINFO\u2019s Hackathon is an annual, 12-hour hackathon that brings together UW students with diverse skill sets to develop solutions that address a wide array of issues. Here at the iSchool, we believe in designing and developing technology-based solutions that positively impact the world.",
-  challengeHeading: 'We challenge you...',
-  challengeBody:
-    'to venture into a new problem space, develop thoughtful solutions, and empower those around you to promote equity!',
-  beginnerHeading: 'We are a beginner-friendly environment!',
-  beginnerBody:
-    "This is a great experience for college students to network, get hands-on experience coding or designing, and work in teams to problem solve. Whether you\u2019re new to tech, a seasoned hacker, or looking for more experience, WINFO\u2019s hackathon is for you!",
-
-  /* ---------- Stats ---------- */
-  statsHeading: 'at our latest hackathon\u2026',
-  stats: [
-    { number: '266', label: 'student participants' },
-    { number: '67', label: 'projects submitted' },
-    { number: '45', label: 'industry mentors' },
+  /* ---------- 4 · Photos & impact ---------- */
+  impactHeading: 'the energy in the room',
+  impactBody: 'Hundreds of students, mentors, judges, volunteers and sponsors, all in one room.',
+  impactPhotos: [
+    { src: '/images/hackathon-1.jpg', width: 1200, height: 900, alt: 'The WINFO hackathon team in black shirts posing in front of gold WINFO balloons' },
+    { src: '/images/hackathon/ballroom-wide.jpg', width: 1600, height: 1067, alt: 'A wide view of the ballroom full of hackathon teams' },
+    { src: '/images/hackathon-3.jpg', width: 1200, height: 800, alt: 'Two Costco IT Recruiting representatives at their sponsor table' },
+    { src: '/images/hackathon/mentor-visit.jpg', width: 1600, height: 2400, alt: 'A mentor stops by a table to check in with participants' },
   ],
 
   /* ---------- Previous Winners ---------- */
@@ -176,74 +118,12 @@ export const hackathonData = {
     { category: 'Best Implementation', image: '/images/best-coding-winner.jpg', projectName: 'Nudge', projectDescription: '' },
   ],
 
-  /* ---------- FAQ ---------- */
-  faqHeading: 'frequently asked questions',
-  /* Source: winfohackathon2027.web.app (15th hackathon) */
-  faqs: [
-    {
-      question: 'Is this hackathon right for me?',
-      answer: 'This is a beginner-friendly, high-level hackathon built to welcome participants from all backgrounds with no required coding experience. If you\'re interested in tech, design, problem-solving, or simply want to try something new, this is a great space for you to explore your ideas and grow your skills.',
-    },
-    {
-      question: 'Are there any prerequisites or required skills?',
-      answer: 'While no prerequisites are required, it helps to have a team where each member brings something different — design, coding, presentation, or research. Curiosity is all you really need.',
-    },
-    {
-      question: 'How big are the teams?',
-      answer: 'Teams can include 3-4 individuals.',
-    },
-    {
-      question: 'Do I need to have an idea before the event?',
-      answer: 'Nope. Use the time before kickoff to brainstorm with your team. We ask that you don\'t start building until hacking officially begins, but prep those brainstorms early!',
-    },
-    {
-      question: 'Can we network with the mentors or sponsors?',
-      answer: 'Absolutely. Mentors and sponsors are excited to learn about your project, offer feedback, and share advice. It\'s a fantastic opportunity to build connections.',
-    },
-    {
-      question: 'Can I join remotely?',
-      answer: 'This year\'s hackathon is in-person only so we can foster community and collaboration.',
-    },
-    {
-      question: 'What do I need to prepare?',
-      answer: 'Bring your laptop, charger, water bottle, and creative energy. Optional: headphones, sketchbook, or anything that supports your workflow.',
-    },
-    {
-      question: 'How does mentorship work?',
-      answer: 'Throughout the hackathon, we\'ll host two shifts of industry professionals aligned with your track. Mentors stop by to share feedback and suggestions as you work. When you\'re ready, signal your team\'s flag and they\'ll dive in.',
-    },
-    {
-      question: 'Does my solution have to be coded?',
-      answer: 'No! This hackathon welcomes prototypes, slide decks, and concept demos just as much as polished builds. Show your idea in the format that best highlights its impact.',
-    },
-    {
-      question: 'Do I need to have a team before the event?',
-      answer: 'Not at all. You\'ll have chances to meet collaborators before and during the hackathon. Join our Team Formation event to connect with other participants.',
-    },
-    {
-      question: 'Who can participate in the hackathon?',
-      answer: 'Any current undergraduate UW student is welcome to participate. Come as you are — we can\'t wait to see what you build.',
-    },
-    {
-      question: 'How long will the hackathon be?',
-      answer: 'The hackathon runs a full day (roughly 8:30 AM – 8:30 PM), with judging and presentations for finalists happening the following afternoon from 12:00 PM – 4:00 PM.',
-    },
-    {
-      question: 'Will there be training prior to the hackathon?',
-      answer: 'Yes! We\'re hosting two workshops before the event, plus sharing guides on Figma and GitHub to help you get started. Watch our socials for details.',
-    },
-    {
-      question: 'Will food be provided?',
-      answer: 'Lunch and dinner are provided, with several dietary options available. Snacks and hydration stations will be stocked all day.',
-    },
-    {
-      question: 'My question isn\'t here!',
-      answer: 'Reach out to winfo@uw.edu — we\'re happy to help.',
-    },
-  ],
+  /* ---------- 6 · Official hackathon website ---------- */
+  websiteHeading: 'looking for the details?',
+  websiteBody: 'Schedules, prize tracks, rules and FAQs for this year\u2019s hackathon live on the official hackathon website.',
 
   /* ---------- Sponsor the hackathon ---------- */
-  sponsorHeading: 'sponsor the hackathon!',
+  sponsorHeading: 'support our hackathon',
   sponsorBody:
     "By sponsoring the **WINFO Hackathon**, you\u2019ll gain **exclusive access** to inspire the next generation of tech talent. Mentor passionate students, judge groundbreaking projects, and spotlight your brand on both digital and in-person stages.",
   sponsorBenefits: [
@@ -303,5 +183,4 @@ export const hackathonData = {
     { name: 'West Monroe',            logo: logoWestMonroe },
   ],
 
-  /* ---------- Past Hackathons ---------- */
 };

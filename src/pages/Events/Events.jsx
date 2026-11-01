@@ -1,72 +1,66 @@
+import { Link } from 'react-router-dom';
 import Button from '../../components/Buttons/Buttons';
 import FlagshipEvent from '../../components/FlagshipEvent/FlagshipEvent';
-import PhotoCarousel from '../../components/PhotoCarousel/PhotoCarousel';
 import EventCalendar from '../../components/EventCalendar/EventCalendar';
 import { quarter, events as calendarEvents, buildings, eventTypes } from '../../data/calendarEvents';
 import { eventsData } from '../../data/eventsData';
 import { flagshipEvents } from '../../data/flagshipEvents';
 import './Events.css';
 
+/* The hackathon has its own page; this page covers the youth programs */
+const youthEvents = flagshipEvents.filter((e) => e.slug !== 'hackathon');
+
 export default function Events() {
-  const { title, subtitle, intro, goals, headerPhotos = [], flagshipLabels, moreEvents, bottomCta } = eventsData;
+  const { title, heroImage, intro, categories, onCampus, youth, flagshipLabels, moreEvents, bottomCta } = eventsData;
 
   return (
     <>
-      {/* ===== 1 · PAGE HEADER ===== */}
-      <header className="events-header">
-        <div className="events-header__inner">
-          <div className="events-header__main">
-            <h1 className="events-header__title cursive-title page-title">{title}</h1>
-
-            <div className="events-header__copy">
-              {subtitle && <p className="events-header__subtitle">{subtitle}</p>}
-              {intro && <p className="events-header__text">{intro}</p>}
-              {goals && <p className="events-header__text">{goals}</p>}
-            </div>
-          </div>
-
-          {headerPhotos.length > 0 && (
-            <div className="events-header__carousel">
-              <PhotoCarousel photos={headerPhotos} label="WINFO event photos" />
-            </div>
-          )}
+      {/* ===== 1 · HERO: large title over a photo ===== */}
+      <header className="events-hero" style={{ '--events-hero-img': `url(${heroImage})` }}>
+        <div className="events-hero__inner">
+          <h1 className="cursive-title page-title events-hero__title">{title}</h1>
+          <p className="events-hero__text">{intro}</p>
         </div>
       </header>
 
-      {/* ===== 2 · THIS QUARTER'S CALENDAR (edit src/data/calendarEvents.js) ===== */}
+      {/* ===== 2 · EVENT CATEGORIES ===== */}
+      <nav className="events-categories" aria-label="Types of WINFO events">
+        <ul className="events-categories__list">
+          {categories.map((c) => (
+            <li key={c.name} className={`events-category events-category--${c.accent}`}>
+              <h2 className="events-category__name">{c.name}</h2>
+              <p className="events-category__text">{c.text}</p>
+              {c.to.startsWith('#') ? (
+                <a href={c.to} className="events-category__link">{c.linkLabel} →</a>
+              ) : (
+                <Link to={c.to} className="events-category__link">{c.linkLabel} →</Link>
+              )}
+            </li>
+          ))}
+        </ul>
+      </nav>
+
+      {/* ===== 3 · ON-CAMPUS: calendar (edit src/data/calendarEvents.js) + gallery ===== */}
+      <section id="on-campus" className="events-section" aria-labelledby="on-campus-title">
+        <div className="events-section__head">
+          <h2 id="on-campus-title" className="cursive-title">{onCampus.heading}</h2>
+          <p className="events-section__intro">{onCampus.intro}</p>
+        </div>
+      </section>
       <EventCalendar quarter={quarter} events={calendarEvents} buildings={buildings} types={eventTypes} />
 
-      {/* ===== 2 · FLAGSHIP EVENTS ===== */}
-      <div className="flagships">
-        {flagshipEvents.map((event, i) => (
-          <FlagshipEvent
-            key={event.slug}
-            event={event}
-            labels={flagshipLabels}
-            flipped={i % 2 === 1}
-            eagerMedia={i === 0}
-          />
-        ))}
-      </div>
-
-      {/* ===== 3 · MORE EVENTS ===== */}
       {moreEvents?.events?.length > 0 && (
         <section className="more-events" aria-labelledby="more-events-title">
           <div className="more-events__inner">
-            <h2 id="more-events-title" className="more-events__heading">{moreEvents.heading}</h2>
-            {moreEvents.intro && <p className="more-events__intro">{moreEvents.intro}</p>}
-
-            <ul className="more-events__grid">
-              {moreEvents.events.map((evt) => (
-                <li key={evt.name} className="more-events__item">
-                  <div className="more-events__image">
-                    {evt.image ? (
-                      <img src={evt.image} alt={evt.alt ?? ''} loading="lazy" decoding="async" />
-                    ) : (
-                      <div className="more-events__placeholder" />
-                    )}
-                  </div>
-                  <p className="more-events__name">{evt.name}</p>
+            <h3 id="more-events-title" className="more-events__heading">{moreEvents.heading}</h3>
+            {/* Masonry: photos keep their own shape, so heights vary */}
+            <ul className="more-events__masonry">
+              {moreEvents.events.map((evt, i) => (
+                <li key={evt.name} className={`more-events__item more-events__item--${i % 4}`}>
+                  <figure className="more-events__image">
+                    <img src={evt.image} alt={evt.alt ?? ''} loading="lazy" decoding="async" />
+                    <figcaption className="more-events__name">{evt.name}</figcaption>
+                  </figure>
                 </li>
               ))}
             </ul>
@@ -74,7 +68,26 @@ export default function Events() {
         </section>
       )}
 
-      {/* ===== 4 · BOTTOM CTA ===== */}
+      {/* ===== 4 · MIDDLE & HIGH SCHOOL ===== */}
+      <section id="youth" className="events-section events-section--alt" aria-labelledby="youth-title">
+        <div className="events-section__head">
+          <h2 id="youth-title" className="cursive-title">{youth.heading}</h2>
+          <p className="events-section__intro">{youth.intro}</p>
+        </div>
+      </section>
+      <div className="flagships">
+        {youthEvents.map((event, i) => (
+          <FlagshipEvent
+            key={event.slug}
+            event={event}
+            labels={flagshipLabels}
+            flipped={i % 2 === 1}
+            eagerMedia={false}
+          />
+        ))}
+      </div>
+
+      {/* ===== 5 · BOTTOM CTA ===== */}
       <section className="events-cta">
         <h2 className="events-cta__heading cursive-title">{bottomCta.heading}</h2>
         <p className="events-cta__body">

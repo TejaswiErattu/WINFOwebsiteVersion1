@@ -12,6 +12,8 @@ import {
   whatWeDoHeading,
   whatWeDoData,
   informaticsHeading,
+  informaticsDefinition,
+  informaticsAreas,
   informaticsQuotes,
   communityHeading,
   communityPhotos,
@@ -44,7 +46,40 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ===== 2. WHO WE ARE ===== */}
+      {/* ===== 2. WHAT IS INFORMATICS (explained before WINFO itself) ===== */}
+      <SectionWrapper className="home-informatics">
+        <div className="home-informatics__bg" aria-hidden="true">
+          <div className="home-informatics__blob home-informatics__blob--1" />
+          <div className="home-informatics__blob home-informatics__blob--2" />
+        </div>
+        <div className="home-informatics__inner">
+          <h2 className="cursive-title section-title--center">
+            {informaticsHeading.title}
+          </h2>
+          <div className="home-informatics__definition">
+            {informaticsDefinition.map((p, i) => (
+              <p key={i} className="home-informatics__text">{renderBold(p)}</p>
+            ))}
+          </div>
+          <ul className="home-informatics__areas" aria-label="Areas of Informatics">
+            {informaticsAreas.map((a) => (
+              <li key={a}>{a}</li>
+            ))}
+          </ul>
+          <div className="home-informatics__quotes">
+            {informaticsQuotes.map((q, i) => (
+              <blockquote className="home-quote" key={i}>
+                <p className="home-quote__text">{q.quote}</p>
+                <cite className="home-quote__cite">— {q.name}, {q.role}</cite>
+              </blockquote>
+            ))}
+          </div>
+        </div>
+        <div className="home-informatics__circuit" aria-hidden="true">
+          <CircuitSVG variant="small" />
+        </div>
+      </SectionWrapper>
+      {/* ===== 3. WHO WE ARE ===== */}
       <SectionWrapper>
         <div className="home-who">
           <div className="home-who__content">
@@ -116,29 +151,6 @@ export default function Home() {
         <GalleryScroller photos={communityPhotos} label="Photos from WINFO events" eagerCount={0} />
       </section>
 
-      {/* ===== 6. WHAT IS INFORMATICS ===== */}
-      <SectionWrapper className="home-informatics">
-        <div className="home-informatics__bg" aria-hidden="true">
-          <div className="home-informatics__blob home-informatics__blob--1" />
-          <div className="home-informatics__blob home-informatics__blob--2" />
-        </div>
-        <div className="home-informatics__inner">
-          <h2 className="cursive-title section-title--center">
-            {informaticsHeading.title}
-          </h2>
-          <div className="home-informatics__quotes">
-            {informaticsQuotes.map((q, i) => (
-              <blockquote className="home-quote" key={i}>
-                <p className="home-quote__text">{q.quote}</p>
-                <cite className="home-quote__cite">— {q.name}, {q.role}</cite>
-              </blockquote>
-            ))}
-          </div>
-        </div>
-        <div className="home-informatics__circuit" aria-hidden="true">
-          <CircuitSVG variant="small" />
-        </div>
-      </SectionWrapper>
     </>
   );
 }

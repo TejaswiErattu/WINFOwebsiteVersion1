@@ -25,7 +25,7 @@ export default function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const [prevPathname, setPrevPathname] = useState(null);
-  const { pathname } = useLocation();
+  const { pathname, hash } = useLocation();
   const toggleRef = useRef(null);
   const panelRef = useRef(null);
 
@@ -90,6 +90,9 @@ export default function Navbar() {
   }, [menuOpen]);
 
   const linkClass = ({ isActive }) => `navbar__link ${isActive ? 'navbar__link--active' : ''}`;
+  /* Links with a #section are only active when that section is the one in the URL */
+  const childClass = (child) => ({ isActive }) =>
+    linkClass({ isActive: isActive && (!child.path.includes('#') || hash === child.path.slice(child.path.indexOf('#'))) });
 
   /* Desktop row: plain links and dropdown groups */
   const desktopLinks = navLinks.map((item) =>
@@ -108,7 +111,7 @@ export default function Navbar() {
       <div key={item.label} className="navbar__mobile-group" role="group" aria-label={item.label}>
         <p className="navbar__mobile-group-label" aria-hidden="true">{item.label}</p>
         {item.children.map((child) => (
-          <NavLink key={child.path} to={child.path} className={linkClass} onClick={close}>
+          <NavLink key={child.path} to={child.path} className={childClass(child)} onClick={close}>
             {child.label}
           </NavLink>
         ))}
@@ -185,7 +188,11 @@ function NavGroup({ group, pathname }) {
   const closeTimer = useRef(0);
   const openedByHover = useRef(false);
   const menuId = `nav-group-${group.label.toLowerCase().replace(/[^a-z0-9]+/g, '-')}`;
-  const active = group.children.some((c) => pathname === c.path || pathname.startsWith(`${c.path}/`));
+  const { hash } = useLocation();
+  const active = group.children.some((c) => {
+    const path = c.path.split('#')[0];
+    return pathname === path || pathname.startsWith(`${path}/`);
+  });
 
   /* Close when the route changes (state-driven, no effect) */
   if (prevPath !== pathname) {
@@ -261,7 +268,10 @@ function NavGroup({ group, pathname }) {
           <li key={child.path}>
             <NavLink
               to={child.path}
-              className={({ isActive }) => `navbar__menu-link ${isActive ? 'navbar__menu-link--active' : ''}`}
+              className={({ isActive }) => {
+                const on = isActive && (!child.path.includes('#') || hash === child.path.slice(child.path.indexOf('#')));
+                return `navbar__menu-link ${on ? 'navbar__menu-link--active' : ''}`;
+              }}
               onClick={() => setOpen(false)}
             >
               <span className="navbar__menu-label">{child.label}</span>

@@ -17,8 +17,13 @@
 import { hackathonData } from './hackathonData';
 
 /* ---- Hackathon: reuse verified copy and photos from the Hackathon page ---- */
-const hackGallery = (src) => hackathonData.gallery.find((g) => g.src === src);
-const hackFaq = (question) => hackathonData.faqs.find((f) => f.question === question)?.answer;
+const hackPhotos = [
+  { src: hackathonData.heroImage, alt: hackathonData.heroImageAlt, width: 1200, height: 800 },
+  { src: hackathonData.aboutImage, alt: hackathonData.aboutImageAlt, width: 1200, height: 800 },
+  ...hackathonData.currentHackathon.photos,
+  ...hackathonData.impactPhotos,
+];
+const hackGallery = (src) => hackPhotos.find((g) => g.src === src);
 const challenge = hackathonData.challengeHeading.replace(/\.+$/, '');
 
 export const flagshipEvents = [
@@ -28,14 +33,14 @@ export const flagshipEvents = [
     tagline: hackathonData.tagline,
     description: hackathonData.aboutBody,
     mission: `${challenge.charAt(0).toUpperCase()}${challenge.slice(1)} ${hackathonData.challengeBody}`,
-    audience: hackFaq('Who can participate in the hackathon?'),
+    audience: 'Any current undergraduate UW student is welcome to participate.',
     /* timesHeld, firstYear, attendance: waiting for board confirmation.
        (The 266 / 67 / 45 figures on the Hackathon page are not used until
        the board confirms which year they belong to.) */
     reach: [
       'Beginner-friendly: no coding experience required',
       'Mentorship from industry professionals',
-      `Prize tracks: ${hackathonData.tracks.map((t) => t.name.replace(/^Best /, '')).join(', ')}`,
+      'Two days of building, pitching and judging',
       'Prototypes, slide decks and concept demos are all welcome',
     ],
     photos: [

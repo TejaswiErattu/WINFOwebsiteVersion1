@@ -6,7 +6,7 @@ export const podcastData = {
   /* ---------- Hero ---------- */
   title: 'our podcast',
   heroBody:
-    'Decoding With WINFO is our signature podcast series, where we dive into the stories of diverse and innovative leaders making waves in the world of information, technology, and innovation.',
+    '*Decoding with WINFO* is our signature podcast series, where we dive into the stories of diverse and innovative leaders making waves in the world of information, technology, and innovation.',
   heroBodySecondary:
     'From filming to final cut, each episode is thoughtfully crafted by our content committee to share authentic experiences for our community to connect with and enjoy.',
   ctaLabel: 'watch here!',
@@ -36,6 +36,7 @@ export const podcastData = {
   /* ---------- Guest CTA ---------- */
   guestCta: {
     text: 'interested in sharing your story?',
+    body: 'We\u2019re always looking for guests from the iSchool, the tech industry, and our own community. Send us a note!',
     btnLabel: 'become a podcast guest!',
     btnHref: 'mailto:winfo@uw.edu?subject=Podcast%20guest%20interest',
   },
@@ -160,7 +161,7 @@ export const podcastData = {
       tag: 'episode 1:',
       title: 'decoding informatics with Hannah Yi',
       description:
-        'The very first episode of Decoding with WINFO! Hannah Yi shares her Informatics journey, how she carved out her career in tech, and the advice she wishes she had as a student just starting out.',
+        'The very first episode of *Decoding with WINFO*! Hannah Yi shares her Informatics journey, how she carved out her career in tech, and the advice she wishes she had as a student just starting out.',
       image: 'https://img.youtube.com/vi/U6Dmh5N6E7c/hqdefault.jpg',
       imageAlt: 'Decoding Informatics with Hannah Yi thumbnail',
       guests: ['Hannah Yi'],

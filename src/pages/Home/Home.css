@@ -425,3 +425,38 @@
     opacity: 0.6;
   }
 }
+
+/* What is informatics: definition first, quotes as support */
+.home-informatics__definition {
+  max-width: 46rem;
+  margin: 0 auto 2.5rem;
+  text-align: center;
+}
+.home-informatics__text {
+  font-size: var(--text-md);
+  line-height: 1.75;
+  color: var(--color-text-secondary);
+  margin: 0 0 1rem;
+}
+.home-informatics__text strong { color: var(--color-text); }
+
+.home-informatics__areas {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.5rem;
+  max-width: 50rem;
+  margin: 0 auto 2.5rem;
+  padding: 0;
+  list-style: none;
+}
+.home-informatics__areas li {
+  padding: 0.35rem 0.9rem;
+  border-radius: var(--radius-full);
+  background: var(--color-bg-alt);
+  border: 1px solid var(--color-border);
+  font-family: var(--font-heading);
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--color-primary-dark);
+}

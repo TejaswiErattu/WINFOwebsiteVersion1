@@ -5,18 +5,51 @@
 import { MEMBERSHIP_SIGNUP_URL } from './externalLinks';
 
 export const eventsData = {
-  /* ---------- Page header ---------- */
+  /* ---------- Page hero (title over a background photo) ---------- */
   title: 'events',
-  subtitle: 'Building community through technology, connection, and hands-on experiences.',
+  heroImage: '/images/winfo-community-1.jpg',
   intro:
-    'WINFO brings students together through technical, professional, and community-focused events designed to make technology more welcoming and accessible.',
-  goals:
-    'From large annual programs to workshops, company visits, and social events, our events create opportunities to learn, build, connect, and explore different paths in technology.',
-  /* Photo carousel below the header copy. Distinct photos only (not used
-     elsewhere on this page or in the Home gallery). Add more by appending to this list. */
-  headerPhotos: [
-    { src: '/images/winfo-community-1.jpg', alt: 'Students making vision boards at long tables in a classroom', width: 1200, height: 683 },
+    'WINFO hosts events to build community, grow professional skills, make connections, and open doors to opportunities in technology, for UW students and for the middle and high school students who will come after them.',
+
+  /* ---------- Event categories (cards under the hero) ----------
+     `to` is a route or an in-page anchor on this page. */
+  categories: [
+    {
+      name: 'WINFO Annual Hackathon',
+      text: 'Our flagship two-day hackathon, where hundreds of students build technology for social good.',
+      to: '/hackathon',
+      linkLabel: 'Visit the hackathon page',
+      accent: 'purple',
+    },
+    {
+      name: 'On-Campus Events',
+      text: 'Socials, crafting nights, professional development workshops, panels, company tours and networking for UW students.',
+      to: '#on-campus',
+      linkLabel: 'See this quarter',
+      accent: 'pink',
+    },
+    {
+      name: 'Middle & High School Events',
+      text: 'TechXperience and Fearless, TechMore introduce younger students to technology with UW mentors.',
+      to: '#youth',
+      linkLabel: 'Learn about our programs',
+      accent: 'blue',
+    },
   ],
+
+  /* ---------- On-campus section ---------- */
+  onCampus: {
+    heading: 'on-campus events',
+    intro:
+      'Every quarter we host social, creative, and career-focused events for UW students. Check the calendar for what\u2019s coming up.',
+  },
+
+  /* ---------- Middle & high school section ---------- */
+  youth: {
+    heading: 'middle & high school events',
+    intro:
+      'For students, teachers, and school administrators: our youth programs give middle and high school students a beginner-friendly, mentor-led first look at technology and Informatics. No prior experience is needed.',
+  },
 
   /* ---------- Flagship events: content lives in flagshipEvents.js ---------- */
   flagshipLabels: {
@@ -37,11 +70,9 @@ export const eventsData = {
     posterCount: 'of',              // "2 of 5"
   },
 
-  /* ---------- More events (one grid, below the flagships) ---------- */
+  /* ---------- Past on-campus events (masonry gallery) ---------- */
   moreEvents: {
-    heading: 'More events we host',
-    intro:
-      'Beyond our flagship programs, WINFO hosts social, career, and community events throughout the year.',
+    heading: 'from past quarters',
     /* alt describes what's in each photo (the event name is already the caption).
        Use alt: '' only for a purely decorative image. */
     events: [

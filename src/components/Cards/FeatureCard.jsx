@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom';
+import { renderBold } from '../../utils/renderBold';
 import './FeatureCard.css';
 
 /**
@@ -23,7 +24,7 @@ export default function FeatureCard({
   return (
     <div className={`feature-card feature-card--${accent} ${className}`}>
       <h3 className="feature-card__title">{title}</h3>
-      <p className="feature-card__text">{text}</p>
+      <p className="feature-card__text">{renderBold(text)}</p>
 
       {linkLabel && linkTo && (
         <Link to={linkTo} className="feature-card__link">

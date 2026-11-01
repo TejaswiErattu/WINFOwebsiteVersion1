@@ -44,7 +44,6 @@ export default function Membership() {
     perksHeading,
     perksSubtitle,
     perks,
-    bottomCta,
   } = membershipData;
 
   return (
@@ -96,16 +95,6 @@ export default function Membership() {
               <p className="membership-perk__text">{renderBold(perk.text)}</p>
             </div>
           ))}
-        </div>
-      </SectionWrapper>
-
-      {/* ===== 3 · BOTTOM CTA — "ready to take the leap?" ===== */}
-      <SectionWrapper>
-        <div className="membership-bottom-cta">
-          <p className="membership-bottom-cta__text cursive-title">{bottomCta.text}</p>
-          <Button href={bottomCta.btnLink} variant="accent" size="lg" className="membership-bottom-cta__btn">
-            {bottomCta.btnLabel}
-          </Button>
         </div>
       </SectionWrapper>
     </>

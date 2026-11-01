@@ -630,7 +630,7 @@ html {
   body .home-hero__logo { height: 3.25rem; }
   body .home-hero__title { font-size: 2rem; }
   body .home-hero__center { gap: 0.6rem; }
-  body [class*='-hero']:not([class*='__']), body .events-header { padding-top: 1.75rem; padding-bottom: 1.75rem; }
+  body [class*='-hero']:not([class*='__']) { padding-top: 1.75rem; padding-bottom: 1.75rem; }
   /* Beats the generic "stack every hero" rule above (which uses !important) */
   body [class*='-hero__inner'] { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr) !important; text-align: left; }
   body [class*='-hero__text'] { align-items: flex-start; }
@@ -648,7 +648,6 @@ html {
     max-width: none; margin: 0;
   }
 
-  body .events-header__main { grid-template-columns: minmax(0, 45fr) minmax(0, 55fr); gap: 1.5rem; }
 
   body .merch-hero__inner, body .support-hero__inner, body .support-why { flex-direction: row; gap: 1.5rem; }
   body .merch-hero__image { width: 38%; max-width: 240px; margin: 0; }
@@ -675,8 +674,6 @@ html {
   body .photo-carousel__frame img { aspect-ratio: 21 / 9; }
   body .flagship__poster-lightbox img, body .poster-lightbox__img { max-height: 70vh; }
 
-  /* Sticky bars: let the hackathon sub-nav scroll away to free vertical space */
-  body .hack-subnav { position: static; }
 
   /* Hamburger menu panel: tighter rows so most links show without scrolling */
   body .navbar__mobile--open { padding: 0.5rem 1.5rem 1rem; }

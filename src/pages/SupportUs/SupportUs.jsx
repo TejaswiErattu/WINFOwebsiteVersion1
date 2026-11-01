@@ -65,7 +65,7 @@ export default function SupportUs() {
                   </span>
                 ))}
               </h3>
-              <p className="support-involved-card__body">{card.body}</p>
+              <p className="support-involved-card__body">{renderBold(card.body)}</p>
             </div>
           ))}
         </div>

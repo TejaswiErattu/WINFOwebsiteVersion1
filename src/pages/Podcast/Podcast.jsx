@@ -2,6 +2,7 @@ import { useRef, useState } from 'react';
 import SectionWrapper from '../../components/SectionWrapper/SectionWrapper';
 import Button from '../../components/Buttons/Buttons';
 import CircuitSVG from '../../components/CircuitSVG/CircuitSVG';
+import { renderBold } from '../../utils/renderBold';
 import { podcastData } from '../../data/podcastData';
 import { PlayIcon } from '../../components/Icons/Icons';
 import './Podcast.css';
@@ -50,7 +51,7 @@ export default function Podcast() {
           <div className="podcast-hero__content">
             <h1 className="cursive-title page-title">{title}</h1>
             <p className="podcast-hero__text">
-              <strong>Decoding With WINFO</strong> {heroBody.replace('Decoding With WINFO ', '')}
+              {renderBold(heroBody)}
             </p>
             <p className="podcast-hero__text">{heroBodySecondary}</p>
             <Button href={ctaLink} variant="primary" className="podcast-hero__btn">
@@ -81,19 +82,12 @@ export default function Podcast() {
         </div>
       </SectionWrapper>
 
-      {/* ===== 3 · GUEST CTA ===== */}
-      <SectionWrapper>
-        <div className="podcast-guest-cta">
-          <p className="podcast-guest-cta__text cursive-title">{guestCta.text}</p>
-          <Button href={guestCta.btnHref} variant="primary" className="podcast-guest-cta__btn">
-            {guestCta.btnLabel}
-          </Button>
-        </div>
-      </SectionWrapper>
-
       {/* ===== 4 · PAST EPISODES CAROUSEL ===== */}
+      {/* ===== 3 · PAST EPISODES (carousel) beside the GUEST CTA ===== */}
       <SectionWrapper alt className="podcast-episodes-section">
-        <h2 className="cursive-title section-title--center">
+        <div className="podcast-episodes-layout">
+        <div className="podcast-episodes-main">
+        <h2 className="cursive-title podcast-episodes__heading">
           {episodesHeading}
         </h2>
 
@@ -140,7 +134,7 @@ export default function Podcast() {
                     <div className="podcast-carousel__content">
                       <span className="podcast-carousel__tag">{ep.tag}</span>
                       <h3 className="podcast-carousel__title">{ep.title}</h3>
-                      <p className="podcast-carousel__desc">{ep.description}</p>
+                      <p className="podcast-carousel__desc">{renderBold(ep.description)}</p>
                       {ep.watchUrl && (
                         <Button href={ep.watchUrl} variant="primary" size="sm" className="podcast-carousel__btn">
                           <PlayIcon className="icon icon--inline" /> watch here!
@@ -172,6 +166,16 @@ export default function Podcast() {
               aria-current={i === current ? 'true' : undefined}
             />
           ))}
+        </div>
+        </div>
+
+        <aside className="podcast-guest-cta" aria-label="Be a guest">
+          <p className="podcast-guest-cta__text cursive-title">{guestCta.text}</p>
+          <p className="podcast-guest-cta__body">{guestCta.body}</p>
+          <Button href={guestCta.btnHref} variant="primary" className="podcast-guest-cta__btn">
+            {guestCta.btnLabel}
+          </Button>
+        </aside>
         </div>
       </SectionWrapper>
     </>

@@ -1,82 +1,35 @@
-import { useEffect, useLayoutEffect, useRef, useState } from 'react';
 import SectionWrapper from '../../components/SectionWrapper/SectionWrapper';
 import Button from '../../components/Buttons/Buttons';
 import AnnouncementBanner from '../../components/AnnouncementBanner/AnnouncementBanner';
-import CircuitSVG from '../../components/CircuitSVG/CircuitSVG';
-import GalleryScroller from '../../components/GalleryScroller/GalleryScroller';
 import { renderBold } from '../../utils/renderBold';
 import { hackathonData, REGISTRATION_URL_TBD } from '../../data/hackathonData';
 import './Hackathon.css';
 
-/* Turn any email address in plain text into a mailto link */
-function linkEmails(text) {
-  return text.split(/([\w.+-]+@[\w-]+(?:\.[\w-]+)+)/g).map((part, i) =>
-    i % 2 === 1 ? <a key={i} href={`mailto:${part}`}>{part}</a> : part,
-  );
-}
-
-/* In-page sections, in render order. `id` doubles as the anchor target. */
-const SECTIONS = [
-  { id: 'gallery', label: 'Gallery' },
-  { id: 'this-year', label: 'This Year' },
-  { id: 'about', label: 'About' },
-  { id: 'tracks', label: 'Prize Tracks' },
-  { id: 'schedule', label: 'Schedule' },
-  { id: 'winners', label: 'Previous Winners' },
-  { id: 'sponsors', label: 'Sponsors' },
-  { id: 'faq', label: 'FAQ' },
-];
-const SECTION_IDS = SECTIONS.map((s) => s.id);
-
-/* Highlight the sub-nav link for whichever section sits just under the sticky bars */
-function useActiveSection(ids) {
-  const [active, setActive] = useState(ids[0]);
-
-  useEffect(() => {
-    const visible = new Map();
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((e) => visible.set(e.target.id, e.isIntersecting));
-        const first = ids.find((id) => visible.get(id));
-        if (first) setActive(first);
-      },
-      /* Band starts just below where scroll-margin-top parks a section
-         (nav 62 + sub-nav 53 + 12 = 127px), so the previous section is out */
-      { rootMargin: '-140px 0px -55% 0px' }
-    );
-    ids.forEach((id) => {
-      const el = document.getElementById(id);
-      if (el) observer.observe(el);
-    });
-    return () => observer.disconnect();
-  }, [ids]);
-
-  return active;
-}
-
+/* Evergreen overview of WINFO's annual hackathon. Year-specific details
+   (schedule, prize tracks, FAQ) live on the official hackathon website. */
 export default function Hackathon() {
   const {
     title,
-    gallery,
-    galleryEagerCount,
-    currentHackathon: current,
+    heroLede,
+    heroImage,
+    overviewHeading,
+    overviewBody,
+    statsHeading,
+    stats,
     tagline,
     aboutBody,
     challengeHeading,
     challengeBody,
     beginnerHeading,
     beginnerBody,
-    statsHeading,
-    stats,
-    tracksHeading,
-    tracks,
-    scheduleHeading,
-    scheduleNote,
-    schedule,
+    aboutImage,
+    aboutImageAlt,
+    currentHackathon: current,
+    impactHeading,
+    impactBody,
+    impactPhotos,
     winnersHeading,
     winners,
-    faqHeading,
-    faqs,
     sponsorHeading,
     sponsorBody,
     sponsorBenefits,
@@ -84,131 +37,41 @@ export default function Hackathon() {
     sponsorCtaLink,
     pastSponsorsHeading,
     pastSponsors,
+    websiteHeading,
+    websiteBody,
   } = hackathonData;
 
-  const activeSection = useActiveSection(SECTION_IDS);
-  const subnavListRef = useRef(null);
-
-  /* Mobile pill row: keep the active pill in view (horizontal scroll only) */
-  useEffect(() => {
-    const list = subnavListRef.current;
-    const link = list?.querySelector('.hack-subnav__link--active');
-    if (!list || !link || list.scrollWidth <= list.clientWidth) return;
-    const left = link.offsetLeft - (list.clientWidth - link.offsetWidth) / 2;
-    list.scrollTo({ left, behavior: 'smooth' });
-  }, [activeSection]);
   const registrationOpen =
     current.registrationUrl && current.registrationUrl !== REGISTRATION_URL_TBD;
-
-  /* FAQ accordion state. Opening one question closes the other; when the
-     closed answer sits above, the page would jump up. Keep the clicked
-     question fixed on screen so every question opens the same way. */
-  const [openFaq, setOpenFaq] = useState(null);
-  const faqAnchor = useRef(null);
-  const toggleFaq = (i, trigger) => {
-    faqAnchor.current = { el: trigger, top: trigger.getBoundingClientRect().top };
-    setOpenFaq((prev) => (prev === i ? null : i));
-  };
-  useLayoutEffect(() => {
-    const anchor = faqAnchor.current;
-    faqAnchor.current = null;
-    if (!anchor) return;
-    const shift = anchor.el.getBoundingClientRect().top - anchor.top;
-    if (Math.abs(shift) > 1) window.scrollBy({ top: shift, behavior: 'instant' });
-  }, [openFaq]);
 
   return (
     <div className="hack-page">
       {current.banner && (
         <AnnouncementBanner id="hackathon-15" message={current.banner} linkLabel={current.bannerLinkLabel} linkHref={current.websiteUrl} />
       )}
-      {/* ===== PAGE HEADER ===== */}
-      <header className="hack-header">
-        <h1 className="cursive-title page-title">{title}</h1>
+
+      {/* ===== HERO: large title over a crowd photo ===== */}
+      <header className="hack-hero" style={{ '--hack-hero-img': `url(${heroImage})` }}>
+        <div className="hack-hero__inner">
+          <h1 className="cursive-title page-title hack-hero__title">{title}</h1>
+          <p className="hack-hero__lede">{heroLede}</p>
+        </div>
       </header>
 
-      {/* ===== IN-PAGE SUB-NAV ===== */}
-      <nav className="hack-subnav" aria-label="Hackathon page sections">
-        <ul className="hack-subnav__list" ref={subnavListRef}>
-          {SECTIONS.map((s) => (
-            <li key={s.id}>
-              <a
-                href={`#${s.id}`}
-                className={`hack-subnav__link ${activeSection === s.id ? 'hack-subnav__link--active' : ''}`}
-                aria-current={activeSection === s.id ? 'location' : undefined}
-              >
-                {s.label}
-              </a>
-            </li>
-          ))}
-        </ul>
-      </nav>
-
-      {/* ===== 1 · GALLERY (scroll, swipe or drag; also drifts on its own) ===== */}
-      <section id="gallery" className="hack-section hack-gallery" aria-label="Hackathon photo gallery">
-        <GalleryScroller photos={gallery} label="Hackathon photos" eagerCount={galleryEagerCount} />
-      </section>
-
-      {/* ===== 2 · THIS YEAR'S HACKATHON ===== */}
-      <SectionWrapper id="this-year" className="hack-section hack-current">
-        <div className={`hack-current__grid ${current.posterSrc ? '' : 'hack-current__grid--no-poster'}`}>
-          {current.posterSrc && (
-            <div className="hack-current__poster">
-              <img src={current.posterSrc} alt={current.posterAlt} loading="lazy" decoding="async" />
-            </div>
-          )}
-
-          <div className="hack-current__info">
-            <h2 className="hack-current__theme">{current.theme}</h2>
-            <p className="hack-current__meta">
-              <span className="hack-current__date">{current.dates}</span>
-              <span className="hack-current__location">{current.location}</span>
-              <span className="hack-current__location-detail">{current.locationDetail}</span>
-            </p>
-            <p className="hack-current__body">{current.intro}</p>
-            {current.themeBody.map((p, i) => (
-              <p key={i} className="hack-current__body">{p}</p>
+      {/* ===== 1 · OVERVIEW: history, scale, mission ===== */}
+      <SectionWrapper className="hack-section">
+        <div className="hack-split">
+          <div className="hack-split__text">
+            <h2 className="cursive-title">{overviewHeading}</h2>
+            {overviewBody.map((p, i) => (
+              <p key={i} className="hack-body">{p}</p>
             ))}
-
-            <div className="hack-current__actions">
-              {registrationOpen ? (
-                <Button href={current.registrationUrl} variant="accent" size="lg" className="hack-current__register">
-                  Register
-                </Button>
-              ) : (
-                <span className="hack-current__register-soon" role="status">
-                  Registration opening soon
-                </span>
-              )}
-              {current.websiteUrl && (
-                <Button href={current.websiteUrl} variant="primary" size="lg" className="hack-current__register">
-                  {current.websiteLabel}
-                </Button>
-              )}
-            </div>
           </div>
-        </div>
-      </SectionWrapper>
-
-      {/* ===== 3 · ABOUT THE HACKATHON ===== */}
-      <SectionWrapper id="about" alt className="hack-section">
-        <div className="hack-about">
-          <div className="hack-about__text">
-            <h2 className="cursive-title hack-hero__tagline">{tagline}</h2>
-            <p className="hack-hero__body">{aboutBody}</p>
-
-            <h3 className="hack-hero__sub-heading">{challengeHeading}</h3>
-            <p className="hack-hero__body">{challengeBody}</p>
-
-            <h3 className="hack-hero__sub-heading">{beginnerHeading}</h3>
-            <p className="hack-hero__body">{beginnerBody}</p>
-          </div>
-
-          <div className="hack-about__stats">
-            <h3 className="cursive-title hack-stats__heading">{statsHeading}</h3>
+          <div className="hack-stats-card">
+            <h3 className="hack-stats__heading">{statsHeading}</h3>
             <div className="hack-stats">
-              {stats.map((s, i) => (
-                <div key={i} className={`hack-stat hack-stat--${i}`}>
+              {stats.map((s) => (
+                <div key={s.label} className="hack-stat">
                   <span className="hack-stat__number">{s.number}</span>
                   <span className="hack-stat__label">{s.label}</span>
                 </div>
@@ -218,161 +81,131 @@ export default function Hackathon() {
         </div>
       </SectionWrapper>
 
-      {/* ===== 4 · PRIZE TRACKS ===== */}
-      <SectionWrapper id="tracks" className="hack-section">
-        <h2 className="cursive-title section-title--center">{tracksHeading}</h2>
-        <ol className="hack-tracks">
-          {tracks.map((t, i) => (
-            <li key={t.name} className="hack-track">
-              <span className="hack-track__num" aria-hidden="true">
-                {String(i + 1).padStart(2, '0')}
-              </span>
-              <div>
-                <h3 className="hack-track__name">{t.name}</h3>
-                <p className="hack-track__desc">{t.description}</p>
-                <p className="hack-track__focus-label">This track focuses on</p>
-                <ul className="hack-track__focus">
-                  {t.focus.map((f) => (
-                    <li key={f}>{f}</li>
-                  ))}
-                </ul>
-              </div>
-            </li>
-          ))}
-        </ol>
-      </SectionWrapper>
-
-      {/* ===== 5 · SCHEDULE ===== */}
-      <SectionWrapper id="schedule" alt className="hack-section">
-        <h2 className="cursive-title section-title--center">{scheduleHeading}</h2>
-        <div className="hack-schedule">
-          {schedule.map((d) => (
-            <div key={d.day} className="hack-schedule__day">
-              <h3 className="hack-schedule__title">{d.day}</h3>
-              <p className="hack-schedule__date">{d.date}</p>
-              {d.location && <p className="hack-schedule__place">{d.location}</p>}
-              <dl className="hack-schedule__list">
-                {d.items.map((it) => (
-                  <div key={it.time + it.label} className="hack-schedule__row">
-                    <dt>{it.time}</dt>
-                    <dd>{it.label}</dd>
-                  </div>
-                ))}
-              </dl>
-            </div>
-          ))}
+      {/* ===== 2 · COLLABORATE. NETWORK. SOLVE. (photo left, text right) ===== */}
+      <SectionWrapper alt className="hack-section">
+        <div className="hack-split hack-split--flipped">
+          <div className="hack-split__text">
+            <h2 className="cursive-title hack-tagline">{tagline}</h2>
+            <p className="hack-body">{aboutBody}</p>
+            <h3 className="hack-sub-heading">{challengeHeading}</h3>
+            <p className="hack-body">{challengeBody}</p>
+            <h3 className="hack-sub-heading">{beginnerHeading}</h3>
+            <p className="hack-body">{beginnerBody}</p>
+          </div>
+          <figure className="photo-frame hack-photo hack-photo--tilt">
+            <img src={aboutImage} alt={aboutImageAlt} width="1200" height="800" loading="lazy" decoding="async" />
+          </figure>
         </div>
-        <p className="hack-schedule__note">{scheduleNote}</p>
       </SectionWrapper>
 
-      {/* ===== 6 · PREVIOUS WINNERS + PAST THEMES ===== */}
-      <SectionWrapper id="winners" className="hack-section">
-        <div className="hack-winners-card">
-          <h2 className="cursive-title hack-winners__heading">{winnersHeading}</h2>
-          <div className="hack-winners-grid">
-            {winners.map((w) => (
-              <div key={w.category} className="hack-winner">
-                <p className="hack-winner__category">{w.category}</p>
-                <div className="hack-winner__image">
-                  {w.image ? (
-                    <img src={w.image} alt={`${w.category} winning team`} loading="lazy" decoding="async" />
-                  ) : (
-                    <div className="hack-winner__placeholder" />
-                  )}
-                </div>
-                {w.projectName && <p className="hack-winner__project">{w.projectName}</p>}
-                {w.projectDescription && <p className="hack-winner__desc">{w.projectDescription}</p>}
-              </div>
+      {/* ===== 3 · THIS YEAR'S THEME (text left, photos right) ===== */}
+      <SectionWrapper className="hack-section hack-current">
+        <div className="hack-split">
+          <div className="hack-split__text">
+            <p className="hack-eyebrow">{current.label}</p>
+            <h2 className="hack-current__theme">{current.theme}</h2>
+            <p className="hack-current__meta">
+              <span className="hack-current__date">{current.dates}</span>
+              <span className="hack-current__location">{current.location}</span>
+              <span className="hack-current__location-detail">{current.locationDetail}</span>
+            </p>
+            {current.themeBody.map((p, i) => (
+              <p key={i} className="hack-body">{p}</p>
+            ))}
+            <div className="hack-current__actions">
+              {registrationOpen ? (
+                <Button href={current.registrationUrl} variant="accent" size="lg">Register</Button>
+              ) : (
+                <span className="hack-current__register-soon" role="status">Registration opening soon</span>
+              )}
+            </div>
+          </div>
+          <div className="hack-photo-stack">
+            {current.photos.map((p) => (
+              <figure key={p.src} className="photo-frame hack-photo">
+                <img src={p.src} alt={p.alt} width={p.width} height={p.height} loading="lazy" decoding="async" />
+              </figure>
             ))}
           </div>
         </div>
-
       </SectionWrapper>
 
-      {/* ===== 7 · SPONSORS ===== */}
-      <SectionWrapper id="sponsors" alt className="hack-section hack-sponsor-section">
-        <h2 className="cursive-title hack-sponsor__heading">{sponsorHeading}</h2>
-        <p className="hack-sponsor__body">{renderBold(sponsorBody)}</p>
-
-        <div className="hack-sponsor-benefits">
-          {sponsorBenefits.map((b, i) => (
-            <div key={i} className={`hack-sponsor-benefit hack-sponsor-benefit--${i}`}>
-              <h3 className="hack-sponsor-benefit__title">{b.title}</h3>
-              <p className="hack-sponsor-benefit__text">{b.text}</p>
-            </div>
+      {/* ===== 4 · PHOTOS & IMPACT ===== */}
+      <SectionWrapper alt className="hack-section">
+        <div className="hack-impact__intro">
+          <h2 className="cursive-title">{impactHeading}</h2>
+          <p className="hack-body">{impactBody}</p>
+        </div>
+        <div className="hack-collage">
+          {impactPhotos.map((p, i) => (
+            <figure key={p.src} className={`photo-frame hack-photo hack-collage__item hack-collage__item--${i}`}>
+              <img src={p.src} alt={p.alt} width={p.width} height={p.height} loading="lazy" decoding="async" />
+            </figure>
           ))}
         </div>
 
-        <div className="hack-sponsor__cta">
-          <Button href={sponsorCtaLink} variant="primary" size="lg">
-            {sponsorCtaLabel}
-          </Button>
+        <h3 className="hack-winners__heading">{winnersHeading}</h3>
+        <div className="hack-winners-grid">
+          {winners.map((w) => (
+            <div key={w.category} className="hack-winner">
+              <p className="hack-winner__category">{w.category}</p>
+              <div className="hack-winner__image">
+                {w.image ? (
+                  <img src={w.image} alt={`${w.category} winning team`} loading="lazy" decoding="async" />
+                ) : (
+                  <div className="hack-winner__placeholder" />
+                )}
+              </div>
+              {w.projectName && <p className="hack-winner__project">{w.projectName}</p>}
+              {w.projectDescription && <p className="hack-winner__desc">{w.projectDescription}</p>}
+            </div>
+          ))}
         </div>
+      </SectionWrapper>
 
-        <h3 className="cursive-title section-title--center hack-past-sponsors__heading">
-          {pastSponsorsHeading}
-        </h3>
-        {/* One looping row; the track holds the logos twice so the loop is seamless */}
-        <div className="hack-sponsor-marquee" role="region" aria-label="Past sponsors" tabIndex={0}>
-          <ul className="hack-sponsor-marquee__track">
-            {[0, 1].map((copy) =>
-              pastSponsors.map((sponsor) => (
-                <li
-                  key={`${copy}-${sponsor.name}`}
-                  className={`hack-past-sponsor${sponsor.dark ? ' hack-past-sponsor--dark' : ''}${sponsor.logo ? '' : ' hack-past-sponsor--text'}`}
-                  aria-hidden={copy === 1 ? 'true' : undefined}
-                >
-                  {sponsor.logo ? (
-                    <img
-                      src={sponsor.logo}
-                      alt={copy === 0 ? sponsor.name : ''}
-                      className="hack-past-sponsor__logo"
-                      loading="lazy"
-                      decoding="async"
-                    />
-                  ) : (
-                    <span className="hack-past-sponsor__name">{sponsor.name}</span>
-                  )}
-                </li>
-              )),
-            )}
+      {/* ===== 5 · SUPPORT OUR HACKATHON (static logo wall, every sponsor visible) ===== */}
+      <SectionWrapper className="hack-section">
+        <div className="hack-split hack-split--top">
+          <div className="hack-split__text">
+            <h2 className="cursive-title">{sponsorHeading}</h2>
+            <p className="hack-body">{renderBold(sponsorBody)}</p>
+            <Button href={sponsorCtaLink} variant="primary" size="lg">{sponsorCtaLabel}</Button>
+          </div>
+          <ul className="hack-sponsor-benefits">
+            {sponsorBenefits.map((b) => (
+              <li key={b.title} className="hack-sponsor-benefit">
+                <h3 className="hack-sponsor-benefit__title">{b.title}</h3>
+                <p className="hack-sponsor-benefit__text">{b.text}</p>
+              </li>
+            ))}
           </ul>
         </div>
+
+        <h3 className="hack-past-sponsors__heading">{pastSponsorsHeading}</h3>
+        <ul className="hack-sponsor-wall" aria-label="Past sponsors">
+          {pastSponsors.map((sponsor) => (
+            <li
+              key={sponsor.name}
+              className={`hack-past-sponsor${sponsor.dark ? ' hack-past-sponsor--dark' : ''}${sponsor.logo ? '' : ' hack-past-sponsor--text'}`}
+            >
+              {sponsor.logo ? (
+                <img src={sponsor.logo} alt={sponsor.name} className="hack-past-sponsor__logo" loading="lazy" decoding="async" />
+              ) : (
+                <span className="hack-past-sponsor__name">{sponsor.name}</span>
+              )}
+            </li>
+          ))}
+        </ul>
       </SectionWrapper>
 
-      {/* ===== 8 · FAQ / CONTACT ===== */}
-      <SectionWrapper id="faq" className="hack-section hack-faq-section">
-        <div className="hack-faq__circuit" aria-hidden="true">
-          <CircuitSVG variant="faq" />
-        </div>
-
-        <h2 className="cursive-title hack-faq__heading">{faqHeading}</h2>
-
-        <div className="hack-faq">
-          {faqs.map((item, i) => {
-            const isOpen = openFaq === i;
-            return (
-              <div key={i} className={`hack-faq__item ${isOpen ? 'hack-faq__item--open' : ''}`}>
-                <button
-                  type="button"
-                  className="hack-faq__trigger"
-                  onClick={(e) => toggleFaq(i, e.currentTarget)}
-                  aria-expanded={isOpen}
-                  aria-controls={`hack-faq-${i}`}
-                >
-                  <span className="hack-faq__question">{item.question}</span>
-                  <span className="hack-faq__chevron" aria-hidden="true">
-                    {isOpen ? '∧' : '∨'}
-                  </span>
-                </button>
-                <div className="hack-faq__answer" id={`hack-faq-${i}`} hidden={!isOpen}>
-                  <p>{linkEmails(item.answer)}</p>
-                </div>
-              </div>
-            );
-          })}
-        </div>
-      </SectionWrapper>
+      {/* ===== 6 · OFFICIAL HACKATHON WEBSITE ===== */}
+      {current.websiteUrl && (
+        <section className="hack-website">
+          <h2 className="cursive-title">{websiteHeading}</h2>
+          <p className="hack-body">{websiteBody}</p>
+          <Button href={current.websiteUrl} variant="accent" size="lg">{current.websiteLabel}</Button>
+        </section>
+      )}
     </div>
   );
 }

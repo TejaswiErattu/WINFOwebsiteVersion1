@@ -56,25 +56,43 @@ export const whatWeDoData = [
     accent: 'purple',
   },
   {
-    title: 'Events',
-    text: 'We host a diverse range of social and professional events throughout the year to help you meet new people and grow your skill set.',
+    title: 'Campus Events',
+    text: 'We host social, creative, and professional campus events every quarter, plus programs for middle and high school students, to help you meet new people and grow your skill set.',
     linkLabel: 'Get involved',
     linkTo: '/events',
     accent: 'pink',
   },
   {
     title: 'Podcast',
-    text: 'Decoding With WINFO is our signature podcast featuring guests within the tech field and the Informatics community.',
+    text: '*Decoding with WINFO* is our signature podcast featuring guests within the tech field and the Informatics community.',
     linkLabel: 'Tune in',
     linkTo: '/podcast',
     accent: 'blue',
   },
 ];
 
-/* ---------- What is Informatics (officer quotes) ---------- */
+/* ---------- What is Informatics (definition + officer quotes) ---------- */
 export const informaticsHeading = {
   title: 'what is informatics?',
 };
+
+/* Definition from the WINFO intro presentation (WINFO/INFO slides, 2026) */
+export const informaticsDefinition = [
+  'Informatics is the **study, design, and development of information technology for the good of people, organizations, and society.** It\u2019s interested in the relationship between information, technology, and people.',
+  'Informatics students aim to create equitable information technologies and systems by addressing challenges in people\u2019s daily lives, guided by the idea that **technology has value when it genuinely serves people.**',
+];
+
+/* Areas Informatics spans (from the intro presentation) */
+export const informaticsAreas = [
+  'Human-Computer Interaction',
+  'Data Science',
+  'Information Assurance & Cybersecurity',
+  'Software Development',
+  'Information Architecture',
+  'Information Management',
+  'Information & Society',
+  'Health & Well-Being',
+];
 
 export const informaticsQuotes = [
   {
@@ -86,16 +104,6 @@ export const informaticsQuotes = [
     quote: '"Informatics is all about leveraging information to build technology that works for real people."',
     name: 'Renee Singh',
     role: 'Past Hackathon Director',
-  },
-  {
-    quote: '"It\'s about being thoughtful with design and intentional with the way we build things."',
-    name: 'Dawn Nguyen',
-    role: 'Past Finance Director',
-  },
-  {
-    quote: '"Informatics uplifts voices that are marginalized to make meaningful changes in technological solutions."',
-    name: 'Jenny Speelmon',
-    role: 'Past Community Efforts Director',
   },
 ];
 

@@ -30,7 +30,7 @@ export const supportData = {
     },
     {
       title: 'Star as a\nPodcast Guest',
-      body: 'From student stories to industry insights, we want to hear from you—sign up to be a guest on our podcast, Decoding With WINFO!',
+      body: 'From student stories to industry insights, we want to hear from you—sign up to be a guest on our podcast, *Decoding with WINFO*!',
       accent: 'pink',
     },
     {
