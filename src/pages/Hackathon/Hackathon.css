@@ -377,3 +377,33 @@ body .hack-current__theme:not(#_) {
   .hack-stats-card { padding: var(--space-6); }
   .hack-website { padding: var(--space-12) var(--space-4); }
 }
+
+/* Sponsor name label on hover / keyboard focus (data-name on the tile) */
+.hack-past-sponsor { position: relative; }
+.hack-past-sponsor[data-name]::after {
+  content: attr(data-name);
+  position: absolute;
+  left: 50%;
+  bottom: calc(100% + 6px);
+  transform: translate(-50%, 4px);
+  padding: 0.25rem 0.6rem;
+  border-radius: var(--radius-sm, 6px);
+  background: var(--color-text);
+  color: var(--color-bg, #fff);
+  font-size: 0.8rem;
+  font-weight: 600;
+  white-space: nowrap;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity var(--transition-fast), transform var(--transition-fast);
+  z-index: 2;
+}
+.hack-past-sponsor[data-name]:hover::after,
+.hack-past-sponsor[data-name]:focus-visible::after {
+  opacity: 1;
+  transform: translate(-50%, 0);
+}
+.hack-past-sponsor[data-name]:focus-visible {
+  outline: 3px solid var(--color-primary);
+  outline-offset: 2px;
+}

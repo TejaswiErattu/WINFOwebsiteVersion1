@@ -5,20 +5,13 @@
 export const supportData = {
   /* ---------- Hero ---------- */
   title: 'support us',
+  /* "Why support us" is folded into the hero so the page says it once */
   heroText: [
-    'Whether you\'re a student, sponsor, or mentor, we welcome you to join WINFO in building a more diverse and equitable future in tech.',
-    'Support comes in many forms, and each one makes a meaningful difference; every action helps us create a more inclusive and empowering community.',
-    'Scroll down to learn how you can support our blossoming community here at WINFO—we are thrilled to have you join us!',
+    'Whether you\'re a sponsor, mentor, collaborator, or student, supporting WINFO helps make technology education **inclusive** and **empowering** for everyone.',
+    'Your involvement helps underrepresented students thrive as innovators and leaders, and helps **break down barriers** in tech. Here\'s how you can get involved:',
   ],
   heroImage: '/images/support-group.jpg',
 
-  /* ---------- Why Support Us ---------- */
-  whyTitle: 'why support us?',
-  whyImage: '/images/hackathon-4.jpg',
-  whyText: [
-    'By supporting WINFO, you help build a world where technology education is **inclusive** and **empowering** for all. Your involvement empowers underrepresented students to thrive as innovators and leaders, sparking meaningful connections across our community.',
-    'Together, we can **break down barriers** in tech, ensuring all students have the tools, confidence, and support to lead and blossom in an inclusive and collaborative community.',
-  ],
 
   /* ---------- Get Involved ---------- */
   involvedHeading: 'get involved with WINFO!',

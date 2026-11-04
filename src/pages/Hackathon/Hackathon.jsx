@@ -187,6 +187,9 @@ export default function Hackathon() {
             <li
               key={sponsor.name}
               className={`hack-past-sponsor${sponsor.dark ? ' hack-past-sponsor--dark' : ''}${sponsor.logo ? '' : ' hack-past-sponsor--text'}`}
+              data-name={sponsor.logo ? sponsor.name : undefined}  /* name label on hover / focus */
+              title={sponsor.name}
+              tabIndex={sponsor.logo ? 0 : undefined}
             >
               {sponsor.logo ? (
                 <img src={sponsor.logo} alt={sponsor.name} className="hack-past-sponsor__logo" loading="lazy" decoding="async" />

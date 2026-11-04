@@ -1,5 +1,4 @@
 import { renderBold } from '../../utils/renderBold';
-import SectionWrapper from '../../components/SectionWrapper/SectionWrapper';
 import CircuitSVG from '../../components/CircuitSVG/CircuitSVG';
 import { supportData } from '../../data/supportData';
 import './SupportUs.css';
@@ -9,9 +8,6 @@ export default function SupportUs() {
     title,
     heroText,
     heroImage,
-    whyTitle,
-    whyImage,
-    whyText,
     involvedHeading,
     involvedCards,
     ctaLabel,
@@ -31,7 +27,7 @@ export default function SupportUs() {
           <div className="support-hero__text">
             <h1 className="support-hero__title cursive-title page-title">{title}</h1>
             {heroText.map((p, i) => (
-              <p key={i} className="support-hero__paragraph">{p}</p>
+              <p key={i} className="support-hero__paragraph">{renderBold(p)}</p>
             ))}
           </div>
 
@@ -81,27 +77,6 @@ export default function SupportUs() {
         </a>
       </section>
 
-      {/* ===== 3 · WHY SUPPORT US ===== */}
-      <SectionWrapper>
-        <div className="support-why">
-          <div className="support-why__image">
-            {whyImage ? (
-              <img src={whyImage} alt="WINFO members" loading="lazy" decoding="async" />
-            ) : (
-              <div className="support-why__placeholder" />
-            )}
-          </div>
-
-          <div className="support-why__content">
-            <h2 className="support-why__title cursive-title">{whyTitle}</h2>
-            {whyText.map((p, i) => (
-              <p key={i} className="support-why__paragraph">
-                {renderBold(p)}
-              </p>
-            ))}
-          </div>
-        </div>
-      </SectionWrapper>
     </>
   );
 }

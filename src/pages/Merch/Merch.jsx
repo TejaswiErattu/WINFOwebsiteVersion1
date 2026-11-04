@@ -17,7 +17,8 @@ export default function Merch() {
             </h1>
             <p className="merch-hero__desc">
               Rep your community — grab a cozy WINFO crewneck before they sell
-              out. Orders close soon, so don't wait!
+              out. Orders close soon, so don't wait! Every purchase supports
+              our community and events.
             </p>
 
             {/* Pricing */}
@@ -72,7 +73,7 @@ export default function Merch() {
             <div className="merch-detail-card">
               <span className="merch-detail-card__icon"><BoxIcon /></span>
               <h3>How to order</h3>
-              <p>Fill out the Google Form to place your order. Link below!</p>
+              <p>Use the order button above to fill out a short Google Form.</p>
             </div>
             <div className="merch-detail-card">
               <span className="merch-detail-card__icon"><ClockIcon /></span>
@@ -83,19 +84,6 @@ export default function Merch() {
         </div>
       </section>
 
-      {/* ===== CTA BANNER ===== */}
-      <section className="merch-banner">
-        <h2>support winfo &amp; treat yourself!</h2>
-        <p>Every purchase goes toward supporting our community and events.</p>
-        <a
-          href={ORDER_URL}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="merch-cta-btn merch-cta-btn--light"
-        >
-          <CartIcon className="icon icon--inline" /> order now
-        </a>
-      </section>
     </div>
   );
 }
