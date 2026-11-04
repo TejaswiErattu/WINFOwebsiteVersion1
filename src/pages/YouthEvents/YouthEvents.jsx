@@ -1,6 +1,4 @@
 import FlagshipEvent from '../../components/FlagshipEvent/FlagshipEvent';
-import SubTabs from '../../components/SubTabs/SubTabs';
-import { EVENT_TABS } from '../../data/navLinks';
 import { eventsData } from '../../data/eventsData';
 import { flagshipEvents } from '../../data/flagshipEvents';
 
@@ -16,7 +14,6 @@ export default function YouthEvents() {
         <div className="events-section__head">
           <h1 id="youth-title" className="cursive-title page-title">{youth.heading}</h1>
           <p className="events-section__intro">{youth.intro}</p>
-          <SubTabs tabs={EVENT_TABS} label="Event types" />
         </div>
       </section>
       <div className="flagships">

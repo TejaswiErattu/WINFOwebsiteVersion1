@@ -1,6 +1,4 @@
 import Button from '../../components/Buttons/Buttons';
-import SubTabs from '../../components/SubTabs/SubTabs';
-import { EVENT_TABS } from '../../data/navLinks';
 import PinBoard from '../../components/PinBoard/PinBoard';
 import EventCalendar from '../../components/EventCalendar/EventCalendar';
 import { quarter, events as calendarEvents, buildings, eventTypes } from '../../data/calendarEvents';
@@ -26,7 +24,6 @@ export default function Events() {
         <div className="events-hero__inner">
           <h1 className="cursive-title page-title events-hero__title">{title}</h1>
           <p className="events-hero__text">{intro}</p>
-          <SubTabs tabs={EVENT_TABS} label="Event types" />
         </div>
       </header>
 

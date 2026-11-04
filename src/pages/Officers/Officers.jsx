@@ -1,8 +1,6 @@
 import SectionWrapper from '../../components/SectionWrapper/SectionWrapper';
 import CircuitSVG from '../../components/CircuitSVG/CircuitSVG';
 import Button from '../../components/Buttons/Buttons';
-import SubTabs from '../../components/SubTabs/SubTabs';
-import { TEAM_TABS } from '../../data/navLinks';
 import { renderBold } from '../../utils/renderBold';
 import { officersData } from '../../data/officersData';
 import { missionData, storyData } from '../../data/aboutData';
@@ -90,7 +88,6 @@ export default function Officers() {
             <h1 className="cursive-title page-title">{title}</h1>
             <p className="team-hero__text">{heroBody}</p>
             <p className="team-hero__text">{heroBodySecondary}</p>
-            <SubTabs tabs={TEAM_TABS} label="Our Team sections" />
           </div>
 
           <div className="team-hero__image-frame">

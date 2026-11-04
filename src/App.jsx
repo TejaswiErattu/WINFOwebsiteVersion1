@@ -5,6 +5,7 @@ import BlobBackground from './components/BlobBackground/BlobBackground';
 import Navbar from './components/Navbar/Navbar';
 import Footer from './components/Footer/Footer';
 import RouteMeta from './components/RouteMeta';
+import SubTabs from './components/SubTabs/SubTabs';
 
 import Home from './pages/Home/Home';
 
@@ -108,6 +109,7 @@ export default function App() {
       <BlobBackground />
       <Navbar />
       <main id="main-content" tabIndex={-1}>
+        <SubTabs />
         <Suspense fallback={null}>
           <Routes>
             <Route path="/" element={<Home />} />
