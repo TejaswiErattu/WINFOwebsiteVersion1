@@ -9,8 +9,6 @@ export const podcastData = {
     '*Decoding with WINFO* is our signature podcast series, where we dive into the stories of diverse and innovative leaders making waves in the world of information, technology, and innovation.',
   heroBodySecondary:
     'From filming to final cut, each episode is thoughtfully crafted by our content committee to share authentic experiences for our community to connect with and enjoy.',
-  ctaLabel: 'watch here!',
-  ctaLink: 'https://www.youtube.com/@uw_winfo',
 
   /* ---------- Who / What / Why cards ---------- */
   infoCards: [
@@ -38,9 +36,6 @@ export const podcastData = {
     btnLabel: 'become a podcast guest!',
     btnHref: 'mailto:winfo@uw.edu?subject=Podcast%20guest%20interest',
   },
-
-  /* ---------- Episodes heading ---------- */
-  episodesHeading: 'all episodes, newest first',
 
   /* ---------- Episodes (most recent → oldest) ---------- */
   episodes: [

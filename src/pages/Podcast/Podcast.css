@@ -408,7 +408,9 @@
 .podcast-hero__text em { font-weight: 700; color: var(--color-text); }
 
 /* ===== Layout from the Nov 2026 review: intro, then a full-width slideshow ===== */
-.podcast-hero--compact { padding-bottom: 2rem; }
+.podcast-hero--compact { padding-bottom: 1.5rem; }
+.podcast-hero--compact .podcast-hero__text:last-child { margin-bottom: 0; }
+.podcast-episodes-section { padding-top: 2rem; }
 .podcast-intro {
   position: relative;
   max-width: 46rem;

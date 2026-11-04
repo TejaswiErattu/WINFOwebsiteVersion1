@@ -12,11 +12,8 @@ export default function Podcast() {
     title,
     heroBody,
     heroBodySecondary,
-    ctaLabel,
-    ctaLink,
     infoCards,
     guestCta,
-    episodesHeading,
     episodes,
   } = podcastData;
 
@@ -46,17 +43,11 @@ export default function Podcast() {
           <h1 className="cursive-title page-title">{title}</h1>
           <p className="podcast-hero__text">{renderBold(heroBody)}</p>
           <p className="podcast-hero__text">{heroBodySecondary}</p>
-          <Button href={ctaLink} variant="primary" className="podcast-hero__btn">
-            <PlayIcon className="icon icon--inline" /> {ctaLabel}
-          </Button>
         </div>
       </section>
 
       {/* ===== 2 · EPISODES SLIDESHOW (newest first; edit in data/podcastData.js) ===== */}
       <SectionWrapper alt className="podcast-episodes-section">
-        <h2 className="cursive-title section-title--center podcast-episodes__heading">
-          {episodesHeading}
-        </h2>
         <div className="podcast-carousel" role="region" aria-roledescription="carousel" aria-label="Past episodes">
           {/* Left arrow */}
           <button type="button" className="podcast-carousel__arrow podcast-carousel__arrow--left" onClick={prev} aria-label="Previous episode">
