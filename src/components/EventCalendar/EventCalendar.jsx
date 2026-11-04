@@ -17,7 +17,8 @@ function startOfToday() {
   return new Date(t.getFullYear(), t.getMonth(), t.getDate());
 }
 
-function mapsUrl(name, code) {
+function mapsUrl(name, code, address) {
+  if (address) return `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(address)}`;
   const place = name ? `${name}, University of Washington, Seattle, WA` : `${code} University of Washington Seattle`;
   return `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(place)}`;
 }
@@ -55,7 +56,7 @@ function googleCalUrl(e, where) {
     text: e.title,
     dates,
     ctz: 'America/Los_Angeles',
-    location: `${where}, University of Washington, Seattle, WA`,
+    location: fullPlace(e, where),
     details: `${e.blurb ? `${e.blurb}\n\n` : ''}Hosted by Women in Informatics (WINFO) at UW${e.with ? ` with ${e.with}` : ''}.`,
   });
   return `https://calendar.google.com/calendar/render?${params.toString()}`;
@@ -81,7 +82,7 @@ function buildIcs(list, buildings) {
       range ? `DTSTART;TZID=America/Los_Angeles:${t(range.start)}` : `DTSTART;VALUE=DATE:${ymd}`,
       range ? `DTEND;TZID=America/Los_Angeles:${t(range.end)}` : `DTEND;VALUE=DATE:${nextYmd}`,
       `SUMMARY:${icsEscape(e.title)}`,
-      `LOCATION:${icsEscape(`${whereText(e, buildings).where}, University of Washington, Seattle, WA`)}`,
+      `LOCATION:${icsEscape(fullPlace(e, whereText(e, buildings).where))}`,
       `DESCRIPTION:${icsEscape(`${e.blurb ? `${e.blurb}\n\n` : ''}Hosted by Women in Informatics (WINFO) at UW${e.with ? ` with ${e.with}` : ''}.`)}`,
       'END:VEVENT',
     );
@@ -97,6 +98,11 @@ function slug(e) {
 
 const DEFAULT_TYPE = 'fun';
 
+/* Off-campus events set `address`; everything else is on the UW campus. */
+function fullPlace(e, where) {
+  return e.address || `${where}, University of Washington, Seattle, WA`;
+}
+
 function whereText(e, buildings) {
   const name = buildings[e.building];
   return { name, where: `${name || e.building}${e.room ? ` ${e.room}` : ''}` };
@@ -107,7 +113,7 @@ function LocationLink({ e, buildings, short = false }) {
   return (
     <a
       className="cal-where"
-      href={mapsUrl(name, e.building)}
+      href={mapsUrl(name, e.building, e.address)}
       target="_blank"
       rel="noopener noreferrer"
       aria-label={`${where} (opens Google Maps in a new tab)`}

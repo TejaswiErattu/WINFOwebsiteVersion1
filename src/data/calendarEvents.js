@@ -6,6 +6,8 @@
    2. Replace `events` with the new quarter's events. One block each:
         { title: 'Event name', date: 'YYYY-MM-DD', time: '5–7 PM',
           building: 'MGH', room: '254', type: 'fun', blurb: 'optional one-liner' },
+      Off campus? Put the place name in `building`, skip `room`, and add
+      `address: 'full street address'` so the map and calendar links work.
       `type` sets the color: 'fun' or 'professional'.
       Co-hosting with another RSO? Add `with: 'Club name'` — it shows as a
       small note when someone opens the event.
@@ -45,7 +47,7 @@ export const events = [
     blurb: 'Pumpkin painting!',
   },
   {
-    title: 'Warmly Lit DIY Lanterns',
+    title: 'Glow Together: DIY Lanterns',
     date: '2026-10-26',
     time: '5:30–7 PM',
     building: 'MGH',
@@ -62,7 +64,7 @@ export const events = [
     with: 'UW Women in Business',
   },
   {
-    title: 'Crumbs & Connections: Fall Cookie Decorating',
+    title: 'Cookie Crumbs & Connections: Fall Cookie Decorating',
     date: '2026-11-04',
     time: '5–7 PM',
     building: 'DEN',
@@ -70,7 +72,15 @@ export const events = [
     type: 'fun',
   },
   {
-    title: 'Spookie Clay & Chat',
+    title: 'STEAMPire Expo',
+    date: '2026-11-07',
+    time: '10 AM–1 PM',
+    building: 'Tyee High School',
+    address: 'Tyee High School, 4424 S 188th St, SeaTac, WA 98188',
+    type: 'fun',
+  },
+  {
+    title: 'Cozy Clay & Chat',
     date: '2026-11-10',
     time: '5–7 PM',
     building: 'HUB',
@@ -78,12 +88,20 @@ export const events = [
     type: 'fun',
   },
   {
-    title: 'WINFO Speed Mentoring',
+    title: 'Fuel Your Resume: CBDC Resume Workshop',
     date: '2026-11-12',
     time: '5–7 PM',
     building: 'HUB',
     room: '214',
     type: 'professional',
+  },
+  {
+    title: 'WINFO Fall Power Hour',
+    date: '2026-12-04',
+    time: '5–7 PM',
+    building: 'HUB',
+    room: '214',
+    type: 'fun',
   },
 ];
 
