@@ -7,6 +7,7 @@ import logoAccenture     from '../assets/sponsors/accenture.svg';
 import logoAdobe         from '../assets/sponsors/adobe.svg';
 import logoAlaska        from '../assets/sponsors/alaska-airlines.svg';
 import logoAmazon        from '../assets/sponsors/amazon.svg';
+import logoATT           from '../assets/sponsors/att.svg';
 import logoAvanade       from '../assets/sponsors/avanade.svg';
 import logoBestBuy       from '../assets/sponsors/best-buy.svg';
 import logoDeloitte      from '../assets/sponsors/deloitte.svg';
@@ -22,6 +23,7 @@ import logoMicrosoft     from '../assets/sponsors/microsoft.svg';
 import logoNordstrom     from '../assets/sponsors/nordstrom.svg';
 import logoOkta          from '../assets/sponsors/okta.svg';
 import logoOracle        from '../assets/sponsors/oracle.svg';
+import logoPwC           from '../assets/sponsors/pwc.svg';
 import logoSageBio       from '../assets/sponsors/sage-bionetworks.svg';
 import logoSmartsheet    from '../assets/sponsors/smartsheet.svg';
 import logoTicketmaster  from '../assets/sponsors/ticketmaster.svg';
@@ -152,7 +154,7 @@ export const hackathonData = {
     { name: 'Alaska Airlines',        logo: logoAlaska, dark: true },
     { name: 'Amazon Catalyst',        logo: logoAmazon, dark: true },
     { name: 'ASUW',                   logo: '' },
-    { name: 'AT&T',                   logo: '' },
+    { name: 'AT&T',                   logo: logoATT },
     { name: 'Avanade',                logo: logoAvanade },
     { name: 'Best Buy',               logo: logoBestBuy, dark: true },
     { name: 'Deloitte',               logo: logoDeloitte, dark: true },
@@ -171,7 +173,7 @@ export const hackathonData = {
     { name: 'Nordstrom',              logo: logoNordstrom },
     { name: 'Okta',                   logo: logoOkta, dark: true },
     { name: 'Oracle',                 logo: logoOracle },
-    { name: 'PwC',                    logo: '' },
+    { name: 'PwC',                    logo: logoPwC },
     { name: 'Sage Bionetworks',       logo: logoSageBio },
     { name: 'Student Activities Office', logo: '' },
     { name: 'Smartsheet',             logo: logoSmartsheet },
