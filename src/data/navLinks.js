@@ -26,8 +26,9 @@ export const navLinks = [
   {
     label: 'Our Team',
     children: [
-      { label: 'Current Team', path: '/officers', description: 'Meet our officers and committees' },
-      { label: 'Alumni', path: '/alumni', description: 'The WINFO Alumni Board and past boards' },
+      { label: 'Current Team', path: '/officers', description: 'Who we are, our story, and this year\u2019s board' },
+      { label: 'Committees', path: '/committees', description: 'The student teams working under the board' },
+      { label: 'Alumni Board', path: '/alumni', description: 'Stay connected with WINFO after graduation' },
     ],
   },
   {
@@ -47,7 +48,7 @@ export const footerLinks = [
   { label: 'Events', path: '/events' },
   { label: 'Podcast', path: '/podcast' },
   { label: 'Our Team', path: '/officers' },
-  { label: 'Alumni', path: '/alumni' },
+  { label: 'Alumni Board', path: '/alumni' },
   { label: 'Membership', path: '/membership' },
   { label: 'Support Us', path: '/support' },
   { label: 'Merch', path: '/merch' },

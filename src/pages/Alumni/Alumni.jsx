@@ -2,17 +2,8 @@ import SectionWrapper from '../../components/SectionWrapper/SectionWrapper';
 import Button from '../../components/Buttons/Buttons';
 import AnnouncementBanner from '../../components/AnnouncementBanner/AnnouncementBanner';
 import { renderBold } from '../../utils/renderBold';
-import { alumniData, pastBoards } from '../../data/alumniData';
+import { alumniData } from '../../data/alumniData';
 import './Alumni.css';
-
-/* Opening one past board closes the others */
-function closeOtherBoards(e) {
-  const opened = e.currentTarget;
-  if (!opened.open) return;
-  opened.parentElement?.querySelectorAll('details[open]').forEach((d) => {
-    if (d !== opened) d.open = false;
-  });
-}
 
 export default function Alumni() {
   const d = alumniData;
@@ -38,21 +29,7 @@ export default function Alumni() {
         </div>
       </section>
 
-      {/* ===== 2 · THE WINFO CYCLE ===== */}
-      <SectionWrapper>
-        <h2 className="cursive-title section-title--center">{d.cycleHeading}</h2>
-        <ol className="alumni-cycle">
-          {d.cycle.map((c) => (
-            <li key={c.step} className="alumni-cycle__step">
-              <span className="alumni-cycle__num" aria-hidden="true">{c.step}</span>
-              <h3 className="alumni-cycle__title">{c.title}</h3>
-              <p className="alumni-cycle__text">{c.text}</p>
-            </li>
-          ))}
-        </ol>
-      </SectionWrapper>
-
-      {/* ===== 3 · WHY ===== */}
+      {/* ===== 2 · WHY ===== */}
       <SectionWrapper alt>
         <div className="alumni-why">
           <h2 className="cursive-title">{d.whyHeading}</h2>
@@ -64,7 +41,7 @@ export default function Alumni() {
         </div>
       </SectionWrapper>
 
-      {/* ===== 4 · WHAT THE BOARD DOES ===== */}
+      {/* ===== 3 · WHAT THE BOARD DOES ===== */}
       <SectionWrapper>
         <h2 className="cursive-title section-title--center">{d.doesHeading}</h2>
         <div className="alumni-pillars">
@@ -80,7 +57,7 @@ export default function Alumni() {
         </div>
       </SectionWrapper>
 
-      {/* ===== 5 · BOARD STRUCTURE ===== */}
+      {/* ===== 4 · BOARD STRUCTURE ===== */}
       <SectionWrapper alt>
         <h2 className="cursive-title section-title--center">{d.structureHeading}</h2>
         <div className="alumni-structure">
@@ -100,42 +77,22 @@ export default function Alumni() {
         </div>
       </SectionWrapper>
 
-      {/* ===== 6 · VISION QUOTE ===== */}
-      <SectionWrapper narrow>
-        <blockquote className="alumni-vision">
-          <p>{renderBold(d.vision)}</p>
-        </blockquote>
-      </SectionWrapper>
-
-      {/* ===== 7 · PAST BOARDS ===== */}
-      <SectionWrapper alt>
-        <h2 className="cursive-title section-title--center">{d.pastBoardHeading}</h2>
-        <p className="alumni-past__intro">{d.pastBoardIntro}</p>
-        <div className="alumni-past">
-          {pastBoards.map((b, i) => (
-            <details
-              key={b.year}
-              className="alumni-past__year"
-              name="past-boards"            /* browsers: only one open at a time */
-              open={i === 0}
-              onToggle={closeOtherBoards}   /* same behavior for older browsers */
-            >
-              <summary>{b.year} board</summary>
-              <ul>
-                {b.members.map((m) => (
-                  <li key={`${m.name}-${m.role}`}>
-                    <span className="alumni-past__name">{m.name}</span>
-                    <span className="alumni-past__role">{m.role}</span>
-                  </li>
-                ))}
-              </ul>
-            </details>
-          ))}
-        </div>
-      </SectionWrapper>
-
-      {/* ===== 8 · CTA ===== */}
+      {/* ===== 5 · THE WINFO CYCLE ===== */}
       <SectionWrapper>
+        <h2 className="cursive-title section-title--center">{d.cycleHeading}</h2>
+        <ol className="alumni-cycle">
+          {d.cycle.map((c) => (
+            <li key={c.step} className="alumni-cycle__step">
+              <span className="alumni-cycle__num" aria-hidden="true">{c.step}</span>
+              <h3 className="alumni-cycle__title">{c.title}</h3>
+              <p className="alumni-cycle__text">{c.text}</p>
+            </li>
+          ))}
+        </ol>
+      </SectionWrapper>
+
+      {/* ===== 6 · CTA ===== */}
+      <SectionWrapper alt>
         <div className="alumni-cta">
           <p className="alumni-cta__text cursive-title">{d.bottomCta.text}</p>
           <Button href={d.bottomCta.btnLink} variant="primary" size="lg">

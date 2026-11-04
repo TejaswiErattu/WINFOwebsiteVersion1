@@ -1,16 +1,11 @@
 import SectionWrapper from '../../components/SectionWrapper/SectionWrapper';
-import { FeatureCard } from '../../components/Cards';
-import Button from '../../components/Buttons/Buttons';
+import { useState } from 'react';
 import WinfoLogo from '../../components/WinfoLogo/WinfoLogo';
 import CircuitSVG from '../../components/CircuitSVG/CircuitSVG';
 import GalleryScroller from '../../components/GalleryScroller/GalleryScroller';
 import { renderBold } from '../../utils/renderBold';
 import {
   heroData,
-  missionData,
-  storyData,
-  whatWeDoHeading,
-  whatWeDoData,
   informaticsHeading,
   informaticsDefinition,
   informaticsAreas,
@@ -21,6 +16,10 @@ import {
 import './Home.css';
 
 export default function Home() {
+  /* Which Informatics bubble is showing its description (hover or tap) */
+  const [activeArea, setActiveArea] = useState(0);
+  const area = informaticsAreas[activeArea];
+
   return (
     <>
       {/* ===== 1. HERO ===== */}
@@ -62,10 +61,25 @@ export default function Home() {
             ))}
           </div>
           <ul className="home-informatics__areas" aria-label="Areas of Informatics">
-            {informaticsAreas.map((a) => (
-              <li key={a}>{a}</li>
+            {informaticsAreas.map((a, i) => (
+              <li key={a.name}>
+                <button
+                  type="button"
+                  className="home-informatics__area"
+                  aria-pressed={i === activeArea}
+                  aria-controls="informatics-area-desc"
+                  onClick={() => setActiveArea(i)}
+                  onMouseEnter={() => setActiveArea(i)}
+                  onFocus={() => setActiveArea(i)}
+                >
+                  {a.name}
+                </button>
+              </li>
             ))}
           </ul>
+          <p id="informatics-area-desc" className="home-informatics__area-desc" aria-live="polite">
+            <strong>{area.name}:</strong> {area.desc}
+          </p>
           <div className="home-informatics__quotes">
             {informaticsQuotes.map((q, i) => (
               <blockquote className="home-quote" key={i}>
@@ -79,71 +93,7 @@ export default function Home() {
           <CircuitSVG variant="small" />
         </div>
       </SectionWrapper>
-      {/* ===== 3. WHO WE ARE ===== */}
-      <SectionWrapper>
-        <div className="home-who">
-          <div className="home-who__content">
-            <h2 className="home-who__title cursive-title">{missionData.title}</h2>
-            <p className="home-who__text">{renderBold(missionData.body)}</p>
-            <p className="home-who__text">{renderBold(missionData.bodySecondary)}</p>
-            <p className="home-who__text">{renderBold(missionData.bodyTertiary)}</p>
-            <Button href={missionData.ctaLink} variant="accent" className="home-who__btn">
-              {missionData.ctaLabel}
-            </Button>
-          </div>
-          <div className="home-who__image-frame">
-            {missionData.image ? (
-              <img src={missionData.image} alt={missionData.imageAlt} loading="lazy" decoding="async" />
-            ) : (
-              <div className="home-who__image-placeholder" />
-            )}
-          </div>
-        </div>
-      </SectionWrapper>
-
-      {/* ===== 3. OUR STORY ===== */}
-      <SectionWrapper alt>
-        <div className="home-story">
-          <div className="home-story__image-frame">
-            {storyData.image ? (
-              <img src={storyData.image} alt={storyData.imageAlt} loading="lazy" decoding="async" />
-            ) : (
-              <div className="home-story__image-placeholder" />
-            )}
-          </div>
-          <div className="home-story__content">
-            <h2 className="home-story__title cursive-title">{storyData.title}</h2>
-            <p className="home-story__text">{renderBold(storyData.body)}</p>
-            <p className="impact-stat home-story__stat">{renderBold(storyData.statHighlight)}</p>
-            <p className="home-story__text">{renderBold(storyData.bodySecondary)}</p>
-            <p className="home-story__text">{renderBold(storyData.bodyTertiary)}</p>
-            <Button to={storyData.ctaLink} variant="primary" className="home-story__btn">
-              {storyData.ctaLabel}
-            </Button>
-          </div>
-        </div>
-      </SectionWrapper>
-
-      {/* ===== 4. WHAT WE DO ===== */}
-      <SectionWrapper>
-        <h2 className="cursive-title section-title--center">
-          {whatWeDoHeading.title}
-        </h2>
-        <div className="home-features__grid">
-          {whatWeDoData.map((item) => (
-            <FeatureCard
-              key={item.title}
-              title={item.title}
-              text={item.text}
-              linkLabel={item.linkLabel}
-              linkTo={item.linkTo}
-              accent={item.accent}
-            />
-          ))}
-        </div>
-      </SectionWrapper>
-
-      {/* ===== 5. OUR COMMUNITY (photo strip; edit communityPhotos in homeData.js) ===== */}
+      {/* ===== 3. OUR COMMUNITY (photo strip; edit communityPhotos in homeData.js) ===== */}
       <section className="section-wrapper section-wrapper--alt home-community" aria-labelledby="home-community-title">
         <div className="container">
           <h2 id="home-community-title" className="cursive-title section-title--center">{communityHeading}</h2>

@@ -110,15 +110,16 @@
 
 /* No longer needed — image handles everything */
 
-/* ===== 2. WHO WE ARE — text LEFT, image RIGHT ===== */
-.home-who {
+/* ===== WHO WE ARE + OUR STORY (used on the Our Team page) ===== */
+/* ===== WHO WE ARE — text LEFT, image RIGHT ===== */
+.about-who {
   display: grid;
   grid-template-columns: 1.1fr 1fr;
   gap: 3rem;
   align-items: center;
 }
 
-.home-who__image-frame {
+.about-who__image-frame {
   width: 100%;
   aspect-ratio: 4 / 3;
   border-radius: 20px;
@@ -128,13 +129,13 @@
   background: transparent;
 }
 
-.home-who__image-frame img {
+.about-who__image-frame img {
   width: 100%;
   height: 100%;
   object-fit: cover;
 }
 
-.home-who__image-placeholder {
+.about-who__image-placeholder {
   width: 100%;
   height: 100%;
   background: var(--color-bg-alt);
@@ -144,40 +145,40 @@
   font-size: 3.5rem;
 }
 
-.home-who__content {
+.about-who__content {
   display: flex;
   flex-direction: column;
   gap: 0.85rem;
 }
 
-.home-who__title {
+.about-who__title {
   margin-bottom: 0.25rem;
 }
 
-.home-who__text {
+.about-who__text {
   font-size: var(--text-base);
   line-height: 1.75;
   color: var(--color-text-secondary);
 }
 
-.home-who__text + .home-who__text {
+.about-who__text + .about-who__text {
   margin-top: 0.1rem;
 }
 
-.home-who__btn {
+.about-who__btn {
   margin-top: 0.5rem;
   align-self: flex-start;
 }
 
 /* ===== 3. OUR STORY — image LEFT (tilted), text RIGHT ===== */
-.home-story {
+.about-story {
   display: grid;
   grid-template-columns: 1fr 1.1fr;
   gap: 3rem;
   align-items: center;
 }
 
-.home-story__image-frame {
+.about-story__image-frame {
   width: 100%;
   aspect-ratio: 4 / 3;
   border-radius: 20px;
@@ -189,17 +190,17 @@
   transition: transform var(--transition-base);
 }
 
-.home-story__image-frame:hover {
+.about-story__image-frame:hover {
   transform: rotate(0deg);
 }
 
-.home-story__image-frame img {
+.about-story__image-frame img {
   width: 100%;
   height: 100%;
   object-fit: cover;
 }
 
-.home-story__image-placeholder {
+.about-story__image-placeholder {
   width: 100%;
   height: 100%;
   background: var(--color-bg-alt);
@@ -209,42 +210,35 @@
   font-size: 3.5rem;
 }
 
-.home-story__content {
+.about-story__content {
   display: flex;
   flex-direction: column;
   gap: 0.85rem;
 }
 
-.home-story__title {
+.about-story__title {
   margin-bottom: 0.25rem;
 }
 
-.home-story__text {
+.about-story__text {
   font-size: var(--text-base);
   line-height: 1.75;
   color: var(--color-text-secondary);
 }
 
 /* Featured 28% impact statistic */
-.home-story__stat {
+.about-story__stat {
   margin: 0.35rem 0;
   text-align: left;
 }
 
-.home-story__text + .home-story__text {
+.about-story__text + .about-story__text {
   margin-top: 0.1rem;
 }
 
-.home-story__btn {
+.about-story__btn {
   margin-top: 0.5rem;
   align-self: flex-start;
-}
-
-/* ===== 4. WHAT WE DO ===== */
-.home-features__grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 1.75rem;
 }
 
 /* ===== OUR COMMUNITY — full-width photo strip ===== */
@@ -362,43 +356,38 @@
     width: 200px;
   }
 
-  .home-who {
+  .about-who {
     grid-template-columns: 1fr;
     gap: 2rem;
     text-align: center;
   }
 
-  .home-who__btn {
+  .about-who__btn {
     align-self: center;
   }
 
-  .home-who__image-frame {
+  .about-who__image-frame {
     max-width: 400px;
     margin: 0 auto;
     order: -1; /* image on top on mobile */
   }
 
-  .home-story {
+  .about-story {
     grid-template-columns: 1fr;
     gap: 2rem;
     text-align: center;
   }
 
-  .home-story__btn {
+  .about-story__btn {
     align-self: center;
   }
 
-  .home-story__image-frame {
+  .about-story__image-frame {
     max-width: 400px;
     margin: 0 auto;
     transform: rotate(0deg);
   }
 
-  .home-features__grid {
-    grid-template-columns: 1fr;
-    max-width: 400px;
-    margin: 0 auto;
-  }
 
   .home-informatics__quotes {
     grid-template-columns: 1fr;
@@ -446,11 +435,11 @@
   justify-content: center;
   gap: 0.5rem;
   max-width: 50rem;
-  margin: 0 auto 2.5rem;
+  margin: 0 auto 1rem;
   padding: 0;
   list-style: none;
 }
-.home-informatics__areas li {
+.home-informatics__area {
   padding: 0.35rem 0.9rem;
   border-radius: var(--radius-full);
   background: var(--color-bg-alt);
@@ -459,4 +448,20 @@
   font-size: 0.9rem;
   font-weight: 600;
   color: var(--color-primary-dark);
+  cursor: pointer;
+  transition: background var(--transition-fast), color var(--transition-fast), border-color var(--transition-fast);
 }
+.home-informatics__area:hover,
+.home-informatics__area[aria-pressed='true'] {
+  background: var(--color-primary-dark);
+  border-color: var(--color-primary-dark);
+  color: var(--color-on-primary);
+}
+.home-informatics__area-desc {
+  max-width: 40rem;
+  min-height: 3.2em;
+  margin: 0 auto 2.5rem;
+  text-align: center;
+  color: var(--color-text-secondary);
+}
+.home-informatics__area-desc strong { color: var(--color-text); }

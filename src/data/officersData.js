@@ -7,7 +7,7 @@ export const officersData = {
   title: 'our team',
   heroBody:
     'Our team is a passionate group of students dedicated to fostering an inclusive, supportive, and empowering community for students in the field of information science.',
-  heroBodySecondary: 'Read more about us below!',
+  heroBodySecondary: 'Get to know who we are, how WINFO started, and the board leading it this year.',
   heroImage: '/images/stickfigures.jpg',
   heroImageAlt: 'Illustration of stick figures',
 
@@ -112,8 +112,14 @@ export const officersData = {
     },
   ],
 
-  /* ---------- Committees section ---------- */
-  committeesHeading: 'committees',
+  /* Short note under the officers, linking to the Committees page */
+  committeesTeaser:
+    'Each director leads a committee of student volunteers who plan our events, hackathon, podcast, and outreach.',
+
+  /* ---------- Committees page ---------- */
+  committeesTitle: 'committees',
+  committeesIntro:
+    'Committees are where most WINFO members get involved. Each one works under a director on the officer board, and anyone can join.',
 
   committees: [
     {

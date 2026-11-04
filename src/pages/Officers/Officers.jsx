@@ -1,7 +1,21 @@
 import SectionWrapper from '../../components/SectionWrapper/SectionWrapper';
 import CircuitSVG from '../../components/CircuitSVG/CircuitSVG';
+import Button from '../../components/Buttons/Buttons';
+import TeamTabs from '../../components/TeamTabs/TeamTabs';
+import { renderBold } from '../../utils/renderBold';
 import { officersData } from '../../data/officersData';
+import { missionData, storyData } from '../../data/aboutData';
+import { pastBoards, pastBoardsHeading, pastBoardsIntro } from '../../data/pastBoardsData';
 import './Officers.css';
+
+/* Opening one past board closes the others */
+function closeOtherBoards(e) {
+  const opened = e.currentTarget;
+  if (!opened.open) return;
+  opened.parentElement?.querySelectorAll('details[open]').forEach((d) => {
+    if (d !== opened) d.open = false;
+  });
+}
 
 /* Inline LinkedIn SVG icon */
 const LinkedInIcon = () => (
@@ -11,25 +25,28 @@ const LinkedInIcon = () => (
 );
 
 /**
- * Officer detail card used on the team page.
+ * Officer card. When the officer has a LinkedIn, the whole card is the link.
  */
 function TeamCard({ officer, large }) {
   const { name, role, image, linkedin, year, focusArea, funFact } = officer;
+  const Tag = linkedin ? 'a' : 'div';
+  const linkProps = linkedin
+    ? { href: linkedin, target: '_blank', rel: 'noopener noreferrer', 'aria-label': `${name}, ${role}: LinkedIn profile (opens in a new tab)` }
+    : {};
 
   return (
-    <div className={`officer-card ${large ? 'officer-card--large' : ''}`}>
+    <Tag className={`officer-card ${large ? 'officer-card--large' : ''} ${linkedin ? 'officer-card--link' : ''}`} {...linkProps}>
       {/* Photo */}
       <div className="officer-card__portrait">
         {image ? (
-          <img src={image} alt={name} loading="lazy" decoding="async" />
+          <img src={image} alt="" loading="lazy" decoding="async" />
         ) : (
           <div className="officer-card__placeholder" />
         )}
-        {/* LinkedIn badge */}
         {linkedin && (
-          <a href={linkedin} target="_blank" rel="noopener noreferrer" className="officer-card__linkedin" aria-label={`${name} LinkedIn`}>
+          <span className="officer-card__linkedin" aria-hidden="true">
             <LinkedInIcon />
-          </a>
+          </span>
         )}
       </div>
 
@@ -41,29 +58,7 @@ function TeamCard({ officer, large }) {
         {focusArea && <p className="officer-card__detail"><strong>major:</strong> {focusArea}</p>}
         {funFact && <p className="officer-card__detail"><strong>fun fact:</strong> {funFact}</p>}
       </div>
-    </div>
-  );
-}
-
-/**
- * Committee card with image + title + description.
- */
-function CommitteeCard({ committee }) {
-  const { name, image, description } = committee;
-
-  return (
-    <div className="committee-card">
-      <div className="committee-card__image">
-        <img
-          src={image || '/images/comingsoon.jpg'}
-          alt={image ? `${name} committee` : `${name} committee photo coming soon`}
-          loading="lazy"
-          decoding="async"
-        />
-      </div>
-      <h3 className="committee-card__name cursive-title">{name}</h3>
-      <p className="committee-card__desc">{description}</p>
-    </div>
+    </Tag>
   );
 }
 
@@ -77,8 +72,7 @@ export default function Officers() {
     officersHeading,
     coPresidents,
     directors,
-    committeesHeading,
-    committees,
+    committeesTeaser,
   } = officersData;
 
   return (
@@ -95,6 +89,7 @@ export default function Officers() {
             <h1 className="cursive-title page-title">{title}</h1>
             <p className="team-hero__text">{heroBody}</p>
             <p className="team-hero__text">{heroBodySecondary}</p>
+            <TeamTabs />
           </div>
 
           <div className="team-hero__image-frame">
@@ -107,7 +102,41 @@ export default function Officers() {
         </div>
       </section>
 
-      {/* ===== 2 · OFFICERS ===== */}
+      {/* ===== 2 · WHO WE ARE (edit in data/aboutData.js) ===== */}
+      <SectionWrapper>
+        <div className="about-who">
+          <div className="about-who__content">
+            <h2 className="about-who__title cursive-title">{missionData.title}</h2>
+            <p className="about-who__text">{renderBold(missionData.body)}</p>
+            <p className="about-who__text">{renderBold(missionData.bodySecondary)}</p>
+            <p className="about-who__text">{renderBold(missionData.bodyTertiary)}</p>
+            <Button href={missionData.ctaLink} variant="accent" className="about-who__btn">
+              {missionData.ctaLabel}
+            </Button>
+          </div>
+          <div className="about-who__image-frame">
+            <img src={missionData.image} alt={missionData.imageAlt} loading="lazy" decoding="async" />
+          </div>
+        </div>
+      </SectionWrapper>
+
+      {/* ===== 3 · OUR STORY ===== */}
+      <SectionWrapper alt>
+        <div className="about-story">
+          <div className="about-story__image-frame">
+            <img src={storyData.image} alt={storyData.imageAlt} loading="lazy" decoding="async" />
+          </div>
+          <div className="about-story__content">
+            <h2 className="about-story__title cursive-title">{storyData.title}</h2>
+            <p className="about-story__text">{renderBold(storyData.body)}</p>
+            <p className="impact-stat about-story__stat">{renderBold(storyData.statHighlight)}</p>
+            <p className="about-story__text">{renderBold(storyData.bodySecondary)}</p>
+            <p className="about-story__text">{renderBold(storyData.bodyTertiary)}</p>
+          </div>
+        </div>
+      </SectionWrapper>
+
+      {/* ===== 4 · OFFICERS ===== */}
       <SectionWrapper>
         <h2 className="cursive-title section-title--center team-section-heading">
           {officersHeading}
@@ -126,17 +155,38 @@ export default function Officers() {
             <TeamCard key={o.name} officer={o} />
           ))}
         </div>
+
+        {/* Committees live on their own page; this keeps the link to the board clear */}
+        <div className="team-committees-teaser">
+          <p>{committeesTeaser}</p>
+          <Button to="/committees" variant="primary">meet the committees</Button>
+        </div>
       </SectionWrapper>
 
-      {/* ===== 3 · COMMITTEES ===== */}
-      <SectionWrapper alt className="committees-section">
-        <h2 className="cursive-title section-title--center team-section-heading">
-          {committeesHeading}
-        </h2>
 
-        <div className="committees-grid">
-          {committees.map((c) => (
-            <CommitteeCard key={c.name} committee={c} />
+      {/* ===== 5 · PAST BOARDS (edit in data/pastBoardsData.js) ===== */}
+      <SectionWrapper alt>
+        <h2 className="cursive-title section-title--center">{pastBoardsHeading}</h2>
+        <p className="alumni-past__intro">{pastBoardsIntro}</p>
+        <div className="alumni-past">
+          {pastBoards.map((b, i) => (
+            <details
+              key={b.year}
+              className="alumni-past__year"
+              name="past-boards"            /* browsers: only one open at a time */
+              open={i === 0}
+              onToggle={closeOtherBoards}   /* same behavior for older browsers */
+            >
+              <summary>{b.year} board</summary>
+              <ul>
+                {b.members.map((m) => (
+                  <li key={`${m.name}-${m.role}`}>
+                    <span className="alumni-past__name">{m.name}</span>
+                    <span className="alumni-past__role">{m.role}</span>
+                  </li>
+                ))}
+              </ul>
+            </details>
           ))}
         </div>
       </SectionWrapper>

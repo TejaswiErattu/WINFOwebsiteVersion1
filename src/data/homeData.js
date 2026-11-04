@@ -2,8 +2,6 @@
    Home page data — matches Figma screenshots
    =================================================================== */
 
-import { MEMBERSHIP_SIGNUP_URL } from './externalLinks';
-
 /* ---------- Hero ---------- */
 export const heroData = {
   /* Headline: each array item is its own line on wide screens */
@@ -11,65 +9,6 @@ export const heroData = {
   slogan: 'Where our community meets to build, learn, and connect.',
   tagline: 'Women in Informatics (WINFO) is a student-led community at the University of Washington Information School.',
 };
-
-/* ---------- Who We Are ---------- */
-export const missionData = {
-  title: 'who we are',
-  body: 'Women in Informatics (WINFO) is a **student-led organization at the University of Washington\'s Information School** dedicated to **uplifting women and underrepresented voices in technology**.',
-  bodySecondary:
-    'We believe that **diversity drives innovation**, and that every student deserves the tools, community, and confidence to shape the future of technology. By hosting professional workshops, social events, and hackathons, our mission is to **nurture a blossoming community of fearless technology leaders**.',
-  bodyTertiary:
-    'We welcome **all majors, genders, and identities** united by a shared passion for creating a more equitable tech industry.',
-  ctaLabel: 'Join Us!',
-  ctaLink: MEMBERSHIP_SIGNUP_URL,
-  image: '/images/hackathon-1.jpg',
-  imageAlt: 'WINFO members at a community event',
-};
-
-/* ---------- Our Story ---------- */
-export const storyData = {
-  title: 'our story',
-  body: 'WINFO began in **2012** with a simple mission: to **connect women in the Informatics program and help them feel supported**.',
-  /* Featured impact statistic — rendered larger, as a pull-quote */
-  statHighlight: 'Back then, only **28%** of students in the Informatics major were women.',
-  bodySecondary:
-    'As of 2023, **53% of Informatics students are women**, and our blossoming community is stronger than ever.',
-  bodyTertiary:
-    'Through everything we do, we stay rooted in the same values: **connection, courage, and care**.',
-  ctaLabel: 'meet our team',
-  ctaLink: '/officers',
-  image: '/images/support-group.jpg',
-  imageAlt: 'WINFO community gathering',
-};
-
-/* ---------- What We Do (feature cards) ---------- */
-export const whatWeDoHeading = {
-  title: 'what we do',
-};
-
-export const whatWeDoData = [
-  {
-    title: 'Hackathons',
-    text: 'WINFO\'s annual hackathon invites students of all experience levels to collaborate, innovate, and solve real-world problems through tech.',
-    linkLabel: 'Learn more',
-    linkTo: '/hackathon',
-    accent: 'purple',
-  },
-  {
-    title: 'Campus Events',
-    text: 'We host social, creative, and professional campus events every quarter, plus programs for middle and high school students, to help you meet new people and grow your skill set.',
-    linkLabel: 'Get involved',
-    linkTo: '/events',
-    accent: 'pink',
-  },
-  {
-    title: 'Podcast',
-    text: '*Decoding with WINFO* is our signature podcast featuring guests within the tech field and the Informatics community.',
-    linkLabel: 'Tune in',
-    linkTo: '/podcast',
-    accent: 'blue',
-  },
-];
 
 /* ---------- What is Informatics (definition + officer quotes) ---------- */
 export const informaticsHeading = {
@@ -82,16 +21,17 @@ export const informaticsDefinition = [
   'Informatics students aim to create equitable information technologies and systems by addressing challenges in people\u2019s daily lives, guided by the idea that **technology has value when it genuinely serves people.**',
 ];
 
-/* Areas Informatics spans (from the intro presentation) */
+/* Areas Informatics spans (from the intro presentation).
+   Tap or hover a bubble on the home page to show its description. */
 export const informaticsAreas = [
-  'Human-Computer Interaction',
-  'Data Science',
-  'Information Assurance & Cybersecurity',
-  'Software Development',
-  'Information Architecture',
-  'Information Management',
-  'Information & Society',
-  'Health & Well-Being',
+  { name: 'Human-Computer Interaction', desc: 'Designing technology around the people who use it: research, prototyping, and usability testing.' },
+  { name: 'Data Science', desc: 'Collecting, cleaning, and analyzing data to find patterns and answer real questions.' },
+  { name: 'Information Assurance & Cybersecurity', desc: 'Keeping systems and information safe, private, and trustworthy.' },
+  { name: 'Software Development', desc: 'Building apps, websites, and tools, from planning through code and testing.' },
+  { name: 'Information Architecture', desc: 'Organizing and labeling information so people can find what they need.' },
+  { name: 'Information Management', desc: 'Planning how organizations store, share, and govern their information and systems.' },
+  { name: 'Information & Society', desc: 'How technology shapes communities, equity, policy, and ethics.' },
+  { name: 'Health & Well-Being', desc: 'Using information and technology to improve health care and everyday well-being.' },
 ];
 
 export const informaticsQuotes = [

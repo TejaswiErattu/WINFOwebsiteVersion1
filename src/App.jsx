@@ -23,6 +23,7 @@ import './components/GalleryScroller/GalleryScroller.css';
 import './pages/Hackathon/Hackathon.css';
 import './pages/Podcast/Podcast.css';
 import './pages/Officers/Officers.css';
+import './components/TeamTabs/TeamTabs.css';
 import './pages/Membership/Membership.css';
 import './pages/SupportUs/SupportUs.css';
 import './pages/Merch/Merch.css';
@@ -62,6 +63,7 @@ const loaders = {
   Hackathon: () => import('./pages/Hackathon/Hackathon'),
   Podcast: () => import('./pages/Podcast/Podcast'),
   Officers: () => import('./pages/Officers/Officers'),
+  Committees: () => import('./pages/Committees/Committees'),
   Membership: () => import('./pages/Membership/Membership'),
   SupportUs: () => import('./pages/SupportUs/SupportUs'),
   Merch: () => import('./pages/Merch/Merch'),
@@ -73,6 +75,7 @@ const Events = lazyPage(loaders.Events);
 const Hackathon = lazyPage(loaders.Hackathon);
 const Podcast = lazyPage(loaders.Podcast);
 const Officers = lazyPage(loaders.Officers);
+const Committees = lazyPage(loaders.Committees);
 const Membership = lazyPage(loaders.Membership);
 const SupportUs = lazyPage(loaders.SupportUs);
 const Merch = lazyPage(loaders.Merch);
@@ -110,6 +113,7 @@ export default function App() {
             <Route path="/hackathon" element={<Hackathon />} />
             <Route path="/podcast" element={<Podcast />} />
             <Route path="/officers" element={<Officers />} />
+            <Route path="/committees" element={<Committees />} />
             <Route path="/membership" element={<Membership />} />
             <Route path="/support" element={<SupportUs />} />
             <Route path="/merch" element={<Merch />} />

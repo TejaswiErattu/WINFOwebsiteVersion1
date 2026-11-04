@@ -31,6 +31,11 @@ const PAGES = {
     description:
       'Our team is a passionate group of students dedicated to fostering an inclusive, supportive, and empowering community for students in the field of information science.',
   },
+  '/committees': {
+    title: 'Committees',
+    description:
+      'Committees are where most WINFO members get involved. Each one works under a director on the officer board, and anyone can join.',
+  },
   '/membership': {
     title: 'Membership',
     description:
@@ -46,7 +51,7 @@ const PAGES = {
     description: 'Rep your community — grab a cozy WINFO crewneck before they sell out.',
   },
   '/alumni': {
-    title: 'Alumni',
+    title: 'Alumni Board',
     description:
       "Graduating shouldn't mean drifting away. The WINFO Alumni Board is a formal alumni network that keeps WINFO grads connected and involved after graduation.",
   },
