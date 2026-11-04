@@ -1,6 +1,7 @@
 import SectionWrapper from '../../components/SectionWrapper/SectionWrapper';
 import Button from '../../components/Buttons/Buttons';
-import TeamTabs from '../../components/TeamTabs/TeamTabs';
+import SubTabs from '../../components/SubTabs/SubTabs';
+import { TEAM_TABS } from '../../data/navLinks';
 import { officersData } from '../../data/officersData';
 import { MEMBERSHIP_SIGNUP_URL } from '../../data/externalLinks';
 
@@ -32,7 +33,7 @@ export default function Committees() {
       <div className="committees-page__header">
         <h1 className="cursive-title page-title">{committeesTitle}</h1>
         <p className="team-hero__text">{committeesIntro}</p>
-        <TeamTabs />
+        <SubTabs tabs={TEAM_TABS} label="Our Team sections" />
       </div>
 
       <div className="committees-grid">

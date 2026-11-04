@@ -373,4 +373,4 @@ a.officer-card:focus-visible {
   margin: 0 auto 2.5rem;
   text-align: center;
 }
-.committees-page__header .team-tabs { align-self: center; }
+.committees-page__header .sub-tabs { align-self: center; }

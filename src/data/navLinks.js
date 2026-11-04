@@ -18,8 +18,8 @@ export const navLinks = [
     label: 'Events',
     children: [
       { label: 'WINFO Annual Hackathon', path: '/hackathon', description: 'Our flagship two-day hackathon' },
-      { label: 'On-Campus Events', path: '/events#on-campus', description: 'This quarter\u2019s calendar and past events' },
-      { label: 'Middle & High School Events', path: '/events#youth', description: 'TechXperience and Fearless, TechMore' },
+      { label: 'On-Campus Events', path: '/events', description: 'This quarter\u2019s calendar and past events' },
+      { label: 'Middle & High School Events', path: '/youth-events', description: 'TechXperience and Fearless, TechMore' },
     ],
   },
   { label: 'Podcast', path: '/podcast' },
@@ -89,3 +89,15 @@ export const siteInfo = {
   navCtaLabel: 'Join Us!',
   navCtaHref: MEMBERSHIP_SIGNUP_URL,
 };
+
+/* ---------- Tabs that join related pages (SubTabs component) ---------- */
+export const TEAM_TABS = [
+  { label: 'Officer board', path: '/officers' },
+  { label: 'Committees', path: '/committees' },
+];
+
+export const EVENT_TABS = [
+  { label: 'On-campus', path: '/events' },
+  { label: 'Middle & high school', path: '/youth-events' },
+  { label: 'Hackathon', path: '/hackathon' },
+];

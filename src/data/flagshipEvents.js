@@ -114,6 +114,8 @@ export const flagshipEvents = [
       'Team project showcase at the end of the week',
       'Presented by WINFO and the Informatics Undergraduate Association (IUGA)',
     ],
+    /* No participant photos (minors): a clip-art illustration stands in */
+    illustration: { src: '/images/events/fearless-illustration.svg', alt: 'Illustration of a laptop on a video call with a lightbulb idea above it' },
     /* timesHeld, firstYear: waiting for board confirmation.
        attendance: intentionally omitted (no participant or school counts).
        photos: event-09.jpg was removed from the site (and public/) until the board confirms publication; it is still in git history

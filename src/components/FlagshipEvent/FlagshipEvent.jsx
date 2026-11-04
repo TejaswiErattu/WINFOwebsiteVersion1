@@ -16,7 +16,7 @@ export default function FlagshipEvent({ event, labels, flipped = false, eagerMed
   const {
     slug, name, tagline, dates, description, mission, audience, howItWorks,
     timesHeld, timesHeldAsOf, firstYear, attendance, reach, tracks,
-    posters = [], photos = [], link,
+    posters = [], photos = [], illustration, link,
   } = event;
 
   /* ---- Stats: verified numbers only; a strip needs at least two ---- */
@@ -70,7 +70,8 @@ export default function FlagshipEvent({ event, labels, flipped = false, eagerMed
   const loading = (i) => (eagerMedia && i === 0 ? 'eager' : 'lazy');
 
   /* ---- Media: 1 photo single, 2 side by side, 3–5 collage ---- */
-  const shown = photos.slice(0, 5);
+  /* No photos? An illustration (e.g. for events with minors) fills the slot */
+  const shown = photos.length ? photos.slice(0, 5) : illustration ? [{ width: 480, height: 360, ...illustration }] : [];
   const mediaClass =
     shown.length >= 3 ? 'flagship__media--collage' : shown.length === 2 ? 'flagship__media--pair' : 'flagship__media--single';
 

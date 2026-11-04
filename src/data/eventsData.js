@@ -11,31 +11,6 @@ export const eventsData = {
   intro:
     'WINFO hosts events to build community, grow professional skills, make connections, and open doors to opportunities in technology, for UW students and for the middle and high school students who will come after them.',
 
-  /* ---------- Event categories (cards under the hero) ----------
-     `to` is a route or an in-page anchor on this page. */
-  categories: [
-    {
-      name: 'WINFO Annual Hackathon',
-      text: 'Our flagship two-day hackathon, where hundreds of students build technology for social good.',
-      to: '/hackathon',
-      linkLabel: 'Visit the hackathon page',
-      accent: 'purple',
-    },
-    {
-      name: 'On-Campus Events',
-      text: 'Socials, crafting nights, professional development workshops, panels, company tours and networking for UW students.',
-      to: '#on-campus',
-      linkLabel: 'See this quarter',
-      accent: 'pink',
-    },
-    {
-      name: 'Middle & High School Events',
-      text: 'TechXperience and Fearless, TechMore introduce younger students to technology with UW mentors.',
-      to: '#youth',
-      linkLabel: 'Learn about our programs',
-      accent: 'blue',
-    },
-  ],
 
   /* ---------- On-campus section ---------- */
   onCampus: {

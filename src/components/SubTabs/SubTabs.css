@@ -1,4 +1,4 @@
-.team-tabs {
+.sub-tabs {
   display: inline-flex;
   width: fit-content;
   align-self: flex-start;
@@ -9,7 +9,7 @@
   background: var(--color-bg-alt);
   border: 1px solid var(--color-border);
 }
-.team-tabs__tab {
+.sub-tabs__tab {
   padding: 0.45rem 1.1rem;
   border-radius: var(--radius-full);
   font-family: var(--font-heading);
@@ -19,8 +19,8 @@
   text-decoration: none;
   transition: background var(--transition-fast), color var(--transition-fast);
 }
-.team-tabs__tab:hover { background: var(--color-surface); }
-.team-tabs__tab.active {
+.sub-tabs__tab:hover { background: var(--color-surface); }
+.sub-tabs__tab.active {
   background: var(--color-primary-dark);
   color: var(--color-on-primary);
 }

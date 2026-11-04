@@ -406,3 +406,33 @@
 
 /* Show title: italic and bold */
 .podcast-hero__text em { font-weight: 700; color: var(--color-text); }
+
+/* ===== Layout from the Nov 2026 review: intro, then a full-width slideshow ===== */
+.podcast-hero--compact { padding-bottom: 2rem; }
+.podcast-intro {
+  position: relative;
+  max-width: 46rem;
+  margin: 0 auto;
+  text-align: center;
+}
+.podcast-episodes-section .podcast-carousel { max-width: 72rem; margin: 0 auto; }
+.podcast-episodes-section .podcast-carousel__card {
+  grid-template-columns: 1.5fr 1fr;
+  padding: 1.5rem;
+}
+.podcast-episodes-section .podcast-carousel__thumb { aspect-ratio: 16 / 9; }
+.podcast-episodes-section .podcast-carousel__thumb img { object-fit: cover; }
+.podcast-episodes-section .podcast-carousel__title { font-size: clamp(1.3rem, 2.4vw, 1.75rem); }
+.podcast-carousel__new {
+  margin-left: 0.5rem;
+  padding: 0.1rem 0.55rem;
+  border-radius: var(--radius-full);
+  background: var(--color-accent, var(--color-primary));
+  color: var(--color-on-primary);
+  font-size: 0.75em;
+  vertical-align: middle;
+}
+.podcast-guest-cta { max-width: none; width: 100%; }
+@media (max-width: 900px) {
+  .podcast-episodes-section .podcast-carousel__card { grid-template-columns: 1fr; }
+}

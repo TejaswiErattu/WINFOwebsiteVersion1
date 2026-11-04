@@ -23,7 +23,7 @@ import './components/GalleryScroller/GalleryScroller.css';
 import './pages/Hackathon/Hackathon.css';
 import './pages/Podcast/Podcast.css';
 import './pages/Officers/Officers.css';
-import './components/TeamTabs/TeamTabs.css';
+import './components/SubTabs/SubTabs.css';
 import './pages/Membership/Membership.css';
 import './pages/SupportUs/SupportUs.css';
 import './pages/Merch/Merch.css';
@@ -60,6 +60,7 @@ function lazyPage(load) {
 
 const loaders = {
   Events: () => import('./pages/Events/Events'),
+  YouthEvents: () => import('./pages/YouthEvents/YouthEvents'),
   Hackathon: () => import('./pages/Hackathon/Hackathon'),
   Podcast: () => import('./pages/Podcast/Podcast'),
   Officers: () => import('./pages/Officers/Officers'),
@@ -72,6 +73,7 @@ const loaders = {
 };
 
 const Events = lazyPage(loaders.Events);
+const YouthEvents = lazyPage(loaders.YouthEvents);
 const Hackathon = lazyPage(loaders.Hackathon);
 const Podcast = lazyPage(loaders.Podcast);
 const Officers = lazyPage(loaders.Officers);
@@ -110,6 +112,7 @@ export default function App() {
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/events" element={<Events />} />
+            <Route path="/youth-events" element={<YouthEvents />} />
             <Route path="/hackathon" element={<Hackathon />} />
             <Route path="/podcast" element={<Podcast />} />
             <Route path="/officers" element={<Officers />} />

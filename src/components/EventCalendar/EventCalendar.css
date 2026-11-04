@@ -507,3 +507,9 @@
   .cal-card:hover, .cal-chip:hover { transform: none; }
   .cal-pop { animation: none; }
 }
+
+/* "Add all upcoming events" (.ics download) */
+.cal__add-all {
+  text-align: center;
+  margin: -0.5rem 0 1.5rem;
+}

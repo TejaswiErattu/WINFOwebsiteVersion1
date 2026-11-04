@@ -434,3 +434,7 @@ body h3.more-events__heading:not(#_) {
   .more-events,
   .events-cta { padding-left: var(--space-4); padding-right: var(--space-4); }
 }
+
+/* Tabs between On-campus / Middle & high school / Hackathon */
+.events-section__head .sub-tabs { grid-column: 1 / -1; }
+.events-hero .sub-tabs { margin-top: 1.5rem; }

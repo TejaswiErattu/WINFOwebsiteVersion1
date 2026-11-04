@@ -16,6 +16,11 @@ const PAGES = {
     description:
       'WINFO brings students together through technical, professional, and community-focused events designed to make technology more welcoming and accessible.',
   },
+  '/youth-events': {
+    title: 'Middle & High School Events',
+    description:
+      'Our youth programs give middle and high school students a beginner-friendly, mentor-led first look at technology and Informatics.',
+  },
   '/hackathon': {
     title: 'Hackathon',
     description:

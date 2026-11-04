@@ -14,8 +14,6 @@ export default function Podcast() {
     heroBodySecondary,
     ctaLabel,
     ctaLink,
-    heroImage,
-    heroImageAlt,
     infoCards,
     guestCta,
     episodesHeading,
@@ -39,58 +37,26 @@ export default function Podcast() {
 
   return (
     <>
-      {/* ===== 1 · HERO — "our podcast" ===== */}
-      <section className="podcast-hero">
-        {/* Circuit decoration (right side, subtle) */}
+      {/* ===== 1 · INTRO ===== */}
+      <section className="podcast-hero podcast-hero--compact">
         <div className="podcast-hero__circuit" aria-hidden="true">
           <CircuitSVG variant="small" />
         </div>
-
-        <div className="podcast-hero__inner">
-          {/* Text side */}
-          <div className="podcast-hero__content">
-            <h1 className="cursive-title page-title">{title}</h1>
-            <p className="podcast-hero__text">
-              {renderBold(heroBody)}
-            </p>
-            <p className="podcast-hero__text">{heroBodySecondary}</p>
-            <Button href={ctaLink} variant="primary" className="podcast-hero__btn">
-              <PlayIcon className="icon icon--inline" /> {ctaLabel}
-            </Button>
-          </div>
-
-          {/* Image side */}
-          <div className="podcast-hero__image-frame">
-            {heroImage ? (
-              <img src={heroImage} alt={heroImageAlt} />
-            ) : (
-              <div className="podcast-hero__image-placeholder" />
-            )}
-          </div>
+        <div className="podcast-intro">
+          <h1 className="cursive-title page-title">{title}</h1>
+          <p className="podcast-hero__text">{renderBold(heroBody)}</p>
+          <p className="podcast-hero__text">{heroBodySecondary}</p>
+          <Button href={ctaLink} variant="primary" className="podcast-hero__btn">
+            <PlayIcon className="icon icon--inline" /> {ctaLabel}
+          </Button>
         </div>
       </section>
 
-      {/* ===== 2 · WHO / WHAT / WHY ===== */}
-      <SectionWrapper>
-        <div className="podcast-info-cards">
-          {infoCards.map((card) => (
-            <div key={card.title} className={`podcast-info-card podcast-info-card--${card.accent}`}>
-              <h2 className="podcast-info-card__title cursive-title">{card.title}</h2>
-              <p className="podcast-info-card__text">{card.text}</p>
-            </div>
-          ))}
-        </div>
-      </SectionWrapper>
-
-      {/* ===== 4 · PAST EPISODES CAROUSEL ===== */}
-      {/* ===== 3 · PAST EPISODES (carousel) beside the GUEST CTA ===== */}
+      {/* ===== 2 · EPISODES SLIDESHOW (newest first; edit in data/podcastData.js) ===== */}
       <SectionWrapper alt className="podcast-episodes-section">
-        <div className="podcast-episodes-layout">
-        <div className="podcast-episodes-main">
-        <h2 className="cursive-title podcast-episodes__heading">
+        <h2 className="cursive-title section-title--center podcast-episodes__heading">
           {episodesHeading}
         </h2>
-
         <div className="podcast-carousel" role="region" aria-roledescription="carousel" aria-label="Past episodes">
           {/* Left arrow */}
           <button type="button" className="podcast-carousel__arrow podcast-carousel__arrow--left" onClick={prev} aria-label="Previous episode">
@@ -132,7 +98,7 @@ export default function Podcast() {
                     </div>
 
                     <div className="podcast-carousel__content">
-                      <span className="podcast-carousel__tag">{ep.tag}</span>
+                      <span className="podcast-carousel__tag">{ep.tag}{i === 0 && <span className="podcast-carousel__new">newest</span>}</span>
                       <h3 className="podcast-carousel__title">{ep.title}</h3>
                       <p className="podcast-carousel__desc">{renderBold(ep.description)}</p>
                       {ep.watchUrl && (
@@ -167,8 +133,23 @@ export default function Podcast() {
             />
           ))}
         </div>
-        </div>
+      </SectionWrapper>
 
+      {/* ===== 3 · WHO / WHAT / WHY ===== */}
+      <SectionWrapper>
+        <div className="podcast-info-cards">
+          {infoCards.map((card) => (
+            <div key={card.title} className={`podcast-info-card podcast-info-card--${card.accent}`}>
+              <h2 className="podcast-info-card__title cursive-title">{card.title}</h2>
+              <p className="podcast-info-card__text">{card.text}</p>
+            </div>
+          ))}
+        </div>
+      </SectionWrapper>
+
+
+      {/* ===== 4 · BECOME A GUEST (full width) ===== */}
+      <SectionWrapper alt>
         <aside className="podcast-guest-cta" aria-label="Be a guest">
           <p className="podcast-guest-cta__text cursive-title">{guestCta.text}</p>
           <p className="podcast-guest-cta__body">{guestCta.body}</p>
@@ -176,7 +157,6 @@ export default function Podcast() {
             {guestCta.btnLabel}
           </Button>
         </aside>
-        </div>
       </SectionWrapper>
     </>
   );

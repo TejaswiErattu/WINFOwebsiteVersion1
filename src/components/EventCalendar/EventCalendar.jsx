@@ -61,6 +61,35 @@ function googleCalUrl(e, where) {
   return `https://calendar.google.com/calendar/render?${params.toString()}`;
 }
 
+/* One .ics file with every upcoming event, for "add all to my calendar".
+   Works with Google Calendar, Apple Calendar and Outlook. */
+function icsEscape(text) {
+  return text.replace(/\\/g, '\\\\').replace(/[,;]/g, (c) => `\\${c}`).replace(/\n/g, '\\n');
+}
+function buildIcs(list, buildings) {
+  const lines = ['BEGIN:VCALENDAR', 'VERSION:2.0', 'PRODID:-//WINFO//Events//EN', 'CALSCALE:GREGORIAN'];
+  list.forEach((e) => {
+    const ymd = e.date.replace(/-/g, '');
+    const range = parseTimeRange(e.time);
+    const next = new Date(e.when.getFullYear(), e.when.getMonth(), e.when.getDate() + 1);
+    const nextYmd = `${next.getFullYear()}${pad(next.getMonth() + 1)}${pad(next.getDate())}`;
+    const t = ([h, m]) => `${ymd}T${pad(h)}${pad(m)}00`;
+    lines.push(
+      'BEGIN:VEVENT',
+      `UID:${slug(e)}@winfo`,
+      `DTSTAMP:${ymd}T000000Z`,
+      range ? `DTSTART;TZID=America/Los_Angeles:${t(range.start)}` : `DTSTART;VALUE=DATE:${ymd}`,
+      range ? `DTEND;TZID=America/Los_Angeles:${t(range.end)}` : `DTEND;VALUE=DATE:${nextYmd}`,
+      `SUMMARY:${icsEscape(e.title)}`,
+      `LOCATION:${icsEscape(`${whereText(e, buildings).where}, University of Washington, Seattle, WA`)}`,
+      `DESCRIPTION:${icsEscape(`${e.blurb ? `${e.blurb}\n\n` : ''}Hosted by Women in Informatics (WINFO) at UW${e.with ? ` with ${e.with}` : ''}.`)}`,
+      'END:VEVENT',
+    );
+  });
+  lines.push('END:VCALENDAR');
+  return lines.join('\r\n');
+}
+
 function slug(e) {
   return `cal-${e.date}-${e.title.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, '')}`;
 }
@@ -331,6 +360,17 @@ export default function EventCalendar({ quarter, events, buildings = {}, types =
     <section className="cal" id="calendar" aria-labelledby="cal-heading">
       <div className="cal__inner">
         <h2 id="cal-heading" className="cursive-title section-title--center cal__heading">{heading}</h2>
+        {upcoming.length > 1 && (
+          <p className="cal__add-all">
+            <a
+              className="btn btn--secondary btn--sm"
+              href={`data:text/calendar;charset=utf-8,${encodeURIComponent(buildIcs(upcoming, buildings))}`}
+              download={`winfo-${quarter.name.toLowerCase().replace(/\s+/g, '-')}.ics`}
+            >
+              add all {upcoming.length} upcoming events to your calendar
+            </a>
+          </p>
+        )}
 
         {all.length === 0 ? (
           <p className="cal__empty">
