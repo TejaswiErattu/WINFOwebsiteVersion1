@@ -1,5 +1,6 @@
 import { lazy, Suspense, useEffect } from 'react';
-import { Routes, Route } from 'react-router-dom';
+import { Routes, Route, useLocation } from 'react-router-dom';
+import PageErrorBoundary from './components/PageErrorBoundary';
 import ScrollToTop from './components/ScrollToTop';
 import BlobBackground from './components/BlobBackground/BlobBackground';
 import Navbar from './components/Navbar/Navbar';
@@ -47,8 +48,10 @@ function lazyPage(load) {
       .catch((err) => {
         let reloaded = true;
         try {
-          reloaded = sessionStorage.getItem(RELOAD_FLAG) === '1';
-          if (!reloaded) sessionStorage.setItem(RELOAD_FLAG, '1');
+          /* Only skip the reload if we already reloaded in the last 10 s;
+             an old flag left from earlier in the visit must not block it. */
+          reloaded = Date.now() - Number(sessionStorage.getItem(RELOAD_FLAG) || 0) < 10000;
+          if (!reloaded) sessionStorage.setItem(RELOAD_FLAG, String(Date.now()));
         } catch { /* storage blocked: don't risk a reload loop */ }
         if (!reloaded) {
           window.location.reload();
@@ -100,6 +103,7 @@ function usePrefetchPages() {
 
 export default function App() {
   usePrefetchPages();
+  const { pathname } = useLocation();
 
   return (
     <div className="page-wrapper">
@@ -110,6 +114,7 @@ export default function App() {
       <Navbar />
       <main id="main-content" tabIndex={-1}>
         <SubTabs />
+        <PageErrorBoundary key={pathname}>
         <Suspense fallback={null}>
           <Routes>
             <Route path="/" element={<Home />} />
@@ -126,6 +131,7 @@ export default function App() {
             <Route path="*" element={<NotFound />} />
           </Routes>
         </Suspense>
+        </PageErrorBoundary>
       </main>
       <Footer />
     </div>
