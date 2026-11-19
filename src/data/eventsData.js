@@ -33,10 +33,10 @@ export const eventsData = {
     howItWorks: 'How it works',
     reach: 'Reach',
     tracks: 'tracks',               // shown as "<year> tracks"
-    timesHeld: 'events held',       // shown with "as of <year>" when given
+    timesHeld: 'Events held',       // shown with "as of <year>" when given
     asOf: 'as of',
-    firstYear: 'first held',
-    attendance: 'attendees',
+    firstYear: 'First held',
+    attendance: 'Attendees',
     posters: 'Past posters',
     openPoster: 'Open poster',      // + poster year
     closePoster: 'Close poster viewer',
@@ -47,7 +47,7 @@ export const eventsData = {
 
   /* ---------- Past on-campus events (masonry gallery) ---------- */
   moreEvents: {
-    heading: 'from past quarters',
+    heading: 'From past quarters',
     boardHint: 'Psst: drag the photos and stickers around the board.',
     resetLabel: 'Tidy up',
     /* alt describes what's in each photo (the event name is already the caption).
@@ -75,7 +75,7 @@ export const eventsData = {
   /* ---------- Bottom CTA ---------- */
   bottomCta: {
     heading: 'We\'ve got you covered!',
-    body: 'want to stay in the loop?\nfollow @uwwinfo or register below:',
+    body: 'Want to stay in the loop?\nFollow @uwwinfo or register below:',
     btnLabel: 'Join Us!',
     btnTo: MEMBERSHIP_SIGNUP_URL,
   },

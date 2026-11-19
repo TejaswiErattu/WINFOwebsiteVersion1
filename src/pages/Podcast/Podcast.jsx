@@ -94,7 +94,7 @@ export default function Podcast() {
                       <p className="podcast-carousel__desc">{renderBold(ep.description)}</p>
                       {ep.watchUrl && (
                         <Button href={ep.watchUrl} variant="primary" size="sm" className="podcast-carousel__btn">
-                          <PlayIcon className="icon icon--inline" /> watch here!
+                          <PlayIcon className="icon icon--inline" /> Watch here!
                         </Button>
                       )}
                     </div>

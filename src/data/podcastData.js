@@ -33,7 +33,7 @@ export const podcastData = {
   guestCta: {
     text: 'interested in sharing your story?',
     body: 'We\u2019re always looking for guests from the iSchool, the tech industry, and our own community. Send us a note!',
-    btnLabel: 'become a podcast guest!',
+    btnLabel: 'Become a podcast guest!',
     btnHref: 'mailto:winfo@uw.edu?subject=Podcast%20guest%20interest',
   },
 

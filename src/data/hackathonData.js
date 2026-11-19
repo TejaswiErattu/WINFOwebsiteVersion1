@@ -53,12 +53,12 @@ export const hackathonData = {
     'It\u2019s beginner-friendly and open to all current UW undergraduates: no coding experience required. Teams of 3\u20134 can submit working builds, prototypes, slide decks or concept demos, and lunch and dinner are on us.',
   ],
   /* Figures from the 14th hackathon (January 2026) */
-  statsHeading: 'at our latest hackathon\u2026',
+  statsHeading: 'At our latest hackathon\u2026',
   stats: [
-    { number: '266', label: 'student participants' },
-    { number: '67', label: 'projects submitted' },
-    { number: '45', label: 'industry mentors' },
-    { number: '2', label: 'days of hacking & judging' },
+    { number: '266', label: 'Student participants' },
+    { number: '67', label: 'Projects submitted' },
+    { number: '45', label: 'Industry mentors' },
+    { number: '2', label: 'Days of hacking & judging' },
   ],
 
   /* ---------- 2 · Collaborate. Network. Solve. ---------- */
@@ -121,7 +121,7 @@ export const hackathonData = {
   ],
 
   /* ---------- 6 · Official hackathon website ---------- */
-  websiteHeading: 'looking for the details?',
+  websiteHeading: 'Looking for the details?',
   websiteBody: 'Schedules, prize tracks, rules and FAQs for this year\u2019s hackathon live on the official hackathon website.',
 
   /* ---------- Sponsor the hackathon ---------- */
@@ -142,11 +142,11 @@ export const hackathonData = {
       text: "Evaluate and guide student projects aligned with emerging technologies, tools, or themes tied to your company\u2019s mission.",
     },
   ],
-  sponsorCtaLabel: 'email us!',
+  sponsorCtaLabel: 'Email us!',
   sponsorCtaLink: 'mailto:winfo@uw.edu',
 
   /* ---------- Past Sponsors ---------- */
-  pastSponsorsHeading: 'past sponsors',
+  pastSponsorsHeading: 'Past sponsors',
   /* dark: true = white-only logo, shown on a charcoal tile so it stays visible */
   pastSponsors: [
     { name: 'Accenture',              logo: logoAccenture },

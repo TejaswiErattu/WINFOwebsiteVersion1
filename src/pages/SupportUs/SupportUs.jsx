@@ -1,5 +1,6 @@
 import { renderBold } from '../../utils/renderBold';
 import CircuitSVG from '../../components/CircuitSVG/CircuitSVG';
+import SidePhotos from '../../components/SidePhotos/SidePhotos';
 import { supportData } from '../../data/supportData';
 import './SupportUs.css';
 
@@ -9,6 +10,7 @@ export default function SupportUs() {
     heroText,
     heroImage,
     involvedHeading,
+    involvedPhotos,
     involvedCards,
     ctaLabel,
     ctaLink,
@@ -48,7 +50,9 @@ export default function SupportUs() {
           <CircuitSVG variant="branch" />
         </div>
 
-        <h2 className="support-involved__heading cursive-title">{involvedHeading}</h2>
+        <SidePhotos photos={involvedPhotos}>
+          <h2 className="support-involved__heading cursive-title">{involvedHeading}</h2>
+        </SidePhotos>
 
         <div className="support-involved__cards">
           {involvedCards.map((card, i) => (

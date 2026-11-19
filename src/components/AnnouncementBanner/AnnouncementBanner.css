@@ -7,7 +7,8 @@
   justify-content: center;
   min-height: 44px;
   padding: 0.55rem 3.25rem;
-  background: linear-gradient(90deg, #7a5c9e 0%, #9e4754 100%);
+  /* Solid WINFO purple (white text 5.45:1) */
+  background: var(--color-primary-dark);
   color: #fff;
 }
 

@@ -33,14 +33,6 @@
   margin: 0.4rem 0 0;
 }
 
-/* Extra class beats the global [class*='-hero__title'] span rule (same specificity, loads later) */
-.merch-hero .merch-hero__title span {
-  background: var(--gradient-accent-strong);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-}
-
 .merch-hero__desc {
   font-size: 1rem;
   line-height: 1.7;
@@ -79,7 +71,7 @@
   color: var(--color-primary);
 }
 
-/* Hero CTA uses the shared gradient (accent) button */
+/* Hero CTA uses the shared accent (pink) button */
 .merch-hero__btn {
   align-self: center;
 }

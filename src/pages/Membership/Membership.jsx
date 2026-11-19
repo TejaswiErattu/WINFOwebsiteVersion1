@@ -1,6 +1,7 @@
 import SectionWrapper from '../../components/SectionWrapper/SectionWrapper';
 import Button from '../../components/Buttons/Buttons';
 import CircuitSVG from '../../components/CircuitSVG/CircuitSVG';
+import SidePhotos from '../../components/SidePhotos/SidePhotos';
 import { renderBold } from '../../utils/renderBold';
 import { membershipData } from '../../data/membershipData';
 import './Membership.css';
@@ -43,6 +44,7 @@ export default function Membership() {
     heroImageAlt,
     perksHeading,
     perksSubtitle,
+    perksPhotos,
     perks,
   } = membershipData;
 
@@ -80,10 +82,12 @@ export default function Membership() {
 
       {/* ===== 2 · MEMBERSHIP PERKS ===== */}
       <SectionWrapper alt className="membership-perks-section">
-        <h2 className="cursive-title section-title--center membership-perks__heading">
-          {perksHeading}
-        </h2>
-        <p className="membership-perks__subtitle">{perksSubtitle}</p>
+        <SidePhotos photos={perksPhotos}>
+          <h2 className="cursive-title section-title--center membership-perks__heading">
+            {perksHeading}
+          </h2>
+          <p className="membership-perks__subtitle">{perksSubtitle}</p>
+        </SidePhotos>
 
         <div className="membership-perks">
           {perks.map((perk) => (

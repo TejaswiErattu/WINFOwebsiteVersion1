@@ -22,6 +22,11 @@ export const membershipData = {
   perksHeading: 'membership perks',
   perksSubtitle:
     'Although membership is not required, official members enjoy these extra benefits:',
+  /* Polaroids on either side of the perks heading (14th hackathon album) */
+  perksPhotos: [
+    { src: '/images/community/members-peace-signs.jpg', alt: 'Two WINFO volunteers smiling and holding up peace signs at the hackathon' },
+    { src: '/images/community/winfo-balloons.jpg', alt: 'Four students posing with gold WINFO balloon letters in front of the hackathon photo wall' },
+  ],
 
   perks: [
     {
