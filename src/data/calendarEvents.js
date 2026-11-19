@@ -8,6 +8,8 @@
           building: 'MGH', room: '254', type: 'fun', blurb: 'optional one-liner' },
       Off campus? Put the place name in `building`, skip `room`, and add
       `address: 'full street address'` so the map and calendar links work.
+      No location yet? Leave out `building` and `room` and it shows as
+      "Location TBA" until you add them.
       `type` sets the color: 'fun' or 'professional'.
       Co-hosting with another RSO? Add `with: 'Club name'` — it shows as a
       small note when someone opens the event.
@@ -96,12 +98,29 @@ export const events = [
     type: 'professional',
   },
   {
+    title: 'CTRL + Rebrand: Reach x WINFO',
+    date: '2026-11-18',
+    time: '5:45–7:45 PM',
+    building: 'HUB',
+    room: '334',
+    type: 'professional',
+    with: 'Reach',
+  },
+  {
     title: 'WINFO Fall Power Hour',
     date: '2026-12-04',
     time: '5–7 PM',
     building: 'HUB',
     room: '214',
     type: 'fun',
+  },
+  {
+    title: 'WINFO x IUGA Gingerbread Building',
+    date: '2026-12-08',
+    time: '5:30–7 PM',
+    /* Location not announced yet: add `building` and `room` when it is */
+    type: 'fun',
+    with: 'IUGA',
   },
 ];
 

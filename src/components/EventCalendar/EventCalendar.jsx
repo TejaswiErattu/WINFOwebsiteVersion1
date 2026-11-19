@@ -59,6 +59,7 @@ function googleCalUrl(e, where) {
     location: fullPlace(e, where),
     details: `${e.blurb ? `${e.blurb}\n\n` : ''}Hosted by Women in Informatics (WINFO) at UW${e.with ? ` with ${e.with}` : ''}.`,
   });
+  if (!params.get('location')) params.delete('location');
   return `https://calendar.google.com/calendar/render?${params.toString()}`;
 }
 
@@ -75,6 +76,7 @@ function buildIcs(list, buildings) {
     const next = new Date(e.when.getFullYear(), e.when.getMonth(), e.when.getDate() + 1);
     const nextYmd = `${next.getFullYear()}${pad(next.getMonth() + 1)}${pad(next.getDate())}`;
     const t = ([h, m]) => `${ymd}T${pad(h)}${pad(m)}00`;
+    const place = fullPlace(e, whereText(e, buildings).where);
     lines.push(
       'BEGIN:VEVENT',
       `UID:${slug(e)}@winfo`,
@@ -82,7 +84,7 @@ function buildIcs(list, buildings) {
       range ? `DTSTART;TZID=America/Los_Angeles:${t(range.start)}` : `DTSTART;VALUE=DATE:${ymd}`,
       range ? `DTEND;TZID=America/Los_Angeles:${t(range.end)}` : `DTEND;VALUE=DATE:${nextYmd}`,
       `SUMMARY:${icsEscape(e.title)}`,
-      `LOCATION:${icsEscape(fullPlace(e, whereText(e, buildings).where))}`,
+      ...(place ? [`LOCATION:${icsEscape(place)}`] : []),
       `DESCRIPTION:${icsEscape(`${e.blurb ? `${e.blurb}\n\n` : ''}Hosted by Women in Informatics (WINFO) at UW${e.with ? ` with ${e.with}` : ''}.`)}`,
       'END:VEVENT',
     );
@@ -98,8 +100,15 @@ function slug(e) {
 
 const DEFAULT_TYPE = 'fun';
 
-/* Off-campus events set `address`; everything else is on the UW campus. */
+/* No `building` or `address` yet → the location shows as "Location TBA". */
+function hasPlace(e) {
+  return Boolean(e.building || e.address);
+}
+
+/* Off-campus events set `address`; everything else is on the UW campus.
+   Returns '' while the location is still TBA. */
 function fullPlace(e, where) {
+  if (!hasPlace(e)) return '';
   return e.address || `${where}, University of Washington, Seattle, WA`;
 }
 
@@ -109,6 +118,16 @@ function whereText(e, buildings) {
 }
 
 function LocationLink({ e, buildings, short = false }) {
+  if (!hasPlace(e)) {
+    return (
+      <span className="cal-where cal-where--tba">
+        <svg className="cal-icon" viewBox="0 0 24 24" aria-hidden="true">
+          <path fill="currentColor" d="M12 2a7 7 0 0 0-7 7c0 5.2 7 13 7 13s7-7.8 7-13a7 7 0 0 0-7-7Zm0 9.5A2.5 2.5 0 1 1 12 6.5a2.5 2.5 0 0 1 0 5Z" />
+        </svg>
+        Location TBA
+      </span>
+    );
+  }
   const { name, where } = whereText(e, buildings);
   return (
     <a
@@ -373,7 +392,7 @@ export default function EventCalendar({ quarter, events, buildings = {}, types =
               href={`data:text/calendar;charset=utf-8,${encodeURIComponent(buildIcs(upcoming, buildings))}`}
               download={`winfo-${quarter.name.toLowerCase().replace(/\s+/g, '-')}.ics`}
             >
-              add all {upcoming.length} upcoming events to your calendar
+              Add all {upcoming.length} upcoming events to your calendar
             </a>
           </p>
         )}
