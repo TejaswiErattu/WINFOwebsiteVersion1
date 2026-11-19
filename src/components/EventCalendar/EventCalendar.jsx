@@ -100,6 +100,9 @@ function slug(e) {
 
 const DEFAULT_TYPE = 'fun';
 
+/* "Earlier this quarter" lists only the most recent finished events */
+const MAX_PAST_SHOWN = 5;
+
 /* No `building` or `address` yet → the location shows as "Location TBA". */
 function hasPlace(e) {
   return Boolean(e.building || e.address);
@@ -307,6 +310,8 @@ export default function EventCalendar({ quarter, events, buildings = {}, types =
     .map((e) => ({ ...e, id: slug(e), type: types[e.type] ? e.type : DEFAULT_TYPE, past: e.when < today }));
   const upcoming = all.filter((e) => !e.past);
   const past = all.filter((e) => e.past);
+  /* Newest first, capped at MAX_PAST_SHOWN */
+  const recentPast = past.slice(-MAX_PAST_SHOWN).reverse();
 
   const byDay = {};
   all.forEach((e) => { (byDay[e.date] = byDay[e.date] || []).push(e); });
@@ -458,7 +463,7 @@ export default function EventCalendar({ quarter, events, buildings = {}, types =
                 <>
                   <h3 className="cal__past-heading">Earlier this quarter</h3>
                   <ol className="cal__list" aria-label="Past events this quarter">
-                    {past.slice().reverse().map((e) => renderCard(e))}
+                    {recentPast.map((e) => renderCard(e))}
                   </ol>
                 </>
               )}
