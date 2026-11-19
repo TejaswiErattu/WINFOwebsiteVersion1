@@ -94,17 +94,18 @@ body .events-category__name:not(#_) {
 /* ===== 3. SECTION HEADS (on-campus, youth) ===== */
 .events-section {
   scroll-margin-top: 72px;
-  padding: var(--space-12) var(--space-6) 0;
+  /* Same space above and below, so the intro isn't pressed against the band's bottom edge */
+  padding: var(--space-10) var(--space-6);
   background: var(--color-bg);
   border-top: 1px solid var(--color-border);
 }
-.events-section--alt { background: var(--color-bg-alt); padding-bottom: 0; }
+.events-section--alt { background: var(--color-bg-alt); }
 
 .events-section__head {
   display: grid;
   grid-template-columns: minmax(0, 1fr) minmax(0, 1.4fr);
   gap: var(--space-8);
-  align-items: baseline;
+  align-items: center;
   max-width: var(--container-max);
   margin: 0 auto;
 }

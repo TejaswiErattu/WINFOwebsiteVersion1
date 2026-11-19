@@ -15,7 +15,7 @@ export const alumniData = {
     'Graduating shouldn\'t mean drifting away. The **WINFO Alumni Board** is a formal alumni network that keeps WINFO grads **connected and involved** after graduation.',
   heroBodySecondary:
     'Alumni want to stay close, and students want access to people a few steps ahead. The board connects the two.',
-  ctaLabel: 'join the alumni network',
+  ctaLabel: 'Join the alumni network',
   ctaLink: ALUMNI_INTEREST_FORM_URL,
   heroImage: '/images/winfo-community-1.jpg',
   heroImageAlt: 'Students making vision boards at long tables in a classroom',
@@ -74,7 +74,7 @@ export const alumniData = {
 
   bottomCta: {
     text: 'help us build the first alumni board!',
-    btnLabel: 'fill out the interest form',
+    btnLabel: 'Fill out the interest form',
     btnLink: ALUMNI_INTEREST_FORM_URL,
   },
 };

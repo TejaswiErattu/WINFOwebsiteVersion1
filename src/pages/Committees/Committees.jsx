@@ -41,7 +41,7 @@ export default function Committees() {
 
       <div className="team-committees-teaser">
         <p>Want to join a committee? Become a WINFO member to get started.</p>
-        <Button href={MEMBERSHIP_SIGNUP_URL} variant="accent">become a member</Button>
+        <Button href={MEMBERSHIP_SIGNUP_URL} variant="accent">Become a member</Button>
       </div>
     </SectionWrapper>
   );

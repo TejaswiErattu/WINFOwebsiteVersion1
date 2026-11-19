@@ -53,9 +53,9 @@ function TeamCard({ officer, large }) {
       <div className="officer-card__body">
         <h3 className="officer-card__name">{name}</h3>
         <p className="officer-card__role">{role}</p>
-        {year && <p className="officer-card__detail"><strong>year:</strong> {year}</p>}
-        {focusArea && <p className="officer-card__detail"><strong>major:</strong> {focusArea}</p>}
-        {funFact && <p className="officer-card__detail"><strong>fun fact:</strong> {funFact}</p>}
+        {year && <p className="officer-card__detail"><strong>Year:</strong> {year}</p>}
+        {focusArea && <p className="officer-card__detail"><strong>Major:</strong> {focusArea}</p>}
+        {funFact && <p className="officer-card__detail"><strong>Fun fact:</strong> {funFact}</p>}
       </div>
     </Tag>
   );
@@ -157,7 +157,7 @@ export default function Officers() {
         {/* Committees live on their own page; this keeps the link to the board clear */}
         <div className="team-committees-teaser">
           <p>{committeesTeaser}</p>
-          <Button to="/committees" variant="primary">meet the committees</Button>
+          <Button to="/committees" variant="primary">Meet the committees</Button>
         </div>
       </SectionWrapper>
 

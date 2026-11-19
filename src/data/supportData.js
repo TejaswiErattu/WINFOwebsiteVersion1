@@ -15,6 +15,11 @@ export const supportData = {
 
   /* ---------- Get Involved ---------- */
   involvedHeading: 'get involved with WINFO!',
+  /* Polaroids on either side of the heading (14th hackathon album) */
+  involvedPhotos: [
+    { src: '/images/community/hackathon-guests.jpg', alt: 'Two smiling guests wearing lanyards at the WINFO hackathon', position: 'center 40%' },
+    { src: '/images/community/participants-smiling.jpg', alt: 'Hackathon participants smiling at their table among balloons and laptops' },
+  ],
   involvedCards: [
     {
       title: 'Newsletter\nSpotlights',
@@ -34,6 +39,6 @@ export const supportData = {
   ],
 
   /* ---------- Bottom CTA ---------- */
-  ctaLabel: 'connect with us!',
+  ctaLabel: 'Connect with us!',
   ctaLink: 'mailto:winfo@uw.edu',
 };

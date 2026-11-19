@@ -134,7 +134,7 @@
   color: var(--color-primary);
 }
 
-/* CTA button inside nav — uses the shared gradient (accent) button */
+/* CTA button inside nav — uses the shared accent (pink) button */
 .navbar__cta {
   margin-left: 0.75rem;
 }

@@ -355,7 +355,12 @@ body .hack-current__theme:not(#_) {
   align-items: center;
   text-align: center;
   padding: var(--space-16) var(--space-6);
-  background: linear-gradient(180deg, var(--hack-sky) 0%, #D5EAF2 100%);
+  /* WINFO lavender with soft pink washes (same recipe as the events calendar) */
+  background:
+    radial-gradient(circle at 10% 20%, rgba(254, 176, 186, 0.35) 0, transparent 32%),
+    radial-gradient(circle at 90% 85%, rgba(254, 176, 186, 0.3) 0, transparent 34%),
+    var(--color-info-light);
+  border-top: 1px solid var(--color-border);
 }
 .hack-website .cursive-title { margin-bottom: var(--space-3); }
 .hack-website .hack-body { margin-bottom: var(--space-6); }

@@ -57,16 +57,18 @@
   box-shadow: 0 4px 12px rgba(158, 128, 189, 0.12);
 }
 
-/* ── Variant: Accent ── (rose-to-purple; every stop >= 5.4:1 with white) */
+/* ── Variant: Accent ── (solid WINFO blush pink; dark text 9.6:1, 7.1:1 on hover) */
 .btn--accent {
-  background: var(--gradient-accent-strong);
-  color: var(--color-on-primary);
-  box-shadow: 0 2px 8px rgba(252, 190, 191, 0.25);
+  background: var(--color-accent);
+  color: var(--color-text);
+  box-shadow: 0 2px 8px rgba(232, 145, 158, 0.25),
+              0 0 0 1px rgba(232, 145, 158, 0.35) inset;
 }
 .btn--accent:hover {
+  background: var(--color-accent-dark);
   transform: translateY(-2px);
-  box-shadow: 0 8px 24px rgba(252, 190, 191, 0.35);
-  filter: brightness(1.05);
+  box-shadow: 0 8px 24px rgba(232, 145, 158, 0.35),
+              0 0 0 1px rgba(232, 145, 158, 0.35) inset;
 }
 
 /* ── Sizes ── */

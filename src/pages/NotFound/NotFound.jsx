@@ -17,7 +17,7 @@ export default function NotFound() {
             We couldn&rsquo;t find the page you were looking for. It may have moved, or the link may be mistyped.
           </p>
           <Button to="/" variant="primary" size="lg">
-            back to home
+            Back to home
           </Button>
         </div>
       </SectionWrapper>

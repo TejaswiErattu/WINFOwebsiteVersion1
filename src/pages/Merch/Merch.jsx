@@ -1,7 +1,14 @@
 import { CartIcon, ShirtIcon, MoneyIcon, BoxIcon, ClockIcon } from '../../components/Icons/Icons';
 import { MERCH_ORDER_URL as ORDER_URL } from '../../data/externalLinks';
 import AnnouncementBanner from '../../components/AnnouncementBanner/AnnouncementBanner';
+import SidePhotos from '../../components/SidePhotos/SidePhotos';
 import './Merch.css';
+
+/* Polaroids on either side of "The Details" heading (14th hackathon album) */
+const DETAIL_PHOTOS = [
+  { src: '/images/community/volunteers-serving.jpg', alt: 'WINFO volunteers in matching black shirts handing out pizza at the hackathon', position: '70% center' },
+  { src: '/images/community/friends-in-winfo-tees.jpg', alt: 'Volunteers in black WINFO shirts laughing together by the snack table', position: '40% center' },
+];
 
 export default function Merch() {
   return (
@@ -35,7 +42,7 @@ export default function Merch() {
               rel="noopener noreferrer"
               className="btn btn--accent btn--lg merch-hero__btn"
             >
-              <CartIcon className="icon icon--inline" /> order now
+              <CartIcon className="icon icon--inline" /> Order now
             </a>
             <p className="merch-hero__note">
               Opens in a new tab — Google Form order.
@@ -58,7 +65,9 @@ export default function Merch() {
       {/* ===== DETAILS ===== */}
       <section className="merch-details">
         <div className="merch-details__inner">
-          <h2 className="merch-details__heading cursive-title">the details</h2>
+          <SidePhotos photos={DETAIL_PHOTOS}>
+            <h2 className="merch-details__heading cursive-title">The details</h2>
+          </SidePhotos>
           <div className="merch-details__grid">
             <div className="merch-detail-card">
               <span className="merch-detail-card__icon"><ShirtIcon /></span>

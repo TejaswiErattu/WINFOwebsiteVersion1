@@ -417,6 +417,9 @@
   margin: 0 auto;
   text-align: center;
 }
+/* Breathing room between the title and the intro, and between the two paragraphs */
+.podcast-intro .page-title { margin: 0 0 var(--space-5); }
+.podcast-intro .podcast-hero__text + .podcast-hero__text { margin-top: var(--space-3); }
 .podcast-episodes-section .podcast-carousel { max-width: 72rem; margin: 0 auto; }
 .podcast-episodes-section .podcast-carousel__card {
   grid-template-columns: 1.5fr 1fr;
