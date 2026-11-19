@@ -339,6 +339,8 @@
 
 .cal-where .cal-icon { color: currentColor; }
 .cal-where:hover { background: #fbd0d8; text-decoration: underline; }
+/* "Location TBA" is plain text, not a map link */
+.cal-where--tba:hover { background: var(--color-accent-light); text-decoration: none; }
 .cal-where__bldg { font-weight: 400; color: var(--color-text-secondary); }
 
 .cal-gcal {
