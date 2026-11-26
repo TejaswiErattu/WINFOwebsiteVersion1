@@ -36,17 +36,9 @@ export const officersData = {
     },
   ],
 
-  /* Directors (displayed in 4-column grid) */
+  /* Directors, then first-year reps (displayed in 4-column grid).
+     No photo yet? Leave `image: ''` and the card shows a blank frame. */
   directors: [
-    {
-      name: 'Rithika Madey',
-      role: 'Director of Hackathon',
-      image: '/images/team/rithika_headshot.jpg',
-      linkedin: 'https://www.linkedin.com/in/rithika-madey/',
-      year: 'Third-year (Class of 2028)',
-      focusArea: 'Informatics',
-      funFact: '',
-    },
     {
       name: 'Tanya Manchanda',
       role: 'Director of Outreach',
@@ -108,6 +100,33 @@ export const officersData = {
       linkedin: 'https://www.linkedin.com/in/sophia-tounalom-221939282/',
       year: 'Second-year (Class of 2029)',
       focusArea: 'Informatics',
+      funFact: '',
+    },
+    {
+      name: 'Emily',
+      role: 'First-Year Representative',
+      image: '',
+      linkedin: '',
+      year: 'First-year (Class of 2030)',
+      focusArea: '',
+      funFact: '',
+    },
+    {
+      name: 'Aditi',
+      role: 'First-Year Representative',
+      image: '',
+      linkedin: '',
+      year: 'First-year (Class of 2030)',
+      focusArea: '',
+      funFact: '',
+    },
+    {
+      name: 'Tanishka',
+      role: 'First-Year Representative',
+      image: '',
+      linkedin: '',
+      year: 'First-year (Class of 2030)',
+      focusArea: '',
       funFact: '',
     },
   ],
