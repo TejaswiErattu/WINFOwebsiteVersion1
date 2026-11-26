@@ -1,6 +1,6 @@
 import { renderBold } from '../../utils/renderBold';
 import CircuitSVG from '../../components/CircuitSVG/CircuitSVG';
-import SidePhotos from '../../components/SidePhotos/SidePhotos';
+import SidePhotos, { PhotoStrip } from '../../components/SidePhotos/SidePhotos';
 import { supportData } from '../../data/supportData';
 import './SupportUs.css';
 
@@ -11,6 +11,8 @@ export default function SupportUs() {
     heroImage,
     involvedHeading,
     involvedPhotos,
+    stripTitle,
+    stripPhotos,
     involvedCards,
     ctaLabel,
     ctaLink,
@@ -79,6 +81,8 @@ export default function SupportUs() {
           </svg>
           {ctaLabel}
         </a>
+
+        <PhotoStrip photos={stripPhotos} title={stripTitle} />
       </section>
 
     </>

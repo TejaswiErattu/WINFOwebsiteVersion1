@@ -1,7 +1,7 @@
 import SectionWrapper from '../../components/SectionWrapper/SectionWrapper';
 import Button from '../../components/Buttons/Buttons';
 import CircuitSVG from '../../components/CircuitSVG/CircuitSVG';
-import SidePhotos from '../../components/SidePhotos/SidePhotos';
+import SidePhotos, { PhotoStrip } from '../../components/SidePhotos/SidePhotos';
 import { renderBold } from '../../utils/renderBold';
 import { membershipData } from '../../data/membershipData';
 import './Membership.css';
@@ -45,6 +45,8 @@ export default function Membership() {
     perksHeading,
     perksSubtitle,
     perksPhotos,
+    stripTitle,
+    stripPhotos,
     perks,
   } = membershipData;
 
@@ -100,6 +102,8 @@ export default function Membership() {
             </div>
           ))}
         </div>
+
+        <PhotoStrip photos={stripPhotos} title={stripTitle} />
       </SectionWrapper>
     </>
   );

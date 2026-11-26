@@ -91,3 +91,59 @@
   }
   .side-photos__photo { width: min(100%, 220px); }
 }
+
+/* ==========================================================================
+   PHOTO STRIP — a row of tilted polaroids at the end of a short page
+   (reuses the polaroid frame above; each one gets its own tilt)
+   ========================================================================== */
+.photo-strip {
+  width: 100%;
+  max-width: var(--container-max);
+  margin: var(--space-12) auto 0;
+  text-align: center;
+}
+
+.photo-strip__title {
+  margin: 0 0 var(--space-8);
+  font-size: clamp(1.5rem, 1.2rem + 1vw, 2rem);
+}
+
+.photo-strip__list {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: clamp(1.25rem, 3vw, 2.5rem);
+  justify-items: center;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.photo-strip .side-photos__photo {
+  width: min(100%, 250px);
+  transform: rotate(var(--tilt, 0deg)) translateY(var(--lift, 0px));
+}
+
+.photo-strip__item:nth-child(4n + 1) { --tilt: -3deg; }
+.photo-strip__item:nth-child(4n + 2) { --tilt: 2.5deg; --lift: 10px; }
+.photo-strip__item:nth-child(4n + 3) { --tilt: -1.5deg; --lift: -4px; }
+.photo-strip__item:nth-child(4n + 4) { --tilt: 3deg; --lift: 6px; }
+
+/* every other photo gets lavender tape instead of pink */
+.photo-strip__item:nth-child(even) .side-photos__photo::before {
+  transform: translateX(-50%) rotate(3deg);
+  background: rgba(183, 163, 223, 0.75);
+}
+
+@media (hover: hover) and (prefers-reduced-motion: no-preference) {
+  .photo-strip .side-photos__photo:hover {
+    transform: rotate(0deg) translateY(-4px) scale(1.03);
+  }
+}
+
+@media (max-width: 900px) {
+  .photo-strip__list {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    row-gap: var(--space-8);
+  }
+  .photo-strip .side-photos__photo { width: min(100%, 230px); }
+}

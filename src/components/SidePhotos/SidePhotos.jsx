@@ -17,15 +17,42 @@ export default function SidePhotos({ photos = [], className = '', children }) {
   return (
     <div className={`side-photos ${className}`.trim()}>
       <div className="side-photos__content">{children}</div>
-      {left && <Polaroid photo={left} side="left" />}
-      {right && <Polaroid photo={right} side="right" />}
+      {left && <Polaroid photo={left} className="side-photos__photo--left" />}
+      {right && <Polaroid photo={right} className="side-photos__photo--right" />}
     </div>
   );
 }
 
-function Polaroid({ photo, side }) {
+/**
+ * PhotoStrip — a row of tilted polaroids (scrapbook style) for the end of a
+ * short page. Four photos fit one row on wide screens; two per row on
+ * tablets and phones.
+ *
+ * Props:
+ *   photos    – each { src, alt, width?, height?, position? }
+ *   title     – optional small heading above the strip
+ *   className – extra class names
+ */
+export function PhotoStrip({ photos = [], title, className = '' }) {
+  if (!photos.length) return null;
+
   return (
-    <figure className={`side-photos__photo side-photos__photo--${side}`}>
+    <div className={`photo-strip ${className}`.trim()}>
+      {title && <h3 className="photo-strip__title cursive-title">{title}</h3>}
+      <ul className="photo-strip__list">
+        {photos.map((photo) => (
+          <li key={photo.src} className="photo-strip__item">
+            <Polaroid photo={photo} />
+          </li>
+        ))}
+      </ul>
+    </div>
+  );
+}
+
+function Polaroid({ photo, className = '' }) {
+  return (
+    <figure className={`side-photos__photo ${className}`.trim()}>
       <img
         src={photo.src}
         alt={photo.alt}
