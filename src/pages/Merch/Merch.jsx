@@ -1,13 +1,21 @@
 import { CartIcon, ShirtIcon, MoneyIcon, BoxIcon, ClockIcon } from '../../components/Icons/Icons';
 import { MERCH_ORDER_URL as ORDER_URL } from '../../data/externalLinks';
 import AnnouncementBanner from '../../components/AnnouncementBanner/AnnouncementBanner';
-import SidePhotos from '../../components/SidePhotos/SidePhotos';
+import SidePhotos, { PhotoStrip } from '../../components/SidePhotos/SidePhotos';
 import './Merch.css';
 
 /* Polaroids on either side of "The Details" heading (14th hackathon album) */
 const DETAIL_PHOTOS = [
   { src: '/images/community/volunteers-serving.jpg', alt: 'WINFO volunteers in matching black shirts handing out pizza at the hackathon', position: '70% center' },
   { src: '/images/community/friends-in-winfo-tees.jpg', alt: 'Volunteers in black WINFO shirts laughing together by the snack table', position: '40% center' },
+];
+
+/* Row of polaroids at the end of the page (14th hackathon album) */
+const STRIP_PHOTOS = [
+  { src: '/images/community/winfo-tee-back-print.jpg', alt: 'Volunteers serving pizza, showing the illustrated print on the back of their WINFO shirts' },
+  { src: '/images/community/board-with-balloons.jpg', alt: 'The WINFO team in black shirts posing behind gold WINFO balloons' },
+  { src: '/images/community/volunteer-thumbs-up.jpg', alt: 'A volunteer in a WINFO shirt giving two thumbs up beside a box of pizza' },
+  { src: '/images/community/volunteer-in-winfo-tee.jpg', alt: 'A volunteer in a WINFO shirt smiling next to a balloon column' },
 ];
 
 export default function Merch() {
@@ -90,6 +98,8 @@ export default function Merch() {
               <p>Orders close soon — grab yours before it's too late!</p>
             </div>
           </div>
+
+          <PhotoStrip photos={STRIP_PHOTOS} title="Moments from WINFO" />
         </div>
       </section>
 

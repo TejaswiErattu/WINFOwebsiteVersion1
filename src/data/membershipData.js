@@ -28,6 +28,15 @@ export const membershipData = {
     { src: '/images/community/winfo-balloons.jpg', alt: 'Four students posing with gold WINFO balloon letters in front of the hackathon photo wall' },
   ],
 
+  /* Row of polaroids at the end of the page (14th hackathon album) */
+  stripTitle: 'Moments from WINFO',
+  stripPhotos: [
+    { src: '/images/community/friends-at-a-table.jpg', alt: 'Four friends smiling together at their table during the WINFO hackathon' },
+    { src: '/images/community/pizza-volunteers.jpg', alt: 'Two WINFO volunteers laughing and holding up slices of pizza' },
+    { src: '/images/community/board-group-photo.jpg', alt: 'The WINFO team posing together in matching black shirts in front of the jellyfish backdrop' },
+    { src: '/images/community/participants-laughing.jpg', alt: 'Hackathon participants laughing at their table under pink and purple balloons' },
+  ],
+
   perks: [
     {
       icon: 'mail',

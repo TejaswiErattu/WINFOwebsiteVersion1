@@ -20,6 +20,14 @@ export const supportData = {
     { src: '/images/community/hackathon-guests.jpg', alt: 'Two smiling guests wearing lanyards at the WINFO hackathon', position: 'center 40%' },
     { src: '/images/community/participants-smiling.jpg', alt: 'Hackathon participants smiling at their table among balloons and laptops' },
   ],
+  /* Row of polaroids at the end of the page (14th hackathon album) */
+  stripTitle: 'Moments from WINFO',
+  stripPhotos: [
+    { src: '/images/community/sponsor-table.jpg', alt: 'A sponsor at the Accenture table at the WINFO hackathon' },
+    { src: '/images/community/mentors-with-balloons.jpg', alt: 'Three hackathon guests holding gold balloons that spell WINFO' },
+    { src: '/images/community/team-pitching-judges.jpg', alt: 'Two students pitching their project to judges on judging day' },
+    { src: '/images/community/team-presenting.jpg', alt: 'A team presenting their project in front of a pastel slide on judging day' },
+  ],
   involvedCards: [
     {
       title: 'Newsletter\nSpotlights',
